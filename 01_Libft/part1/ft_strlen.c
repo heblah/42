@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:39:52 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/02 15:15:18 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/03 14:30:08 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@ size_t	ft_strlen(const char *s)
 	int	i;
 
 	i = -1;
-	while (str[++i]);
+	while (str[++i])
+		;
 	return (i);
 }
