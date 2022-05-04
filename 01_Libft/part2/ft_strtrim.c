@@ -1,7 +1,19 @@
-#include <stdio.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/04 10:37:37 by halvarez          #+#    #+#             */
+/*   Updated: 2022/05/04 12:01:24 by halvarez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	ft_isset(char c, char const *set);
+#include <stdlib.h>
+#include "libft.h"
+
+static int	ft_isset(char c, char const *set);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -10,12 +22,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		end;
 	char	*trim;
 
-	start = -1;
-	while (s1[++start] && ft_isset(s1[start], set));
-	end = -1;
-	while (s1[++end]);
-	while (s1[--end] && ft_isset(s1[end], set));
-	trim = malloc((end - start + 2) * sizeof(char));
+	start = 0;
+	while (s1[start] && ft_isset(s1[start], set))
+		start++;
+	end = ft_strlen(s1) - 1;
+	while (s1[end] && ft_isset(s1[end], set))
+		end--;
+	trim = ft_calloc((end - start + 2), sizeof(char));
 	if (!trim)
 		return ((void *)0);
 	i = -1;
@@ -25,7 +38,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (trim);
 }
 
-int	ft_isset(char c, char const *set)
+static int	ft_isset(char c, char const *set)
 {
 	int	i;
 

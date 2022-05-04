@@ -6,11 +6,11 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:41:17 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/03 14:38:21 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/04 09:31:15 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	while (*s && *s != c)
 		s++;

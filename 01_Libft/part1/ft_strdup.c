@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 18:08:04 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/03 18:31:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/04 09:27:23 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ char	*ft_strdup(const char *s)
 	i = 0;
 	d = malloc(ft_strlen(s) * sizeof(char));
 	if (!d)
-		return ((void *0));
+		return ((void *)0);
 	while (s[i])
-		d[i] = s[i];
+		d[i] = s[i++];
 	d[i] = '\0';
 	return (d);
 }
