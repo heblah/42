@@ -6,42 +6,47 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 12:03:12 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/05 16:20:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/07 18:30:50 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static int	count_words(char const *s, char c);
-static int	ft_strlensplit(char const *s, char c, int *i);
-static char	*ft_splitlcpy(char **split, const char *s, int *i, char c);
 static int	ft_freesplit(char **split, int k);
 
 char	**ft_split(char const *s, char c)
 {
 	int		words;
 	char	**split;
-	int		i;
 	int		k;
+	int		len;
 
 	words = count_words(s, c);
-	if (words == 0)
+	printf("words = %d\n", words);
+	if (!*s || !words)
 		return ((void *)0);
-	split = ft_calloc((words + 1), sizeof(char *));
+	split = malloc((words + 1) * sizeof(char *));
 	if (!split)
 		return ((void *)0);
-	i = 0;
+	*(split + words) = NULL;
 	k = -1;
-	while (split[++k] && words > 0)
+	while (words-- > 0)
 	{
-		split[k] = ft_calloc(ft_strlensplit(s, c, &i), sizeof(char));
+		len = 0;
+		while (*s == c)
+			s++;
+		while (*(s + len) != c)
+			len++;
+		split[++k] = malloc((len + 1) * sizeof(char));
 		if (!split[k])
 		{
 			ft_freesplit(split, k);
 			return ((void *)0);
 		}
-		split[k] = ft_splitlcpy(&split[k], s, &i, c);
-		words--;
+		ft_strlcpy(split[k], s, len + 1);
+		s = s + len;
+		printf("split[%d] =%s\n", k, split[k]);
 	}
 	return (split);
 }
@@ -56,32 +61,9 @@ static int	count_words(char const *s, char c)
 	if (s[++i] && s[i] != c)
 		n++;
 	while (s[++i])
-		if (s[i - 1] != c && s[i] == c)
+		if (s[i - 1] == c && s[i] != c)
 			n++;
 	return (n);
-}
-
-static int	ft_strlensplit(char const *s, char c, int *i)
-{
-	int	len;
-
-	len = 0;
-	while (s[*i] && s[*i] == c)
-		i++;
-	while (s[*i + len] && s[*i + len] != c)
-		len++;
-	return (len);
-}
-
-static char	*ft_splitlcpy(char **split, const char *s, int *i, char c)
-{
-	int	j;
-
-	j = 0;
-	while (s[*i] && s[*i] != c)
-		*(*(split) + j++) = s[*i++];
-	*(*(split) + j) = '\0';
-	return (*(split));
 }
 
 static int	ft_freesplit(char **split, int k)
@@ -91,3 +73,14 @@ static int	ft_freesplit(char **split, int k)
 	free(split);
 	return (0);
 }
+/*
+int	main()
+{
+	char s[] = "tripouille";
+	char c;
+	char **split;
+
+	c = 0;
+	split = ft_split(s, c);
+	ft_freesplit(split, count_words(s, c));
+}*/

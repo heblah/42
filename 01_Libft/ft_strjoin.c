@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 10:27:58 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/05 15:17:43 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/07 17:59:00 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (s2[j])
 		j++;
 	len = i + j;
-	dest = ft_calloc((len + 1), sizeof(char));
+	dest = malloc((len + 1) * sizeof(char));
 	if (!dest)
 		return ((void *)0);
 	i = -1;

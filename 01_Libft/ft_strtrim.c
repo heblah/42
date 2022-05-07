@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 10:37:37 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/06 15:01:21 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/07 18:11:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = ft_strlen(s1) - 1;
 	while (end >= 0 && ft_isset(s1[end], set))
 		end--;
-	trim = ft_calloc((end + 2), sizeof(char));
+	trim = malloc((end + 2) * sizeof(char));
 	if (!trim)
 		return ((void *)0);
 	i = -1;
 	while (s1[++i] && i <= end)
 		trim[i] = s1[i];
+	trim[i] = '\0';
 	return (trim);
 }
 
