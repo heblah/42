@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 10:37:37 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/05 15:19:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/06 15:01:21 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,20 @@ static int	ft_isset(char c, char const *set);
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		i;
-	int		start;
 	int		end;
 	char	*trim;
 
-	start = 0;
-	while (s1[start] && ft_isset(s1[start], set))
-		start++;
+	while (*s1 && ft_isset(*s1, set))
+		s1++;
 	end = ft_strlen(s1) - 1;
-	while (s1[end] && ft_isset(s1[end], set))
+	while (end >= 0 && ft_isset(s1[end], set))
 		end--;
-	trim = ft_calloc((end - start + 2), sizeof(char));
+	trim = ft_calloc((end + 2), sizeof(char));
 	if (!trim)
 		return ((void *)0);
 	i = -1;
-	while (s1[start + ++i] && (start + i <= end))
-		trim[i] = s1[start + i];
-	trim[i] = '\0';
+	while (s1[++i] && i <= end)
+		trim[i] = s1[i];
 	return (trim);
 }
 

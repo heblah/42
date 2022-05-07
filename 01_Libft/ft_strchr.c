@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:41:17 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/05 16:49:43 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/06 10:32:12 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s && *s != c)
+	int	len;
+
+	len = ft_strlen(s);
+	while (len-- >= 0)
+	{
+		if (*s == c % 256)
+			return ((char *)s);
 		s++;
-	if (*s == c)
-		return ((char *)s);
+	}
 	return ((void *)0);
 }

@@ -6,12 +6,16 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 13:50:33 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/05 16:00:28 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/06 14:48:20 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_LIBFT_H
+# define FT_LIBFT_H 
+
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <limits.h>
 #include <ctype.h>
 
@@ -44,12 +48,16 @@ char	*ft_strdup(const char *s);
 /*partie 2*/
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char 	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void 	ft_putnbr_fd(int n, int fd);
 
 /*listes chainees*/
+
+#endif
