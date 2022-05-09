@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 13:50:33 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/06 14:48:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/09 16:07:09 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdint.h>
 #include <limits.h>
 #include <ctype.h>
 

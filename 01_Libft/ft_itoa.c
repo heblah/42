@@ -5,69 +5,80 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 16:48:48 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/05 16:18:05 by halvarez         ###   ########.fr       */
+/*   Created: 2022/05/09 14:29:21 by halvarez          #+#    #+#             */
+/*   Updated: 2022/05/09 15:25:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_sizing(int n);
-static int	ft_sign(int *n);
+static long	ft_size(long nl, long *sign);
+static void	ft_putnbr_str(long nl, char *itoa, long size);
 
 char	*ft_itoa(int n)
 {
-	char				*itoa;
-	unsigned int		size;
-	int					sign;
+	char	*itoa;
+	long	sign;
+	long	nl;
+	long	size;
 
-	if (n == INT_MIN)
-	{
-		itoa = "-2147483648";
-		return (itoa);
-	}
-	sign = ft_sign(&n);
-	size = ft_sizing(n);
-	itoa = ft_calloc(size, sizeof(int));
+	nl = n;
+	sign = 1;
+	size = ft_size(nl, &sign);
+	itoa = malloc((size + 1) * sizeof(char));
 	if (!itoa)
-		return ((void *)0);
-	while (n > 0)
-	{
-		itoa[--size] = n % 10 + '0';
-		n /= 10;
-	}
-	if (sign == -1)
-		itoa[--size] = '-';
+		return (NULL);
+	ft_putnbr_str(nl, itoa, size - 1);
+	itoa[size] = '\0';
 	return (itoa);
 }
 
-static int	ft_sizing(int n)
+static long	ft_size(long nl, long *sign)
 {
-	int	size;
+	long	size;
 
 	size = 0;
-	if (n < 0)
+	if (nl < 0)
+	{
+		*sign = -1;
+		size++;
+		nl *= -1;
+	}
+	else if (nl == 0)
+		return (1);
+	while (nl != 0)
 	{
 		size++;
-		n *= -1;
+		nl /= 10;
 	}
-	while (n > 0)
-	{
-		size++;
-		n /= 10;
-	}
-	return (size + 1);
+	return (size);
 }
 
-static int	ft_sign(int *n)
+static void	ft_putnbr_str(long nl, char *itoa, long size)
 {
-	int	sign;
-
-	sign = 1;
-	if (*n < 0)
+	if (nl < 0)
 	{
-		sign = -1;
-		*n *= -1;
+		itoa[0] = '-';
+		nl *= -1;
 	}
-	return (sign);
+	if (nl > 9)
+	{
+		ft_putnbr_str(nl / 10, itoa, size - 1);
+		itoa[size] = nl % 10 + '0';
+	}
+	else
+		itoa[size] = nl % 10 + '0';
 }
+/*
+int	main()
+{
+	int		n;
+	char	*itoa;
+
+	n = INT_MAX;
+	itoa = ft_itoa(n);
+	printf("%s", itoa);
+	free(itoa);
+	return (0);
+}
+*/

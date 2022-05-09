@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:05:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/07 12:45:58 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/09 19:29:21 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,27 @@
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
-	size_t	len_little;
+	size_t	k;
 
-	i = 0;
+	i = -1;
 	if (!*little)
 		return ((char *)big);
-	len_little = ft_strlen(little);
-	while (big[i] && len-- > 0)
+	while (big[++i] && len > 0)
 	{
-		if (ft_strncmp(big + i, little, len_little) == 0)
-			return ((char *)(big + i));
-		i++;
-		len--;
+		k = 0;
+		while ((big[i + k] || little[k]) && big[i + k] == little[k] && len-- > 0)
+		{
+			k++;
+			if (!little[k])
+				return ((char *)(big + i));
+		}
 	}
 	return ((void *)0);
 }
-/*
+
 int	main()
 {
 	char haystack[30] = "aaabcabcd";
 
-	printf("%s", ft_strnstr(haystack, "cd", 8));
-}*/
+	printf("%s\n", ft_strnstr(haystack, "abcd", 9));
+}
