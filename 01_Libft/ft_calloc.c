@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:48:31 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/09 16:06:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/11 13:05:14 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char	*ptr;
-	size_t	i;
+	char			*ptr;
+	size_t			i;
+	const size_t	size_m = nmemb * size;
 
 	i = 0;
 	ptr = (void *)0;
-	if (nmemb == 0 || size == 0 || nmemb == SIZE_MAX || size == SIZE_MAX)
+	if (nmemb && size_m / nmemb != size)
 		return ((void *)0);
-	ptr = malloc(nmemb * size);
+	ptr = malloc(size_m);
 	if (!ptr)
 		return ((void *)0);
-	while (i < nmemb * size)
+	while (i < size_m)
 		*(ptr + i++) = '\0';
 	return ((void *)ptr);
 }
