@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 09:04:13 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/12 15:14:46 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/12 18:06:32 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,19 @@ typedef struct	s_flag
 	int blank;
 	int	plus;
 }		t_f;
+/*structures de conversions*/
+typedef struct	s_conv
+{
+	int	c;
+	int	s;
+	int	p;
+	int	d;
+	int	i;
+	int	u;
+	int	x;
+	int	X;
+	int	%;
+}	
 
 /*fonctions ft_print.c*/
 int		is_conv(char *sub_s);
