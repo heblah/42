@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 08:45:46 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/12 11:51:29 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:39:15 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,12 @@ int	main()
 	printf("Afficher un pointeur sur ulong : %p\n", p_ulong);
 	printf("Afficher un nombre 95 en hexadecimal : %x\n", 95);
 	printf("Afficher un nombre 95 en HEXADECIMAL : %X\n", 95);
-	printf("Afficher %  ddddd\n", 60);
-	printf("Afficher %    quherhiodurehfgiufhg\n");
 
 	printf("\nTests d'affichage de la partie bonus\n");
 	printf("Afficher un %%d formate a 20 caracteres : %.20d\n", INT_MAX);
 	printf("Afficher un %%c avec le flag #x  :%#x\n", 97);
 	printf("Afficher un %%i avec le flag #X  :%#X\n", 97);
-	printf("Afficher un %%i avec le flag ' ' :%    i\n", 97);
+	printf("Afficher un %%i avec le flag ' ' :%i\n", 97);
 	printf("Afficher un %%d avec le flag -   :%d\n", 97);
 	printf("Afficher un %%i avec le flag +   :%+i\n", 97);
 	printf("Afficher un %%u : %u\n", UINT_MAX);

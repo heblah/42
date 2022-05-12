@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: halvarez <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: halvarez <marvin42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 15:39:44 by halvarez          #+#    #+#              #
-#    Updated: 2022/05/11 09:43:15 by halvarez         ###   ########.fr        #
+#    Updated: 2022/05/12 15:22:31 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,23 +27,23 @@ CFLAGS		= -Wall -Wextra -Werror
 RM			= rm -rf
 
 .c.o:
-		@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:${OBJS}
-		@ar -rcs ${NAME} ${OBJS}
+		ar -rcs ${NAME} ${OBJS}
 
 all:    ${NAME}
 
 bonus:    all
-		@${CC} ${CFLAGS} -c ${BONUS_C}
-		@ar -rcs ${NAME} ${BONUS_O}
+		${CC} ${CFLAGS} -c ${BONUS_C}
+		ar -rcs ${NAME} ${BONUS_O}
 
 clean:
-		@${RM} ${OBJS}
-		@${RM} ${BONUS_O}
+		${RM} ${OBJS}
+		${RM} ${BONUS_O}
 
 fclean:    clean
-		@${RM} ${NAME}
+		${RM} ${NAME}
         
 re:     fclean all
 

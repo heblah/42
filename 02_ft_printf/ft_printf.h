@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 09:04:13 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/12 10:59:18 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/12 15:14:46 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ typedef struct	s_flag
 }		t_f;
 
 /*fonctions ft_print.c*/
-
+int		is_conv(char *sub_s);
+int		is_flagged_conv(char *sub_s);
 #endif
