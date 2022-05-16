@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 08:45:46 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/12 14:39:15 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/16 12:55:45 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,10 @@ int	main()
 	printf("Afficher un %%d formate a 20 caracteres : %.20d\n", INT_MAX);
 	printf("Afficher un %%c avec le flag #x  :%#x\n", 97);
 	printf("Afficher un %%i avec le flag #X  :%#X\n", 97);
-	printf("Afficher un %%i avec le flag ' ' :%i\n", 97);
-	printf("Afficher un %%d avec le flag -   :%d\n", 97);
+	printf("Afficher un %%c avec le flag #x  :%#x\n", -97);
+	printf("Afficher un %%i avec le flag #X  :%#X\n", -97);
+	printf("Afficher un %%i avec le flag ' ' :% i\n", 0);
+	printf("Afficher un %%d avec le flag -   :%-d\n", 97);
 	printf("Afficher un %%i avec le flag +   :%+i\n", 97);
 	printf("Afficher un %%u : %u\n", UINT_MAX);
 
