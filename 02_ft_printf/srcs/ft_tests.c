@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_tests.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 09:07:00 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/16 18:28:24 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:47:54 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_printf(const char *s, ...)
 {
 	va_list argp;
 	int		count;
+//	t_f		flag;
 
 	count = 0;
 	va_start(argp, s);
@@ -29,12 +30,15 @@ int	ft_printf(const char *s, ...)
 			s++;
 		}
 		else
-//			print_conv(s, &count, argp);
+		{
+			ft_putstr(argp, &count);
+			s++;
+		}
 		s++;
 	}
 	return (count);
 }
-
+/*
 int	print_conv(const char *s, int *count, va_list argp)
 {
 	void	(*print)(t_f, va_list, int *);
@@ -48,47 +52,13 @@ int	print_conv(const char *s, int *count, va_list argp)
 	(*print)(&flag, argp, &count);
 	return (0);
 }
-
-int	init_flags(const char *s, t_f flag)
-{
-	flag->sharp = 0;
-	flag->blank = 0;
-	flag->plus = 0:
-
-	if (*s == '#' && *(s + 1) == 'x')
-		(flag)->sharp = 'x';
-		/*
-	else if (*s == '#' && *(s + 1) == 'X')
-		(flag)->sharp = 'X';
-	else if (*s == ' ' && (*(s + 1) == 'd' || *(s + 1) == 'i' || *(s + 1) == 'u'))
-		(flag)->blank = 1;
-	else if (*s == '+' && (*(s + 1) == 'd' || *(s + 1) == 'i' || *(s + 1) == 'u'))
-		(flag)->plus = 1;
-		*/
-	else
-		return (-1)
-	return (0);
-}
-
-void (*print_selecter(const char s, int *count))(t_f *, va_list, int *)
-{
-	if (*(s + i) && *(s + i) == 'c')
-		return (&ft_putchar);
-	/*
-	else if (*(s + i) && *(s + i) == 's')
-		return (&ft_putstr);
-	else if (*(s + i) && (*(s + i) == 'd' || *(s + i) == 'i'))
-		return (&ft_int_to_nbr);
-	else if (*(s + i) && *(s + i) == 'u')
-		return (&ft_uint_to_nbr);
-	else if (*(s + i) && (*(s + i) == 'p'))
-		return (&ft_ptr_to_hex);
-	else if (*(s + i) && (*(s + i) == 'x' || *(s + i) == 'X')
-		return (&ft_long_to_hex);
-	*/
-}
-
+*/
 int	main()
 {
-	ft_printf("test char %c", 'a');
+	ft_printf("test avec une chaine vide\n");
+	ft_printf("test pourcent %%\n");
+	//ft_printf("char: %c et on continue", 'x');
+	ft_printf("str: %s et un truc\n", "chaine de test");
+	ft_printf("int: %d et un truc\n", "chaine de test");
+	return (0);
 }
