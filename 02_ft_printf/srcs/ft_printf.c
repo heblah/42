@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 09:07:00 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/16 18:28:24 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/17 09:54:37 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,14 @@ int	ft_printf(const char *s, ...)
 			write(1, "%", 1);
 			s++;
 		}
-		else
-//			print_conv(s, &count, argp);
+		else if (*s == '%' && *(s + 1) == 'c')
+			ft_putchar(argp, &count);
+		else if (*s == '%' && *(s + 1) == 's')
+			ft_putstr(argp, &count);
+		else if (*s == '%' && (*(s + 1) == 'd' || *(s + 1) == 'i'))
+			ft_int_to_nbr(argp, &count);
+		else if (*s == '%' && *(s + 1) == 'u')
+			ft_uint_to_nbr(argp, &count);
 		s++;
 	}
 	return (count);

@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 09:04:13 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/16 19:39:30 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/17 12:20:09 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,19 @@ typedef struct	s_flag
 
 /*fonctions ft_print.c*/
 int		ft_printf(const char *s, ...);
-int		print_conv(const char *s, int *count, va_list argp);
-//int		init_flags(const char *s, t_f flag;)
-//void 	(*print_selecter(const char s, int *count))(t_f, va_list, int *);
+int		print_select(const char *s, va_list argp, int *count);
 
 /*ft_puthex.c :*/
-//void	ft_ptr_to_hex(t_f *flag, va_list argp, int *count);
-//void	ft_long_to_hex(t_f *flag, va_list argp, int *count);
-//char	*ft_long_flag(t_f *flag, int *count);
-//void	ft_puthex(unsigned long n, char *base);
+void	ft_ptr_to_hex(va_list argp, int *count);
+void	ft_long_to_hex(va_list argp, int *count, char conv);
+void	ft_puthex(unsigned long n, char *base, int *count);
 
 /*ft_putnbr.c :*/
-//void	ft_int_to_nbr(t_f *flag, va_list argp, int *count);
-//void	ft_uint_to_nbr(t_f *flag, va_list argp, int *count);
-//void	ft_putnbr(long nb, int *count);
+void	ft_int_to_nbr(va_list argp, int *count);
+void	ft_uint_to_nbr(va_list argp, int *count);
+void	ft_putnbr(long nb, int *count);
 
 /*ft_putttxt.c :*/
-//void	ft_putchar(t_f *flag, va_list argp, int *count);
 void	ft_putchar(va_list argp, int *count);
-//void	ft_putstr(t_f *flag, va_list argp, int *count);
 void	ft_putstr(va_list argp, int *count);
 #endif
