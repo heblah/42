@@ -6,7 +6,7 @@
 #    By: halvarez <marvin42.fr>    	                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 15:39:44 by halvarez          #+#    #+#              #
-#    Updated: 2022/05/18 10:30:42 by halvarez         ###   ########.fr        #
+#    Updated: 2022/05/18 10:37:58 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ RM			= rm -rf
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:${OBJS}
-#		ar -rcs ${NAME} ${OBJS}
+		ar -rcs ${NAME} ${OBJS}
 
 all:    ${NAME}
 

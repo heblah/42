@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:09:32 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/17 17:06:36 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/18 12:46:02 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ void	ft_long_to_hex(va_list argp, int *count, char conv)
 		write(1, "-", 1);
 		*count += 1;
 		n *= -1;
+		ft_puthex((int)n, hex, count);
 	}
-	ft_puthex(n, hex, count);
+	else
+		ft_puthex((unsigned int)n, hex, count);
 }
 
 void	ft_puthex(unsigned long n, char *base, int *count)
