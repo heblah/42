@@ -6,23 +6,23 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 09:04:13 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/17 15:23:45 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/18 15:10:16 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include "../libft/libft.h"
-#include <stdlib.h>
-#include <stdarg.h>
+# include "../libft/libft.h"
+# include <stdlib.h>
+# include <stdarg.h>
 
 /*structures de flags*/
-typedef struct	s_flag
+typedef struct s_flag
 {
-	int	sharp;/*suivi d'un x ou X*/
-	int blank;/*suivi d'un i, d ou u*/
-	int	plus;/*suivi d'un i, d ou u*/
+	int	sharp;
+	int	blank;
+	int	plus;
 }		t_f;
 
 /*fonctions ft_print.c*/
