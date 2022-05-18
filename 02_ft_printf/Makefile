@@ -6,7 +6,7 @@
 #    By: halvarez <marvin42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 15:39:44 by halvarez          #+#    #+#              #
-#    Updated: 2022/05/18 10:30:27 by halvarez         ###   ########.fr        #
+#    Updated: 2022/05/18 10:34:18 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ ${NAME}:
 		cp -r libft/${NAME} srcs/.
 		${MAKE} -C srcs
 		cp -r srcs/${NAME} .
-		ranlib ${NAME}
 
 all:    ${NAME}
 
