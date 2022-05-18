@@ -11,8 +11,9 @@
 # **************************************************************************** #
 
 NAME    	= libftprintf.a
-SRCS_DIR	= 
-SRCS    	= srcs/libftprintf.a libft/libftprintf.a
+SRCS_DIR	= srcs libft 
+SRCS    	= 
+OBJS		= $(addprefix $(SRCS_DIR), $(SRCS:.c=.o))
 MAKE		= make
 CLEAN		= make clean
 FCLEAN		= make fclean
@@ -20,11 +21,9 @@ RM			= rm -rf
 
 ${NAME}:
 		${MAKE} bonus -C libft
-		cp -r libft/libftprintf.a srcs/.
+		cp -r libft/${NAME} srcs/.
 		${MAKE} -C srcs
-		cp -r ./libft/libftprintf.a .
-#		ar -rcs ${NAME} ${SRCS}
-		ranlib ${NAME}
+		cp -r srcs/${NAME} .
 
 all:    ${NAME}
 
