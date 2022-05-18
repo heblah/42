@@ -6,7 +6,7 @@
 #    By: halvarez <marvin42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 15:39:44 by halvarez          #+#    #+#              #
-#    Updated: 2022/05/17 17:22:45 by halvarez         ###   ########.fr        #
+#    Updated: 2022/05/18 10:07:57 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,9 @@ ${NAME}:
 		${MAKE} bonus -C libft
 		cp -r libft/libftprintf.a srcs/.
 		${MAKE} -C srcs
-		cp -r ./libft/libftprintf.a .
+		cp -r srcs/libftprintf.a .
 #		ar -rcs ${NAME} ${SRCS}
-		ranlib ${NAME}
+#		ranlib ${NAME}
 
 all:    ${NAME}
 
