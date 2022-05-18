@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:16:28 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/18 15:59:56 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/18 18:04:23 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main()
 {
 	int	ft, org;
+	/*
 	printf("char :\n");
 	ft = ft_printf("test avec une chaine vide\n");
 	org = printf("test avec une chaine vide\n");
@@ -152,9 +153,10 @@ int	main()
 	ft = ft_printf("0 en heXa: %X et un truc\n", 0);
 	org = printf("0 en heXa: %X et un truc\n", 0);
 		printf("len_ft_printf = %d et len_printf = %d\n\n", ft, org);
+*/
 
-	ft = ft_printf("42 en hexa: %X et un truc\n", -42);
-	org = printf("42 en hexa: %X et un truc\n", -42);
+	ft = ft_printf("42 en hexa: %X et un truc\n", LONG_MAX);
+	org = printf("42 en hexa: %X et un truc\n", UINT_MAX);
 		printf("len_ft_printf = %d et len_printf = %d\n\n", ft, org);
 
 	return (0);
