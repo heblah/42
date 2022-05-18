@@ -22,7 +22,7 @@ OBJS		= ${SRCS:.c=.o}
 BONUS_C		= ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
 	ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
 BONUS_O		= ${BONUS_C:.c=.o}
-CC			= gcc
+CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 RM			= rm -rf
 
@@ -30,7 +30,7 @@ RM			= rm -rf
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:${OBJS}
-		ar -rcs ${NAME} ${OBJS}
+#		ar -rcs ${NAME} ${OBJS}
 
 all:    ${NAME}
 

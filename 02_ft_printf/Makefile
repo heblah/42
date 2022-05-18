@@ -6,13 +6,14 @@
 #    By: halvarez <marvin42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 15:39:44 by halvarez          #+#    #+#              #
-#    Updated: 2022/05/18 10:07:57 by halvarez         ###   ########.fr        #
+#    Updated: 2022/05/18 10:15:15 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    	= libftprintf.a
-SRCS_DIR	= 
-SRCS    	= srcs/libftprintf.a libft/libftprintf.a
+SRCS_DIR	= srcs libft 
+SRCS    	= 
+OBJS		= $(addprefix $(SRCS_DIR), $(SRCS:.c=.o))
 MAKE		= make
 CLEAN		= make clean
 FCLEAN		= make fclean
@@ -20,11 +21,9 @@ RM			= rm -rf
 
 ${NAME}:
 		${MAKE} bonus -C libft
-		cp -r libft/libftprintf.a srcs/.
+		cp -r libft/${NAME} srcs/.
 		${MAKE} -C srcs
-		cp -r srcs/libftprintf.a .
-#		ar -rcs ${NAME} ${SRCS}
-#		ranlib ${NAME}
+		cp -r srcs/${NAME} .
 
 all:    ${NAME}
 

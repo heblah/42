@@ -22,13 +22,11 @@ RM			= rm -rf
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:${OBJS}
+		${CC} ${CFLAGS} -c ${OBJS}
 		ar -rcs ${NAME} ${OBJS}
+		ranlib ${NAME}
 
 all:    ${NAME}
-
-bonus:    all
-		${CC} ${CFLAGS} -c ${BONUS_C}
-		ar -rcs ${NAME} ${BONUS_O}
 
 clean:
 		${RM} ${OBJS}
