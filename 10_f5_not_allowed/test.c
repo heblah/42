@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 10:38:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/19 17:02:09 by halvarez         ###   ########.fr       */
+/*   Created: 2022/05/19 16:14:55 by halvarez          #+#    #+#             */
+/*   Updated: 2022/05/19 16:23:34 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE	0
+#include <stdio.h>
 
-#endif
+long foo(long nr) {
+    long var_8 = 0;
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+    while(nr != 0) {
+        var_8 += nr--;
+    } 
+    return var_8;
+}
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-
-/*============================= get_next_line.c ==============================*/
-char	*get_next_line(int fd);
-
-/*========================== get_next_line_utils.c ===========================*/
-#endif
+int main(void)
+{
+	printf("%ld", foo(1));
+}
