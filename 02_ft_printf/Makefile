@@ -6,7 +6,7 @@
 #    By: halvarez <marvin42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 15:39:44 by halvarez          #+#    #+#              #
-#    Updated: 2022/05/18 10:41:09 by halvarez         ###   ########.fr        #
+#    Updated: 2022/05/19 09:43:08 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ RM			= rm -rf
 ${NAME}:
 		${MAKE} bonus -C libft
 		cp -r libft/${NAME} srcs/.
-		${MAKE} -C srcs
+		${MAKE} all -C srcs
 		cp -r srcs/${NAME} .
 
 all:    ${NAME}
