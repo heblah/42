@@ -6,11 +6,11 @@
 #    By: halvarez <marvin42.fr>    	                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 15:39:44 by halvarez          #+#    #+#              #
-#    Updated: 2022/05/18 10:37:58 by halvarez         ###   ########.fr        #
+#    Updated: 2022/05/19 11:22:04 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    	= libftprintf.a
+NAME    	= libft.a
 SRCS    	= ft_atoi.c ft_isascii.c ft_memcmp.c ft_putendl_fd.c ft_strdup.c \
 	ft_strlen.c ft_strtrim.c ft_bzero.c ft_isdigit.c ft_memcpy.c ft_putnbr_fd.c\
 	ft_striteri.c  ft_strmapi.c  ft_substr.c ft_calloc.c ft_isprint.c \

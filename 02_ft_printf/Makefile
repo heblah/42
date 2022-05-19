@@ -6,24 +6,28 @@
 #    By: halvarez <marvin42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 15:39:44 by halvarez          #+#    #+#              #
-#    Updated: 2022/05/19 09:43:08 by halvarez         ###   ########.fr        #
+#    Updated: 2022/05/19 11:25:59 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    	= libftprintf.a
-SRCS_DIR	= srcs libft 
-SRCS    	= 
-OBJS		= $(addprefix $(SRCS_DIR), $(SRCS:.c=.o))
+LIBFT		= libft/libft.a
+SRCS    	= srcs/ft_printf.c srcs/ft_puthex.c srcs/ft_putnbr.c srcs/ft_puttxt.c
+OBJS		= ${SRCS:.c=.o}
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror
 MAKE		= make
 CLEAN		= make clean
 FCLEAN		= make fclean
 RM			= rm -rf
 
-${NAME}:
+.c.o:
+		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+
+${NAME}:${OBJS}
 		${MAKE} bonus -C libft
-		cp -r libft/${NAME} srcs/.
-		${MAKE} all -C srcs
-		cp -r srcs/${NAME} .
+		cp -r ${LIBFT} ${NAME}
+		ar -rcs ${NAME} ${OBJS}
 
 all:    ${NAME}
 

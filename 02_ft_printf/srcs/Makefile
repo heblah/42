@@ -6,11 +6,11 @@
 #    By: halvarez <marvin42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 15:39:44 by halvarez          #+#    #+#              #
-#    Updated: 2022/05/18 10:30:12 by halvarez         ###   ########.fr        #
+#    Updated: 2022/05/19 11:14:08 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    	= libftprintf.a
+NAME    	= libft.a
 SRCS_DIR	=
 SRCS    	= ft_printf.c ft_puthex.c ft_putnbr.c ft_puttxt.c
 OBJS		= ${SRCS:.c=.o}
