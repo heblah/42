@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 10:38:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/19 17:02:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:13:51 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,30 @@
 # include <stdio.h>
 # include <unistd.h>
 
+/*================================ structures ================================*/
+typedef struct	s_count
+{
+	int	i;
+	int	j;
+	int	k;
+}	t_cnt;
+
+
+typedef struct	s_systemcalls
+{
+	int	fd;
+	int	opn;
+	int	rd;
+	int	wrt;
+	int	cls;
+}	t_syscall;
+
 /*============================= get_next_line.c ==============================*/
 char	*get_next_line(int fd);
+char	*buffering_tmp(int fd, char **tmp, int *eol);
 
 /*========================== get_next_line_utils.c ===========================*/
+char	*gnl_calloc(size_t nb, size_t size);
+int		gnl_len(char *s);
+char	*gnl_join(char *s1, char *s2, int *eol);
 #endif

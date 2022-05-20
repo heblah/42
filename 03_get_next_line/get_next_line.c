@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:39:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/19 17:43:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/20 16:03:39 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,36 @@ int	main(void)
 
 char	*get_next_line(int fd)
 {
-	char *bkp;
+	static char	*bkp;
+	char		*tmp;
+	int			eol;
 
+	eol = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	bkp = malloc(BUFFER_SIZE + 1);
-	if(read(fd, bkp, BUFFER_SIZE) < 0)
-		return (NULL);
-	return (bkp);
+	while (!eol)
+	{
+		tmp = buffering_tmp(fd, &tmp, &eol);
+		bkp = gnl_join(bkp, tmp, &eol);
+		free(tmp);
+	}
+	return (tmp);
 }
 
-char	*buffer_bkp()
+char	*buffering_tmp(int fd, char **tmp, int *eol)
 {
-	static char	*bkp;
-	int			rd;
+	int		rd;
 
-	bkp = malloc(BUFFER_SIZE + 1);
-	if (!bkp)
+	*tmp = gnl_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!*tmp)
 		return (NULL);
-	rd = read(fd, bkp, BUFFER_SIZE);
+	rd = read(fd, *tmp, BUFFER_SIZE);
 	if (rd == -1)
+	{
+		free(*tmp);
 		return (NULL);
-	return (bkp);
+	}
+	else if (!rd)
+		*eol = 1;
+	return (*tmp);
 }

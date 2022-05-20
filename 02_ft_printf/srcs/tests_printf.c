@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:16:28 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/19 12:03:53 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/20 11:25:15 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,11 @@ int	main()
 	ft = ft_printf("-42 en hexa: %X et un truc\n", -42);
 	org = printf("-42 en hexa: %X et un truc\n", -42);
 		printf("len_ft_printf = %d et len_printf = %d\n\n", ft, org);
+
+	ft = ft_printf("-42 en hexa: %u et un truc\n", -42);
+	org = printf("-42 en hexa: %u et un truc\n", -42);
+		printf("len_ft_printf = %d et len_printf = %d\n\n", ft, org);
+
 
 	return (0);
 }
