@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 10:38:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/21 10:43:00 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/21 15:37:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ char	*buffering_tmp(int fd, char **tmp, int *eol);
 char	*gnl_calloc(size_t nb, size_t size);
 int		gnl_len(char *s);
 char	*gnl_join(char *s1, char *s2, int *eol);
+char	*gnl_cpy(char *d, char *s, int *i, int *eol);
 #endif

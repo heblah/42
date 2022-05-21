@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 17:11:52 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/21 10:53:42 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/21 15:33:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,25 @@ char	*gnl_join(char *s1, char *s2, int *eol)
 	d = gnl_calloc((len + 1), sizeof(char));
 	if (!d)
 		return (NULL);
-	if (s1)
-	{
-		while (*s1 && i < len && *s1 != '\n')
-			*(d + i++) = *s1++;
-		if (*s1 == '\n')
-			*(d + i) = '\n';
-	}
-	if (s2)
-	{
-		while (*s2 && i < len && *s2 != '\n')
-			*(d + i++) = *s2++;
-		if (*s2 == '\n')
-			*(d + i) = '\n';
-	}
-	if (*(d + i) == '\n')
-		*eol = 1;
+	if (s1 && !*eol)
+		d = gnl_cpy(d, s1, &i, eol);
+	if (s2 && !*eol)
+		d = gnl_cpy(d, s2, &i, eol);
+	return (d);
+}
+
+char	*gnl_cpy(char *d, char *s, int *i, int *eol)
+{
+		while (*s && *s != '\n')
+		{
+			*(d + *i) = *s++;
+			*i += 1;
+		}
+		if (*s == '\n')
+		{
+			*(d + *i) = '\n';
+			*eol = 1;
+		}
 	return (d);
 }
 /*
