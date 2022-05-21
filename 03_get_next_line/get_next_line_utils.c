@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 17:11:52 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/20 15:59:08 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/21 10:53:42 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,22 @@ char	*gnl_join(char *s1, char *s2, int *eol)
 	d = gnl_calloc((len + 1), sizeof(char));
 	if (!d)
 		return (NULL);
-	while (*s2 && i < len && *s2 != '\n' && *s1 != '\n')
+	if (s1)
 	{
 		while (*s1 && i < len && *s1 != '\n')
 			*(d + i++) = *s1++;
-		*(d + i++) = *s2++;
+		if (*s1 == '\n')
+			*(d + i) = '\n';
 	}
-	if (*s1 == '\n' || *s2 == '\n')
+	if (s2)
 	{
-		*(d + i) = '\n';
-		*eol = 1;
+		while (*s2 && i < len && *s2 != '\n')
+			*(d + i++) = *s2++;
+		if (*s2 == '\n')
+			*(d + i) = '\n';
 	}
+	if (*(d + i) == '\n')
+		*eol = 1;
 	return (d);
 }
 /*

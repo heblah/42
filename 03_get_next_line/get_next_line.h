@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 10:38:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/20 15:13:51 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/21 10:43:00 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 /*================================ structures ================================*/
 typedef struct	s_count

@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:39:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/20 16:03:39 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/21 11:02:59 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	main(void)
 {
 	int	fd;
 
-	fd = 0;
+	fd = open("./txt", O_RDONLY);
+	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	return (0);
 }
@@ -34,9 +35,9 @@ char	*get_next_line(int fd)
 	{
 		tmp = buffering_tmp(fd, &tmp, &eol);
 		bkp = gnl_join(bkp, tmp, &eol);
-		free(tmp);
 	}
-	return (tmp);
+	free(tmp);
+	return (bkp);
 }
 
 char	*buffering_tmp(int fd, char **tmp, int *eol)
