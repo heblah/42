@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:39:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/21 15:25:17 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/23 12:08:33 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(void)
 char	*get_next_line(int fd)
 {
 	static char	*bkp;
-	char		*tmp;
+	char		tmp;
 	int			eol;
 
 	eol = 0;
@@ -33,14 +33,14 @@ char	*get_next_line(int fd)
 		return (NULL);
 	while (!eol)
 	{
-		tmp = buffering_tmp(fd, &tmp, &eol);
+		buffering_tmp(fd, &tmp, &eol);
 		bkp = gnl_join(bkp, tmp, &eol);
 	}
 	free(tmp);
 	return (bkp);
 }
 
-char	*buffering_tmp(int fd, char **tmp, int *eol)
+int	*buffering_tmp(int fd, char **tmp, int *eol)
 {
 	int		rd;
 
@@ -55,5 +55,6 @@ char	*buffering_tmp(int fd, char **tmp, int *eol)
 	}
 	else if (!rd)
 		*eol = 1;
-	return (*tmp);
+	return (0);
 }
+skdjv
