@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:39:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/23 12:08:33 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/23 12:11:55 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(void)
 char	*get_next_line(int fd)
 {
 	static char	*bkp;
-	char		tmp;
+	char		tmp[BUFFER_SIZE + 1];
 	int			eol;
 
 	eol = 0;
@@ -40,7 +40,7 @@ char	*get_next_line(int fd)
 	return (bkp);
 }
 
-int	*buffering_tmp(int fd, char **tmp, int *eol)
+int	*buffering_tmp(int fd, char *tmp[], int *eol)
 {
 	int		rd;
 
@@ -57,4 +57,3 @@ int	*buffering_tmp(int fd, char **tmp, int *eol)
 		*eol = 1;
 	return (0);
 }
-skdjv
