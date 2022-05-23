@@ -6,25 +6,11 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 17:11:52 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/23 12:27:50 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/23 16:36:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-char	*gnl_calloc(size_t nb, size_t size)
-{
-	char	*s;
-	size_t	i;
-
-	i = -1;
-	s = malloc(nb * size);
-	if (!s)
-		return (NULL);
-	while (++i < size * nb)
-		*(s + i) = '\0';
-	return (s);
-}
 
 int	gnl_len(char *s)
 {
@@ -45,7 +31,7 @@ char	*gnl_join(char *s1, char *s2, int *eol)
 
 	i = 0;
 	len = gnl_len(s1) + gnl_len(s2);
-	d = gnl_calloc((len + 1), sizeof(char));
+	d = malloc((len + 1) * sizeof(char));
 	if (!d)
 		return (NULL);
 	if (s1 && !*eol)
@@ -63,11 +49,7 @@ char	*gnl_cpy(char *d, char *s, int *i, int *eol)
 			*i += 1;
 		}
 		if (*s == '\n')
-		{
-			*(d + *i) = '\n';
-			*i += 1;
 			*eol = 1;
-		}
 		*(d + *i) = '\0';
 	return (d);
 }
