@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 10:38:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/23 12:12:35 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/23 12:16:36 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct	s_systemcalls
 
 /*============================= get_next_line.c ==============================*/
 char	*get_next_line(int fd);
-int		*buffering_tmp(int fd, char *tmp[], int *eol);
+int		*buffering_tmp(int fd, char tmp[], int *eol);
 
 /*========================== get_next_line_utils.c ===========================*/
 char	*gnl_calloc(size_t nb, size_t size);

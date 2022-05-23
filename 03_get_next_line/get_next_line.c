@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:39:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/23 12:11:55 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/23 12:33:09 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@ int	main(void)
 	int	fd;
 
 	fd = open("./txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
 	return (0);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*bkp;
+//	static char	*bkp;
 	char		tmp[BUFFER_SIZE + 1];
+	char		*print;
 	int			eol;
 
 	eol = 0;
@@ -33,24 +34,20 @@ char	*get_next_line(int fd)
 		return (NULL);
 	while (!eol)
 	{
-		buffering_tmp(fd, &tmp, &eol);
-		bkp = gnl_join(bkp, tmp, &eol);
+		buffering_tmp(fd, tmp, &eol);
+		print = gnl_join(print, tmp, &eol);
 	}
-	free(tmp);
-	return (bkp);
+	return (print);
 }
 
-int	*buffering_tmp(int fd, char *tmp[], int *eol)
+int	*buffering_tmp(int fd, char tmp[], int *eol)
 {
 	int		rd;
 
-	*tmp = gnl_calloc(BUFFER_SIZE + 1, sizeof(char));
-	if (!*tmp)
-		return (NULL);
-	rd = read(fd, *tmp, BUFFER_SIZE);
+	rd = read(fd, tmp, BUFFER_SIZE);
 	if (rd == -1)
 	{
-		free(*tmp);
+		free(tmp);
 		return (NULL);
 	}
 	else if (!rd)
