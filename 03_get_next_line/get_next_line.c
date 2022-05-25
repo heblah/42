@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:39:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/23 16:55:56 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/25 13:01:15 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,59 +20,56 @@ int	main(void)
 	printf("%s", get_next_line(fd));
 	printf("\n");
 	printf("%s", get_next_line(fd));
+	printf("\n");
 	return (0);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*bkp;
+	static char	bkp[BUFFER_SIZE + 1];
 	char		tmp[BUFFER_SIZE + 1];
 	char		*print;
-	int			eol;
-	int			eof;
+	t_flag		f;
 
-	eol = 0;
-	eof = 0;
+	f = no_flag;
 	print = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (bkp && *bkp)
-		print = gnl_join(print, bkp, &eol);
-	while (!eol)
+	if (*bkp)
+		print = gnl_join(print, bkp, &f);
+	while (!f)
 	{
-		buffering_tmp(fd, tmp, &eof);
-		print = gnl_join(print, tmp, &eol);
+		if (buffering_tmp(fd, tmp, &f) == -1)
+			return (NULL);
+		print = gnl_join(print, tmp, &f);
 	}
-	bkp = tmp_to_bkp(tmp, bkp, &eol);
+	tmp_to_bkp(tmp, bkp);
 	return (print);
 }
 
-int	*buffering_tmp(int fd, char tmp[], int *eof)
+int	buffering_tmp(int fd, char tmp[], t_flag *f)
 {
 	int		rd;
 
 	rd = read(fd, tmp, BUFFER_SIZE);
 	if (rd == -1)
-	{
-		free(tmp);
-		return (NULL);
-	}
+		return (-1);
 	else if (!rd)
-		*eof = 1;
+		*f = eof;
 	tmp[rd] = '\0';
 	return (0);
 }
 
-char	*tmp_to_bkp(char tmp[], char *bkp, int *eol)
+int	tmp_to_bkp(char tmp[], char bkp[])
 {
 	int	i;
+	int	j;
 
 	i = 0;
+	j = 0;
 	while (i < BUFFER_SIZE && tmp[i] && tmp[i] != '\n')
 		i++;
-	//bkp = gnl_join(bkp, &tmp[i], eol);
-	bkp = &tmp[i + 1];
-	*eol = 0;
-	/*boucle infinie a retrouver*/
-	return (bkp);
+	while (*(tmp + ++i))
+		*(bkp + j++) = *(tmp + i);
+	return (0);
 }

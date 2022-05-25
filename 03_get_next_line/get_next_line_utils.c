@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 17:11:52 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/23 16:36:04 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/05/25 11:23:41 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	gnl_len(char *s)
 	return (i);
 }
 
-char	*gnl_join(char *s1, char *s2, int *eol)
+char	*gnl_join(char *s1, char *s2, t_flag *f)
 {
 	int		len;
 	char	*d;
@@ -34,14 +34,14 @@ char	*gnl_join(char *s1, char *s2, int *eol)
 	d = malloc((len + 1) * sizeof(char));
 	if (!d)
 		return (NULL);
-	if (s1 && !*eol)
-		d = gnl_cpy(d, s1, &i, eol);
-	if (s2 && !*eol)
-		d = gnl_cpy(d, s2, &i, eol);
+	if (s1 && *f != eol)
+		d = gnl_cpy(d, s1, &i, f);
+	if (s2 && *f != eol)
+		d = gnl_cpy(d, s2, &i, f);
 	return (d);
 }
 
-char	*gnl_cpy(char *d, char *s, int *i, int *eol)
+char	*gnl_cpy(char *d, char *s, int *i, t_flag *f)
 {
 		while (*s && *s != '\n')
 		{
@@ -49,7 +49,7 @@ char	*gnl_cpy(char *d, char *s, int *i, int *eol)
 			*i += 1;
 		}
 		if (*s == '\n')
-			*eol = 1;
+			*f = eol;
 		*(d + *i) = '\0';
 	return (d);
 }
