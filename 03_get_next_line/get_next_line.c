@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:39:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/25 13:01:15 by hans             ###   ########.fr       */
+/*   Updated: 2022/05/25 13:48:00 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,17 @@
 int	main(void)
 {
 	int	fd;
+	char	*print;
 
 	fd = open("./txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
+	print = get_next_line(fd);
+	printf("%s", print);
 	printf("\n");
-	printf("%s", get_next_line(fd));
+	print = get_next_line(fd);
+	printf("%s", print);
+	printf("\n");
+	print = get_next_line(fd);
+	printf("%s", print);
 	printf("\n");
 	return (0);
 }
@@ -36,7 +42,10 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (*bkp)
+	{
 		print = gnl_join(print, bkp, &f);
+		bkp[0] = '\0';
+	}
 	while (!f)
 	{
 		if (buffering_tmp(fd, tmp, &f) == -1)
@@ -73,3 +82,4 @@ int	tmp_to_bkp(char tmp[], char bkp[])
 		*(bkp + j++) = *(tmp + i);
 	return (0);
 }
+/*ajouter bkp to print avec reinitielisation de bkp*/
