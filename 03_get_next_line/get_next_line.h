@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 10:38:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/25 12:41:00 by hans             ###   ########.fr       */
+/*   Updated: 2022/05/25 16:18:07 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct	s_systemcalls
 
 /*============================= get_next_line.c ==============================*/
 char	*get_next_line(int fd);
+int		bkp_to_print(char *print[], char bkp[], t_flag *f);
 int		buffering_tmp(int fd, char tmp[], t_flag *f);
 int		tmp_to_bkp(char tmp[], char bkp[]);
 
