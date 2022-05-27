@@ -6,12 +6,12 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:39:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/26 14:44:51 by hans             ###   ########.fr       */
+/*   Updated: 2022/05/27 12:38:19 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
+/*
 int	main(void)
 {
 	int	fd;
@@ -32,7 +32,7 @@ int	main(void)
 	free(print);
 	return (0);
 }
-
+*/
 char	*get_next_line(int fd)
 {
 	static char	bkp[BUFFER_SIZE + 1];
