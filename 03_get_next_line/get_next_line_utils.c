@@ -6,11 +6,18 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 17:11:52 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/26 11:47:54 by hans             ###   ########.fr       */
+/*   Updated: 2022/05/26 13:15:43 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+t_flag	init_flag(t_flag f)
+{
+	f.flag = 0;
+	f.eol = 0;
+	return (f);
+}
 
 int	gnl_len(char *s)
 {
@@ -34,9 +41,9 @@ char	*gnl_join(char *s1, char *s2, t_flag *f)
 	d = malloc((len + 1) * sizeof(char));
 	if (!d)
 		return (NULL);
-	if (s1 && *f != eol)
+	if (s1 && !f->eol)
 		d = gnl_cpy(d, s1, &i, f);
-	if (s2 && *f != eol)
+	if (s2 && !f->eol)
 		d = gnl_cpy(d, s2, &i, f);
 	return (d);
 }
@@ -52,7 +59,8 @@ char	*gnl_cpy(char *d, char *s, int *i, t_flag *f)
 	{
 		*(d + *i) = '\n';
 		*i += 1;
-		*f = eol;
+		f->eol = *i;
+		f->flag = 1;
 	}
 	*(d + *i) = '\0';
 	return (d);

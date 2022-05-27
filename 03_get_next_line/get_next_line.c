@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:39:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/26 11:58:30 by hans             ###   ########.fr       */
+/*   Updated: 2022/05/26 14:44:51 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,18 @@ int	main(void)
 	int	fd;
 	char	*print;
 
-	fd = open("./txt", O_RDONLY);
+	fd = open("./txt2", O_RDONLY);
 	print = get_next_line(fd);
 	printf("%s", print);
-	//printf("\n");
+	free(print);
 	print = get_next_line(fd);
 	printf("%s", print);
-	//printf("\n");
+	free(print);
 	print = get_next_line(fd);
 	printf("%s", print);
-	printf("\n");
+	free(print);
+	print = get_next_line(fd);
+	printf("%s", print);
 	free(print);
 	return (0);
 }
@@ -38,20 +40,18 @@ char	*get_next_line(int fd)
 	char		*print;
 	t_flag		f;
 
-	f = no_flag;
+	f = init_flag(f);
 	print = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (*bkp)
 		bkp_to_print(&print, bkp, &f);
-	while (!f)
+	else
 	{
-		if (buffering_tmp(fd, tmp, &f) == -1)
-			return (NULL);
-		print = gnl_join(print, tmp, &f);
+		while (!f.flag)
+			print = tmp_to_print(fd, tmp, print, &f);
+		tmp_to_bkp(tmp, bkp, &f);
 	}
-	//if (f != eof)
-	tmp_to_bkp(tmp, bkp);
 	return (print);
 }
 
@@ -77,42 +77,35 @@ int	buffering_tmp(int fd, char tmp[], t_flag *f)
 
 	rd = read(fd, tmp, BUFFER_SIZE);
 	if (rd == -1)
-		return (-1);
+		return (rd);
 	else if (!rd)
-		*f = eof;
+		f->flag = 1;
 	tmp[rd] = '\0';
-	return (0);
+	return (rd);
 }
 
-int	tmp_to_bkp(char tmp[], char bkp[])
+char	*tmp_to_print(int fd, char tmp[], char print[], t_flag *f)
+{
+	char	*swap;
+
+	if (buffering_tmp(fd, tmp, f) < 0)
+		return (NULL);
+	swap = gnl_join(print, tmp, f);
+	free(print);
+	print = swap;
+	return (print);
+}
+
+int	tmp_to_bkp(char tmp[], char bkp[], t_flag *f)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = -1;
-	while (*(tmp + i) && *(tmp + i) != '\n')
+	while (*(tmp + f->eol + i))
+	{
+		*(bkp + i) = *(tmp + f->eol + i);
 		i++;
-	while (*(tmp + ++i))
-		*(bkp + ++j) = *(tmp + i);
-	*(bkp + ++j) = '\0';
+	}
+	*(bkp + i) = '\0';
 	return (0);
 }
-
-/*
-int	tmp_to_bkp(char tmp[], char bkp[])
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = -1;
-	while (i < BUFFER_SIZE && tmp[i] && tmp[i] != '\n')
-		i++;
-	while (tmp[++i])
-		bkp[++j] = tmp[i];
-	bkp[++j] = '\0';
-	return (0);
-}
-*/
-/*ajouter bkp to print avec reinitielisation de bkp*/
