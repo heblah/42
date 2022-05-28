@@ -6,7 +6,7 @@
 /*   By: hans </var/spool/mail/hans>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 09:19:48 by hans              #+#    #+#             */
-/*   Updated: 2022/05/28 12:20:08 by hans             ###   ########.fr       */
+/*   Updated: 2022/05/28 14:29:50 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,33 @@ int	main()
 
 */
 	printf("============ big linenonl ============\n");
-	fd = open("tests/big_line_no_nl", O_RDONLY);
+	fd = open("tests/alternate_line_nl_no_nl", O_RDONLY);
 	print = get_next_line(fd);
-	printf("gnl=%s", print);
+	printf("gnl=%s#", print);
+	print = get_next_line(fd);
+	printf("gnl=%s#", print);
+	print = get_next_line(fd);
+	printf("gnl=%s#", print);
+	print = get_next_line(fd);
+	printf("gnl=%s#", print);
+	print = get_next_line(fd);
+	printf("gnl=%s#", print);
+	print = get_next_line(fd);
+	printf("gnl=%s#", print);
+	print = get_next_line(fd);
+	printf("gnl=%s#", print);
+	print = get_next_line(fd);
+	printf("gnl=%s#", print);
+	print = get_next_line(fd);
+	printf("gnl=%s#", print);
+	print = get_next_line(fd);
+	printf("gnl=%s#", print);
+	print = get_next_line(fd);
+	printf("gnl=%s#", print);
+	print = get_next_line(fd);
+	printf("gnl=%s#", print);
+	print = get_next_line(fd);
+	printf("gnl=%s#", print);
 	free(print);
 	printf("\n");
 	

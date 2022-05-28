@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 17:11:52 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/28 11:54:25 by hans             ###   ########.fr       */
+/*   Updated: 2022/05/28 14:41:16 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	gnl_nl(char *s)
 {
 	int	i;
 
-	if (!s)
+	if (!s || !*s)
 		return (0);
 	i = 0;
 	while (*(s + i))
@@ -86,6 +86,7 @@ char	*gnl_memmove(char *s, int start)
 	i = 0;
 	if (!s)
 		return (NULL);
+	//if (start)
 	while (*(s + start + i))
 	{
 		*(s + i) = *(s + start + i);

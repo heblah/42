@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:39:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/28 12:13:02 by hans             ###   ########.fr       */
+/*   Updated: 2022/05/28 14:36:09 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*gnl_to_nlprint(char *gnl)
 	char	*nlprint;
 
 	len_nl = gnl_nl(gnl);
+	if (!len_nl)
+		len_nl = gnl_strlen(gnl);
 	nlprint = malloc((len_nl + 1) * sizeof(char));
 	if (!nlprint)
 		return (NULL);
