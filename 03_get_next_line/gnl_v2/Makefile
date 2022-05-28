@@ -6,7 +6,7 @@
 #    By: halvarez <marvin42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 15:39:44 by halvarez          #+#    #+#              #
-#    Updated: 2022/05/27 15:55:37 by hans             ###   ########.fr        #
+#    Updated: 2022/05/28 11:25:56 by hans             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS    	= get_next_line.c get_next_line_utils.c main.c
 OBJS		= ${SRCS:.c=.o}
 BONUS_O		= ${BONUS_C:.c=.o}
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror -D BUFFER_SIZE=${BUF}
+CFLAGS		= -Wall -Wextra -Werror -g -D BUFFER_SIZE=${BUF}
 RM			= rm -rf
 
 .c.o:

@@ -6,7 +6,7 @@
 /*   By: hans </var/spool/mail/hans>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 09:19:48 by hans              #+#    #+#             */
-/*   Updated: 2022/05/27 16:44:55 by hans             ###   ########.fr       */
+/*   Updated: 2022/05/28 12:20:08 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,30 @@ int	main()
 	free(print);
 	printf("\n");
 
-*/
 	printf("============ test nl20nl ============\n");
 	fd = open("tests/nl_c20_nl", O_RDONLY);
 	print = get_next_line(fd);
 	printf("gnl=%seol\n", print);
+	free(print);
+	print = get_next_line(fd);
+	printf("gnl=%seol\n", print);
+	free(print);
+	print = get_next_line(fd);
+	printf("gnl=%seol\n", print);
+	free(print);
 	print = get_next_line(fd);
 	printf("gnl=%seol\n", print);
 	free(print);
 	printf("\n");
 
+*/
+	printf("============ big linenonl ============\n");
+	fd = open("tests/big_line_no_nl", O_RDONLY);
+	print = get_next_line(fd);
+	printf("gnl=%s", print);
+	free(print);
+	printf("\n");
+	
 /*
 	printf("============ test nlnlnl ============\n");
 	fd = open("tests/nlnlnl", O_RDONLY);
