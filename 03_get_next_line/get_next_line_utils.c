@@ -3,77 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hans </var/spool/mail/hans>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 17:11:52 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/26 13:15:43 by hans             ###   ########.fr       */
+/*   Created: 2022/05/30 18:10:43 by hans              #+#    #+#             */
+/*   Updated: 2022/05/30 19:10:03 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-t_flag	init_flag(t_flag f)
+char	*gnl_calloc(unsigned int size)
 {
-	f.flag = 0;
-	f.eol = 0;
-	return (f);
-}
+	char			*s;
+	unsigned int	i;
 
-int	gnl_len(char *s)
-{
-	int	i;
-
+	s = malloc(size * sizeof(char));
+	if (!s || !size)
+		return (NULL);
 	i = 0;
-	if (s)
-		while (*(s + i))
-			i++;
-	return (i);
+	while (i < size)
+	{
+		*(s + i) = *(s + i) & (~*(s + i));
+		i++;
+	}
+	return (s);
 }
 
-char	*gnl_join(char *s1, char *s2, t_flag *f)
+char	*gnl_cat(char *gnl, char *buffer, int *eol)
 {
-	int		len;
 	char	*d;
 	int		i;
 
-	i = 0;
-	len = gnl_len(s1) + gnl_len(s2);
-	d = malloc((len + 1) * sizeof(char));
+	d = gnl_calloc(gnl_strlen(gnl) + gnl_strlen(buffer) + 1);
 	if (!d)
+	{
+		free (gnl);
 		return (NULL);
-	if (s1 && !f->eol)
-		d = gnl_cpy(d, s1, &i, f);
-	if (s2 && !f->eol)
-		d = gnl_cpy(d, s2, &i, f);
+	}
+	i = -1;
+	while (gnl && *(gnl + ++i))
+		*(d + i) = *(gnl + i);
+	if (gnl)
+		free(gnl);
+	while (buffer && *buffer)
+	{
+		*(d + ++i) = *buffer++;
+		*(buffer - 1) = '\0';
+		if (*(d + i) == '\n')
+			*eol = i;
+		i++;
+	}
+	*(d + i) = '\0';
 	return (d);
 }
 
-char	*gnl_cpy(char *d, char *s, int *i, t_flag *f)
+int	gnl_strlen(char *s)
 {
-	while (*s && *s != '\n')
-	{
-		*(d + *i) = *s++;
-		*i += 1;
-	}
-	if (*s == '\n')
-	{
-		*(d + *i) = '\n';
-		*i += 1;
-		f->eol = *i;
-		f->flag = 1;
-	}
-	*(d + *i) = '\0';
-	return (d);
-}
-/*
-int	main(void)
-{
-	char	s1[] = "==chaine1==";
-	char	s2[] = "==chaine2==";
-	int		i;
+	int	i;
 
+	if (!s)
+		return (0);
 	i = 0;
-	printf("%s", gnl_join(s1, s2, &i));
-	return (0);
+	while (*(s + i))
+		i++;
+	return (i);
 }
-*/

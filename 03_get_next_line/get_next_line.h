@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 10:38:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/26 13:38:52 by hans             ###   ########.fr       */
+/*   Updated: 2022/05/30 19:05:02 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,33 +23,18 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-/*================================ structures ================================*/
+/* structures =============================================================== */
 typedef struct	e_flag
 {
 	int	flag;
 	int	eol;
 }	t_flag;
 
-
-typedef struct	s_systemcalls
-{
-	int	fd;
-	int	opn;
-	int	rd;
-	int	wrt;
-	int	cls;
-}	t_syscall;
-
-/*============================= get_next_line.c ==============================*/
+/* get_next_line.c ========================================================== */
 char	*get_next_line(int fd);
-int		bkp_to_print(char *print[], char bkp[], t_flag *f);
-int		buffering_tmp(int fd, char tmp[], t_flag *f);
-int		tmp_to_bkp(char tmp[], char bkp[], t_flag *f);
-char	*tmp_to_print(int fd, char tmp[], char print[], t_flag *f);
 
-/*========================== get_next_line_utils.c ===========================*/
-t_flag	init_flag(t_flag f);
-int		gnl_len(char *s);
-char	*gnl_join(char *s1, char *s2, t_flag *f);
-char	*gnl_cpy(char *d, char *s, int *i, t_flag *f);
+/* get_next_line_utils.c ==================================================== */
+char	*gnl_calloc(unsigned int size);
+char	*gnl_cat(char *gnl, char *buffer, int *eol);
+int		gnl_strlen(char *s);
 #endif
