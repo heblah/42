@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 10:38:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/30 19:05:02 by hans             ###   ########.fr       */
+/*   Updated: 2022/05/31 13:59:21 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,17 @@
 /* structures =============================================================== */
 typedef struct	e_flag
 {
-	int	flag;
 	int	eol;
 }	t_flag;
 
 /* get_next_line.c ========================================================== */
 char	*get_next_line(int fd);
+char	*get_gnl(t_flag *f, int fd, char *gnl);
+char	*get_print_nl(t_flag *f, char *gnl, char *print_nl);
 
 /* get_next_line_utils.c ==================================================== */
 char	*gnl_calloc(unsigned int size);
-char	*gnl_cat(char *gnl, char *buffer, int *eol);
+char	*gnl_cat(t_flag *f, char *gnl, char *buffer);
 int		gnl_strlen(char *s);
+char	*gnl_memmove(t_flag *f, char *gnl);
 #endif
