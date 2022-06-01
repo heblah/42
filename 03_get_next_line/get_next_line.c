@@ -6,7 +6,7 @@
 /*   By: hans </var/spool/mail/hans>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 17:57:44 by hans              #+#    #+#             */
-/*   Updated: 2022/06/01 15:41:49 by hans             ###   ########.fr       */
+/*   Updated: 2022/06/01 15:48:40 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ char	*get_print_nl(t_flag *f, char *gnl, char *print_nl)
 
 	if (!gnl)
 		return (NULL);
-	print_nl = gnl_calloc(gnl_strlen(gnl) + 1);
+	if (f->eol == -1)
+		print_nl = gnl_calloc(gnl_strlen(gnl) + 1);
+	else
+		print_nl = gnl_calloc(gnl_strlen(gnl) - f->eol + 2);
 	if (!print_nl)
 		return (NULL);
 	i = 0;
