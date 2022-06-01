@@ -6,7 +6,7 @@
 /*   By: hans </var/spool/mail/hans>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 17:57:44 by hans              #+#    #+#             */
-/*   Updated: 2022/06/01 11:52:13 by hans             ###   ########.fr       */
+/*   Updated: 2022/06/01 15:41:49 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ char	*get_next_line(int fd)
 	gnl = get_gnl(&f, fd, gnl);
 	print_nl = get_print_nl(&f, gnl, print_nl);
 	gnl = gnl_memmove(&f, gnl);
+	if (gnl && *gnl == '\0')
+	{
+		free(gnl);
+		gnl = NULL;
+	}
 	return (print_nl);
 }
 

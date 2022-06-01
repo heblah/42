@@ -6,7 +6,7 @@
 /*   By: hans </var/spool/mail/hans>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:10:43 by hans              #+#    #+#             */
-/*   Updated: 2022/06/01 15:36:24 by hans             ###   ########.fr       */
+/*   Updated: 2022/06/01 15:39:39 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,12 @@ char	*gnl_memmove(t_flag *f, char *gnl)
 		i++;
 	}
 	*(gnl + i) = '\0';
+	/*
 	if (!*(gnl + f->eol))
 	{
 		free(gnl);
 		return (NULL);
 	}
+	*/
 	return (gnl);
 }
