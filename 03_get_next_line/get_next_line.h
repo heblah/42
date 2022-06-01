@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 10:38:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/31 13:59:21 by hans             ###   ########.fr       */
+/*   Updated: 2022/06/01 11:51:24 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ char	*get_print_nl(t_flag *f, char *gnl, char *print_nl);
 /* get_next_line_utils.c ==================================================== */
 char	*gnl_calloc(unsigned int size);
 char	*gnl_cat(t_flag *f, char *gnl, char *buffer);
+char	*gnl_cpy(t_flag *f, char *dst, char *src);
 int		gnl_strlen(char *s);
 char	*gnl_memmove(t_flag *f, char *gnl);
 #endif

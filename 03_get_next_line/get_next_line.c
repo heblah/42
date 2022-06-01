@@ -6,7 +6,7 @@
 /*   By: hans </var/spool/mail/hans>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 17:57:44 by hans              #+#    #+#             */
-/*   Updated: 2022/05/31 14:59:53 by hans             ###   ########.fr       */
+/*   Updated: 2022/06/01 11:52:13 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ char	*get_next_line(int fd)
 	f.eol = -1;
 	gnl = get_gnl(&f, fd, gnl);
 	print_nl = get_print_nl(&f, gnl, print_nl);
-	if (f.eol != -1)
-		gnl = gnl_memmove(&f, gnl);
-	else
-		free(gnl);
+	gnl = gnl_memmove(&f, gnl);
 	return (print_nl);
 }
 
@@ -52,7 +49,8 @@ char	*get_gnl(t_flag *f, int fd, char *gnl)
 			return (NULL);
 		}
 		buffer[rd] = '\0';
-		gnl = gnl_cat(f, gnl, buffer);
+		if (rd > 0)
+			gnl = gnl_cat(f, gnl, buffer);
 	}
 	free(buffer);
 	return (gnl);
@@ -64,20 +62,20 @@ char	*get_print_nl(t_flag *f, char *gnl, char *print_nl)
 
 	if (!gnl)
 		return (NULL);
-	if (f->eol == -1)
-		print_nl = gnl_calloc(gnl_strlen(gnl) + 1);
-	else
-		print_nl = gnl_calloc(f->eol + 1);
+	print_nl = gnl_calloc(gnl_strlen(gnl) + 1);
 	if (!print_nl)
 		return (NULL);
 	i = 0;
-	while (*(gnl + i))
+	while (*(gnl + i) && *(gnl + i) != '\n')
 	{
 		*(print_nl + i) = *(gnl + i);
 		*(gnl + i) = '\0';
-		if (*(gnl + i) == '\n')
-			break ;
 		i++;
+	}
+	if (*(gnl + i) == '\n')
+	{
+		*(print_nl + i++) = '\n';
+		f->eol = i;
 	}
 	*(print_nl + i) = '\0';
 	return (print_nl);

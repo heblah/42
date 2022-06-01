@@ -6,12 +6,12 @@
 #    By: halvarez <marvin42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 15:39:44 by halvarez          #+#    #+#              #
-#    Updated: 2022/05/28 14:24:48 by hans             ###   ########.fr        #
+#    Updated: 2022/06/01 14:17:03 by hans             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    	= gnl.out
-BUF			= 1000
+BUF			= 42
 SRCS    	= get_next_line.c get_next_line_utils.c main.c
 OBJS		= ${SRCS:.c=.o}
 BONUS_O		= ${BONUS_C:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: hans </var/spool/mail/hans>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:10:43 by hans              #+#    #+#             */
-/*   Updated: 2022/05/31 14:38:37 by hans             ###   ########.fr       */
+/*   Updated: 2022/06/01 15:36:24 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,38 @@ char	*gnl_calloc(unsigned int size)
 char	*gnl_cat(t_flag *f, char *gnl, char *buffer)
 {
 	char	*d;
-	int		i;
 
 	d = gnl_calloc(gnl_strlen(gnl) + gnl_strlen(buffer) + 1);
-	if (!d)
+	if (!d || (!gnl && !buffer))
 	{
 		free (gnl);
 		return (NULL);
 	}
-	i = -1;
-	while (gnl && *(gnl + ++i))
-		*(d + i) = *(gnl + i);
-	while (buffer && *buffer)
-	{
-		*(d + ++i) = *buffer;
-		*buffer++ = '\0';
-		if (*(d + i) == '\n')
-			f->eol = i + 1;
-	}
-	*(d + ++i) = '\0';
 	if (gnl)
+	{
+		d = gnl_cpy(f, d, gnl);
 		free(gnl);
+	}
+	if (buffer)
+		d = gnl_cpy(f, d, buffer);
 	return (d);
+}
+
+char	*gnl_cpy(t_flag *f, char *dst, char *src)
+{
+	int	i;
+
+	i = gnl_strlen(dst);
+	while (*src)
+	{
+		*(dst + i) = *src;
+		*src++ = '\0';
+		if (f->eol == -1 && *(dst + i) == '\n')
+			f->eol = i + 1;
+		i++;
+	}
+	*(dst + i) = '\0';
+	return (dst);
 }
 
 int	gnl_strlen(char *s)
@@ -72,8 +82,11 @@ char	*gnl_memmove(t_flag *f, char *gnl)
 {
 	int	i;
 
-	if (!gnl)
+	if (!gnl || f->eol == -1)
+	{
+		free(gnl);
 		return (NULL);
+	}
 	i = 0;
 	while (*(gnl + f->eol + i))
 	{
@@ -82,5 +95,10 @@ char	*gnl_memmove(t_flag *f, char *gnl)
 		i++;
 	}
 	*(gnl + i) = '\0';
+	if (!*(gnl + f->eol))
+	{
+		free(gnl);
+		return (NULL);
+	}
 	return (gnl);
 }
