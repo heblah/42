@@ -6,16 +6,16 @@
 /*   By: hans </var/spool/mail/hans>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:10:43 by hans              #+#    #+#             */
-/*   Updated: 2022/06/01 15:46:41 by hans             ###   ########.fr       */
+/*   Updated: 2022/06/01 16:08:28 by hans             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*gnl_calloc(unsigned int size)
+char	*gnl_calloc(size_t size)
 {
-	char			*s;
-	unsigned int	i;
+	char	*s;
+	size_t	i;
 
 	s = malloc(size * sizeof(char));
 	if (!s || !size)
@@ -26,7 +26,7 @@ char	*gnl_calloc(unsigned int size)
 		*(s + i) = *(s + i) & (~*(s + i));
 		i++;
 	}
-	return (s);
+	return ((char *)s);
 }
 
 char	*gnl_cat(t_flag *f, char *gnl, char *buffer)
