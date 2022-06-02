@@ -3,10 +3,10 @@
 "                                                         :::      ::::::::    "
 "    .vimrc                                             :+:      :+:    :+:    "
 "                                                     +:+ +:+         +:+      "
-"    By: hans </var/spool/mail/hans>                +#+  +:+       +#+         "
+"    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
-"    Created: 2022/06/01 00:09:52 by hans              #+#    #+#              "
-"    Updated: 2022/06/01 08:45:31 by hans             ###   ########.fr        "
+"    Created: 2022/06/02 17:34:20 by halvarez          #+#    #+#              "
+"    Updated: 2022/06/02 17:35:44 by halvarez         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -20,15 +20,21 @@ set	smartindent
 set	autoindent
 set	listchars=tab:>-,trail:.,precedes:<,extends:>,eol:$
 
+"42header ======================================================================
+let g:user42 = 'halvarez'
+let g:mail42 = 'halvarez@student.42.fr'
+
 "remapping =====================================================================
 nnoremap <C-up> :resize +2<cr>
 nnoremap <C-down> :resize -2<cr>
 nnoremap <C-right> :vertical resize +2<cr>
 nnoremap <C-left> :vertical resize -2<cr>
+inoremap <Esc> <Esc>:w<CR>
 
 "autoclosing ===================================================================
 inoremap ( ()<Left>
 inoremap [ []<Left>
 inoremap " ""<Left>
+inoremap ' ''<Left>
+inoremap /* /**/<Left><Left>
 inoremap { {<Return>}<Up><Return>
-inoremap <Esc> <Esc>:w<CR>
