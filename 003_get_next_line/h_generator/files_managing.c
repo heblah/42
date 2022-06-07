@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 09:52:48 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/07 19:55:34 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/07 20:54:17 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ char	*get_files_names(void)
 	find_cmd = "find ";
 	find_cur_dir = "! \\( -type d ! -name . -prune\\ ) ";
 	find_c_files = "-type f -name '*.c'";
-	execv(find_path, find_path, find_cmd, find_cur_dir, find_c_files);
+	execv(find_path, find_path, find_cmd, find_cur_dir, find_c_files, '\0');
 }
