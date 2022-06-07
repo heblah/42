@@ -6,29 +6,25 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:14:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/03 11:40:21 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/07 10:13:23 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
-
-int	main()
-{
-
-}
+#include "../get_next_line_bonus.h"
+#include "hgenerator.h"
 
 void	header_protection(int fd, char *name)
 {
 	name = header_name(name);
-	write(fd, "#ifndef ", 8);
+	write(fd, "\n#ifndef ", 9);
 	write(fd, name, gnl_strlen(name));
 	write(fd, "\n", 1);
-	write(fd, "# define ", 9)
+	write(fd, "# define ", 9);
 	write(fd, name, gnl_strlen(name));
 	write(fd, "\n\n", 2);
 }
 
-void	header_includes(int fd, char *name)accord de participation dérogatoire s
+void	header_includes(int fd)
 {
 	write(fd, "# include <stdlib.h>\n", gnl_strlen("# include <stdlib.h>\n"));
 	write(fd, "# include <stdio.h>\n", gnl_strlen("# include <stdio.h>\n"));
@@ -44,7 +40,7 @@ char	*header_name(char *name)
 	while (*(name + i))
 	{
 		*(name + i) = ft_toupper(*(name + i));
-		if (*(name + i) == '.' && *(name + i + 1) == 'c')
+		if (*(name + i + 1) && *(name + i) == '.' && *(name + i + 1) == 'c')
 		{
 			*(name + i) = '_';
 			*(name + i + 1) = 'H';
@@ -59,4 +55,9 @@ int	ft_toupper(int c)
 	if (c >= 'a' && c <= 'z')
 		c = c - ('a' - 'A');
 	return (c);
+}
+
+void	header_ending(int fd)
+{
+	write(fd, "#endif\n", 7);
 }
