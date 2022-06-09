@@ -1,0 +1,34 @@
+#born2beroot_autoconfig_script
+#!/bin/sh
+
+#variables definition
+LOGIN="halvarez"
+
+#install packages
+ apt update
+ apt upgrade
+ apt install vim
+ apt install ufw
+ apt install cron
+ apt install openssh-server
+ apt install apparmor
+ apt install libpam-pwquality
+ apt install sudo
+
+#add /usr/sbin to variable environment for all user
+ echo "export PATH=$PATH:/usr/sbin" > /etc/profile.d/add_sbin.sh
+
+#ssh config
+ sed -i 's/#port 22/port 4242/g' /etc/ssh/sshd_config
+ sed -i 's/#PermitRootLogin .*$/PermitRootLogin no\n/g' /etc/ssh/sshd_config
+
+#sudo config
+ usermod -aG sudo $LOGIN
+ cat << EOF > $LOGIN"42_sudoconfig"
+  Defaults passwd_tries=3
+  Defaults badpass_message="Wrong password. Try again!"
+  Defaults logfile="/var/log/sudo/sudo.log"
+  Defaults log_input
+  Defaults log_output
+  Defaults requiretty
+EOF
