@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:14:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/07 18:19:54 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:13:26 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	header_includes(int fd)
 	write(fd, "# include <fcntl.h>\n", gnl_strlen("# include <fcntl.h>\n"));
 	write(fd, "# include <limits.h>\n", gnl_strlen("# include <limits.h>\n"));
 }
+
 char	*header_name(char *name)
 {
 	int	i;

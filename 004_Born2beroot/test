@@ -1,0 +1,3 @@
+ #!/bin/sh
+ ARCHITECTURE= uname -srvmo
+ echo $ARCHITECTURE

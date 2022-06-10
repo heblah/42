@@ -6,20 +6,23 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 09:52:48 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/09 15:44:33 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:45:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../get_next_line_bonus.h"
 #include "hgenerator.h"
 
-int	main(void)
+int	main(int argc__attribute((unsused))__, char **argv)
 {
 	int		fd;
 	char	name[]__attribute__((unused)) = "hgentest.h";
 	//int		wr;
 
 	fd = open(name, O_CREAT | O_APPEND | O_RDWR | S_IRWXU);
+	if (fd == -1)
+		fd = open(name, O_TRUNC | O_APPEND | O_RDWR | S_IRWXU);
+	//if (argv[1] == "c")
 	return (0);
 }
 
