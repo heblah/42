@@ -1,6 +1,19 @@
-#born2beroot_autoconfig_script
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    born2beroot_scriptconfig                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: halvarez <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/06/10 14:17:51 by halvarez          #+#    #+#              #
+#    Updated: 2022/06/10 14:18:31 by halvarez         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#born2beroot_autoconfig
 #!/bin/sh
 
+#=============================== mandatory part ===============================#
 #variables definition
 LOGIN="halvarez"
 
@@ -8,27 +21,62 @@ LOGIN="halvarez"
  apt update
  apt upgrade
  apt install vim
- apt install ufw
  apt install cron
  apt install openssh-server
+ apt install openssh-client
  apt install apparmor
  apt install libpam-pwquality
  apt install sudo
+ apt install ufw
+
+#add user42 as group and LOGIN in user42
+ groupadd user42
+ gpasswd -a $LOGIN user42
+
+#hostname config
+ hotnamectl set-hostname $LOGIN"42"
 
 #add /usr/sbin to variable environment for all user
  echo "export PATH=$PATH:/usr/sbin" > /etc/profile.d/add_sbin.sh
 
 #ssh config
- sed -i 's/#port 22/port 4242/g' /etc/ssh/sshd_config
- sed -i 's/#PermitRootLogin .*$/PermitRootLogin no\n/g' /etc/ssh/sshd_config
+ sed -i 's/#Port 22/Port 4242/g' /etc/ssh/sshd_config
+ sed -i 's/#PermitRootLogin .*$/PermitROotLogin no\n/g' /etc/ssh/sshd_config
+
+#ufw config
+ ufw allow outgoing
+ ufw deny incoming
+ ufw allow 4242
 
 #sudo config
  usermod -aG sudo $LOGIN
- cat << EOF > $LOGIN"42_sudoconfig"
+ mkdir -p /var/log/sudo && touch /var/log/sudo/sudo.log
+ cat << EOF > "/etc/sudoers.d/"$LOGIN"42_sudoconfig"
   Defaults passwd_tries=3
-  Defaults badpass_message="Wrong password. Try again!"
+  Defaults badpass_message="Nice try but wrong password !"
   Defaults logfile="/var/log/sudo/sudo.log"
   Defaults log_input
   Defaults log_output
   Defaults requiretty
-EOF
+ EOF
+
+#password policy config
+ sed -i 's/PASS_MAX_DAYS\t99999/PASS_MAX_DAYS\t30/g' /etc/login.defs
+ sed -i 's/PASS_MIN_DAYS\t0/PASS_MIN_DAYS\t2/g' /etc/login.defs
+ sed -i 's/PASS_WARN_AGE\t7/PASS_WARN_AGE\t7/g' /etc/login.defs
+ sed -i 's/# difok = 1/difok = 7/g' /etc/security/pwquality.conf
+ sed -i 's/# minlen = 8/minlen = 10/g' /etc/security/pwquality.conf
+ sed -i 's/# dcredit = 0/dcredit = -1/g' /etc/security/pwquality.conf
+ sed -i 's/# ucredit = 0/ucredit = -1/g' /etc/security/pwquality.conf
+ sed -i 's/# maxrepeat = 0/maxrepeat = 3/g' /etc/security/pwquality.conf
+ sed -i 's/# usercheck = 1/usercheck = 1/g' /etc/security/pwquality.conf
+ sed -i 's/# retry = 3/retry = 3/g' /etc/security/pwquality.conf
+ sed -i 's/# enforce_for_root/enforce_for_root/g' /etc/security/pwquality.conf
+
+#apply password policy to root and LOGIN
+ chage -M 30 root
+ chage -M 30 $LOGIN
+ chage -m 2 root
+ chage -m 2 $LOGIN
+ chage -W 7 root
+ chage -W 7 $LOGIN

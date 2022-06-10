@@ -6,12 +6,12 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:16:28 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/20 11:25:15 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:25:29 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
-
+#include "ft_printf.h"
+/*
 int	main()
 {
 	int	ft, org;
@@ -164,3 +164,4 @@ int	main()
 
 	return (0);
 }
+*/
