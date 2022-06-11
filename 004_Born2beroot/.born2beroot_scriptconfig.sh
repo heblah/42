@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    born2beroot_scriptconfig                           :+:      :+:    :+:    #
+#    born2beroot_scriptconfig.sh                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/10 20:01:51 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/11 20:20:40 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,13 +28,14 @@ LOGIN="halvarez"
  apt install libpam-pwquality
  apt install sudo
  apt install ufw
+ apt install bc
 
 #add user42 as group and LOGIN in user42
  groupadd user42
- gpasswd -a $LOGIN user42
+ gpasswd -a ${LOGIN} user42
 
 #hostname config
- hotnamectl set-hostname $LOGIN"42"
+ hostnamectl set-hostname ${LOGIN}"42"
 
 #add /usr/sbin to variable environment for all user
  echo "export PATH=$PATH:/usr/sbin" > /etc/profile.d/add_sbin.sh
@@ -44,21 +45,21 @@ LOGIN="halvarez"
  sed -i 's/#PermitRootLogin .*$/PermitROotLogin no\n/g' /etc/ssh/sshd_config
 
 #ufw config
- ufw allow outgoing
- ufw deny incoming
+ ufw default allow outgoing
+ ufw default deny incoming
  ufw allow 4242
 
 #sudo config
- usermod -aG sudo $LOGIN
+ usermod -aG sudo ${LOGIN}
  mkdir -p /var/log/sudo && touch /var/log/sudo/sudo.log
- cat << EOF > "/etc/sudoers.d/"$LOGIN"42_sudoconfig"
+ cat << EOF > "/etc/sudoers.d/"${LOGIN}"42_sudoconfig"
   Defaults passwd_tries=3
   Defaults badpass_message="Nice try but wrong password !"
   Defaults logfile="/var/log/sudo/sudo.log"
   Defaults log_input
   Defaults log_output
   Defaults requiretty
- EOF
+EOF
 
 #password policy config
  sed -i 's/PASS_MAX_DAYS\t99999/PASS_MAX_DAYS\t30/g' /etc/login.defs
@@ -75,46 +76,62 @@ LOGIN="halvarez"
 
 #apply password policy to root and LOGIN
  chage -M 30 root
- chage -M 30 $LOGIN
+ chage -M 30 ${LOGIN}
  chage -m 2 root
- chage -m 2 $LOGIN
+ chage -m 2 ${LOGIN}
  chage -W 7 root
- chage -W 7 $LOGIN
+ chage -W 7 ${LOGIN}
 
 #set monitoring.sh
- cat << EOF > ~/monitoring.sh
- \#!/bin/sh
- ARCHITECTURE= uname -srvmo
- CPU= grep 'physical id' /proc/cpuinfo | uniq | wc -l
- vCPU= grep processor /proc/cpuinfo | uniq | wc -l
- VLBRAM= free -h | grep 'Mem:' |awk '{print \$7}'
- TOTRAM= free -h | grep 'Mem:' |awk '{print \$2}'
- PRTRAM= free -h | grep 'Mem:' |awk '{printf("%.2f%%"), \$7 / \$2 * 100}'
- RAM= \$VLBRAM"/"\$TOTRAM "("\$PRTRAM")"
- USDDISK= df -h --total | grep total | awk '{print \$3}'
- TOTDISK= df -h --total | grep total | awk '{print \$2}'
- PRTFISK= df -h --total | grep total | awk '{printf("%.2f%%"), \$3 / \$2 * 100}'
- DISK= \$USDDISK"/"\$TOTDISK "("\$PRTDISK")"
- CPU= top -bn1 | grep '^%Cpu' | awk '{printf("%.1f%%"), \$2 + \$4}'
- LSTBOOT= who -b | awk '{print \$3, \$4}'
- LVM= lsblk | grep 'lvm' | awk 'NR==1{print \$6}' | awk '{if (\$1=="lvm"){print "yes"}else{print "no"}}'
- TCP= grep 'TPC' /proc/net/sockstat | awk '{print \$3}'
- USERS= who | wc -l
- IP= hostname -I | awk '{print \$1}'
- MAC= ip link show | grep 'link/ether' | awk '{print \$2}'
- SUDO= grep 'COMMAND' /var/log/sudo/sudo.log | wc -l
+ mkdir -p /monitoring
+ cat << EOF > /monitoring/monitoring.sh
+ #!/bin/sh
+ ARCHITECTURE=\$(uname -srvmo)
+ CPU=\$(grep 'physical id' /proc/cpuinfo | uniq | wc -l)
+ vCPU=\$(grep processor /proc/cpuinfo | uniq | wc -l)
+ VLBRAM=\$(free -h | grep 'Mem:' | awk '{print \$3}')
+ TOTRAM=\$(free -h | grep 'Mem:' | awk '{print \$2}')
+ PRTRAM=\$(free -h | grep 'Mem:' | awk '{printf("%.2f%%"), \$3 / \$2 * 100}')
+ USDDISK=\$(df -h --total | grep total | awk '{print \$3}')
+ TOTDISK=\$(df -h --total | grep total | awk '{print \$2}')
+ PRTDISK=\$(df -h --total | grep total | awk '{printf("%.2f%%"), \$3 / \$2 * 100}')
+ LOAD=\$(top -bn1 | grep '^%Cpu' | awk '{printf("%.1f%%"), \$2 + \$4}')
+ LSTBOOT=\$(who -b | awk '{print \$3, \$4}')
+ LVM=\$(lsblk | grep 'lvm' | awk 'NR==1{print \$6}' | awk '{if (\$1=="lvm"){print "yes"}else{print "no"}}')
+ TCP=\$(grep 'TPC' /proc/net/sockstat | awk '{print \$3}')
+ USERS=\$(who | wc -l)
+ IP=\$(hostname -I | awk '{print \$1}')
+ MAC=\$(ip link show | grep 'link/ether' | awk '{print \$2}')
+ SUDO=\$(grep 'COMMAND' /var/log/sudo/sudo.log | wc -l)
  
 wall	"
-\#Architecure		: \$ARCHITECTURE
-\#CPU physical		: \$CPU
-\#vCPU				: \$vCPU
-\#Memory usage		: \$RAM
-\#CPU load			: \$CPU
-\#Last boot			: \$LSTBOOT
-\#LVM use			: \$LVM
-\#Connections TCP 	: \$TCP
-\#Users log			: \$USERS
-\#Network			: IP \$IP "("\$MAC")"
-\#Sudo				: \$SUDO
-		"
+#Architecure		: \${ARCHITECTURE}
+#CPU physical		: \${CPU}
+#vCPU			: \${vCPU}
+#Memory usage		: \${VLBRAM}/\${TOTRAM} (\${PRTRAM})
+#CPU load		: \${USDDISK}/\${TOTDISK} (\${PRTDISK})
+#Last boot		: \${LSTBOOT}
+#LVM use		: \${LVM}
+#Connections TCP	: \${TCP}
+#Users log		: \${USERS}
+#Network		: IP \${IP} (\${MAC})
+#Sudo			: \${SUDO}"
 EOF
+ chmod 755 /monitoring/monitoring.sh
+
+#set sleepdelay
+ cat << EOF > /monitoring/sleepdelay.sh
+ #!/bin/sh
+ BOOT_MIN=\$(uptime -s | cut -d ":" -f 2)
+ BOOT_SEC=\$(uptime -s | cut -d ":" -f 3)
+ DELAY=\$(bc <<< \${BOOT_MIN}%10*60+\${BOOT_SEC})
+ sleep \${DELAY}
+EOF
+ chmod 755 /monitoring/sleepdelay.sh
+
+#set crontab
+ systemctl enable cron
+ cat << EOF > /monitoring/monitoring_crontab
+ */10 * * * * bash /monitoring/sleepdelay.sh && bash /monitoring/monitoring.sh
+EOF
+ crontab -u root /monitoring/monitoring_crontab
