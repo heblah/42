@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/12 14:53:13 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/12 17:23:45 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,19 +14,21 @@
 #!/bin/sh
 
 #=================================== README ===================================#
-#              ---> born2beroot autoconfiguring debian-script <---
-# install, set partitions, create root and user with your login during install
-# upload the script to your VM with scp command or any method
-# log as root and execute
+#              ---> born2beroot autoconfiguring debian-script <---             #
+# install, set partitions, create root and your-login-user during install      #
+# upload the script to your VM with the scp command or any method              #
+# log as root and execute                                                      #
+#==============================================================================#
+
 #=============================== mandatory part ===============================#
 
 #variables definition
 LOGIN="halvarez"
 
 #exit if an error append
- set -e && trap 'echo "Script ending with error(s)..."' EXIT
-#trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
-#trap 'echo "Script ending with error(s)..."' EXIT
+ set -e
+ trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
+ trap 'echo "Script ending with error(s) during \"${last_command}\" with exit code $? ! :("' EXIT
 
 #install packages
  echo "Installing packages..."
@@ -41,30 +43,36 @@ LOGIN="halvarez"
  apt install sudo
  apt install ufw
  apt install bc
+ echo "Necessary packages installed ! :)"
 
 #add user42 as group and LOGIN in user42
  echo "Managing groups..."
  groupadd -f user42
  gpasswd -a ${LOGIN} user42
+ echo "Group and user set ! :)"
 
 #hostname config
  echo "Managing hostname..."
  hostnamectl set-hostname ${LOGIN}"42"
+ echo "Hostname set ! :)"
 
 #add /usr/sbin to variable environment for all user
  echo "Adding PATH /usr/sbin..."
  echo "export PATH=$PATH:/usr/sbin" > /etc/profile.d/add_sbin.sh
+ echo "/usr/sbin set ! :)"
 
 #ssh config
  echo "Configuring ssh..."
  sed -i 's/#Port 22/Port 4242/g' /etc/ssh/sshd_config
  sed -i 's/#PermitRootLogin .*$/PermitROotLogin no\n/g' /etc/ssh/sshd_config
+ echo "Ssh set ! :)"
 
 #ufw config
  echo "Configuring ufw..."
  ufw default allow outgoing
  ufw default deny incoming
  ufw allow 4242
+ echo "Ufw configured ! :)"
 
 #sudo config
  echo "Configuring sudo..."
@@ -78,6 +86,7 @@ LOGIN="halvarez"
   Defaults log_output
   Defaults requiretty
 EOF
+ echo "Sudo configured ! :)"
 
 #password policy config
  echo "Setting password policy..."
@@ -92,6 +101,7 @@ EOF
  sed -i 's/# usercheck = 1/usercheck = 1/g' /etc/security/pwquality.conf
  sed -i 's/# retry = 3/retry = 3/g' /etc/security/pwquality.conf
  sed -i 's/# enforce_for_root/enforce_for_root/g' /etc/security/pwquality.conf
+ echo "Password policy configured ! :)"
 
 #apply password policy to root and LOGIN
  echo "Applying password policy to currrent user and root..."
@@ -101,6 +111,7 @@ EOF
  chage -m 2 ${LOGIN}
  chage -W 7 root
  chage -W 7 ${LOGIN}
+ echo "Password policy applied ! :)"
 
 #set monitoring.sh
  echo "Setting monitoring.sh..."
@@ -139,6 +150,7 @@ wall	"
 #Sudo			: \${SUDO}"
 EOF
  chmod 755 /monitoring/monitoring.sh
+ echo "Script monitoring is set ! :)"
 
 #set sleepdelay
  echo "Setting sleep delay..."
@@ -150,6 +162,7 @@ EOF
  sleep \${DELAY}
 EOF
  chmod 755 /monitoring/sleepdelay.sh
+ echo "Script for sleep delay is set ! :)"
 
 #set crontab
  echo "Setting crontab..."
@@ -158,5 +171,90 @@ EOF
  */10 * * * * bash /monitoring/sleepdelay.sh && bash /monitoring/monitoring.sh
 EOF
  crontab -u root /monitoring/monitoring_crontab
+ echo "Crontab is set ! :)"
+
+#ending exit on error on mandatory part
+ #set +e && trap '' EXIT
+ echo -e "\n\nMandatory part is set ! :)\n\n"
+
+#================================= bonus part =================================#
+
+#exit if an error append in bonus part
+# set -e
+# trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
+# trap 'echo "Script ending with error(s) during \"${last_command}\" with exit code $? ! :("' EXIT
+ #set -e && trap 'echo "Script ending with error(s) in bonus part..."' EXIT
+
+#install packages
+ echo "Installing usefull bonus packages..."
+ apt install curl
+ apt install wget
+ apt install tar
+ #php
+ echo "Installing php packages..."
+ curl -sSL https://packages.sury.org/php/README.txt | bash -x
+ apt install php8.1
+ apt install php-common
+ apt install php-cgi
+ apt install php-cli
+ apt install php-mysql
+ #lighttpd
+ echo "Installing lighttpd packages..."
+ apt purge apache2
+ apt install lighttpd
+ #MariaDB
+ echo "Installing MariaDB packages..."
+ apt install mariadb-server
+ echo "Bonus packages installed ! :)"
+
+#set lighttpd
+ echo "Activating lighttpd..."
+ systemctl start lighttpd
+ systemctl enable lighttpd
+ echo "lighttpd activated ! :)"
+
+#set http in ufw
+ echo "Alloying http..."
+ ufw allow http
+ echo "Http allowed ! :)"
+
+#set phpinfo
+ echo "Setting info.php..."
+ cat << EOF > /var/www/html/info.php
+ <?php
+ phpinfo();
+ ?>
+EOF
+ echo "info.php is set ! :)"
+
+#activate lighttpd
+ echo "Setting lighttpd..."
+ lighty-enable-mod fastcgi
+ lighty-enable-mod fastcgi-php
+ service lighttpd force-reload
+ echo "lighttpd is set ! :)"
+
+#set MariaDB
+ echo "Setting MariaDB..."
+ systemctl start mariadb
+ systemctl enable mariadb
+ mysql_secure_installation
+ systemctl restart mariadb
+ echo "MariaDB is set ! :)"
+
+#set WordPress
+ echo "Setting WordPress..."
+ wget http://wordpress.org/latest.tar.gz
+ tar -xzvf latest.tar.gz
+ sudo mv wordpress/* /var/www/html/
+ rm -rf latest.tar.gz wordpress/
+ mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+ chown -R www-data:www-data /var/www/html/
+ chmod -R 755 /var/www/html/
+ systemctl restart lighttpd
+ echo "WordPress is set ! :)"
+
+#ending exit on error in bonus part
  set +e && trap '' EXIT
- echo -e "\n\nMandatory part is set !\n\n"
+ echo -e "\n\nMandatory and bonus parts are set ! :)"
+ echo -e "You still need to configure manually MariaDB with 'mysql -u root -p' command !\n\n" 
