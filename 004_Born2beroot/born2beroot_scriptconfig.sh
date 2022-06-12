@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/12 17:23:45 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/12 22:53:30 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@
 
 #variables definition
 LOGIN="halvarez"
+MARIADBPW="tetrapak"
+DBNAME="wordpress_db"
 
 #exit if an error append
  set -e
@@ -45,6 +47,12 @@ LOGIN="halvarez"
  apt install bc
  echo "Necessary packages installed ! :)"
 
+#add /usr/sbin to variable environment for all user
+ echo "Adding PATH /usr/sbin..."
+ echo "export PATH=$PATH:/usr/sbin" > /etc/profile.d/add_sbin.sh
+ source /etc/profile.d/add_sbin.sh
+ echo "/usr/sbin set ! :)"
+
 #add user42 as group and LOGIN in user42
  echo "Managing groups..."
  groupadd -f user42
@@ -56,16 +64,11 @@ LOGIN="halvarez"
  hostnamectl set-hostname ${LOGIN}"42"
  echo "Hostname set ! :)"
 
-#add /usr/sbin to variable environment for all user
- echo "Adding PATH /usr/sbin..."
- echo "export PATH=$PATH:/usr/sbin" > /etc/profile.d/add_sbin.sh
- echo "/usr/sbin set ! :)"
-
 #ssh config
  echo "Configuring ssh..."
  sed -i 's/#Port 22/Port 4242/g' /etc/ssh/sshd_config
  sed -i 's/#PermitRootLogin .*$/PermitROotLogin no\n/g' /etc/ssh/sshd_config
- echo "Ssh set ! :)"
+ echo "Ssh is set ! :)"
 
 #ufw config
  echo "Configuring ufw..."
@@ -240,6 +243,7 @@ EOF
  systemctl enable mariadb
  mysql_secure_installation
  systemctl restart mariadb
+ mysql -u root -p
  echo "MariaDB is set ! :)"
 
 #set WordPress
@@ -249,6 +253,9 @@ EOF
  sudo mv wordpress/* /var/www/html/
  rm -rf latest.tar.gz wordpress/
  mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+ sed -i "s/database_name_here/${DBNAME}/g" /var/www/html/wp-config.php
+ sed -i "s/username_here/${LOGIN}/g" /var/www/html/wp-config.php
+ sed -i "s/password_here/${MARIADBPW}/g" /var/www/html/wp-config.php
  chown -R www-data:www-data /var/www/html/
  chmod -R 755 /var/www/html/
  systemctl restart lighttpd
@@ -256,5 +263,5 @@ EOF
 
 #ending exit on error in bonus part
  set +e && trap '' EXIT
- echo -e "\n\nMandatory and bonus parts are set ! :)"
- echo -e "You still need to configure manually MariaDB with 'mysql -u root -p' command !\n\n" 
+ echo -e "\n\nMandatory and bonus parts are set ! :)\n"
+ echo -e "Reboot and enjoy !!\n\n"
