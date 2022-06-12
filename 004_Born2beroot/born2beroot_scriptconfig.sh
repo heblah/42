@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/12 22:53:30 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/12 23:30:50 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@
 
 #variables definition
 LOGIN="halvarez"
-MARIADBPW="tetrapak"
+MARIADBPW="H3rencia741"
 DBNAME="wordpress_db"
 
 #exit if an error append
@@ -177,16 +177,9 @@ EOF
  echo "Crontab is set ! :)"
 
 #ending exit on error on mandatory part
- #set +e && trap '' EXIT
  echo -e "\n\nMandatory part is set ! :)\n\n"
 
 #================================= bonus part =================================#
-
-#exit if an error append in bonus part
-# set -e
-# trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
-# trap 'echo "Script ending with error(s) during \"${last_command}\" with exit code $? ! :("' EXIT
- #set -e && trap 'echo "Script ending with error(s) in bonus part..."' EXIT
 
 #install packages
  echo "Installing usefull bonus packages..."
@@ -209,6 +202,9 @@ EOF
  echo "Installing MariaDB packages..."
  apt install mariadb-server
  echo "Bonus packages installed ! :)"
+ #bonus packages
+ apt install logwatch
+ apt install fail2ban
 
 #set lighttpd
  echo "Activating lighttpd..."
@@ -263,5 +259,5 @@ EOF
 
 #ending exit on error in bonus part
  set +e && trap '' EXIT
- echo -e "\n\nMandatory and bonus parts are set ! :)\n"
+ echo -e "\n\nMandatory and bonus parts are set ! :)"
  echo -e "Reboot and enjoy !!\n\n"
