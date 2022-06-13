@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/12 23:30:50 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/13 15:33:27 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@
 LOGIN="halvarez"
 MARIADBPW="H3rencia741"
 DBNAME="wordpress_db"
+REBOOT="15"
 
 #exit if an error append
  set -e
@@ -140,6 +141,7 @@ EOF
  SUDO=\$(grep 'COMMAND' /var/log/sudo/sudo.log | wc -l)
  
 wall	"
+====================================================================================================
 #Architecure		: \${ARCHITECTURE}
 #CPU physical		: \${CPU}
 #vCPU			: \${vCPU}
@@ -150,7 +152,8 @@ wall	"
 #Connections TCP	: \${TCP}
 #Users log		: \${USERS}
 #Network		: IP \${IP} (\${MAC})
-#Sudo			: \${SUDO}"
+#Sudo			: \${SUDO}
+===================================================================================================="
 EOF
  chmod 755 /monitoring/monitoring.sh
  echo "Script monitoring is set ! :)"
@@ -174,10 +177,13 @@ EOF
  */10 * * * * bash /monitoring/sleepdelay.sh && bash /monitoring/monitoring.sh
 EOF
  crontab -u root /monitoring/monitoring_crontab
+ systemctl restart cron
  echo "Crontab is set ! :)"
 
 #ending exit on error on mandatory part
+ echo -e "\n============================================================================"
  echo -e "\n\nMandatory part is set ! :)\n\n"
+ echo -e "============================================================================\n"
 
 #================================= bonus part =================================#
 
@@ -239,6 +245,13 @@ EOF
  systemctl enable mariadb
  mysql_secure_installation
  systemctl restart mariadb
+ echo -e "\n========================= Config lines for MariaDB =========================\n"
+ echo -e "CREATE DATABASE ${DBNAME};"
+ echo -e "CREATE USER '${LOGIN}'@'localhost' IDENTIFIED BY '${MARIADBPW}'; "
+ echo -e "GRANT ALL ON ${DBNAME}.* TO '${LOGIN}'@'localhost' IDENTIFIED BY '${MARIADBPW}' WITH GRANT OPTION; "
+ echo -e "FLUSH PRIVILEGES;"
+ echo -e "EXIT;"
+ echo -e "\n============================================================================\n"
  mysql -u root -p
  echo "MariaDB is set ! :)"
 
@@ -257,7 +270,22 @@ EOF
  systemctl restart lighttpd
  echo "WordPress is set ! :)"
 
+#set fail2ban
+ echo "Configuring fail2ban..."
+ systemctl start fail2ban
+ systemctl enable fail2ban
+ cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+ sed -i 's/#mode   = normal$/#mode   = normal\nenabled = true\nmaxretry= 3\nfindtime= 10m\nbantime = 1d/g' /etc/fail2ban/jail.local
+ sed -i 's/port    = ssh$/port    = 4242/g' /etc/fail2ban/jail.local
+ echo "Fail2ban is set ! :)"
+
+#reboot
+ sleep ${REBOOT}
+ systemctl reboot
+
 #ending exit on error in bonus part
  set +e && trap '' EXIT
+ echo -e "\n============================================================================"
  echo -e "\n\nMandatory and bonus parts are set ! :)"
- echo -e "Reboot and enjoy !!\n\n"
+ echo -e "Rebooting in ${REBOOT}s\n\n"
+ echo -e "============================================================================\n"
