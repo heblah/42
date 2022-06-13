@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/13 15:33:27 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/13 16:26:25 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -279,13 +279,12 @@ EOF
  sed -i 's/port    = ssh$/port    = 4242/g' /etc/fail2ban/jail.local
  echo "Fail2ban is set ! :)"
 
-#reboot
- sleep ${REBOOT}
- systemctl reboot
-
 #ending exit on error in bonus part
  set +e && trap '' EXIT
  echo -e "\n============================================================================"
  echo -e "\n\nMandatory and bonus parts are set ! :)"
  echo -e "Rebooting in ${REBOOT}s\n\n"
  echo -e "============================================================================\n"
+
+#reboot
+ sleep ${REBOOT} && systemctl reboot
