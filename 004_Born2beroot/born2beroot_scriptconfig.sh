@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/13 16:26:25 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/13 17:10:11 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 
 #=================================== README ===================================#
 #              ---> born2beroot autoconfiguring debian-script <---             #
-# install, set partitions, create root and your-login-user during install      #
+# set partitions, create root, your-login-user and set hostname during install #
 # upload the script to your VM with the scp command or any method              #
 # log as root and execute                                                      #
 #==============================================================================#
@@ -60,10 +60,10 @@ REBOOT="15"
  gpasswd -a ${LOGIN} user42
  echo "Group and user set ! :)"
 
-#hostname config
- echo "Managing hostname..."
- hostnamectl set-hostname ${LOGIN}"42"
- echo "Hostname set ! :)"
+#hostname config : uncomment the lines below if not done during install
+# echo "Managing hostname..."
+# hostnamectl set-hostname ${LOGIN}"42"
+# echo "Hostname set ! :)"
 
 #ssh config
  echo "Configuring ssh..."
