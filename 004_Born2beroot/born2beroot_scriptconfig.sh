@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/13 17:10:11 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/13 18:05:43 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -278,6 +278,11 @@ EOF
  sed -i 's/#mode   = normal$/#mode   = normal\nenabled = true\nmaxretry= 3\nfindtime= 10m\nbantime = 1d/g' /etc/fail2ban/jail.local
  sed -i 's/port    = ssh$/port    = 4242/g' /etc/fail2ban/jail.local
  echo "Fail2ban is set ! :)"
+
+#patching logwatch
+ echo "Patching logwatch..."
+ sed -i "334s/\$SelfSigned/\$#SelfSigned/g" /usr/share/logwatch/scripts/services/exim
+ echo "Logwatch patched ! :)"
 
 #ending exit on error in bonus part
  set +e && trap '' EXIT
