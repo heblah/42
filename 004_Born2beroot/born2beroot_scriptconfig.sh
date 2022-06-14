@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/13 18:05:43 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/14 08:22:45 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,7 @@ REBOOT="15"
  ufw default allow outgoing
  ufw default deny incoming
  ufw allow 4242
+ ufw enable
  echo "Ufw configured ! :)"
 
 #sudo config
