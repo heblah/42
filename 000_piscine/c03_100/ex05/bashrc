@@ -1,0 +1,2 @@
+alias gc='gcc -Wall -Wextra -Werror'
+alias gcd='gcc -g -Wall -Wextra -Werror'
