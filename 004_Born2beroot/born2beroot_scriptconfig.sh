@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/14 08:22:45 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/14 17:01:44 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -147,7 +147,8 @@ wall	"
 #CPU physical		: \${CPU}
 #vCPU			: \${vCPU}
 #Memory usage		: \${VLBRAM}/\${TOTRAM} (\${PRTRAM})
-#CPU load		: \${USDDISK}/\${TOTDISK} (\${PRTDISK})
+#CPU load		: \${LOAD}
+#Disk usage		: \${USDDISK}/\${TOTDISK} (\${PRTDISK})
 #Last boot		: \${LSTBOOT}
 #LVM use		: \${LVM}
 #Connections TCP	: \${TCP}
@@ -284,6 +285,9 @@ EOF
  echo "Patching logwatch..."
  sed -i "334s/\$SelfSigned/\$#SelfSigned/g" /usr/share/logwatch/scripts/services/exim
  echo "Logwatch patched ! :)"
+
+ crontab -u root /monitoring/monitoring_crontab
+ systemctl restart cron
 
 #ending exit on error in bonus part
  set +e && trap '' EXIT
