@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/15 09:18:13 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/15 09:25:38 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -178,7 +178,6 @@ EOF
  systemctl enable cron
  cat << EOF > /monitoring/monitoring_crontab
  #*/10 * * * * bash /monitoring/sleepdelay.sh && bash /monitoring/monitoring.sh
- @reboot bash /monitoring/monitoring.sh
  */10 * * * * bash /monitoring/monitoring.sh
 EOF
  crontab -u root /monitoring/monitoring_crontab
