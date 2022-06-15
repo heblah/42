@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 15:17:56 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/15 16:26:38 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/15 17:53:03 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,28 @@
 //in a fork child_id = 0 and parent_id != 0
 int	main(void)
 {
-	pid_t	fork_id;
-	pid_t	my_id;
-//	int 	child_stat;
+	pid_t 	fork_id __attribute__((unused));
+	pid_t	id;
 
-	printf("initial pid= %d\n", getpid());
-	my_id = getpid();
+	id = getpid();
+	printf("before the fork, process = %d\n", id);
 	fork_id = fork();
 	if (fork_id == CHILD)
 	{
-		printf("here it's child process \n'");
-		for (int i = 0; i < 10; i++)
-			printf("i = %d\n", i);
+		sleep(1);
+		printf("\nhere it's child process\n");
+		printf("child process id = %d\n", getpid());
+		printf("fork process id = %d\n", fork_id);
+		printf("parent process when parent ends first = %d\n", getppid());
 	}
+	else if (wait(&fork_id) == -1)
+		printf("no child pendent\n");
 	else
 	{
-		printf("i'm in a parent, process = %d, the fork_id is %d\n", my_id, fork_id);
+		wait(&fork_id);
+		printf("\n");
+		printf("here it's parent process\n");
+		printf("parent process id = %d\n", getpid());
 	}
-	printf("my id is %i\n", getpid());
-	//printf("child_stat = %d\n", child_stat >> 8);
 	return (0);
 }

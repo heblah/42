@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/15 14:08:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/15 16:24:25 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/15 16:31:43 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,9 @@
  systemctl mask systemd-rfkill.socket
  systemctl enable tlp.service
  systemctl restart tlp.service
+
+#git clone 42 repo
+ git clone git@github.com:heblah/42.git /home/42
 
 #rebooting
  sleep 10 && systemctl reboot
