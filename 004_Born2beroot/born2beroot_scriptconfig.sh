@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/15 09:03:15 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/15 09:18:13 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,15 +38,15 @@ REBOOT="15"
  echo "Installing packages..."
  apt update
  apt upgrade
- apt install vim
- apt install cron
- apt install openssh-server
- apt install openssh-client
- apt install apparmor
- apt install libpam-pwquality
- apt install sudo
- apt install ufw
- apt install bc
+ apt install -y vim
+ apt install -y cron
+ apt install -y openssh-server
+ apt install -y openssh-client
+ apt install -y apparmor
+ apt install -y libpam-pwquality
+ apt install -y sudo
+ apt install -y ufw
+ apt install -y bc
  echo "Necessary packages installed ! :)"
 
 #add /usr/sbin to variable environment for all user
@@ -194,28 +194,28 @@ EOF
 
 #install packages
  echo "Installing usefull bonus packages..."
- apt install curl
- apt install wget
- apt install tar
+ apt install -y curl
+ apt install -y wget
+ apt install -y tar
  #php
  echo "Installing php packages..."
  curl -sSL https://packages.sury.org/php/README.txt | bash -x
- apt install php8.1
- apt install php-common
- apt install php-cgi
- apt install php-cli
- apt install php-mysql
+ apt install -y php8.1
+ apt install -y php-common
+ apt install -y php-cgi
+ apt install -y php-cli
+ apt install -y php-mysql
  #lighttpd
  echo "Installing lighttpd packages..."
- apt purge apache2
- apt install lighttpd
+ apt purge -y apache2
+ apt install -y lighttpd
  #MariaDB
  echo "Installing MariaDB packages..."
- apt install mariadb-server
+ apt install -y mariadb-server
  echo "Bonus packages installed ! :)"
  #bonus packages
- apt install logwatch
- apt install fail2ban
+ apt install -y logwatch
+ apt install -y fail2ban
 
 #set lighttpd
  echo "Activating lighttpd..."
