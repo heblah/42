@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/14 17:01:44 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/15 09:03:15 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@
 # set partitions, create root, your-login-user and set hostname during install #
 # upload the script to your VM with the scp command or any method              #
 # log as root and execute                                                      #
+# 15/06/2022 : commenting sleepdelay.sh in crontab & adding -y in apt install  #
 #==============================================================================#
 
 #=============================== mandatory part ===============================#
@@ -176,7 +177,9 @@ EOF
  echo "Setting crontab..."
  systemctl enable cron
  cat << EOF > /monitoring/monitoring_crontab
- */10 * * * * bash /monitoring/sleepdelay.sh && bash /monitoring/monitoring.sh
+ #*/10 * * * * bash /monitoring/sleepdelay.sh && bash /monitoring/monitoring.sh
+ @reboot bash /monitoring/monitoring.sh
+ */10 * * * * bash /monitoring/monitoring.sh
 EOF
  crontab -u root /monitoring/monitoring_crontab
  systemctl restart cron
