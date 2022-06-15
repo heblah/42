@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/15 09:25:38 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/15 14:42:58 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,21 @@
 #!/bin/sh
 
 #=================================== README ===================================#
-#              ---> born2beroot autoconfiguring debian-script <---             #
+#              ---> born2beroot autoconfiguring debian-server <---             #
+#                                                                              #
 # set partitions, create root, your-login-user and set hostname during install #
 # upload the script to your VM with the scp command or any method              #
 # log as root and execute                                                      #
-# 15/06/2022 : commenting sleepdelay.sh in crontab & adding -y in apt install  #
+#                                                                              #
+# notes :                                                                      #
+#  - sleepdelay.sh in cron setting is commented because not really reliable    #
+#  - simple crontab is set, activated every 10th min : 1h00, 1h10, 1h20...     #
+#  - hostname config is commented because it's should be done during           #
+#     debian install                                                           #
+#  - sometimes "CPU load" in the monitoring script prints 0% but I don't care  #
+#  - root psswd asked for MariaDB config is the root of MariaDB not debian     #
+#  - the "config lines for MariaDB" are here to permit copy past using ssh     #
+#     connexion and a real teerminal                                           #
 #==============================================================================#
 
 #=============================== mandatory part ===============================#
