@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 15:17:56 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/15 13:44:02 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/15 16:26:38 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,10 @@ int	main(void)
 		printf("here it's child process \n'");
 		for (int i = 0; i < 10; i++)
 			printf("i = %d\n", i);
-		exit (4);
 	}
 	else
 	{
 		printf("i'm in a parent, process = %d, the fork_id is %d\n", my_id, fork_id);
-		wait(&fork_id);
 	}
 	printf("my id is %i\n", getpid());
 	//printf("child_stat = %d\n", child_stat >> 8);
