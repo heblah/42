@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/15 16:25:17 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/16 09:56:42 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +46,8 @@ REBOOT="15"
 
 #install packages
  echo "Installing packages..."
- apt update
- apt upgrade
+ apt update -y
+ apt upgrade -y
  apt install -y vim
  apt install -y cron
  apt install -y openssh-server
