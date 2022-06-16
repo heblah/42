@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/15 14:08:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/15 16:31:43 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/16 07:33:57 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,10 @@
  systemctl restart tlp.service
 
 #git clone 42 repo
- git clone git@github.com:heblah/42.git /home/42
+ git clone git@github.com:heblah/42.git /home/hans/42
+ cp home/hans/42/.vimrc home/hans/.
+ git clone https://github.com/42Paris/42header.git /home/hans/
+ mkdir -p /home/hans/.vim
 
 #rebooting
  sleep 10 && systemctl reboot
