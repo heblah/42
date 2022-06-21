@@ -3,60 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hans </var/spool/mail/hans>                +#+  +:+       +#+        */
+/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/31 14:02:59 by hans              #+#    #+#             */
-/*   Updated: 2022/06/01 14:57:35 by hans             ###   ########.fr       */
+/*   Created: 2022/06/21 15:42:55 by halvarez          #+#    #+#             */
+/*   Updated: 2022/06/21 18:38:10 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../get_next_line_bonus.h"
+#include "hgenerator.h"
 
-int	x_line(int fd, char *print);
-int	full(int fd, char *print);
+#define CHILD		0
+#define FILE_BUF	500
+#define BUFFER_SIZE 2000
 
-int	main(int argc, char **argv)
+int	main(int argc __attribute__((unused)), char **argv)
 {
-	int		fd;
-	char	*print;
-	int		i;
+	char	*h_name;
+	char	**files_name;
+	int		nbfiles;
+	int		hfd;
 
-	i = 1;
-	print = NULL;
-	fd = open("./tests/multiple_line_no_nl", O_RDONLY);
-	if (argc == 2)
-	{
-		while(i + '0' <= *(*(argv + 1)))
-		{
-			//x_line(fd, print);
-			printf("%d nl=%s\n", i, get_next_line(fd));
-			i++;
-		}
-	}
-	else
-		full(fd, print);
-	return (0);
+	nbfiles = 0;
+	files_name = NULL;
+	h_name = argv[1];
+	hfd = create_header();
+	header_writing(hfd, h_name);
+	files_name = get_files_data(&nbfiles);
 }
 
-int	x_line(int fd, char *print)
+void	header_writing(int hfd, char *h_name)
 {
-	print = get_next_line(fd);
-	printf("nl=%s\n", print);
-	return (0);
+	header_protection(hfd, h_name);
+	header_includes(hfd);
+	//header_prototypes
+	header_ending(hfd);
 }
 
-int	full(int fd, char *print)
+void	create_header(void)
 {
-	int	eof;
+	int	hfd;
 
-	eof = 0;
-	while (!eof)
-	{
-		print = get_next_line(fd);
-		printf("nl=%s\n", print);
-		if (print == NULL)
-			eof = 1;
-		free(print);
-	}
-	return (0);
+	hfd = open(h_name, O_CREAT | O_APPEND | O_RDWR | S_IRWXU);
+	if (hfd == -1)
+		hfd = open(h_name, O_TRUNC | O_APPEND | O_RDWR | S_IRWXU);
+	return (hfd);
 }
