@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 09:52:48 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/21 18:27:15 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/22 11:03:59 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ char	**get_files_data(int *nbfiles)
 	str_name = get_files_names();
 	files_name = ft_split(str_name, '\n');
 	free(str_name);
-	while (files_name[*nbfile])
-		*nbfile += 1;
+	while (files_name[*nbfiles])
+		*nbfiles += 1;
 	return (files_name);
 }
 

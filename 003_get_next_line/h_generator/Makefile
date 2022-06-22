@@ -6,15 +6,16 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 09:34:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/07 11:48:57 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/22 11:12:12 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME    	= a.out
-BUF			= 42
+NAME    	= header_generator.out
+BUF			= 2000
 SRCS    	= ../get_next_line_bonus.c ../get_next_line_utils_bonus.c \
-	hgenerator.c files_managing.c
+	files_managing.c get_prototypes.c hgenerator.c hgen_utils_1.c main.c \
+	ft_split.c
 OBJS		= ${SRCS:.c=.o}
 BONUS_O		= ${BONUS_C:.c=.o}
 CC			= gcc

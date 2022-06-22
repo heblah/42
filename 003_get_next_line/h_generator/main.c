@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:42:55 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/21 18:38:10 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/22 12:25:39 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,36 @@
 
 #define CHILD		0
 #define FILE_BUF	500
-#define BUFFER_SIZE 2000
 
 int	main(int argc __attribute__((unused)), char **argv)
 {
-	char	*h_name;
 	char	**files_name;
 	int		nbfiles;
 	int		hfd;
 
+	if (argc != 2)
+	{
+		printf("Only one argument is necessary : the name of the header");
+		return (-1);
+	}
 	nbfiles = 0;
 	files_name = NULL;
-	h_name = argv[1];
-	hfd = create_header();
-	header_writing(hfd, h_name);
+	hfd = create_header(argv[1]);
 	files_name = get_files_data(&nbfiles);
+	header_writing(hfd, argv[1], files_name, nbfiles);
+	freedata(files_name);
+	return (0);
 }
 
-void	header_writing(int hfd, char *h_name)
+void	header_writing(int hfd, char *h_name, char **files_name, int nbfiles)
 {
 	header_protection(hfd, h_name);
 	header_includes(hfd);
-	//header_prototypes
+	header_prototypes(hfd, files_name, nbfiles);
 	header_ending(hfd);
 }
 
-void	create_header(void)
+int	create_header(char *h_name)
 {
 	int	hfd;
 
@@ -48,4 +52,19 @@ void	create_header(void)
 	if (hfd == -1)
 		hfd = open(h_name, O_TRUNC | O_APPEND | O_RDWR | S_IRWXU);
 	return (hfd);
+}
+
+void	freedata(char **files_name)
+{
+	int	i;
+
+	i = 0;
+	while (files_name[i])
+	{
+		free(files_name[i]);
+		files_name[i] = NULL;
+		i++;
+	}
+	free(files_name);
+	files_name = NULL;
 }
