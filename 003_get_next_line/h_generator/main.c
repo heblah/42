@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:42:55 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/22 12:25:39 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/22 13:41:59 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,13 @@ int	main(int argc __attribute__((unused)), char **argv)
 
 	if (argc != 2)
 	{
-		printf("Only one argument is necessary : the name of the header");
+		printf("Please specify only one argument : the name of the header.\n");
+		return (-1);
+	}
+	else if (argv[1][gnl_strlen(argv[1]) - 1] != 'h'
+		|| argv[1][gnl_strlen(argv[1]) - 2] != '.' )
+	{
+		printf("Please specify a '.h' entension.\n");
 		return (-1);
 	}
 	nbfiles = 0;

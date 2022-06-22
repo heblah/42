@@ -1,6 +1,6 @@
 
-#ifndef TEST_H
-# define TEST_H
+#ifndef KK_H
+# define KK_H
 
 # include <stdlib.h>
 # include <stdio.h>

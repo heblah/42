@@ -6,17 +6,16 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 10:38:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/01 16:08:50 by hans             ###   ########.fr       */
+/*   Updated: 2022/06/22 12:37:18 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE	0
-
-#endif
-
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE	0
+# endif
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -24,7 +23,7 @@
 # include <fcntl.h>
 
 /* structures =============================================================== */
-typedef struct	e_flag
+typedef struct e_flag
 {
 	int	eol;
 }	t_flag;
