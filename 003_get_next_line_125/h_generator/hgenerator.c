@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:14:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/22 14:37:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/23 08:44:53 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	header_protection(int fd, char *name)
 {
 	name = header_name(name);
-	write(fd, "#ifndef ", 9);
+	write(fd, "#ifndef ", 8);
 	write(fd, name, gnl_strlen(name));
 	write(fd, "\n", 1);
 	write(fd, "# define ", 9);

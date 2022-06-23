@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 10:27:58 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/22 17:58:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/23 08:48:39 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,17 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (s1 && s1[i] && len)
+	while (s1 && s1[i] && gnl_strlen(s1) + gnl_strlen(s2))
 	{
 		dest[i] = s1[i];
 		i++;
 	}
-	while (s2 && s2[j] && len)
+	while (s2 && s2[j] && gnl_strlen(s1) + gnl_strlen(s2))
 	{
 		dest[i + j] = s2[j];
 		j++;
 	}
-	while (len && i + j < len + 1)
-		dest[i + j++] = '\0';
+	dest[i + j] = '\0';
 	free(s1);
 	return (dest);
 }
