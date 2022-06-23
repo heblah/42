@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   fdf_lib_struct.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/23 12:59:27 by halvarez         ###   ########.fr       */
+/*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
+/*   Updated: 2022/06/23 16:52:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <X11/X.h>
-#include <X11/keysym.h>
-#include <stdlib.h>
-#include <mlx.h>
+#ifndef FDF_LIB_H
+# include <X11/X.h>
+# include <X11/keysym.h>
+# include <stdlib.h>
+# include <mlx.h>
 
 # define WINDOW_WIDTH 600
 # define WINDOW_HEIGHT 300
+# define MLX_ERROR -1
 
-int main(void)
+/* structures =============================================================== */
+typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+}	t_data;
 
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "My first window!");
-	while (1);
-	mlx_destroy_window(mlx_ptr, win_ptr);
-	mlx_destroy_display(mlx_ptr);
-	free(mlx_ptr);
-}
-
+#endif
