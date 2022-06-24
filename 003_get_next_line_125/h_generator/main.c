@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:42:55 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/23 13:57:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/24 15:21:33 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	create_header(char *h_name)
 {
 	int	hfd;
 
-	hfd = open(h_name, O_CREAT | O_APPEND | O_RDWR | S_IRWXU);
+	hfd = open(h_name, O_CREAT | O_APPEND | O_RDWR, 0666);
 	if (hfd == -1)
-		hfd = open(h_name, O_TRUNC | O_APPEND | O_RDWR | S_IRWXU);
+		hfd = open(h_name, O_TRUNC | O_APPEND | O_RDWR, 0666);
 	return (hfd);
 }
 
