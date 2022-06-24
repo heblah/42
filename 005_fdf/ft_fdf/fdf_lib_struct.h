@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/23 16:52:41 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/24 14:15:08 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,21 @@
 # define WINDOW_HEIGHT 300
 # define MLX_ERROR -1
 
-/* structures =============================================================== */
+/* t_data =================================================================== */
 typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_img	img;
 }	t_data;
 
+/* t_img ==================================================================== */
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bpp; /* bits per pixel */
+	int		line_len;
+	int		endian;
+}	t_img;
 #endif
