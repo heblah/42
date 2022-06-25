@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/24 14:15:08 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:04:40 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@
 # define WINDOW_HEIGHT 300
 # define MLX_ERROR -1
 
+/* t_img ==================================================================== */
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
+
 /* t_data =================================================================== */
 typedef struct s_data
 {
@@ -28,13 +38,4 @@ typedef struct s_data
 	t_img	img;
 }	t_data;
 
-/* t_img ==================================================================== */
-typedef struct s_img
-{
-	void	*mlx_img;
-	char	*addr;
-	int		bpp; /* bits per pixel */
-	int		line_len;
-	int		endian;
-}	t_img;
 #endif

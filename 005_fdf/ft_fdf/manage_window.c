@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:01:31 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/24 13:09:47 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/25 15:58:23 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ int	open_window(t_data *data)
 
 int	close_window(t_data *data)
 {
+	mlx_destroy_image(data->mlx_ptr, data->img->mlx_img);
 	mlx_destroy_display(data->mlx_ptr);
+	free(data->img);
 	free(data->mlx_ptr);
 	return (0);
 }
