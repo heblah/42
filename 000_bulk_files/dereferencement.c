@@ -1,42 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_img.c                                       :+:      :+:    :+:   */
+/*   dereferencement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/24 17:17:09 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/29 14:52:50 by halvarez         ###   ########.fr       */
+/*   Created: 2022/06/29 12:59:58 by halvarez          #+#    #+#             */
+/*   Updated: 2022/06/29 13:05:16 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_lib_struct.h"
-#include "ft_fdf.h"
+#include <stdio.h>
 
-int	img_pixel_put(t_img *img, int x, int y, int color)
+int	main(void)
 {
-	char    *pixel;
+	int	*ptr;
 
-    pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	*(int *)pixel = color;	
-	return (0);
-}
-
-int	render_background(t_img *img)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < WINDOW_HEIGHT)
-	{
-		j = 0;
-		while (j < WINDOW_WIDTH)
-		{
-			img_pixel_put(img, j, i, 0xFFA500);
-			j++;
-		}
-		++i;
-	}
+	ptr = NULL;
+	*ptr = 5;
 	return (0);
 }
