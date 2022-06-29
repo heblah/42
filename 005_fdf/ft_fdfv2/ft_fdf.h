@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 10:26:25 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/29 17:38:10 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/06/25 15:40:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	close_window(t_data *data);
 
 /* ./manage_image.c ========================================================= */
 int	img_pixel_put(t_img *img, int x, int y, int color);
-int	render_background(t_img *img, int color);
-int	render(t_data *data);
+int	render_background(t_img *img);
 
 #endif
