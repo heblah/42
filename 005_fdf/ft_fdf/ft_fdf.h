@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/24 10:26:25 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/29 17:38:10 by halvarez         ###   ########.fr       */
+/*   Created: 2022/06/30 13:55:23 by halvarez          #+#    #+#             */
+/*   Updated: 2022/06/30 14:40:11 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,18 @@
 # include <fcntl.h>
 # include <limits.h>
 
-/* ./handle_window.c ======================================================== */
-int	handle_window(t_data *data);
-int	handle_no_event(void *data __attribute__((unused)));
+/* ./handle_keyboard.c ====================================================== */
 int	handle_keypress(int keysym, t_data *data);
-int	handle_keyrelease(int keysym, void *data);
-int	track_clickmouse(int button , int x, int y, void *param);
-int	track_mouse(int x, int y, void *param);
+int manage_keyboard(t_data *data);
 
-/* ./manage_window.c ======================================================== */
+/* ./main.c ================================================================= */
 int	open_window(t_data *data);
 int	close_window(t_data *data);
 
-/* ./manage_image.c ========================================================= */
+/* ./handle_img.c =========================================================== */
 int	img_pixel_put(t_img *img, int x, int y, int color);
 int	render_background(t_img *img, int color);
-int	render(t_data *data);
-
+//int	render(t_data *data);
+int	render(t_data *data, int color);
+int	new_img(t_data *data);
 #endif
