@@ -6,12 +6,12 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/25 16:00:49 by halvarez         ###   ########.fr        #
+#    Updated: 2022/06/30 12:28:35 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    	= fdf
-SRCS		= ft_fdf/main.c ft_fdf/manage_window.c ft_fdf/handle_window.c ft_fdf/handle_img.c
+SRCS		= ft_fdf/main.c ft_fdf/handle_keyboard.c ft_fdf/handle_img.c
 OBJS		= ${SRCS:.c=.o}
 OMLX		= -I/usr/include -Imlx_linux -O3
 CC			= cc -g

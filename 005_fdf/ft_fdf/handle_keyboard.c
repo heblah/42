@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_window.c                                    :+:      :+:    :+:   */
+/*   handle_keyboard.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/23 16:01:31 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/29 14:30:22 by halvarez         ###   ########.fr       */
+/*   Created: 2022/06/30 12:02:52 by halvarez          #+#    #+#             */
+/*   Updated: 2022/06/30 12:15:55 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_lib_struct.h"
 #include "ft_fdf.h"
 
-int	open_window(t_data *data)
+int	handle_keypress(int keysym, t_data *data)
 {
-	data->mlx_ptr = mlx_init();
-	if (data->mlx_ptr == NULL)
-		return (MLX_ERROR);
-	data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,
-		"Fil de fer !");
-	if (data->win_ptr == NULL)
+	if (keysym == XK_Escape)
 	{
-		free(data->win_ptr);
-		return (MLX_ERROR);
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		data->win_ptr = NULL;
 	}
+	printf("Key pressed = %d", keysym);
 	return (0);
 }
 
-int	close_window(t_data *data)
+int	handle_input(int keysym, t_data *data)
 {
-	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
-	mlx_destroy_display(data->mlx_ptr);
-	//free(data->img);
-	free(data->mlx_ptr);
+	if (keysym == XK_Escape)
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	return (0);
+}
+
+int	handle_no_event(void *data __attribute__((unused)))
+{
+	/* This function needs to exist, but it is useless for the moment */
 	return (0);
 }
