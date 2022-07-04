@@ -6,12 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/30 14:47:22 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:22:55 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_lib_struct.h"
 #include "ft_fdf.h"
+
+#define BACKGROUND 0x2F4F4F
 
 int	img_pixel_put(t_img *img, int x, int y, int color)
 {
@@ -43,12 +45,11 @@ int	render_background(t_img *img, int color)
 
 int	render(t_data *data, int color)
 {
-	color = 0xFFA500;
+	color = BACKGROUND;
 	if (data->win_ptr == NULL)
 		return (1);
 	render_background(&data->img, color);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
-
 	return (0);
 }
 

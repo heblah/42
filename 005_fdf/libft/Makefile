@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/22 17:39:15 by halvarez         ###   ########.fr        #
+#    Updated: 2022/07/04 14:36:41 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,6 @@ PRINTF		= printf/ft_printf.c printf/ft_puthex.c printf/ft_putnbr.c \
 	printf/ft_puttxt.c
 GNL			= gnl/get_next_line_bonus.c gnl/get_next_line_utils_bonus.c
 OBJS		= ${LIBFT:.c=.o} ${PRINTF:.c=.o} ${GNL:.c=.o}
-BONUS_O		= ${BONUS_C:.c=.o}
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 RM			= rm -rf

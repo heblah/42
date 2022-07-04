@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/04 12:31:29 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:58:35 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,18 @@ int	main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 {
 	t_data	data;
 
-	if (open_window(&data) == MLX_ERROR)
-		return (MLX_ERROR);
+	if (argc <= 2)
+	{
+		if (open_window(&data) == MLX_ERROR)
+			return (MLX_ERROR);
 
-	new_img(&data);
+		new_img(&data);
 
-	manage_keyboard(&data);
-	close_window(&data);
+		manage_keyboard(&data);
+		close_window(&data);
+	}
+	else
+		ft_putstr_fd("Select one map.", 1);
 	return (0);
 }
 
@@ -53,11 +58,12 @@ int	print_error(int err, int line, const char *func, char *file)
 	int	errsv;
 
 	errsv = err;
-	printf("%s\n"
+	ft_printf("%s\n"
 		"Error line %d, function %s in the file \"%s\"",
 		strerror(errsv), line, func, file);
 	return (0);
 }
+
 /*
 	data.img.mlx_img = mlx_new_image(data.mlx_ptr, WINDOW_WIDTH, WINDOW_WIDTH);
 	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp, &data.img.line_len, &data.img.endian);

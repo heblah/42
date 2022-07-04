@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/04 12:33:47 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/04 13:37:27 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <mlx.h>
 # include <sys/types.h>
 # include <string.h>
+# include "../libft/libft/libft.h"
+# include "../libft/gnl/get_next_line_bonus.h"
+# include "../libft/printf/ft_printf.h"
 
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080

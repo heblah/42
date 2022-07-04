@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   crash_malloc.c                                     :+:      :+:    :+:   */
+/*   maintests.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 14:17:45 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/04 18:42:31 by halvarez         ###   ########.fr       */
+/*   Created: 2022/07/04 14:32:30 by halvarez          #+#    #+#             */
+/*   Updated: 2022/07/04 14:42:09 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+//#include "printf/ft_printf.h"
+#include "libft/libft.h"
+#include "printf/ft_printf.h"
+#include "gnl/get_next_line_bonus.h"
 
 int	main(void)
 {
-	int	*ptr;
-	int	i;
-
-	i = 0;
-	ptr = malloc(2500 * sizeof(int));
-	while (i < 2500)
-	{
-		*(ptr + i++) = 5;
-		printf("%d", i);
-	}
+	ft_printf("test test test");
 	return (0);
 }
