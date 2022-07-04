@@ -6,15 +6,17 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/30 11:30:00 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/04 12:33:47 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_LIB_H
 # include <X11/X.h>
 # include <X11/keysym.h>
-//# include <stdlib.h>
+# include <stdlib.h>
 # include <mlx.h>
+# include <sys/types.h>
+# include <string.h>
 
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080

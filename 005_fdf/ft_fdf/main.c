@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/30 15:11:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/04 12:31:29 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,16 @@ int	close_window(t_data *data)
 	return (0);
 }
 
+int	print_error(int err, int line, const char *func, char *file)
+{
+	int	errsv;
+
+	errsv = err;
+	printf("%s\n"
+		"Error line %d, function %s in the file \"%s\"",
+		strerror(errsv), line, func, file);
+	return (0);
+}
 /*
 	data.img.mlx_img = mlx_new_image(data.mlx_ptr, WINDOW_WIDTH, WINDOW_WIDTH);
 	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp, &data.img.line_len, &data.img.endian);
