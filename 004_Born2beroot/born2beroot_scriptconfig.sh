@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    born2beroot_scriptconfig.sh                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
+#    By: <3 halvarez <halvarez@student.42.fr>        #+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/16 09:56:42 by halvarez         ###   ########.fr        #
+#    Updated: 2022/07/02 22:37:01 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
