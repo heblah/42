@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:02:52 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/30 13:52:54 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/04 17:37:17 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int manage_keyboard(t_data *data)
 {
 	//mlx_loop_hook(data.mlx_ptr, &handle_no_event, &data);
 	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, &handle_keypress, data);
+//	mlx_hook(data->win, ClientMessage, LeaveWindowMask, \
+//		&cross_btn_handler, data);
 	mlx_loop(data->mlx_ptr);
 	return (0);
 }

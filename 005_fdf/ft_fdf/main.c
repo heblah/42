@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/30 15:11:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:58:35 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,18 @@ int	main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 {
 	t_data	data;
 
-	if (open_window(&data) == MLX_ERROR)
-		return (MLX_ERROR);
+	if (argc <= 2)
+	{
+		if (open_window(&data) == MLX_ERROR)
+			return (MLX_ERROR);
 
-	new_img(&data);
+		new_img(&data);
 
-	manage_keyboard(&data);
-	close_window(&data);
+		manage_keyboard(&data);
+		close_window(&data);
+	}
+	else
+		ft_putstr_fd("Select one map.", 1);
 	return (0);
 }
 
@@ -45,6 +50,17 @@ int	close_window(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
+	return (0);
+}
+
+int	print_error(int err, int line, const char *func, char *file)
+{
+	int	errsv;
+
+	errsv = err;
+	ft_printf("%s\n"
+		"Error line %d, function %s in the file \"%s\"",
+		strerror(errsv), line, func, file);
 	return (0);
 }
 
