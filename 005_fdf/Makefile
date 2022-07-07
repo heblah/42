@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/07/04 17:48:44 by halvarez         ###   ########.fr        #
+#    Updated: 2022/07/07 09:37:52 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ OBJS		= ${SRCS:.c=.o}
 OMLX		= -I/usr/include -Imlx_linux -O3
 CC			= cc -g
 CFLAGS		= -Wall -Wextra -Werror 
-CLIB		= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
-CLIB		+= -Llibft -lft
+CLIB		= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm
+CLIB		+= -lz -Llibft -lft
 MAKE		= make
 CLEAN		= make clean
 FCLEAN		= make fclean
