@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:47:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/04 11:56:34 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/07 14:18:38 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(void)
 
 	fd = open("./dontexist", O_RDONLY);
 	if (fd == -1)
-		print_error(errno, __LINE__, __func__, __FILE__);
+		print_error(fd __LINE__, __func__, __FILE__);
 	return (0);
 }
 

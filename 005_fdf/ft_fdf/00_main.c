@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   00_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/04 16:58:35 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/07 11:46:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_lib_struct.h"
 #include "ft_fdf.h"
 
+/*WARNING L21 --> argc == 2, <= only for debugging*/
 int	main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 {
 	t_data	data;
@@ -59,7 +60,7 @@ int	print_error(int err, int line, const char *func, char *file)
 
 	errsv = err;
 	ft_printf("%s\n"
-		"Error line %d, function %s in the file \"%s\"",
+		"Error line %d, function %s in the file \"%s\"\n",
 		strerror(errsv), line, func, file);
 	return (0);
 }
