@@ -6,30 +6,34 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/07 11:46:57 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/13 17:58:03 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_lib_struct.h"
 #include "ft_fdf.h"
 
-/*WARNING L21 --> argc == 2, <= only for debugging*/
+//WARNING L21 --> argc == 2, <= only for debugging
 int	main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 {
+/*
 	t_data	data;
 
-	if (argc <= 2)
+	if (argc == 2)
 	{
 		if (open_window(&data) == MLX_ERROR)
 			return (MLX_ERROR);
 
 		new_img(&data);
-
+	//	map_parser((const char *)argv[1]);		
+	//	freetab(matrix);
+	//	printf("sizeof(t_map)=%ld\n", sizeof(t_map));
 		manage_keyboard(&data);
 		close_window(&data);
 	}
 	else
-		ft_putstr_fd("Select one map.", 1);
+		ft_putstr_fd("Select one map.\n", 1);
+*/
 	return (0);
 }
 
@@ -54,7 +58,7 @@ int	close_window(t_data *data)
 	return (0);
 }
 
-int	print_error(int err, int line, const char *func, char *file)
+void *print_errno(int err, int line, const char *func, char *file)
 {
 	int	errsv;
 
@@ -62,9 +66,16 @@ int	print_error(int err, int line, const char *func, char *file)
 	ft_printf("%s\n"
 		"Error line %d, function %s in the file \"%s\"\n",
 		strerror(errsv), line, func, file);
-	return (0);
+	return (NULL);
 }
 
+void *print_error(char *s, int line, const char *func, char *file)
+{
+	ft_printf("%s\n"
+		"Error line %d, function %s in the file \"%s\"\n",
+		s, line, func, file);
+	return (NULL);
+}
 /*
 	data.img.mlx_img = mlx_new_image(data.mlx_ptr, WINDOW_WIDTH, WINDOW_WIDTH);
 	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp, &data.img.line_len, &data.img.endian);

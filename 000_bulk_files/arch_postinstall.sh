@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/15 14:08:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/20 17:13:48 by halvarez         ###   ########.fr        #
+#    Updated: 2022/07/12 11:15:03 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@
  pacman -Syu --noconfirm
 
 #app install
- pacman -S --noconfirm vim git gdb gcc bluez bluez-utils tlp ntfs-3g
+ pacman -S --noconfirm vim git gdb gcc valgrind bluez bluez-utils tlp ntfs-3g
  pacman -S --noconfirm vlc vivaldi vivaldi-ffmpeg-codecs powertop
 
 #bluetooth activation
@@ -34,7 +34,7 @@
  systemctl restart tlp.service
  
 #if sound not recognized
- pacman -S sof-firmware alsa-ucm-conf
+# pacman -S sof-firmware alsa-ucm-conf
 
 #42 stuff
  git clone git@github.com:heblah/42.git /home/hans/42

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:34:13 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/07 14:06:05 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/13 15:04:00 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	is_space(const char c)
 {
-	if (c == ' ')
+	if (c == ' ' || c == '\n')
 		return (1);
 	return (0);
 }
@@ -34,56 +34,47 @@ int	width_counter(const char *line_map)
 
 	count = 0;
 	i = 0;
-	while (*(map + i))
+	while (*(line_map + i))
 	{
-		if (*(map + i + 1) && is_nbr(*(map + i)) && is_space(*(map + i + 1)))
+		if (*(line_map + i + 1) && is_nbr(*(line_map + i))
+			&& is_space(*(line_map + i + 1)))
 			count++;
-		else if (is_nbr(*(map + i)) && *(map + i + 1) == '\0')
+		else if (is_nbr(*(line_map + i)) && *(line_map + i + 1) == '\0')
 			count++;
 		i++;
 	}
 	return (count);
 }
 
-int	**free_tab(int **tab)
+t_map	*free_map(t_map *lst_map)
 {
-	int	i;
+	t_map	*tmp;
 
-	i = 0;
-	while (*(tab + i))
+	while (lst_map)
 	{
-		free(*(tab + i));
-		*(tab + i) = NULL;
-		i++;
+		tmp = lst_map->next;
+		free(lst_map->x);
+		lst_map->x = NULL;
+		free(lst_map);
+		lst_map = tmp;
 	}
-	free(tab);
-	tab = NULL
 	return (NULL);
 }
 
-int	**intcpy(int **src, int width, int raw)
+void	map_addback(t_map **lst_map, t_map *newline)
 {
-	int	**dst;
-	int	i;
-	int	j;
+	t_map	*tmp;
 
-	dst = malloc((raw + 1) * sizeof(int *));
-	if (!dst)
-		return (NULL);
-	i = 0;
-	while (*(dst + i))
+	if (*lst_map == NULL && newline)
 	{
-		*(dst + i) = malloc(width * sizeof(int));
-		if (*(dst + i))
-			return (free_tab(dst));
-		j = 0;
-		while (++j < width)
-		{
-			*(*(dst + i) + j) = *(*(src + i) + j);
-			j++;
-		}
-		i++;
+		*lst_map = newline;
+		newline->next = NULL;
 	}
-	free_tab(src);
-	return (dst);
+	else if (*lst_map && newline)
+	{
+		tmp = *lst_map;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = newline;
+	}
 }

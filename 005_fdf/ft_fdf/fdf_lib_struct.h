@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/04 13:37:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/13 18:05:03 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <stdlib.h>
-# include <mlx.h>
+//# include <mlx.h>
 # include <sys/types.h>
 # include <string.h>
 # include "../libft/libft/libft.h"
-# include "../libft/gnl/get_next_line_bonus.h"
+# include "../libft/gnl/get_next_line.h"
 # include "../libft/printf/ft_printf.h"
 
 # define WINDOW_WIDTH 1920
@@ -43,4 +43,11 @@ typedef struct s_data
 	t_img	img;
 }	t_data;
 
+/* t_imgtmp : map into chained list before **int============================= */
+typedef struct s_map
+{
+	int				*x;
+	int				width;
+	struct s_map	*next;
+}					t_map;
 #endif
