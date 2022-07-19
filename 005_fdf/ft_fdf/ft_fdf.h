@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:29:22 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/13 16:02:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/20 00:30:50 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	*intdup(int *s, int width);
 void	freetab(int **tab);
 
 /* ./03_parsing.c =========================================================== */
-int		**map_parser(const char *file_map);
+t_matrix	map_parser(const char *file_map);
 void	puttab(int **tab, int len);
 
 /* ./00_main.c ============================================================== */

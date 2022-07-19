@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:04:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/13 15:42:42 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/20 00:33:38 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,40 +68,38 @@ static t_map	*file2lst(int fd)
 	return (first);
 }
 
-static int	**lst2matrix(t_map *lst_map)
+static t_matrix	lst2matrix(t_map *lst_map)
 {
-	int	**pxl;
-	int	height;
-	int	i;
+	t_matrix	m_map;
+	int			i;
 	t_map	*first;
 
 	first = lst_map;
-	height = map_height(lst_map);
-	pxl = malloc((height + 1) * sizeof(int *));
-	if (!pxl)
+	m_map.row = map_height(lst_map);
+	m_map.col = lst_map->width;
+	m_map.pxl = malloc((m_map.col + 1) * sizeof(int *));
+	if (!m_map.pxl)
 		return (NULL);
-	*(pxl + height) = NULL;
+	*(m_map.tab + m_map.row) = NULL;
 	i = 0;
-	while (i < height)
+	while (i < m_map.row)
 	{
-		*(pxl + i) = intdup(lst_map->x, lst_map->width);
-//		lst_map = freefirst(lst_map);
+		*(m_map.pxl + i) = intdup(lst_map->x, lst_map->width);
 		lst_map = lst_map->next;
 		i++;
 	}
 	free_map(first);
-	//puttab(pxl, 19);
-	return (pxl);
+	return (m_map);
 }
 
-int	**map_parser(const char *file_map)
+t_matrix	map_parser(const char *file_map)
 {
-	t_map	*lst_map;
-	int		**pxl;
-	int		fd;
-	int		errno;
+	t_map		*lst_map;
+	t_matrix	m_map;
+	int			fd;
+	int			errno;
 
-	pxl = NULL;
+	m_map.pxl = NULL;
 	errno = 0;
 	fd = open(file_map, O_RDONLY);
 	if (fd == -1)
@@ -109,10 +107,10 @@ int	**map_parser(const char *file_map)
 	lst_map = file2lst(fd);
 	if (!lst_map)
 		return (NULL);
-	pxl = lst2matrix(lst_map);
-	if (!pxl)
+	m_map = lst2matrix(lst_map);
+	if (!m_nap.pxl)
 		return (NULL);
-	return (pxl);
+	return (m_map);
 }
 
 void	puttab(int **tab, int len)

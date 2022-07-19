@@ -6,19 +6,19 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/07/13 18:09:18 by halvarez         ###   ########.fr        #
+#    Updated: 2022/07/14 12:48:45 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    	= fdf
-SRCS		= ./ft_fdf/00_test_main.c
-#SRCS		= ./ft_fdf/00_main.c ./ft_fdf/01_handle_keyboard.c ./ft_fdf/02_handle_img.c
-#SRCS		+= ./ft_fdf/03_parsing.c ./ft_fdf/04_parsing_utils.c ./ft_fdf/05_parsing_utils.c
+#SRCS		= ./ft_fdf/00_test_main.c
+SRCS		= ./ft_fdf/00_main.c ./ft_fdf/01_handle_keyboard.c ./ft_fdf/02_handle_img.c
+SRCS		+= ./ft_fdf/03_parsing.c ./ft_fdf/04_parsing_utils.c ./ft_fdf/05_parsing_utils.c
 OBJS		= ${SRCS:.c=.o}
-OMLX		= -I/usr/include -Imlx_linux -O3
+OMLX		= -I/usr/include -Imlx_linux
 CC			= cc -g 
 CFLAGS		= -Wall -Wextra -Werror
-CLIB		= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm
+CLIB		= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lm -lXext -lX11
 CLIB		+= -lz -Llibft -lft
 MAKE		= make
 CLEAN		= make clean

@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/15 14:08:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/07/12 11:15:03 by halvarez         ###   ########.fr        #
+#    Updated: 2022/07/19 19:19:56 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@
 
 #app install
  pacman -S --noconfirm vim git gdb gcc valgrind bluez bluez-utils tlp ntfs-3g
- pacman -S --noconfirm vlc vivaldi vivaldi-ffmpeg-codecs powertop
+ pacman -S --noconfirm vlc vivaldi vivaldi-ffmpeg-codecs
+ pacman -S --noconfirm sway swaylock swayidle swaybg dmenu alacritty
 
 #bluetooth activation
  systemctl enable bluetooth.service

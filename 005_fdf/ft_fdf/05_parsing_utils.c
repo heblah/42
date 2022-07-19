@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:34:13 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/13 14:16:52 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/19 16:32:07 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,6 @@ int	map_height(t_map *lst_map)
 		i++;
 	}
 	return (i);
-}
-
-t_map	*freefirst(t_map *lst_map)
-{
-	t_map	*tmp;
-
-	tmp = NULL;
-	if (lst_map)
-	{
-		tmp = lst_map->next;
-		free(lst_map->x);
-		lst_map->x = NULL;
-		free(lst_map);
-		lst_map = NULL;
-	}
-	return (tmp);
 }
 
 int	*intdup(int *s, int width)

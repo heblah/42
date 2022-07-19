@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/13 18:05:03 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/19 16:31:34 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <stdlib.h>
-//# include <mlx.h>
+# include <mlx.h>
 # include <sys/types.h>
 # include <string.h>
 # include "../libft/libft/libft.h"
@@ -43,11 +43,19 @@ typedef struct s_data
 	t_img	img;
 }	t_data;
 
-/* t_imgtmp : map into chained list before **int============================= */
+/* t_map : map into chained list before matrix ============================== */
 typedef struct s_map
 {
 	int				*x;
 	int				width;
 	struct s_map	*next;
 }					t_map;
+
+/* t_matrix :  into chained list before matrix ============================== */
+typedef struct s_matrix
+{
+	int	**pxl;
+	int	row;
+	int	col;
+}		t_matrix;
 #endif
