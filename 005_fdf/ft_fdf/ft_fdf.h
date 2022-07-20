@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_fdf.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 09:55:23 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/20 11:27:07 by halvarez         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FT_FDF_H
 # define FT_FDF_H
 
@@ -20,6 +8,7 @@
 # include <limits.h>
 
 /* ./03_parsing.c =========================================================== */
+int	*char2int(const char *line_map, int width);
 t_matrix	*map_parser(const char *file_map, t_matrix *m_map);
 void	puttab(int **tab, int len);
 
@@ -27,6 +16,8 @@ void	puttab(int **tab, int len);
 int	map_height(t_map *lst_map);
 int	*intdup(int *s, int width);
 void	freetab(int **tab);
+t_map	*new_elem(t_map **first, t_map *lst_map, int width, char *line_map);
+int	clean_gnl(int fd, char *line_map);
 
 /* ./00_main.c ============================================================== */
 int	open_window(t_data *data);

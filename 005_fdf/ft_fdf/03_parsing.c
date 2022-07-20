@@ -6,14 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:04:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/20 11:39:28 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:35:44 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_lib_struct.h"
 #include "ft_fdf.h"
 
-static int	*char2int(const char *line_map, int width)
+int	*char2int(const char *line_map, int width)
 {
 	int	*tab;
 	int	len;
@@ -41,9 +41,8 @@ static int	*char2int(const char *line_map, int width)
 	return (tab);
 }
 
-static t_map	*file2lst(int fd)
+static t_map	*file2lst(int fd, t_map *lst_map)
 {
-	t_map	*lst_map;
 	t_map	*first;
 	char	*line_map;
 	int		width;
@@ -55,13 +54,16 @@ static t_map	*file2lst(int fd)
 	{
 		lst_map = malloc(1 * sizeof(t_map));
 		if (!lst_map)
+		{
+			clean_gnl(fd, line_map);
 			return (free_map(first));
-		map_addback(&first, lst_map);
-		lst_map->x = char2int(line_map, width);
+		}
+		lst_map = new_elem(&first, lst_map, width, line_map);
 		if (!lst_map->x)
+		{
+			clean_gnl(fd, line_map);
 			return (free_map(first));
-		lst_map->width = width;
-		lst_map->next = NULL;
+		}
 		free(line_map);
 		line_map = get_next_line(fd);
 	}
@@ -97,12 +99,13 @@ t_matrix	*map_parser(const char *file_map, t_matrix *m_map)
 	int			fd;
 	int			errno;
 
+	lst_map = NULL;
 	m_map->pxl = NULL;
 	errno = 0;
 	fd = open(file_map, O_RDONLY);
 	if (fd == -1)
 		return (print_errno(errno, __LINE__ - 2, __func__, __FILE__));
-	lst_map = file2lst(fd);
+	lst_map = file2lst(fd, lst_map);
 	if (!lst_map)
 		return (NULL);
 	m_map = lst2matrix(lst_map, m_map);

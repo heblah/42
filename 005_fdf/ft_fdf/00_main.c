@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/20 11:00:57 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:16:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ int	main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 	if (argc == 2)
 	{
 		map_parser((const char *)argv[1], &m_map);		
+		if (m_map.pxl)
+		{
+			puttab(m_map.pxl, m_map.col);
+			freetab(m_map.pxl);
+		}
 		/*
-		puttab(m_map.pxl, m_map.col);
-		freetab(m_map.pxl);
 		if (open_window(&data) == MLX_ERROR)
 			return (MLX_ERROR);
 		new_img(&data);

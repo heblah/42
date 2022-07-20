@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:34:13 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/19 16:32:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:38:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,24 @@ void	freetab(int **tab)
 	}
 	free(tab);
 	tab = NULL;
+}
+
+t_map	*new_elem(t_map **first, t_map *lst_map, int width, char *line_map)
+{
+		lst_map->width = width;
+		lst_map->next = NULL;
+		map_addback(first, lst_map);
+		lst_map->x = char2int(line_map, width);
+	return (lst_map);
+}
+
+int	clean_gnl(int fd, char *line_map)
+{
+	while (line_map)
+	{
+		free(line_map);
+		line_map = get_next_line(fd);
+	}
+	line_map = NULL;
+	return (0);
 }
