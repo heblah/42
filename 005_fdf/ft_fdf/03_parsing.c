@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:04:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/20 00:33:38 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/20 11:04:38 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,35 +56,34 @@ static t_map	*file2lst(int fd)
 		lst_map = malloc(1 * sizeof(t_map));
 		if (!lst_map)
 			return (free_map(first));
+		map_addback(&first, lst_map);
 		lst_map->x = char2int(line_map, width);
 		if (!lst_map->x)
 			return (free_map(first));
 		lst_map->width = width;
 		lst_map->next = NULL;
-		map_addback(&first, lst_map);
 		free(line_map);
 		line_map = get_next_line(fd);
 	}
 	return (first);
 }
 
-static t_matrix	lst2matrix(t_map *lst_map)
+static t_matrix	*lst2matrix(t_map *lst_map, t_matrix *m_map)
 {
-	t_matrix	m_map;
-	int			i;
+	int		i;
 	t_map	*first;
 
 	first = lst_map;
-	m_map.row = map_height(lst_map);
-	m_map.col = lst_map->width;
-	m_map.pxl = malloc((m_map.col + 1) * sizeof(int *));
-	if (!m_map.pxl)
+	m_map->row = map_height(lst_map);
+	m_map->col = lst_map->width;
+	m_map->pxl = malloc((m_map->col + 1) * sizeof(int *));
+	if (!m_map->pxl)
 		return (NULL);
-	*(m_map.tab + m_map.row) = NULL;
+	*(m_map->pxl + m_map->row) = NULL;
 	i = 0;
-	while (i < m_map.row)
+	while (i < m_map->row)
 	{
-		*(m_map.pxl + i) = intdup(lst_map->x, lst_map->width);
+		*(m_map->pxl + i) = intdup(lst_map->x, lst_map->width);
 		lst_map = lst_map->next;
 		i++;
 	}
@@ -92,14 +91,13 @@ static t_matrix	lst2matrix(t_map *lst_map)
 	return (m_map);
 }
 
-t_matrix	map_parser(const char *file_map)
+t_matrix	*map_parser(const char *file_map, t_matrix *m_map)
 {
 	t_map		*lst_map;
-	t_matrix	m_map;
 	int			fd;
 	int			errno;
 
-	m_map.pxl = NULL;
+	m_map->pxl = NULL;
 	errno = 0;
 	fd = open(file_map, O_RDONLY);
 	if (fd == -1)
@@ -107,8 +105,8 @@ t_matrix	map_parser(const char *file_map)
 	lst_map = file2lst(fd);
 	if (!lst_map)
 		return (NULL);
-	m_map = lst2matrix(lst_map);
-	if (!m_nap.pxl)
+	m_map = lst2matrix(lst_map, m_map);
+	if (!m_map->pxl)
 		return (NULL);
 	return (m_map);
 }

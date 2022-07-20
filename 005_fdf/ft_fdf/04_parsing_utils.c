@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:34:13 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/15 10:08:05 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/20 11:15:35 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,19 @@ int	width_counter(const char *line_map)
 
 t_map	*free_map(t_map *lst_map)
 {
+	t_map	*tmp;
+
 	if (lst_map)
 	{
-		free_map(lst_map->next);
+		tmp = lst_map->next;
 		free(lst_map->x);
 		lst_map->x = NULL;
+		free(lst_map);
+		lst_map = NULL;
+		free_map(tmp);
+	}
+	else
+	{
 		free(lst_map);
 		lst_map = NULL;
 	}

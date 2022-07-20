@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/20 00:30:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/20 11:00:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,21 @@
 //WARNING L21 --> argc == 2, <= only for debugging
 int	main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 {
-	t_data		data;
+	t_data		data __attribute__((unused));
 	t_matrix	m_map;
 
 	if (argc == 2)
 	{
+		map_parser((const char *)argv[1], &m_map);		
+		/*
+		puttab(m_map.pxl, m_map.col);
+		freetab(m_map.pxl);
 		if (open_window(&data) == MLX_ERROR)
 			return (MLX_ERROR);
-
 		new_img(&data);
-		m_map = map_parser((const char *)argv[1]);		
-		puttab(m_map.pxl, 19);
-		freetab(m_map.pxl);
 		manage_keyboard(&data);
 		close_window(&data);
+		*/
 	}
 	else
 		ft_putstr_fd("Select one map.\n", 1);

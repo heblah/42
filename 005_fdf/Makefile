@@ -6,12 +6,11 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/07/14 12:48:45 by halvarez         ###   ########.fr        #
+#    Updated: 2022/07/20 10:04:38 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    	= fdf
-#SRCS		= ./ft_fdf/00_test_main.c
 SRCS		= ./ft_fdf/00_main.c ./ft_fdf/01_handle_keyboard.c ./ft_fdf/02_handle_img.c
 SRCS		+= ./ft_fdf/03_parsing.c ./ft_fdf/04_parsing_utils.c ./ft_fdf/05_parsing_utils.c
 OBJS		= ${SRCS:.c=.o}
