@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   crash_malloc.c                                     :+:      :+:    :+:   */
+/*   ptr_tests.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 14:17:45 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/22 15:16:35 by halvarez         ###   ########.fr       */
+/*   Created: 2022/07/22 15:39:43 by halvarez          #+#    #+#             */
+/*   Updated: 2022/07/22 15:56:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
 
-#define malloc(...)	0
+int	*test(void);
 
-int	main(void)
+int main(void)
 {
-	int	*ptr;
-	int	i;
+	int	*p;
 
-	i = 0;
-	ptr = malloc(2500 * sizeof(int));
-	if (!ptr)
-		return (0);
-	while (i < 2500)
-	{
-		*(ptr + i++) = 5;
-		printf("%d", i);
-	}
+	p = test();
+	printf("%d\n", *p);
 	return (0);
+}
+
+int	*test(void)
+{
+	int a;
+
+	a = 9999;
+	return (&a);
 }
