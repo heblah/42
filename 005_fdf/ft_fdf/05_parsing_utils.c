@@ -6,11 +6,11 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:34:13 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/20 14:38:04 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/21 11:55:49 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_lib_struct.h"
+#include "t_fdf.h"
 #include "ft_fdf.h"
 
 int	map_height(t_map *lst_map)
@@ -41,21 +41,6 @@ int	*intdup(int *s, int width)
 		i++;
 	}
 	return (d);
-}
-
-void	freetab(int **tab)
-{
-	int	i;
-
-	i = 0;
-	while (*(tab + i))
-	{
-		free(*(tab + i));
-		*(tab + i) = NULL;
-		i++;
-	}
-	free(tab);
-	tab = NULL;
 }
 
 t_map	*new_elem(t_map **first, t_map *lst_map, int width, char *line_map)

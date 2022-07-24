@@ -6,11 +6,11 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:34:13 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/20 14:34:01 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/21 11:55:45 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_lib_struct.h"
+#include "t_fdf.h"
 #include "ft_fdf.h"
 
 int	is_space(const char c)

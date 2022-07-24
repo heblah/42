@@ -6,11 +6,11 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:04:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/20 14:35:44 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/07/22 10:35:00 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_lib_struct.h"
+#include "t_fdf.h"
 #include "ft_fdf.h"
 
 int	*char2int(const char *line_map, int width)
@@ -22,7 +22,7 @@ int	*char2int(const char *line_map, int width)
 	len = width_counter(line_map);
 	i = 0;
 	if (len != width)
-		return (print_error("Error on width size.", __LINE__ - 2, __func__,
+		return (print_error("Error on map format.", __LINE__ - 2, __func__,
 				__FILE__));
 	tab = malloc(len * sizeof(int));
 	if (!tab)
@@ -114,17 +114,20 @@ t_matrix	*map_parser(const char *file_map, t_matrix *m_map)
 	return (m_map);
 }
 
-void	puttab(int **tab, int len)
+void	puttab(int **tab, int row, int col)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	printf("\n ======== print int **tab====\n");
-	while (*(tab + i))
+	if (tab)
+		printf("======== print int **tab====\n");
+	else
+		printf("======== tab = NULL ========\n");
+	while (tab && i < row)
 	{
 		j = 0;
-		while (j < len)
+		while (j < col)
 		{
 			if (*(*(tab + i) + j) > 9)
 				printf("%d ", *(*(tab + i) + j));
