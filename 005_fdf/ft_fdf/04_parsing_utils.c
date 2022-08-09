@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:34:13 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/05 10:15:13 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 17:33:03 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	width_counter(const char *line_map)
 
 	count = 0;
 	i = 0;
-	while (*(line_map + i))
+	while (line_map && *(line_map + i))
 	{
 		if (*(line_map + i + 1) && is_mapable(*(line_map + i))
 			&& is_set(*(line_map + i + 1)))
@@ -49,6 +49,8 @@ int	width_counter(const char *line_map)
 			count++;
 		i++;
 	}
+	if (count == 0)
+		ft_printf("The map is empty.\n");
 	return (count);
 }
 

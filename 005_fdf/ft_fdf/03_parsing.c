@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:04:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/09 17:18:13 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 17:27:26 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ t_matrix	*map_parser(const char *file_map, t_matrix *m_map, t_data *data)
 	if (!*file_map)
 		return (NULL);
 	fd = open(file_map, O_RDONLY);
-	if (fd == -1 || read(fd, buf, 1) < 1)
+	if (fd == -1 || read(fd, buf, 0) < 0)
 		return (print_error("Map error.", __LINE__ - 2, __func__, __FILE__));
 	lst_map = file2lst(fd, lst_map);
 	if (!lst_map)
