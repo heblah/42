@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 11:22:14 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/09 11:26:53 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 12:25:48 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,5 @@ void		ft_bresenham(t_data *data, t_point pt1, t_point pt2);
 void		vert_bresenham(t_data *data, int dx, int dy, int ex);
 void		horz_bresenham(t_data *data, int dx, int dy, int ey);
 t_matrix	*add_origin(t_matrix *pts, t_matrix *origin);
+void		print_commands(void);
 #endif

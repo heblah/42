@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/08 16:15:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 12:27:35 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,12 @@ static int	open_window(t_data *data)
 
 static int	close_window(t_data *data)
 {
-	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
+	if (data->mlx_ptr && data->img.mlx_img)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
+		mlx_destroy_display(data->mlx_ptr);
+		free(data->mlx_ptr);
+	}
 	if (data->m_map)
 		free_matrix(data->m_map);
 	if (data->origin)
@@ -74,18 +77,19 @@ int	main(int argc, char **argv)
 		if (init_matrices(&data) == MLX_ERROR)
 			return (MLX_ERROR);
 		data.m_map = map_parser((const char *)argv[1], data.m_map, &data);
-		if (!data.m_map)
-			return (MLX_ERROR);
-		if (open_window(&data) == MLX_ERROR)
-			return (MLX_ERROR);
-		auto_setting(&data);
-		new_img(&data);
-		mlx_loop_hook(data.mlx_ptr, &render, &data);
-		mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
-		mlx_hook(data.win_ptr, 17, (1L << 24), &handle_closing, &data);
-		mlx_hook(data.win_ptr, ButtonPress, ButtonPressMask,
-			&handle_mouse, &data);
-		mlx_loop(data.mlx_ptr);
+		if (data.m_map)
+		{
+			if (open_window(&data) == MLX_ERROR)
+				return (MLX_ERROR);
+			new_img(&data);
+			mlx_loop_hook(data.mlx_ptr, &render, &data);
+			mlx_hook(data.win_ptr, KeyPress, KeyPressMask,
+				&handle_keypress, &data);
+			mlx_hook(data.win_ptr, 17, (1L << 24), &handle_closing, &data);
+			mlx_hook(data.win_ptr, ButtonPress, ButtonPressMask,
+				&handle_mouse, &data);
+			mlx_loop(data.mlx_ptr);
+		}
 		close_window(&data);
 	}
 	else

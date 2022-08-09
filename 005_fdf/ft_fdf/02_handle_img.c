@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/09 10:51:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 12:22:27 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ int	img_pixel_put(t_img *img, int x2d, int y2d, t_data *data)
 
 int	new_img(t_data *data)
 {
+	print_commands();
+	auto_setting(data);
 	data->img.mlx_img = mlx_new_image(data->mlx_ptr, W_WIDTH, W_HEIGHT);
 	data->img.addr = mlx_get_data_addr(data->img.mlx_img, &data->img.bpp,
 			&data->img.line_len, &data->img.endian);

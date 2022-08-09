@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/08/08 14:08:16 by halvarez         ###   ########.fr        #
+#    Updated: 2022/08/09 12:40:08 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS		+= 10_put2screen.c 11_projections.c 12_bresenham.c
 OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
 OMLX		= -I/usr/include -Imlx_linux
 CC			= cc -g 
-CFLAGS		= -Wall -Wextra -Werror -MMD
+CFLAGS		= -Wall -Wextra -Werror
 CLIB		= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lm -lXext -lX11
 CLIB		+= -lz -Llibft -lft
 MAKE		= make

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:49:38 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/09 10:42:57 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 12:39:14 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,19 @@ t_matrix	*add_origin(t_matrix *pts, t_matrix *origin)
 		}
 	}
 	return (pts);
+}
+
+void	print_commands(void)
+{
+	ft_printf("\nList of commands :\n");
+	ft_printf("Rotate around z axis (phi)\t:\t4 & 6 NumPad\n");
+	ft_printf("Rotate fom z axis (teta)\t:\t5 & 8 NumPad\n");
+	ft_printf("Combined rotation (phi+teta)\t:\t7 & 9 NumPad\n");
+	ft_printf("Modify z value\t\t\t:\t- & + NumPad\n");
+	ft_printf("Translations\t\t\t:\tthe 4 arrows\n");
+	ft_printf("Parallel projection\t\t:\tp\n");
+	ft_printf("Z symmetry\t\t\t:\ts\n");
+	ft_printf("Switch on/off bresemham algo\t:\tb\n");
+	ft_printf("change colors\t\t\t:\tPageUp & PageDown\n");
+	ft_printf("Reset origin\t\t\t:\t0 NumPad\n\n");
 }

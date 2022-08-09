@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 11:59:38 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/09 11:28:42 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 11:56:43 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_matrix	*new_vector(int x3d, int y3d, int z3d)
 
 int	init_matrices(t_data *data)
 {
-	data->init_color = GREEN;
+	data->init_color = ORANGE;
 	data->drawline = 1;
 	data->m_map = NULL;
 	data->origin = new_vector(0, 0, 0);

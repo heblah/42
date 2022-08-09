@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 09:19:12 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/09 11:21:23 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 11:57:16 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_point	init_point(int xpt, int ypt, int zpt)
 
 int	set_color(t_data *data, int j)
 {
-	if (data->m_map->pxl[z][j] >= -5 && data->m_map->pxl[z][j] <= 5)
+	if (data->m_map->pxl[z][j] >= -3 && data->m_map->pxl[z][j] <= 3)
 		data->color = BLUE;
 	else
 		data->color = data->init_color + (int)data->m_map->pxl[z][j];
