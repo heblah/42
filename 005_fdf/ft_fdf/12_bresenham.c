@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:49:38 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/08 15:21:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 10:42:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,22 @@ void	horz_bresenham(t_data *data, int dx, int dy, int ey)
 			ey += dy;
 		}
 	}
+}
+
+t_matrix	*add_origin(t_matrix *pts, t_matrix *origin)
+{
+	int	j;
+
+	j = 0;
+	if (pts && origin && pts->pxl && origin->pxl)
+	{
+		while (j < pts->col)
+		{
+			pts->pxl[x][j] += origin->pxl[x][0];
+			pts->pxl[y][j] += origin->pxl[y][0];
+			pts->pxl[z][j] += origin->pxl[z][0];
+			j++;
+		}
+	}
+	return (pts);
 }

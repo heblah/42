@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/08 13:01:44 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 10:51:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	render_projection(t_data *data)
 		data->tf_int = NULL;
 	}
 	data->proj2screen = NULL;
+	data->onscreen = add_origin(data->onscreen, data->origin);
+	data->color = data->init_color;
 	if (data->drawline == -1)
 		xyz2screen(data, data->onscreen);
 	else

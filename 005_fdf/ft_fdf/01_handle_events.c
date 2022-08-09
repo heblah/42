@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:02:52 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/06 15:23:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 11:26:06 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	handle_keypress(int keysym, t_data *data)
 		reset_origin(data, keysym);
 	else
 		key_transformation(data, keysym);
-	printf("Key pressed = %d\n", keysym);
 	return (0);
 }
 

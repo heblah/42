@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 09:19:12 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/08 16:42:03 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 11:21:23 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ void	xyz2screen(t_data *data, t_matrix *onscreen)
 	int	y2d;
 
 	j = 0;
-	data->color = data->init_color;
 	while (j < onscreen->col)
 	{
-		x2d = onscreen->pxl[x][j] + data->origin->pxl[x][0];
-		y2d = onscreen->pxl[y][j] + data->origin->pxl[y][0];
+		x2d = onscreen->pxl[x][j];
+		y2d = onscreen->pxl[y][j];
 		data->color = set_color(data, j);
 		img_pixel_put(&data->img, x2d, y2d, data);
 		j++;
@@ -38,24 +37,23 @@ void	line2screen(t_data *data, t_matrix *onscreen)
 	int	j;
 
 	j = -1;
-	data->color = data->init_color;
-	while (++j < onscreen->col)
+	while ((++j + 1) < onscreen->col)
 	{
 		data->color = set_color(data, j);
-		data->pt1 = init_point(onscreen->pxl[x][j] + data->origin->pxl[x][0],
-				onscreen->pxl[y][j] + data->origin->pxl[y][0], 0);
-		data->pt2 = init_point(onscreen->pxl[x][j + 1] + data->origin->pxl[x][0],
-				onscreen->pxl[y][j + 1] + data->origin->pxl[y][0], 0);
+		data->pt1 = init_point(onscreen->pxl[x][j], onscreen->pxl[y][j], 0);
+		data->pt2 = init_point(onscreen->pxl[x][j + 1],
+				onscreen->pxl[y][j + 1], 0);
 		if ((j + 1) % data->mapw != 0)
 			ft_bresenham(data, data->pt1, data->pt2);
-		if (j + data->mapw <= onscreen->col)
-		{
-			data->pt1 = init_point(onscreen->pxl[x][j] + data->origin->pxl[x][0],
-					onscreen->pxl[y][j] + data->origin->pxl[y][0], 0);
-			data->pt3 = init_point(onscreen->pxl[x][j + data->mapw] + data->origin->pxl[x][0],
-					onscreen->pxl[y][j + data->mapw] + data->origin->pxl[y][0], 0);
-			ft_bresenham(data, data->pt2, data->pt3);
-		}
+	}
+	j = -1;
+	while ((++j + data->mapw) < onscreen->col)
+	{
+		data->color = set_color(data, j);
+		data->pt1 = init_point(onscreen->pxl[x][j], onscreen->pxl[y][j], 0);
+		data->pt2 = init_point(onscreen->pxl[x][j + data->mapw],
+				onscreen->pxl[y][j + data->mapw], 0);
+		ft_bresenham(data, data->pt1, data->pt2);
 	}
 	free_matrix(onscreen);
 	data->onscreen = NULL;

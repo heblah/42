@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:04:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/05 09:38:44 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 11:26:43 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ t_matrix	*map_parser(const char *file_map, t_matrix *m_map, t_data *data)
 	return (m_map);
 }
 
+/*
 void	puttab(double **tab, int row __attribute__((unused)), int col)
 {
 	int	i;
@@ -138,3 +139,4 @@ void	puttab(double **tab, int row __attribute__((unused)), int col)
 		i++;
 	}
 }
+*/

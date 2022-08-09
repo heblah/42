@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fdf.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/09 11:22:14 by halvarez          #+#    #+#             */
+/*   Updated: 2022/08/09 11:26:53 by halvarez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_FDF_H
 # define FT_FDF_H
 
@@ -26,7 +38,6 @@ int			new_img(t_data *data);
 /* ./03_parsing.c =========================================================== */
 int			*char2int(const char *line_map, int width);
 t_matrix	*map_parser(const char *file_map, t_matrix *m_map, t_data *data);
-void		puttab(double **tab, int row __attribute__((unused)), int col);
 
 /* ./04_parsing_utils.c ===================================================== */
 int			is_set(const char c);
@@ -85,4 +96,5 @@ t_matrix	*ft_parallel(t_rotation rot);
 void		ft_bresenham(t_data *data, t_point pt1, t_point pt2);
 void		vert_bresenham(t_data *data, int dx, int dy, int ex);
 void		horz_bresenham(t_data *data, int dx, int dy, int ey);
+t_matrix	*add_origin(t_matrix *pts, t_matrix *origin);
 #endif
