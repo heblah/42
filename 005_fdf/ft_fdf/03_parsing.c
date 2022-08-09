@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:04:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/09 16:58:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 17:18:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_map	*file2lst(int fd, t_map *lst_map)
 	first = NULL;
 	line_map = get_next_line(fd);
 	width = width_counter(line_map);
-	while (line_map != NULL)
+	while (line_map != NULL && *line_map != '\0')
 	{
 		lst_map = malloc(1 * sizeof(t_map));
 		if (!lst_map)

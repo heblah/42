@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/08/09 12:40:08 by halvarez         ###   ########.fr        #
+#    Updated: 2022/08/09 17:01:58 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ RM			= rm -rf
 ${NAME}:${OBJS}
 		${MAKE} -C mlx_linux 
 		${MAKE} -C libft
-		${CC} ${OBJS} ${CLIB} -o ${NAME}
+		${CC} ${CFLAGS} ${OBJS} ${CLIB} -o ${NAME}
 
 all:    ${NAME}
 
