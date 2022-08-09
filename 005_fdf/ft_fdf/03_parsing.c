@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:04:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/09 12:10:17 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 14:11:17 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ t_matrix	*map_parser(const char *file_map, t_matrix *m_map, t_data *data)
 
 	lst_map = NULL;
 	errno = 0;
-	if (!*file_map)
+	if (!*file_map || ft_strlen(file_map) == 4 || ft_strlen(file_map) == 5)
 		return (NULL);
 	fd = open(file_map, O_RDONLY);
 	if (fd == -1)
