@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:12:43 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/09 17:21:35 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/09 18:07:10 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	key_transformation(t_data *data, int keysym)
 		data->init_color *= (1 - 0.01);
 	else if (keysym == 65451)
 		while (++data->m_map->j < data->m_map->col)
-			data->m_map->pxl[z][data->m_map->j] *= (1 + 0.1);
+			data->m_map->pxl[z][data->m_map->j] *= (1 + 0.01);
 	else if (keysym == 65453)
 		while (++data->m_map->j < data->m_map->col)
 			data->m_map->pxl[z][data->m_map->j] *= (1 - 0.1);
