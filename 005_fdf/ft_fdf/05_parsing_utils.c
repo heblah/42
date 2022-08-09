@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:34:13 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/21 11:55:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/04 16:45:09 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,11 @@ int	map_height(t_map *lst_map)
 	return (i);
 }
 
-int	*intdup(int *s, int width)
+double	*int2double(double *d, int *s, int width)
 {
-	int	*d;
-	int	i;
+	int		i;
 
 	i = 0;
-	d = malloc(width * sizeof(int));
-	if (!d)
-		return (NULL);
 	while (i < width)
 	{
 		*(d + i) = *(s + i);
@@ -45,10 +41,10 @@ int	*intdup(int *s, int width)
 
 t_map	*new_elem(t_map **first, t_map *lst_map, int width, char *line_map)
 {
-		lst_map->width = width;
-		lst_map->next = NULL;
-		map_addback(first, lst_map);
-		lst_map->x = char2int(line_map, width);
+	lst_map->width = width;
+	lst_map->next = NULL;
+	map_addback(first, lst_map);
+	lst_map->alt = char2int(line_map, width);
 	return (lst_map);
 }
 

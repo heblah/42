@@ -6,18 +6,21 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/07/21 13:54:05 by halvarez         ###   ########.fr        #
+#    Updated: 2022/08/08 14:08:16 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    	= fdf
-SRCS		= ./ft_fdf/00_main.c ./ft_fdf/01_handle_keyboard.c ./ft_fdf/02_handle_img.c
-SRCS		+= ./ft_fdf/03_parsing.c ./ft_fdf/04_parsing_utils.c ./ft_fdf/05_parsing_utils.c
-SRCS		+= ./ft_fdf/06_matrix_utils1.c 
-OBJS		= ${SRCS:.c=.o}
+SRCS_DIR	= ./ft_fdf/
+HEADER		= ft_${NAME}.h
+SRCS		= 00_main.c 01_handle_events.c 02_handle_img.c 03_parsing.c
+SRCS		+= 04_parsing_utils.c 05_parsing_utils.c 06_matrix_utils.c 
+SRCS		+= 07_matrix_utils.c 08_matrix_utils.c 09_put2screen.c 
+SRCS		+= 10_put2screen.c 11_projections.c 12_bresenham.c
+OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
 OMLX		= -I/usr/include -Imlx_linux
 CC			= cc -g 
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -MMD
 CLIB		= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lm -lXext -lX11
 CLIB		+= -lz -Llibft -lft
 MAKE		= make
@@ -40,10 +43,11 @@ clean:
 		${CLEAN} -C mlx_linux
 		${CLEAN} -C libft
 
-fclean:    clean
+fclean: clean
 		${RM} ${NAME}
 		${FCLEAN} -C libft
-        
+
 re:     fclean all
 
 .PHONY: all clean fclean re bonus
+#${RM} ${HEADER}# && ${MAKEH} ${HEADER}
