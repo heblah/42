@@ -69,7 +69,7 @@ t_matrix	*matrixcpy(t_matrix *a);
 /* ./08_matrix_utils.c ====================================================== */
 t_matrix	*init_vector(t_matrix *pt, int x3d, int y3d, int z3d);
 t_matrix	*new_vector(int x3d, int y3d, int z3d);
-int			init_matrices(t_data *data);
+int			init_data(t_data *data);
 t_matrix	*create_map(int row, int col, t_data *data);
 void		auto_setting(t_data *data);
 

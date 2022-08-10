@@ -74,7 +74,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		if (init_matrices(&data) == MLX_ERROR)
+		if (init_data(&data) == MLX_ERROR)
 			return (MLX_ERROR);
 		data.m_map = map_parser((const char *)argv[1], data.m_map, &data);
 		if (data.m_map)

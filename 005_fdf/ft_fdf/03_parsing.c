@@ -22,7 +22,7 @@ static t_map	*file2lst(int fd, t_map *lst_map)
 	first = NULL;
 	line_map = get_next_line(fd);
 	width = width_counter(line_map);
-	while (line_map != NULL && *line_map != '\0')
+	while (line_map != NULL && *line_map != '\0' && width > 0)
 	{
 		lst_map = malloc(1 * sizeof(t_map));
 		if (!lst_map)
@@ -109,7 +109,7 @@ t_matrix	*map_parser(const char *file_map, t_matrix *m_map, t_data *data)
 	if (!*file_map)
 		return (NULL);
 	fd = open(file_map, O_RDONLY);
-	if (fd == -1 || read(fd, buf, 0) < 0)
+	if (fd == -1 || read(fd, buf, 0) == -1)
 		return (print_error("Map error.", __LINE__ - 2, __func__, __FILE__));
 	lst_map = file2lst(fd, lst_map);
 	if (!lst_map)

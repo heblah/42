@@ -37,8 +37,10 @@ t_matrix	*new_vector(int x3d, int y3d, int z3d)
 	return (vector);
 }
 
-int	init_matrices(t_data *data)
+int	init_data(t_data *data)
 {
+	data->mlx_ptr = NULL;
+	data->win_ptr = NULL;
 	data->init_color = ORANGE;
 	data->drawline = 1;
 	data->m_map = NULL;
