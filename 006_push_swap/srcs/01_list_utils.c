@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/11 15:54:50 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/11 16:32:32 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,24 @@ void	mv_front(t_lst **first_a, t_lst **first_b)
 {
 	t_lst	*tmp;
 
-	if (first_a && first_b)
+	if (first_a && first_b && *first_a && *first_b)
 	{
 		tmp = *first_a;
 		(*first_a)->next->previous = (*first_a)->previous;
-		first->previous->next = first_a->next;
+		(*first_a)->previous->next = (*first_a)->next;
+		*first_a = first_a->next;
+		(*first_b)->previous->next = tmp;
+		(*first_b)->previous = tmp;
+		*first_b = tmp;
+	}
+	else if (first_a && first_b && *first_a && *first_b == NULL)
+	{
+		tmp = *first_a;
+		(*first_a)->next->previous = (*first_a)->previous;
+		(*first_a)->previous->next = (*first_a)->next;
+		*first_a = first_a->next;
+		*first_b = tmp;
+		(*first_b)->previous = tmp;
+		(*first_b)->next = tmp;
 	}
 }
