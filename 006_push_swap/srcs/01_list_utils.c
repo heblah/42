@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   03_list_utils.c                                    :+:      :+:    :+:   */
+/*   01_list_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/11 12:22:36 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/11 15:54:50 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,28 @@ int	list_len(t_lst *first)
 	else
 		i = 0;
 	return (i);
+}
+
+void	list_swap(t_lst *a, t_lst *b)
+{
+	int	tmp;
+
+	if (a && b)
+	{
+		tmp = a->n;
+		a->n = b->n;
+		b->n = tmp;
+	}
+}
+
+void	mv_front(t_lst **first_a, t_lst **first_b)
+{
+	t_lst	*tmp;
+
+	if (first_a && first_b)
+	{
+		tmp = *first_a;
+		(*first_a)->next->previous = (*first_a)->previous;
+		first->previous->next = first_a->next;
+	}
 }
