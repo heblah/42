@@ -1,0 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   t_push_swap.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/11 10:01:01 by halvarez          #+#    #+#             */
+/*   Updated: 2022/08/11 11:25:06 by halvarez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef T_PUSH_SWAP_H
+# define T_PUSH_SWAP_H
+
+# include "../libft/libft.h"
+# include "../printf/ft_printf.h"
+/* Chained list structure =================================================== */
+typedef struct s_list
+{
+	int				n;
+	struct s_list	*previous;
+	struct s_list	*next;
+}					t_list;
+
+/* Two-stack-structure ====================================================== */
+typedef struct s_stack
+{
+	t_list	*stacka;
+	t_list	*stackb;
+}			t_stack;
+#endif
