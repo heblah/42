@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:18:09 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/11 12:05:22 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/11 18:56:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,17 @@
 
 int	main()
 {
-	t_lst	*first;
+	t_stack	*stack;
 
-	first = NULL;
-	printf("len_list=%d\n", list_len(first));
-	first = list_addback(&first, 5);
-	printf("first n=%d\n", first->n);
-	printf("len_list=%d\n", list_len(first));
-	first = list_addback(&first, 10);
-	printf("2nd n=%d\n", first->next->n);
-	printf("len_list=%d\n", list_len(first));
-	first = list_addback(&first, 15);
-	printf("3rd n=%d\n", first->next->next->n);
-	printf("len_list=%d\n", list_len(first));
-	printf("3rd previous n=%d\n", first->next->next->previous->n);
-	printf("3rd next n=%d\n", first->next->next->next->n);
-	first = list_addback(&first, 20);
-	printf("4th n=%d\n", first->next->next->next->n);
-	printf("len_list=%d\n", list_len(first));
-	free_list(&first);
+	stack = init_stack();
+	if (!stack)
+		return (-1);
+	list_addback(&stack->a, 5);
+	list_addback(&stack->a, 10);
+	list_addback(&stack->a, 15);
+	ft_printf("1st a=%d\n", stack->a->n);
+	ft_printf("2nd a=%d\n", stack->a->next->n);
+	ft_printf("3rd a=%d\n", stack->a->next->next->n);
+	free_stack(&stack);
 	return (0);
 }
