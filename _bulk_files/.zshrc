@@ -6,9 +6,10 @@
 #    By: halvarez <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/21 19:45:48 by halvarez          #+#    #+#              #
-#    Updated: 2022/03/21 19:50:03 by halvarez         ###   ########.fr        #
+#    Updated: 2022/08/11 16:08:58 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-alias gc='gcc -Wall -Wextra -Werror'
-alias gcd='gcc -g -Wall -Wextra -Werror'
+alias ga='git add --all -v'
+alias gc='git commit -am $1'
+alias gp='git push'
