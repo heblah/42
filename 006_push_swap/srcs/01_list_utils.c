@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/11 16:32:32 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/11 16:34:54 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,3 +108,4 @@ void	mv_front(t_lst **first_a, t_lst **first_b)
 		(*first_b)->next = tmp;
 	}
 }
+lkj
