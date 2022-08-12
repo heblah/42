@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/12 16:14:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:53:01 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,10 @@ void	mvfirst2front(t_lst **first_a, t_lst **first_b)
 {
 	t_lst	*tmp;
 
-	if (first_a && first_b && *first_a && *first_b)
+	if (first_a && first_b && *first_a)
 	{
 		tmp = extractfirst(first_a);
+		insert_on_top(first_b, tmp);
 		/*
 		if ((*first_a) != (*first_a)->next && (*first_a) != (*first_a)->previous)
 		{
@@ -100,7 +101,6 @@ void	mvfirst2front(t_lst **first_a, t_lst **first_b)
 		}
 		else
 			(*first_a) = NULL;
-		*/
 		tmp->previous = (*first_b)->previous;
 		tmp->next = (*first_b);
 		(*first_b)->previous->next = tmp;
@@ -116,5 +116,6 @@ void	mvfirst2front(t_lst **first_a, t_lst **first_b)
 		*first_b = tmp;
 		(*first_b)->previous = tmp;
 		(*first_b)->next = tmp;
+	*/
 	}
 }

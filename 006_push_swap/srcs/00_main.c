@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:15 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/12 15:51:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:54:14 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	main()
 	stack = init_stack();
 	if (!stack)
 		return (-1);
+	list_addback(&stack->b, 0);
+	/*
 	list_addback(&stack->a, 50);
 	list_addback(&stack->a, 100);
 	list_addback(&stack->a, 15000);
 
-	list_addback(&stack->b, 0);
-	/*
 	list_addback(&stack->b, -5);
 	list_addback(&stack->b, -10);
 	print_1stack(stack->b, 'b');
