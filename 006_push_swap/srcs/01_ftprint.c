@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 11:39:24 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/12 15:11:23 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:13:25 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	print_2stack(t_stack *stack)
 	{
 		if (lena > 0)
 		{
-			ft_printf("%d\t\t|", stack->a->n);
+			ft_printf("   %d\t\t|", stack->a->n);
 			stack->a = stack->a->next;
 			lena--;
 		}
