@@ -9,7 +9,7 @@
 
 /* ./00_main.c ============================================================== */
 
-/* ./01_ft_print.c ========================================================== */
+/* ./01_ftprint.c =========================================================== */
 void	*print_error(char *s, int line, char *file);
 void	print_1stack(t_lst *lst, char c);
 void	print_2stack(t_stack *stack);
@@ -24,6 +24,8 @@ void	mvfirst2front(t_lst **first_a, t_lst **first_b);
 /* ./03_list_utils.c ======================================================== */
 t_stack	*init_stack(void);
 void	free_stack(t_stack **stack);
+t_lst	*extractfirst(t_lst **first);
+t_lst	*insert_on_top(t_lst **first, t_lst *tmp);
 
 /* ./04_amoves.c ============================================================ */
 int		ft_sa(t_stack **stack, int printflag);

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/12 15:27:48 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:13:03 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	mvfirst2front(t_lst **first_a, t_lst **first_b)
 	if (first_a && first_b && *first_a && *first_b)
 	{
 		tmp = *first_a;
-		if ((*first_a) == (*first_a)->next && (*first_a) == (*first_a)->previous)
+		if ((*first_a) != (*first_a)->next && (*first_a) != (*first_a)->previous)
 		{
 			(*first_a)->next->previous = (*first_a)->previous;
 			(*first_a)->previous->next = (*first_a)->next;

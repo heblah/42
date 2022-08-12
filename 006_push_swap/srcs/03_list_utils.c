@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   02_list_utils.c                                    :+:      :+:    :+:   */
+/*   03_list_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/12 11:39:47 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:07:17 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,39 @@ void	free_stack(t_stack **stack)
 	(*stack)->b = NULL;
 	free(*stack);
 	*stack = NULL;
+}
+
+t_lst	*extractfirst(t_lst **first)
+{
+	t_lst	*extract;
+
+	if ((*first) != (*first)->next && (*first) != (*first)->previous)
+	{
+		extract = (*first);
+		(*first)->next->previous = (*first)->previous;
+		(*first)->previous->next = (*first)->next;
+		*first = (*first)->next;
+	}
+	else
+		(*first) = NULL;
+	return (extract);
+}
+
+t_lst	*insert_on_top(t_lst **first, t_lst *tmp)
+{
+	if (first && *first)
+	{
+		(*first)->previous->next = tmp;
+		(*first)->previous = tmp;
+		tmp->previous = (*first)->previous;
+		tmp->next = (*first);
+		*first = tmp;
+	}
+	else if (first && *first == NULL)
+	{
+		*first = tmp;
+		(*first)->previous = tmp;
+		(*first)->next = tmp;
+	}
+	return (*first);
 }
