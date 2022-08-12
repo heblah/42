@@ -20,6 +20,7 @@ void	mv_front(t_lst **first_a, t_lst **first_b);
 /* ./02_list_utils.c ======================================================== */
 t_stack	*init_stack(void);
 void	free_stack(t_stack **stack);
+void	print_list(t_lst *lst);
 
 /* ./03_parser.c ============================================================ */
 int		is_int(int c);

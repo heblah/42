@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/11 18:52:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/12 09:56:56 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,16 @@ void	free_stack(t_stack **stack)
 	(*stack)->b = NULL;
 	free(*stack);
 	*stack = NULL;
+}
+
+void	print_list(t_lst *lst)
+{
+	int	i;
+
+	i = list_len(lst);
+	while (i-- > 0)
+	{
+		ft_printf("Elem %d = %d\n", i, lst->n);
+		lst = lst->next;
+	}
 }
