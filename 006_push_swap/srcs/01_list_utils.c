@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/11 18:37:57 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/12 10:38:43 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 t_lst	*list_addback(t_lst **first, int nbr)
 {
 	t_lst	*new;
-	
+
 	new = malloc (1 * sizeof(t_lst));
 	if (!new)
 		return (NULL);
@@ -24,7 +24,7 @@ t_lst	*list_addback(t_lst **first, int nbr)
 	if (first && *first)
 	{
 		new->next = *first;
-		new->previous = (*first)->previous; 
+		new->previous = (*first)->previous;
 		(*first)->previous->next = new;
 		(*first)->previous = new;
 	}
@@ -84,7 +84,7 @@ void	list_swap(t_lst *a, t_lst *b)
 	}
 }
 
-void	mv_front(t_lst **first_a, t_lst **first_b)
+void	mvfirst2front(t_lst **first_a, t_lst **first_b)
 {
 	t_lst	*tmp;
 
@@ -94,6 +94,8 @@ void	mv_front(t_lst **first_a, t_lst **first_b)
 		(*first_a)->next->previous = (*first_a)->previous;
 		(*first_a)->previous->next = (*first_a)->next;
 		*first_a = (*first_a)->next;
+		tmp->previous = (*first_b)->previous;
+		tmp->next = (*first_b);
 		(*first_b)->previous->next = tmp;
 		(*first_b)->previous = tmp;
 		*first_b = tmp;
