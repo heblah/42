@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   03_amoves.c                                        :+:      :+:    :+:   */
+/*   04_amoves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:46:05 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/12 11:32:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/12 17:01:12 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_pa(t_stack **stack, int printflag)
 {
 	if ((*stack)->b)
 	{
-		mvfirst2front(&(*stack)->b, &(*stack)->a);
+		mvfirst2top(&(*stack)->b, &(*stack)->a);
 		if (printflag)
 			ft_printf("pa\n");
 	}

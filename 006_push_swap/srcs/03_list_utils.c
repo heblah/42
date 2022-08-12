@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/12 16:41:38 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/12 17:00:38 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,3 +69,41 @@ t_lst	*insert_on_top(t_lst **first, t_lst *tmp)
 	}
 	return (*first);
 }
+
+void	mvfirst2top(t_lst **first_a, t_lst **first_b)
+{
+	t_lst	*tmp;
+
+	if (first_a && first_b && *first_a)
+	{
+		tmp = extractfirst(first_a);
+		insert_on_top(first_b, tmp);
+	}
+}
+
+/*back-up comments from original mvfirst2top*/
+/*
+		if ((*first_a) != (*first_a)->next && (*first_a) != (*first_a)->previous)
+		{
+			(*first_a)->next->previous = (*first_a)->previous;
+			(*first_a)->previous->next = (*first_a)->next;
+			*first_a = (*first_a)->next;
+		}
+		else
+			(*first_a) = NULL;
+		tmp->previous = (*first_b)->previous;
+		tmp->next = (*first_b);
+		(*first_b)->previous->next = tmp;
+		(*first_b)->previous = tmp;
+		*first_b = tmp;
+	}
+	else if (first_a && first_b && *first_a && *first_b == NULL)
+	{
+		tmp = *first_a;
+		(*first_a)->next->previous = (*first_a)->previous;
+		(*first_a)->previous->next = (*first_a)->next;
+		*first_a = (*first_a)->next;
+		*first_b = tmp;
+		(*first_b)->previous = tmp;
+		(*first_b)->next = tmp;
+*/

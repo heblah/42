@@ -19,13 +19,13 @@ t_lst	*list_addback(t_lst **first, int nbr);
 void	free_list(t_lst **first);
 int		list_len(t_lst *first);
 void	list_swap(t_lst *a, t_lst *b);
-void	mvfirst2front(t_lst **first_a, t_lst **first_b);
 
 /* ./03_list_utils.c ======================================================== */
 t_stack	*init_stack(void);
 void	free_stack(t_stack **stack);
 t_lst	*extractfirst(t_lst **first);
 t_lst	*insert_on_top(t_lst **first, t_lst *tmp);
+void	mvfirst2top(t_lst **first_a, t_lst **first_b);
 
 /* ./04_amoves.c ============================================================ */
 int		ft_sa(t_stack **stack, int printflag);
