@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:15 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/12 11:53:47 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:22:29 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,29 @@ int	main()
 	stack = init_stack();
 	if (!stack)
 		return (-1);
-	list_addback(&stack->a, 5);
-	list_addback(&stack->a, 10);
-	list_addback(&stack->a, 15);
-	print_1stack(stack->a, 'a');
+	list_addback(&stack->a, 50);
+	list_addback(&stack->a, 100);
+	list_addback(&stack->a, 15000);
 
-	/*
 	list_addback(&stack->b, 0);
 	list_addback(&stack->b, -5);
+	/*
 	list_addback(&stack->b, -10);
 	print_1stack(stack->b, 'b');
 	*/
+	print_2stack(stack);
 
 	ft_printf("\nsa :\n");
 	ft_sa(&stack, printmv);
-	print_1stack(stack->a, 'a');
+	print_2stack(stack);
 
 	ft_printf("\nra :\n");
 	ft_ra(&stack, printmv);
-	print_1stack(stack->a, 'a');
+	print_2stack(stack);
 
 	ft_printf("\nrra :\n");
 	ft_rra(&stack, printmv);
-	print_1stack(stack->a, 'a');
+	print_2stack(stack);
 
 	ft_printf("\npa :\n");
 	ft_pa(&stack, printmv);
