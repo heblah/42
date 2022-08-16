@@ -6,14 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/16 10:18:52 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:11:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_push_swap.h"
 #include "ft_push_swap.h"
 
-t_lst	*list_addback(t_lst **first, int nbr)
+t_lst	*lst_addback(t_lst **first, int nbr)
 {
 	t_lst	*new;
 
@@ -37,12 +37,12 @@ t_lst	*list_addback(t_lst **first, int nbr)
 	return (*first);
 }
 
-void	free_list(t_lst **first)
+void	free_lst(t_lst **first)
 {
-	int		i;
+	size_t		i;
 	t_lst	*tmp;
 
-	i = list_len(*first);
+	i = lst_len(*first);
 	while (i-- > 0)
 	{
 		tmp = (*first)->next;
@@ -52,9 +52,9 @@ void	free_list(t_lst **first)
 	*first = NULL;
 }
 
-int	list_len(t_lst *first)
+size_t	lst_len(t_lst *first)
 {
-	int		i;
+	size_t		i;
 	t_lst	*tmp;
 
 	if (first)
@@ -72,7 +72,7 @@ int	list_len(t_lst *first)
 	return (i);
 }
 
-void	list_swap(t_lst *a, t_lst *b)
+void	lst_swap(t_lst *a, t_lst *b)
 {
 	int	tmp;
 
@@ -91,7 +91,7 @@ int	is_double(t_lst *lst, int nbr)
 	tmp = lst;
 	while (lst && tmp != lst->previous)
 	{
-		if (nbr == lst->n)
+		if (nbr == tmp->n)
 			return (1);
 		tmp = tmp->next;
 	}

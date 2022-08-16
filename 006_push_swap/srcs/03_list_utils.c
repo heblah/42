@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/16 10:17:02 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/16 16:11:24 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,15 @@ t_stack	*init_stack(void)
 	return (stack);
 }
 
-void	free_stack(t_stack **stack)
+void	*free_stack(t_stack **stack)
 {
-	free_list(&(*stack)->a);
+	free_lst(&(*stack)->a);
 	(*stack)->a = NULL;
-	free_list(&(*stack)->b);
+	free_lst(&(*stack)->b);
 	(*stack)->b = NULL;
 	free(*stack);
 	*stack = NULL;
+	return (NULL);
 }
 
 static t_lst	*extractfirst(t_lst **first)

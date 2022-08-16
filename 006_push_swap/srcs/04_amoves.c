@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:46:05 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/16 11:55:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/16 15:22:24 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_sa(t_stack **stack, int printflag)
 {
 	if ((*stack)->a && (*stack)->a != (*stack)->a->next)
 	{
-		list_swap((*stack)->a, (*stack)->a->next);
+		lst_swap((*stack)->a, (*stack)->a->next);
 		if (printflag)
 			ft_printf("sa\n");
 	}

@@ -6,13 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:15 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/16 12:09:11 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:30:34 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_push_swap.h"
 #include "ft_push_swap.h"
 
+/*
 int	main()
 {
 	t_stack	*stack;
@@ -20,21 +21,16 @@ int	main()
 	stack = init_stack();
 	if (!stack)
 		return (-1);
-	list_addback(&stack->a, 50);
-	list_addback(&stack->a, 100);
-	/*
-	list_addback(&stack->a, 150);
-	list_addback(&stack->a, 200);
-	*/
+	lst_addback(&stack->a, 50);
+	lst_addback(&stack->a, 100);
+	lst_addback(&stack->a, 150);
+	lst_addback(&stack->a, 200);
 
-	list_addback(&stack->b, 0);
-	list_addback(&stack->b, -5);
-	/*
-	list_addback(&stack->b, -10);
-	list_addback(&stack->b, -15);
-	*/
+	lst_addback(&stack->b, 0);
+	lst_addback(&stack->b, -5);
+	lst_addback(&stack->b, -10);
+	lst_addback(&stack->b, -15);
 	ft_printf("\nOriginal stacks :\n");
-	ft_printf("stack a = %p\nstack b = %p\n", stack->a, stack ->b);
 	print_2stack(stack);
 
 	ft_printf("\nsa & sb :\n");
@@ -56,23 +52,28 @@ int	main()
 	ft_pa(&stack, printmv);
 	ft_pb(&stack, printmv);
 	print_2stack(stack);
-	ft_printf("stack a = %p\nstack b = %p\n", stack->a, stack ->b);
 
 	free_stack(&stack);
+	exit (4);
+	perror("test");
 	return (0);
-}
-/*
+}*/
 int	main(int argc, char **argv)
 {
-	if (argc > 1)
-	{
+	t_stack	*stack;
 
-	}
+	if (argc < 2)
+		return (ft_printf("Error.\n"));
 	else
 	{
-		ft_printf("Error.\n");
-		return (-1);
+		stack = parser((const int)argc, (const char **)argv);
+		if (stack == NULL)
+		{
+			free_stack(&stack);
+			return (-1);
+		}
+		print_2stack(stack);
 	}
+	//free_stack(&stack);
 	return (0);
 }
-*/

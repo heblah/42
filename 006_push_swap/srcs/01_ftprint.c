@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 11:39:24 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/12 16:49:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/16 15:22:00 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	*print_error(char *s, int line, char *file)
 
 void	print_1stack(t_lst *lst, char c)
 {
-	int	i;
+	size_t	i;
 
-	i = list_len(lst);
+	i = lst_len(lst);
 	ft_printf("Stack %c :\n", c);
 	while (i-- > 0)
 	{
@@ -36,11 +36,11 @@ void	print_1stack(t_lst *lst, char c)
 
 void	print_2stack(t_stack *stack)
 {
-	int	lena;
-	int	lenb;
+	size_t	lena;
+	size_t	lenb;
 
-	lena = list_len(stack->a);
-	lenb = list_len(stack->b);
+	lena = lst_len(stack->a);
+	lenb = lst_len(stack->b);
 	ft_printf("Stack a :\t| Stack b :\t\n");
 	while (lena > 0 || lenb > 0)
 	{
