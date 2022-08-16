@@ -19,12 +19,11 @@ t_lst	*list_addback(t_lst **first, int nbr);
 void	free_list(t_lst **first);
 int		list_len(t_lst *first);
 void	list_swap(t_lst *a, t_lst *b);
+int		is_double(t_lst *lst, int nbr);
 
 /* ./03_list_utils.c ======================================================== */
 t_stack	*init_stack(void);
 void	free_stack(t_stack **stack);
-t_lst	*extractfirst(t_lst **first);
-t_lst	*insert_on_top(t_lst **first, t_lst *tmp);
 void	mvfirst2top(t_lst **first_a, t_lst **first_b);
 
 /* ./04_amoves.c ============================================================ */
@@ -32,6 +31,12 @@ int		ft_sa(t_stack **stack, int printflag);
 int		ft_pa(t_stack **stack, int printflag);
 int		ft_ra(t_stack **stack, int printflag);
 int		ft_rra(t_stack **stack, int printflag);
+
+/* ./05_bmoves.c ============================================================ */
+int		ft_sb(t_stack **stack, int printflag);
+int		ft_pb(t_stack **stack, int printflag);
+int		ft_rb(t_stack **stack, int printflag);
+int		ft_rrb(t_stack **stack, int printflag);
 
 /* ./0x_parser.c ============================================================ */
 int		is_int(int c);

@@ -1,58 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04_amoves.c                                        :+:      :+:    :+:   */
+/*   05_bmoves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:46:05 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/16 11:55:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/16 11:59:01 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_push_swap.h"
 #include "ft_push_swap.h"
 
-int	ft_sa(t_stack **stack, int printflag)
+int	ft_sb(t_stack **stack, int printflag)
 {
-	if ((*stack)->a && (*stack)->a != (*stack)->a->next)
+	if ((*stack)->b && (*stack)->b != (*stack)->b->next)
 	{
-		list_swap((*stack)->a, (*stack)->a->next);
+		list_swap((*stack)->b, (*stack)->b->next);
 		if (printflag)
-			ft_printf("sa\n");
+			ft_printf("sb\n");
 	}
 	return (0);
 }
 
-int	ft_pa(t_stack **stack, int printflag)
+int	ft_pb(t_stack **stack, int printflag)
 {
-	if ((*stack)->b)
+	if ((*stack)->a)
 	{
-		mvfirst2top(&(*stack)->b, &(*stack)->a);
+		mvfirst2top(&(*stack)->a, &(*stack)->b);
 		if (printflag)
-			ft_printf("pa\n");
+			ft_printf("pb\n");
 	}
 	return (0);
 }
 
-int	ft_ra(t_stack **stack, int printflag)
+int	ft_rb(t_stack **stack, int printflag)
 {
-	if ((*stack)->a && (*stack)->a != (*stack)->a->next)
+	if ((*stack)->b && (*stack)->b != (*stack)->b->next)
 	{
-		(*stack)->a = (*stack)->a->next;
+		(*stack)->b = (*stack)->b->next;
 		if (printflag)
-			ft_printf("ra\n");
+			ft_printf("rb\n");
 	}
 	return (0);
 }
 
-int	ft_rra(t_stack **stack, int printflag)
+int	ft_rrb(t_stack **stack, int printflag)
 {
-	if ((*stack)->a && (*stack)->a != (*stack)->a->next)
+	if ((*stack)->b && (*stack)->b != (*stack)->b->next)
 	{
-		(*stack)->a = (*stack)->a->previous;
+		(*stack)->b = (*stack)->b->previous;
 		if (printflag)
-			ft_printf("rra\n");
+			ft_printf("rrb\n");
 	}
 	return (0);
 }

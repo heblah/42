@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/12 17:09:56 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/16 10:18:52 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,18 @@ void	list_swap(t_lst *a, t_lst *b)
 		a->n = b->n;
 		b->n = tmp;
 	}
+}
+
+int	is_double(t_lst *lst, int nbr)
+{
+	t_lst	*tmp;
+
+	tmp = lst;
+	while (lst && tmp != lst->previous)
+	{
+		if (nbr == lst->n)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
 }

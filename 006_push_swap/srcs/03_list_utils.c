@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/12 17:00:38 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/16 10:17:02 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
-t_lst	*extractfirst(t_lst **first)
+static t_lst	*extractfirst(t_lst **first)
 {
 	t_lst	*extract;
 
@@ -51,7 +51,7 @@ t_lst	*extractfirst(t_lst **first)
 	return (extract);
 }
 
-t_lst	*insert_on_top(t_lst **first, t_lst *tmp)
+static t_lst	*insert_on_top(t_lst **first, t_lst *tmp)
 {
 	if (first && *first)
 	{
