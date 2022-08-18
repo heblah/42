@@ -6,17 +6,17 @@
 "    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2022/06/02 17:34:20 by halvarez          #+#    #+#              "
-"    Updated: 2022/06/02 17:35:44 by halvarez         ###   ########.fr        "
+"    Updated: 2022/08/11 10:04:55 by halvarez         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
 "vim config ====================================================================
 :syntax on
+color default
 set	number
 set	tabstop=4
 set	shiftwidth=4
 set	showcmd
-set	smartindent
 set	autoindent
 set	listchars=tab:>-,trail:.,precedes:<,extends:>,eol:$
 
@@ -34,7 +34,7 @@ inoremap <Esc> <Esc>:w<CR>
 "autoclosing ===================================================================
 inoremap ( ()<Left>
 inoremap [ []<Left>
+inoremap { {}<Left>
 inoremap " ""<Left>
 inoremap ' ''<Left>
 inoremap /* /**/<Left><Left>
-inoremap { {<Return>}<Up><Return>
