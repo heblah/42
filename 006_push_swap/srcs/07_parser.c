@@ -6,50 +6,87 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:08:11 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/16 19:27:13 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/19 14:48:08 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_push_swap.h"
 #include "ft_push_swap.h"
 
-int	is_valid_char(int c)
+int	is_digit(int c)
 {
-	if ((c >= 0 && c <= '9') || c == '-' || c == ' ')
+	if ((c >= '0' && c <= '9') || c == '-')
 		return (1);
 	return (0);
 }
 int	is_valid_lst(const char *s)
 {
-	while (*s && is_valid_char(*s))
-		s++;
-	if (*s == '\0')
+	int	i;
+
+	i = 0;
+	while ((*(s + i) && *(s + i) >= '0' && *(s + i) <= '9')
+		|| *(s + i) == '-' || *(s + i) == ' ')
+		i++;
+	if (*(s + i) == '\0')
 		return (1);
 	else
 		return (0);
 }
 
-t_stack	*parser(const int argc, const char **argv)
+t_stack	*one_arg_parser(const char **argv)
 {
-	char	**s;
-	t_stack	*stack;
-	int		nb;
 	int		i;
+	int		nb;
+	t_stack *stack;
 
-	i= -1;
+	i = 0;
+	if (is_valid_lst(argv[1]) == 0)
+		return (NULL);
 	stack = init_stack();
-	ft_printf("argv[1]=%s\n", argv[1]);
-	if (argc == 2)
-		s = ft_split(argv[1], ' ');
-	else
-		s = (char **)(argv + 1);
-	ft_printf("s[0]=%s\n", s[2]);
-	while (s && *(s + ++i) && argc - i > 0)
+	while (argv[1][i])
 	{
-		nb = ft_atoi(*(s + i));
+		while (argv[1][i] && argv[1][i] == ' ')
+			i++;
+		nb = ft_atoi(&argv[1][i]);
 		if (is_double(stack->a, nb))
 			return (free_stack(&stack));
 		lst_addback(&stack->a, nb);
+		stack->a_size++;
+		while (argv[1][i] && is_digit(argv[1][i]))
+			i++;
 	}
+	return (stack);
+}
+
+t_stack	*var_arg_parser(const int argc, const char **argv)
+{
+	int		i;
+	int		nb;
+	t_stack *stack;
+
+	i = 0;
+	stack = init_stack();
+	while (argc - 1 - i > 0)
+	{
+		if (is_valid_lst(argv[1 + i]) == 0)
+			return (free_stack(&stack));
+		nb = ft_atoi(argv[1 + i]);
+		if (is_double(stack->a, nb))
+			return (free_stack(&stack));
+		lst_addback(&stack->a, nb);
+		stack->a_size++;
+		i++;
+	}
+	return (stack);
+}
+
+t_stack	*parser(const int argc, const char **argv)
+{
+	t_stack	*stack;
+
+	if (argc == 2)
+		stack = one_arg_parser(argv);
+	else
+		stack = var_arg_parser(argc, argv);
 	return (stack);
 }

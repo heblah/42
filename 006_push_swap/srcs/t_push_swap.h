@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:01 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/12 11:25:25 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/19 14:06:30 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ typedef struct s_lst
 typedef struct s_stack
 {
 	t_lst	*a;
+	size_t	a_size;
 	t_lst	*b;
+	size_t	b_size;
 }			t_stack;
 
 /* enum of print flags ====================================================== */

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:15 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/16 19:30:34 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/19 14:28:32 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,9 @@ int	main(int argc, char **argv)
 	{
 		stack = parser((const int)argc, (const char **)argv);
 		if (stack == NULL)
-		{
-			free_stack(&stack);
 			return (-1);
-		}
 		print_2stack(stack);
 	}
-	//free_stack(&stack);
+	free_stack(&stack);
 	return (0);
 }

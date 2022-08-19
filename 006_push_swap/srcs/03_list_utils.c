@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/16 16:11:24 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/19 14:06:16 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ t_stack	*init_stack(void)
 	if (stack == NULL)
 		return (NULL);
 	stack->a = NULL;
+	stack->a_size = 0;
 	stack->b = NULL;
+	stack->b_size = 0;
 	return (stack);
 }
 
