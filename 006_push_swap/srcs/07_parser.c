@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:08:11 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/19 14:48:08 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/21 19:31:47 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	is_valid_lst(const char *s)
 		return (0);
 }
 
-t_stack	*one_arg_parser(const char **argv)
+static t_stack	*one_arg_parser(const char **argv)
 {
 	int		i;
 	int		nb;
@@ -47,6 +47,8 @@ t_stack	*one_arg_parser(const char **argv)
 	{
 		while (argv[1][i] && argv[1][i] == ' ')
 			i++;
+		if (argv[1][i] == '\0')
+			return (stack);
 		nb = ft_atoi(&argv[1][i]);
 		if (is_double(stack->a, nb))
 			return (free_stack(&stack));
@@ -58,7 +60,7 @@ t_stack	*one_arg_parser(const char **argv)
 	return (stack);
 }
 
-t_stack	*var_arg_parser(const int argc, const char **argv)
+static t_stack	*var_arg_parser(const int argc, const char **argv)
 {
 	int		i;
 	int		nb;

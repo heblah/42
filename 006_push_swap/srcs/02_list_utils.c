@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/16 19:11:28 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/21 19:22:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ void	lst_swap(t_lst *a, t_lst *b)
 
 int	is_double(t_lst *lst, int nbr)
 {
-	t_lst	*tmp;
+	size_t	len;
 
-	tmp = lst;
-	while (lst && tmp != lst->previous)
+	len = lst_len(lst);
+	while (lst && len-- > 0)
 	{
-		if (nbr == tmp->n)
+		if (nbr == lst->n)
 			return (1);
-		tmp = tmp->next;
+		lst = lst->next;
 	}
 	return (0);
 }

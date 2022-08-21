@@ -46,7 +46,5 @@ int		ft_rrr(t_stack **stack, int printflag);
 /* ./07_parser.c ============================================================ */
 int		is_digit(int c);
 int		is_valid_lst(const char *s);
-t_stack	*one_arg_parser(const char **argv);
-t_stack	*var_arg_parser(const int argc, const char **argv);
 t_stack	*parser(const int argc, const char **argv);
 #endif
