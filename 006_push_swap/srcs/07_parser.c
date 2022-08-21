@@ -6,20 +6,21 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:08:11 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/21 19:31:47 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/21 20:17:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_push_swap.h"
 #include "ft_push_swap.h"
 
-int	is_digit(int c)
+static int	is_digit(int c)
 {
 	if ((c >= '0' && c <= '9') || c == '-')
 		return (1);
 	return (0);
 }
-int	is_valid_lst(const char *s)
+
+static int	is_valid_lst(const char *s)
 {
 	int	i;
 
@@ -40,9 +41,9 @@ static t_stack	*one_arg_parser(const char **argv)
 	t_stack *stack;
 
 	i = 0;
-	if (is_valid_lst(argv[1]) == 0)
-		return (NULL);
 	stack = init_stack();
+	if (is_valid_lst(argv[1]) == 0)
+		return (ft_exit(&stack, 1));
 	while (argv[1][i])
 	{
 		while (argv[1][i] && argv[1][i] == ' ')
@@ -51,7 +52,7 @@ static t_stack	*one_arg_parser(const char **argv)
 			return (stack);
 		nb = ft_atoi(&argv[1][i]);
 		if (is_double(stack->a, nb))
-			return (free_stack(&stack));
+			return (ft_exit(&stack, 2));
 		lst_addback(&stack->a, nb);
 		stack->a_size++;
 		while (argv[1][i] && is_digit(argv[1][i]))
@@ -71,10 +72,10 @@ static t_stack	*var_arg_parser(const int argc, const char **argv)
 	while (argc - 1 - i > 0)
 	{
 		if (is_valid_lst(argv[1 + i]) == 0)
-			return (free_stack(&stack));
+			return (ft_exit(&stack, 1));
 		nb = ft_atoi(argv[1 + i]);
 		if (is_double(stack->a, nb))
-			return (free_stack(&stack));
+			return (ft_exit(&stack, 2));
 		lst_addback(&stack->a, nb);
 		stack->a_size++;
 		i++;

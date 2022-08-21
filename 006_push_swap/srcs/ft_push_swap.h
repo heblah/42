@@ -13,6 +13,7 @@
 void	*print_error(char *s, int line, char *file);
 void	print_1stack(t_lst *lst, char c);
 void	print_2stack(t_stack *stack);
+void	*ft_exit(t_stack **stack, int status);
 
 /* ./02_list_utils.c ======================================================== */
 t_lst	*lst_addback(t_lst **first, int nbr);
@@ -44,7 +45,5 @@ int		ft_rr(t_stack **stack, int printflag);
 int		ft_rrr(t_stack **stack, int printflag);
 
 /* ./07_parser.c ============================================================ */
-int		is_digit(int c);
-int		is_valid_lst(const char *s);
 t_stack	*parser(const int argc, const char **argv);
 #endif
