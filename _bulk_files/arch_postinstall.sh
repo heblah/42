@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/15 14:08:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/08/10 20:04:32 by halvarez         ###   ########.fr        #
+#    Updated: 2022/08/21 20:26:52 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,18 +19,18 @@
 #app install
  sudo pacman -S --noconfirm sof-firmware alsa-ucm-conf xf86-video-intel ntfs-3g
  sudo pacman -S --noconfirm vim git gdb gcc valgrind bluez bluez-utils tlp 
- sudo pacman -S --noconfirm pyhton python-pip discord
+ sudo pacman -S --noconfirm pyhton python-pip discord man-db man-pages
 # pacman -S --noconfirm sway swaylock swayidle swaybg dmenu alacritty
 
 #bluetooth activation
- systemctl enable bluetooth.service
- systemctl restart bluetooth.service
+# systemctl enable bluetooth.service
+# systemctl restart bluetooth.service
 
 #power management
- systemctl mask systemd-rfkill.service
- systemctl mask systemd-rfkill.socket
- systemctl enable tlp.service
- systemctl restart tlp.service
+# systemctl mask systemd-rfkill.service
+# systemctl mask systemd-rfkill.socket
+# systemctl enable tlp.service
+# systemctl restart tlp.service
  
 #42 stuff
  git clone git@github.com:heblah/42.git /home/hans/42
