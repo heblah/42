@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:08:11 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/21 20:17:22 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:40:59 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static t_stack	*one_arg_parser(const char **argv)
 	stack = init_stack();
 	if (is_valid_lst(argv[1]) == 0)
 		return (ft_exit(&stack, 1));
+	if (argv[1][0] == '\0')
+		return (ft_exit(&stack, 3));
 	while (argv[1][i])
 	{
 		while (argv[1][i] && argv[1][i] == ' ')

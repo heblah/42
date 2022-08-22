@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:46:05 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/16 15:22:24 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:34:31 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	ft_pa(t_stack **stack, int printflag)
 	if ((*stack)->b)
 	{
 		mvfirst2top(&(*stack)->b, &(*stack)->a);
+		(*stack)->a_size++;
+		(*stack)->b_size--;
 		if (printflag)
 			ft_printf("pa\n");
 	}
