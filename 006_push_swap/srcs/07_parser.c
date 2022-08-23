@@ -6,12 +6,28 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:08:11 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/22 17:40:59 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/23 11:10:14 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_push_swap.h"
 #include "ft_push_swap.h"
+
+static int		is_digit(int c);
+static int		is_valid_lst(const char *s);
+static t_stack	*one_arg_parser(const char **argv);
+static t_stack	*var_arg_parser(const int argc, const char **argv);
+
+t_stack	*parser(const int argc, const char **argv)
+{
+	t_stack	*stack;
+
+	if (argc == 2)
+		stack = one_arg_parser(argv);
+	else
+		stack = var_arg_parser(argc, argv);
+	return (stack);
+}
 
 static int	is_digit(int c)
 {
@@ -38,7 +54,7 @@ static t_stack	*one_arg_parser(const char **argv)
 {
 	int		i;
 	int		nb;
-	t_stack *stack;
+	t_stack	*stack;
 
 	i = 0;
 	stack = init_stack();
@@ -67,7 +83,7 @@ static t_stack	*var_arg_parser(const int argc, const char **argv)
 {
 	int		i;
 	int		nb;
-	t_stack *stack;
+	t_stack	*stack;
 
 	i = 0;
 	stack = init_stack();
@@ -82,16 +98,5 @@ static t_stack	*var_arg_parser(const int argc, const char **argv)
 		stack->a_size++;
 		i++;
 	}
-	return (stack);
-}
-
-t_stack	*parser(const int argc, const char **argv)
-{
-	t_stack	*stack;
-
-	if (argc == 2)
-		stack = one_arg_parser(argv);
-	else
-		stack = var_arg_parser(argc, argv);
 	return (stack);
 }

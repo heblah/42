@@ -46,4 +46,12 @@ int		ft_rrr(t_stack **stack, int printflag);
 
 /* ./07_parser.c ============================================================ */
 t_stack	*parser(const int argc, const char **argv);
+
+/* ./08_check.c ============================================================= */
+int		is_sorted(t_lst *lst);
+
+/* ./09_sort.c ============================================================== */
+t_stack	*sort(t_stack **stack);
+t_stack	*sort3nb(t_stack **stack);
+t_stack	*sort5nb(t_stack **stack);
 #endif

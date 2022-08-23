@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:15 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/22 17:36:32 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/23 12:27:43 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,10 @@ int	main(int argc, char **argv)
 	else
 	{
 		stack = parser((const int)argc, (const char **)argv);
-		ft_printf("\npa || pb :\n");
-		ft_pb(&stack, printmv);
+		ft_printf("is sorted = %d\n", is_sorted(stack->a));
+		stack = sort(&stack);
 		print_2stack(stack);
+		ft_printf("is sorted = %d\n", is_sorted(stack->a));
 	}
 	free_stack(&stack);
 	return (0);
