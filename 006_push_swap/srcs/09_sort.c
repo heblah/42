@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:06:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/23 17:05:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/24 12:44:34 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 t_stack	*sort(t_stack **stack)
 {
-	if ((*stack) && is_sorted((*stack)->a) == 1)
+	if ((*stack) && (is_sorted((*stack)->a) == 1|| (*stack)->a_size == 1))
 		return ((*stack));
 	else
 	{
@@ -86,3 +86,27 @@ t_stack	*sort5nb(t_stack **stack)
 		ft_ra(stack, print);
 	return (*stack);
 }
+
+void	insertion(t_stack **stack)
+{
+	while ((*stack)->b != NULL)
+	{
+		if (is_min((*stack)->a, (*stack)->b->n))
+		{
+			get_beginning(stack);
+			ft_pa(stack, print);
+		}
+		else if (is_max((*stack)->a, (*stack)->b->n))
+		{
+			get_beginning(stack);
+			ft_pa(stack, print);
+		}
+		else
+		{
+			get_position (stack);
+			ft_pa(stack, print);
+		}
+	}
+	get_beginning(stack);
+}
+

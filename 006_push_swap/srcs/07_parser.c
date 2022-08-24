@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:08:11 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/23 11:10:14 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/24 11:46:38 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static t_stack	*one_arg_parser(const char **argv)
 		if (is_double(stack->a, nb))
 			return (ft_exit(&stack, 2));
 		lst_addback(&stack->a, nb);
-		stack->a_size++;
+		get_stack_data(stack, nb);
 		while (argv[1][i] && is_digit(argv[1][i]))
 			i++;
 	}
@@ -95,7 +95,7 @@ static t_stack	*var_arg_parser(const int argc, const char **argv)
 		if (is_double(stack->a, nb))
 			return (ft_exit(&stack, 2));
 		lst_addback(&stack->a, nb);
-		stack->a_size++;
+		get_stack_data(stack, nb);
 		i++;
 	}
 	return (stack);

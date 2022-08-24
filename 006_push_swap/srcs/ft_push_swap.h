@@ -26,6 +26,7 @@ int		is_double(t_lst *lst, int nbr);
 t_stack	*init_stack(void);
 void	*free_stack(t_stack **stack);
 void	mvfirst2top(t_lst **first_a, t_lst **first_b);
+void	get_stack_data(t_stack *stack, int nb);
 
 /* ./04_amoves.c ============================================================ */
 int		ft_sa(t_stack **stack, int printflag);
@@ -49,9 +50,16 @@ t_stack	*parser(const int argc, const char **argv);
 
 /* ./08_check.c ============================================================= */
 int		is_sorted(t_lst *lst);
+int		is_min(t_lst *lst, int n);
+int		is_max(t_lst *lst, int n);
 
 /* ./09_sort.c ============================================================== */
 t_stack	*sort(t_stack **stack);
 t_stack	*sort3nb(t_stack **stack);
 t_stack	*sort5nb(t_stack **stack);
+void	insertion(t_stack **stack);
+
+/* ./10_sort_utils.c ======================================================== */
+void	get_beginning(t_stack **stack);
+void	get_position(t_stack **stack);
 #endif

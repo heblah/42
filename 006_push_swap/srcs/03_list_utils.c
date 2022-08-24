@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/19 14:06:16 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/24 11:59:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_stack	*init_stack(void)
 		return (NULL);
 	stack->a = NULL;
 	stack->a_size = 0;
+	stack->a_min = INT_MAX;
+	stack->a_max = INT_MIN;
 	stack->b = NULL;
 	stack->b_size = 0;
 	return (stack);
@@ -84,29 +86,11 @@ void	mvfirst2top(t_lst **first_a, t_lst **first_b)
 	}
 }
 
-/*back-up comments from original mvfirst2top*/
-/*
-		if ((*first_a) != (*first_a)->next && (*first_a) != (*first_a)->previous)
-		{
-			(*first_a)->next->previous = (*first_a)->previous;
-			(*first_a)->previous->next = (*first_a)->next;
-			*first_a = (*first_a)->next;
-		}
-		else
-			(*first_a) = NULL;
-		tmp->previous = (*first_b)->previous;
-		tmp->next = (*first_b);
-		(*first_b)->previous->next = tmp;
-		(*first_b)->previous = tmp;
-		*first_b = tmp;
-	}
-	else if (first_a && first_b && *first_a && *first_b == NULL)
-	{
-		tmp = *first_a;
-		(*first_a)->next->previous = (*first_a)->previous;
-		(*first_a)->previous->next = (*first_a)->next;
-		*first_a = (*first_a)->next;
-		*first_b = tmp;
-		(*first_b)->previous = tmp;
-		(*first_b)->next = tmp;
-*/
+void	get_stack_data(t_stack *stack, int nb)
+{
+		stack->a_size++;
+		if (nb < stack->a_min)
+			stack->a_min = nb;
+		if (nb > stack->a_max)
+			stack->a_max = nb;
+}
