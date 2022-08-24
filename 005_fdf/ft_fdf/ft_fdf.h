@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_fdf.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/09 11:22:14 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/12 09:39:43 by halvarez         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FT_FDF_H
 # define FT_FDF_H
 
@@ -20,6 +8,7 @@
 # include <limits.h>
 
 /* ./00_main.c ============================================================== */
+int			close_window(t_data *data);
 void		*print_errno(int err, int line, const char *func, char *file);
 void		*print_error(char *s, int line, const char *func, char *file);
 
@@ -38,6 +27,7 @@ int			new_img(t_data *data);
 /* ./03_parsing.c =========================================================== */
 int			*char2int(const char *line_map, int width);
 t_matrix	*map_parser(const char *file_map, t_matrix *m_map, t_data *data);
+void		puttab(double **tab, int row __attribute__((unused)), int col);
 
 /* ./04_parsing_utils.c ===================================================== */
 int			is_set(const char c);

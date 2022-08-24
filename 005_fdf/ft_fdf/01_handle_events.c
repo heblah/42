@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:02:52 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/22 18:02:10 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/24 09:21:31 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
-		handle_closing(data);
+		close_window(data);
 	else if (keysym == XK_Left || keysym == XK_Right
 		|| keysym == XK_Up || keysym == XK_Down)
 		key_move(data, keysym);

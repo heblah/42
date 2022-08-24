@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/22 17:56:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/24 09:25:06 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,16 @@ static int	open_window(t_data *data)
 	return (0);
 }
 
-static int	close_window(t_data *data)
+int	close_window(t_data *data)
 {
 	if (data->mlx_ptr && data->img.mlx_img)
 	{
 		mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		data->win_ptr = NULL;
 		mlx_destroy_display(data->mlx_ptr);
 		free(data->mlx_ptr);
+		data->mlx_ptr = NULL;
 	}
 	if (data->m_map)
 		free_matrix(data->m_map);
@@ -46,6 +49,7 @@ static int	close_window(t_data *data)
 		free_matrix(data->transformation);
 	if (data->tf_int)
 		free_matrix(data->tf_int);
+	exit(0);
 	return (0);
 }
 
@@ -85,7 +89,7 @@ int	main(int argc, char **argv)
 			mlx_loop_hook(data.mlx_ptr, &render, &data);
 			mlx_hook(data.win_ptr, KeyPress, KeyPressMask,
 				&handle_keypress, &data);
-			mlx_hook(data.win_ptr, 17, 1L << 0, &handle_closing, &data);
+			mlx_hook(data.win_ptr, 17, 1L << 0, &close_window, &data);
 			mlx_hook(data.win_ptr, ButtonPress, ButtonPressMask,
 				&handle_mouse, &data);
 			mlx_loop(data.mlx_ptr);
