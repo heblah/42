@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:01 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/24 11:21:56 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/24 14:17:06 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_lst
 /* Two-stack-structure ====================================================== */
 typedef struct s_stack
 {
+	size_t	count;
 	t_lst	*a;
 	size_t	a_size;
 	int		a_min;

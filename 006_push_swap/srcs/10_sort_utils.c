@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:38:23 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/24 14:12:58 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:40:53 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,23 @@
 
 void	get_beginning(t_stack **stack)
 {
+	size_t	count;
+	t_lst	*atmp;
+
+	count = 0;
+	atmp = (*stack)->a;
+	while (atmp->n > atmp->previous->n)
+	{
+		count++;
+		atmp = atmp->next;
+	}
 	while ((*stack)->a->n > (*stack)->a->previous->n)
-		ft_ra(stack, print);
+	{
+		if (count < (*stack)->a_size / 2)
+			ft_ra(stack, print);
+		else
+			ft_rra(stack, print);
+	}
 	/*
 	while (!((*stack)->a->n < (*stack)->a->previous->n
 		&& (*stack)->a->n < (*stack)->a->next->n))
@@ -26,7 +41,25 @@ void	get_beginning(t_stack **stack)
 
 void	get_position(t_stack **stack)
 {
+	size_t	count;
+	t_lst	*atmp;
+	t_lst	*btmp;
+
+	count = 0;
+	atmp = (*stack)->a;
+	btmp = (*stack)->b;
+	while (!(btmp->n < atmp->n
+		&& btmp->n > atmp->previous->n))
+	{
+		count++;
+		atmp = atmp->next;
+	}
 	while (!((*stack)->b->n < (*stack)->a->n
 		&& (*stack)->b->n > (*stack)->a->previous->n))
-		ft_ra(stack, print);
+	{
+		if (count < (*stack)->a_size / 2)
+			ft_ra(stack, print);
+		else
+			ft_rra(stack, print);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:10:05 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/16 12:18:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/24 14:18:54 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	ft_ss(t_stack **stack, int printflag)
 	{
 		ft_sa(stack, noprint);
 		ft_sb(stack, noprint);
+		(*stack)->count++;
 		if (printflag)
 			ft_printf("ss\n");
 	}
@@ -31,6 +32,7 @@ int	ft_rr(t_stack **stack, int printflag)
 	{
 		ft_ra(stack, noprint);
 		ft_rb(stack, noprint);
+		(*stack)->count++;
 		if (printflag)
 			ft_printf("rr\n");
 	}
@@ -43,6 +45,7 @@ int	ft_rrr(t_stack **stack, int printflag)
 	{
 		ft_rra(stack, noprint);
 		ft_rrb(stack, noprint);
+		(*stack)->count++;
 		if (printflag)
 			ft_printf("rrr\n");
 	}

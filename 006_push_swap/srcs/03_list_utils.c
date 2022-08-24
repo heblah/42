@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/24 11:59:41 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/24 14:17:26 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_stack	*init_stack(void)
 	stack = malloc(1 * sizeof(t_stack));
 	if (stack == NULL)
 		return (NULL);
+	stack->count = 0;
 	stack->a = NULL;
 	stack->a_size = 0;
 	stack->a_min = INT_MAX;

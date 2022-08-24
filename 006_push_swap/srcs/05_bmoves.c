@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:46:05 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/22 17:35:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/24 14:18:32 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_sb(t_stack **stack, int printflag)
 	if ((*stack)->b && (*stack)->b != (*stack)->b->next)
 	{
 		lst_swap((*stack)->b, (*stack)->b->next);
+		(*stack)->count++;
 		if (printflag)
 			ft_printf("sb\n");
 	}
@@ -29,6 +30,7 @@ int	ft_pb(t_stack **stack, int printflag)
 	if ((*stack)->a)
 	{
 		mvfirst2top(&(*stack)->a, &(*stack)->b);
+		(*stack)->count++;
 		(*stack)->b_size++;
 		(*stack)->a_size--;
 		if (printflag)
@@ -42,6 +44,7 @@ int	ft_rb(t_stack **stack, int printflag)
 	if ((*stack)->b && (*stack)->b != (*stack)->b->next)
 	{
 		(*stack)->b = (*stack)->b->next;
+		(*stack)->count++;
 		if (printflag)
 			ft_printf("rb\n");
 	}
@@ -53,6 +56,7 @@ int	ft_rrb(t_stack **stack, int printflag)
 	if ((*stack)->b && (*stack)->b != (*stack)->b->next)
 	{
 		(*stack)->b = (*stack)->b->previous;
+		(*stack)->count++;
 		if (printflag)
 			ft_printf("rrb\n");
 	}

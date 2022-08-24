@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:46:05 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/22 17:34:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/24 14:18:06 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_sa(t_stack **stack, int printflag)
 	if ((*stack)->a && (*stack)->a != (*stack)->a->next)
 	{
 		lst_swap((*stack)->a, (*stack)->a->next);
+		(*stack)->count++;
 		if (printflag)
 			ft_printf("sa\n");
 	}
@@ -29,6 +30,7 @@ int	ft_pa(t_stack **stack, int printflag)
 	if ((*stack)->b)
 	{
 		mvfirst2top(&(*stack)->b, &(*stack)->a);
+		(*stack)->count++;
 		(*stack)->a_size++;
 		(*stack)->b_size--;
 		if (printflag)
@@ -42,6 +44,7 @@ int	ft_ra(t_stack **stack, int printflag)
 	if ((*stack)->a && (*stack)->a != (*stack)->a->next)
 	{
 		(*stack)->a = (*stack)->a->next;
+		(*stack)->count++;
 		if (printflag)
 			ft_printf("ra\n");
 	}
@@ -53,6 +56,7 @@ int	ft_rra(t_stack **stack, int printflag)
 	if ((*stack)->a && (*stack)->a != (*stack)->a->next)
 	{
 		(*stack)->a = (*stack)->a->previous;
+		(*stack)->count++;
 		if (printflag)
 			ft_printf("rra\n");
 	}

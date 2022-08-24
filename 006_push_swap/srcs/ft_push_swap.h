@@ -58,6 +58,7 @@ t_stack	*sort(t_stack **stack);
 t_stack	*sort3nb(t_stack **stack);
 t_stack	*sort5nb(t_stack **stack);
 void	insertion(t_stack **stack);
+t_stack	*sortxnb(t_stack **stack);
 
 /* ./10_sort_utils.c ======================================================== */
 void	get_beginning(t_stack **stack);
