@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fdf.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/24 10:36:29 by halvarez          #+#    #+#             */
+/*   Updated: 2022/08/24 10:36:35 by halvarez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_FDF_H
 # define FT_FDF_H
 
@@ -15,7 +27,6 @@ void		*print_error(char *s, int line, const char *func, char *file);
 /* ./01_handle_events.c ===================================================== */
 int			handle_keypress(int keysym, t_data *data);
 int			handle_mouse(int keysym, int x, int y, t_data *data);
-int			handle_closing(t_data *data);
 
 /* ./02_handle_img.c ======================================================== */
 int			clear_window(t_data *data);

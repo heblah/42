@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:02:52 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/24 09:21:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/24 10:36:10 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,5 @@ int	handle_mouse(int keysym, int x, int y, t_data *data)
 	(void)y;
 	if (keysym == 4 || keysym == 5)
 		key_zoom(data, keysym);
-	return (0);
-}
-
-int	handle_closing(t_data *data)
-{
-	if (data->mlx_ptr && data->win_ptr)
-	{
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		data->win_ptr = NULL;
-	}
 	return (0);
 }
