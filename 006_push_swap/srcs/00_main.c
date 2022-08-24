@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:15 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/24 16:05:55 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/24 16:21:23 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ int	main(int argc, char **argv)
 		//ft_printf("a_min=%d\n", stack->a_min);
 		//ft_printf("a_max=%d\n", stack->a_max);
 		stack = sort(&stack);
-		//print_2stack(stack);
-		ft_printf("count=%d\n", stack->count);
+		print_2stack(stack);
+		//ft_printf("count=%d\n", stack->count);
 		ft_printf("is sorted = %d\n", is_sorted(stack->a));
 	}
 	free_stack(&stack);

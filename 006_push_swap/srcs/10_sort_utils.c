@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:38:23 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/24 15:40:53 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/24 16:44:34 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ void	get_beginning(t_stack **stack)
 
 	count = 0;
 	atmp = (*stack)->a;
-	while (atmp->n > atmp->previous->n)
+	while (!(atmp->n < atmp->previous->n
+		&& atmp->n < atmp->next->n))
 	{
 		count++;
 		atmp = atmp->next;
 	}
-	while ((*stack)->a->n > (*stack)->a->previous->n)
+	while (!((*stack)->a->n < (*stack)->a->previous->n
+		&& (*stack)->a->n < (*stack)->a->next->n))
 	{
 		if (count < (*stack)->a_size / 2)
 			ft_ra(stack, print);
