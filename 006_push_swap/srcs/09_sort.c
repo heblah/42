@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:06:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/24 12:44:34 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/24 14:13:36 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,27 +63,7 @@ t_stack	*sort5nb(t_stack **stack)
 	ft_pb(stack, print);
 	ft_pb(stack, print);
 	sort3nb(stack);
-	print_2stack(*stack);
-	while ((*stack)->b != NULL)
-	{
-		if ((*stack)->b->n > (*stack)->a->n && (*stack)->b->n < (*stack)->a->next->n)
-		{
-			ft_ra(stack, print);
-			ft_pa(stack, print);
-		}
-		else if ((*stack)->b->n > (*stack)->a->previous->n && (*stack)->b->n > (*stack)->a->n)
-		{
-			ft_pa(stack, print);
-			ft_ra(stack, print);
-		}
-		else if ((*stack)->b->n < (*stack)->a->previous->n)
-			ft_pa(stack, print);
-		else 
-			ft_ra(stack, print);
-		print_2stack(*stack);
-	}
-	while ((*stack)->a->n > (*stack)->a->previous->n)
-		ft_ra(stack, print);
+	insertion(stack);
 	return (*stack);
 }
 
