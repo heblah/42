@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:38:23 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/25 11:03:17 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/25 11:12:38 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,3 @@ void	get_position(t_stack **stack)
 			ft_rra(stack, print);
 	}
 }
-
-test

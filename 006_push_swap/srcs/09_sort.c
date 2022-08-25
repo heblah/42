@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:06:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/24 14:29:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/25 11:44:02 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_stack	*sort(t_stack **stack)
 		else if ((*stack)->a_size == 5)
 			return (sort5nb(stack));
 		else
-			return (sortxnb(stack));
+			return (*stack);
 	}	
 	return (*stack);
 }
@@ -63,7 +63,27 @@ t_stack	*sort5nb(t_stack **stack)
 	ft_pb(stack, print);
 	ft_pb(stack, print);
 	sort3nb(stack);
-	insertion(stack);
+	print_2stack(*stack);
+	if ((*stack)->b->n > (*stack)->b->next->n)
+		ft_sb(stack, print);
+	if ((*stack)->b->n == (*stack)->a_min)
+		ft_pa(stack, print);
+	if ((*stack)->b->n == (*stack)->a_max)
+		ft_pa(stack, print);
+	while ((*stack)->b != NULL)
+	{
+		if ((*stack)->b->n < (*stack)->a->n
+			&& (*stack)->b->n > (*stack)->a->previous->n)
+			ft_pa(stack, print);
+		else if ((*stack)->b->n == (*stack)->a_max)
+		{
+			get_beginning(stack);
+			ft_pa(stack, print);
+		}
+		else
+			ft_ra(stack, print);
+	}
+	get_beginning(stack);
 	return (*stack);
 }
 
