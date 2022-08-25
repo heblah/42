@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/25 17:02:21 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/25 17:06:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static t_lst	*extractfirst(t_stack **stack, int select_stack)
 	}
 	else if (select_stack == b)
 	{
-		extract = (*stack)->b;
-		my_stack = &(*stack)->b;
+		extract = (*stack)->a;
+		my_stack = &(*stack)->a;
 	}
 	if (*my_stack != (*my_stack)->next && *my_stack != (*my_stack)->previous)
 	{

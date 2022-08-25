@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:15 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/25 16:45:37 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/25 17:04:47 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ int	main()
 	print_2stack(stack);
 
 	ft_printf("\npa & pb :\n");
-	ft_push(&stack, a, print);
+	ft_push(&stack, b, print);
+	ft_push(&stack, b, print);
+	ft_push(&stack, b, print);
 	print_2stack(stack);
 
 	free_stack(&stack);
