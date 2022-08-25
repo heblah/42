@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:10:05 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/24 14:18:54 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/25 16:22:31 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	ft_ss(t_stack **stack, int printflag)
 {
 	if (*stack)
 	{
-		ft_sa(stack, noprint);
-		ft_sb(stack, noprint);
+		ft_swap(stack, a, noprint);
+		ft_swap(stack, b, noprint);
 		(*stack)->count++;
 		if (printflag)
 			ft_printf("ss\n");
@@ -30,8 +30,8 @@ int	ft_rr(t_stack **stack, int printflag)
 {
 	if (*stack)
 	{
-		ft_ra(stack, noprint);
-		ft_rb(stack, noprint);
+		ft_rotate(stack, a, noprint);
+		ft_rotate(stack, b, noprint);
 		(*stack)->count++;
 		if (printflag)
 			ft_printf("rr\n");
@@ -43,8 +43,8 @@ int	ft_rrr(t_stack **stack, int printflag)
 {
 	if (*stack)
 	{
-		ft_rra(stack, noprint);
-		ft_rrb(stack, noprint);
+		ft_revrotate(stack, a, noprint);
+		ft_revrotate(stack, b, noprint);
 		(*stack)->count++;
 		if (printflag)
 			ft_printf("rrr\n");

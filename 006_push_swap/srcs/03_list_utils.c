@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/24 14:17:26 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/25 17:02:21 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ t_stack	*init_stack(void)
 	stack = malloc(1 * sizeof(t_stack));
 	if (stack == NULL)
 		return (NULL);
-	stack->count = 0;
 	stack->a = NULL;
+	stack->b = NULL;
+	stack->count = 0;
 	stack->a_size = 0;
 	stack->a_min = INT_MAX;
 	stack->a_max = INT_MIN;
-	stack->b = NULL;
 	stack->b_size = 0;
+	stack->b_min = INT_MAX;
+	stack->b_max = INT_MIN;
 	return (stack);
 }
 
@@ -41,33 +43,52 @@ void	*free_stack(t_stack **stack)
 	return (NULL);
 }
 
-static t_lst	*extractfirst(t_lst **first)
+//
+static t_lst	*extractfirst(t_stack **stack, int select_stack)
 {
 	t_lst	*extract;
+	t_lst	**my_stack;
 
-	extract = (*first);
-	if ((*first) != (*first)->next && (*first) != (*first)->previous)
+	if (select_stack == a)
 	{
-		(*first)->next->previous = (*first)->previous;
-		(*first)->previous->next = (*first)->next;
-		*first = (*first)->next;
+		extract = (*stack)->b;
+		my_stack = &(*stack)->b;
 	}
-	else
-		(*first) = NULL;
+	else if (select_stack == b)
+	{
+		extract = (*stack)->b;
+		my_stack = &(*stack)->b;
+	}
+	if (*my_stack != (*my_stack)->next && *my_stack != (*my_stack)->previous)
+	{
+		(*my_stack)->next->previous = (*my_stack)->previous;
+		(*my_stack)->previous->next = (*my_stack)->next;
+		*my_stack = (*my_stack)->next;
+	}
+	else if (select_stack == a)
+		(*stack)->b = NULL;
+	else if (select_stack == b)
+		(*stack)->a = NULL;
 	return (extract);
 }
 
-static t_lst	*insert_on_top(t_lst **first, t_lst *tmp)
+static t_lst	*insert_on_top(t_stack **stack, int select_stack, t_lst *tmp)
 {
-	if (first && *first)
+	t_lst	**first;
+
+	if (select_stack == a)
+		first = &(*stack)->a;
+	else if (select_stack == b)
+		first = &(*stack)->b;
+	if (first)
 	{
 		tmp->previous = (*first)->previous;
-		tmp->next = (*first);
+		tmp->next = *first;
 		(*first)->previous->next = tmp;
 		(*first)->previous = tmp;
 		*first = tmp;
 	}
-	else if (first && *first == NULL)
+	else if (*first == NULL)
 	{
 		*first = tmp;
 		(*first)->previous = tmp;
@@ -76,14 +97,19 @@ static t_lst	*insert_on_top(t_lst **first, t_lst *tmp)
 	return (*first);
 }
 
-void	mvfirst2top(t_lst **first_a, t_lst **first_b)
+void	mvfirst2top(t_stack **stack, int select_stack)
 {
 	t_lst	*tmp;
+	t_lst	*send;
 
-	if (first_a && first_b && *first_a)
+	if (select_stack == a)
+		send = (*stack)->b;
+	else if (select_stack == b)
+		send = (*stack)->a;
+	if (send)
 	{
-		tmp = extractfirst(first_a);
-		insert_on_top(first_b, tmp);
+		tmp = extractfirst(stack, select_stack);
+		insert_on_top(stack, select_stack, tmp);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:01 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/24 14:17:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/25 16:28:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ typedef struct s_lst
 /* Two-stack-structure ====================================================== */
 typedef struct s_stack
 {
+	t_lst		*a;
 	size_t	count;
-	t_lst	*a;
 	size_t	a_size;
 	int		a_min;
 	int		a_max;
-	t_lst	*b;
+	t_lst		*b;
 	size_t	b_size;
+	int		b_min;
+	int		b_max;
 }			t_stack;
 
 /* enum of print flags ====================================================== */
@@ -42,5 +44,12 @@ enum	e_printflag
 {
 	noprint,
 	print
+};
+
+/* stack selector for move-functions ======================================== */
+enum	e_stack_select
+{
+	a,
+	b
 };
 #endif

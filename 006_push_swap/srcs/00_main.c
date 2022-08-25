@@ -6,14 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:15 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/24 16:21:23 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/25 16:45:37 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_push_swap.h"
 #include "ft_push_swap.h"
 
-/*
+
 int	main()
 {
 	t_stack	*stack;
@@ -34,30 +34,28 @@ int	main()
 	print_2stack(stack);
 
 	ft_printf("\nsa & sb :\n");
-	ft_sa(&stack, printmv);
-	ft_sb(&stack, printmv);
+	ft_swap(&stack, a, print);
+	ft_swap(&stack, b, print);
 	print_2stack(stack);
 
 	ft_printf("\nra & br :\n");
-	ft_ra(&stack, printmv);
-	ft_rb(&stack, printmv);
+	ft_rotate(&stack, a, print);
+	ft_rotate(&stack, b, print);
 	print_2stack(stack);
 
 	ft_printf("\nrra & rrb :\n");
-	ft_rra(&stack, printmv);
-	ft_rrb(&stack, printmv);
+	ft_revrotate(&stack, a, print);
+	ft_revrotate(&stack, b, print);
 	print_2stack(stack);
 
 	ft_printf("\npa & pb :\n");
-	ft_pa(&stack, printmv);
-	ft_pb(&stack, printmv);
+	ft_push(&stack, a, print);
 	print_2stack(stack);
 
 	free_stack(&stack);
-	exit (4);
-	perror("test");
 	return (0);
-}*/
+}
+/*
 int	main(int argc, char **argv)
 {
 	t_stack	*stack;
@@ -70,11 +68,12 @@ int	main(int argc, char **argv)
 		//ft_printf("a_size=%d\n", stack->a_size);
 		//ft_printf("a_min=%d\n", stack->a_min);
 		//ft_printf("a_max=%d\n", stack->a_max);
-		stack = sort(&stack);
+		//stack = sort(&stack);
 		print_2stack(stack);
 		//ft_printf("count=%d\n", stack->count);
-		ft_printf("is sorted = %d\n", is_sorted(stack->a));
+		//ft_printf("is sorted = %d\n", is_sorted(stack->a));
 	}
 	free_stack(&stack);
 	return (0);
 }
+*/
