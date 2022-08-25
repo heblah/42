@@ -26,10 +26,10 @@ int		is_double(t_lst *lst, int nbr);
 t_stack	*init_stack(void);
 void	*free_stack(t_stack **stack);
 void	mvfirst2top(t_stack **stack, int select_stack);
-void	get_stack_data(t_stack *stack, int nb);
 
 /* ./04_list_utils.c ======================================================== */
 void	get_stack_data(t_stack *stack, int nb);
+t_lst	**stack_selector(t_stack **stack, int select_stack);
 
 /* ./05_moves.c ============================================================= */
 int		ft_swap(t_stack **stack, int select_stack, int printflag);

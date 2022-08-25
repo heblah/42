@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04_amoves.c                                        :+:      :+:    :+:   */
+/*   05_moves.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:46:05 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/25 16:44:57 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/25 19:10:17 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,12 @@
 
 int	ft_swap(t_stack **stack, int select_stack, int printflag)
 {
-	t_lst	*my_stack;
+	t_lst	**my_stack;
 
-	if (select_stack == a)
-		my_stack = (*stack)->a;
-	else if (select_stack == b)
-		my_stack = (*stack)->b;
-	if (my_stack && my_stack != my_stack->next)
+	my_stack = stack_selector(stack, select_stack);
+	if (*my_stack && *my_stack != (*my_stack)->next)
 	{
-		lst_swap(my_stack, my_stack->next);
+		lst_swap(*my_stack, (*my_stack)->next);
 		(*stack)->count++;
 		if (printflag)
 			ft_printf("s%c\n", 'a' + select_stack);
@@ -63,10 +60,7 @@ int	ft_rotate(t_stack **stack, int select_stack, int printflag)
 {
 	t_lst	**my_stack;
 
-	if (select_stack == a)
-		my_stack = &(*stack)->a;
-	else if (select_stack == b)
-		my_stack = &(*stack)->b;
+	my_stack = stack_selector(stack, select_stack);
 	if (*my_stack && *my_stack != (*my_stack)->next)
 	{
 		(*my_stack) = (*my_stack)->next;
@@ -81,10 +75,7 @@ int	ft_revrotate(t_stack **stack, int select_stack, int printflag)
 {
 	t_lst	**my_stack;
 
-	if (select_stack == a)
-		my_stack = &(*stack)->a;
-	else if (select_stack == b)
-		my_stack = &(*stack)->b;
+	my_stack = stack_selector(stack, select_stack);
 	if (*my_stack && *my_stack != (*my_stack)->next)
 	{
 		(*my_stack) = (*my_stack)->previous;
