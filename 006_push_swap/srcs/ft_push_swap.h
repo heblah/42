@@ -28,39 +28,36 @@ void	*free_stack(t_stack **stack);
 void	mvfirst2top(t_stack **stack, int select_stack);
 void	get_stack_data(t_stack *stack, int nb);
 
-/* ./04_moves.c ============================================================= */
+/* ./04_list_utils.c ======================================================== */
+void	get_stack_data(t_stack *stack, int nb);
+
+/* ./05_moves.c ============================================================= */
 int		ft_swap(t_stack **stack, int select_stack, int printflag);
 int		ft_push(t_stack **stack, int select_stack, int printflag);
 int		ft_rotate(t_stack **stack, int select_stack, int printflag);
 int		ft_revrotate(t_stack **stack, int select_stack, int printflag);
 
-/* ./05_bmoves.c ============================================================ */
-int		ft_sb(t_stack **stack, int printflag);
-int		ft_pb(t_stack **stack, int printflag);
-int		ft_rb(t_stack **stack, int printflag);
-int		ft_rrb(t_stack **stack, int printflag);
-
-/* ./05_doublemoves.c ======================================================= */
+/* ./06_doublemoves.c ======================================================= */
 int		ft_ss(t_stack **stack);
 int		ft_rr(t_stack **stack);
 int		ft_rrr(t_stack **stack);
 
-/* ./06_parser.c ============================================================ */
+/* ./07_parser.c ============================================================ */
 t_stack	*parser(const int argc, const char **argv);
 
-/* ./07_check.c ============================================================= */
+/* ./08_check.c ============================================================= */
 int		is_sorted(t_lst *lst);
 int		is_min(t_lst *lst, int n);
 int		is_max(t_lst *lst, int n);
 
-/* ./08_sort.c ============================================================== */
+/* ./09_sort.c ============================================================== */
 t_stack	*sort(t_stack **stack);
 t_stack	*sort3nb(t_stack **stack);
 t_stack	*sort5nb(t_stack **stack);
 void	insertion(t_stack **stack);
 t_stack	*sortxnb(t_stack **stack);
 
-/* ./09_sort_utils.c ======================================================== */
+/* ./10_sort_utils.c ======================================================== */
 void	get_beginning(t_stack **stack);
 void	get_position(t_stack **stack);
 #endif
