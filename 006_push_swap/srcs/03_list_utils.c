@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/25 17:44:24 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/25 18:47:35 by halvarez         ###   ########.fr       */
 /*   Updated: 2022/08/25 17:06:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -116,9 +116,9 @@ void	mvfirst2top(t_stack **stack, int select_stack)
 
 void	get_stack_data(t_stack *stack, int nb)
 {
-		stack->a_size++;
-		if (nb < stack->a_min)
-			stack->a_min = nb;
-		if (nb > stack->a_max)
-			stack->a_max = nb;
+	stack->a_size++;
+	if (nb < stack->a_min)
+		stack->a_min = nb;
+	if (nb > stack->a_max)
+		stack->a_max = nb;
 }

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/21 19:22:04 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/25 18:46:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_lst	*lst_addback(t_lst **first, int nbr)
 
 void	free_lst(t_lst **first)
 {
-	size_t		i;
+	size_t	i;
 	t_lst	*tmp;
 
 	i = lst_len(*first);
@@ -54,7 +54,7 @@ void	free_lst(t_lst **first)
 
 size_t	lst_len(t_lst *first)
 {
-	size_t		i;
+	size_t	i;
 	t_lst	*tmp;
 
 	if (first)
