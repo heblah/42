@@ -6,11 +6,8 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:15 by halvarez          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/08/25 10:55:34 by halvarez         ###   ########.fr       */
-=======
+/*   Updated: 2022/08/25 17:47:28 by halvarez         ###   ########.fr       */
 /*   Updated: 2022/08/25 17:11:57 by halvarez         ###   ########.fr       */
->>>>>>> 006_new-algo
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +15,7 @@
 #include "ft_push_swap.h"
 
 
+/*
 int	main()
 {
 	t_stack	*stack;
@@ -53,14 +51,16 @@ int	main()
 	print_2stack(stack);
 
 	ft_printf("\npa & pb :\n");
-	ft_rr(&stack, print);
+	ft_push(&stack, b, print);
+	ft_rr(&stack);
 	print_2stack(stack);
 	ft_printf("count = %d\n", stack->count);
 
 	free_stack(&stack);
 	return (0);
 }
-/*
+*/
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack;
@@ -73,19 +73,15 @@ int	main(int argc, char **argv)
 		//ft_printf("a_size=%d\n", stack->a_size);
 		//ft_printf("a_min=%d\n", stack->a_min);
 		//ft_printf("a_max=%d\n", stack->a_max);
-<<<<<<< HEAD
-		stack = sort(&stack);
+		//stack = sort(&stack);
 		//print_2stack(stack);
 		ft_printf("count=%d\n", stack->count);
-		ft_printf("is sorted = %d\n", is_sorted(stack->a));
-=======
+		//ft_printf("is sorted = %d\n", is_sorted(stack->a));
 		//stack = sort(&stack);
 		print_2stack(stack);
 		//ft_printf("count=%d\n", stack->count);
 		//ft_printf("is sorted = %d\n", is_sorted(stack->a));
->>>>>>> 006_new-algo
 	}
 	free_stack(&stack);
 	return (0);
 }
-*/
