@@ -41,9 +41,9 @@ int		ft_rb(t_stack **stack, int printflag);
 int		ft_rrb(t_stack **stack, int printflag);
 
 /* ./06_doublemoves.c ======================================================= */
-int		ft_ss(t_stack **stack, int printflag);
-int		ft_rr(t_stack **stack, int printflag);
-int		ft_rrr(t_stack **stack, int printflag);
+int		ft_ss(t_stack **stack);
+int		ft_rr(t_stack **stack);
+int		ft_rrr(t_stack **stack);
 
 /* ./07_parser.c ============================================================ */
 t_stack	*parser(const int argc, const char **argv);
