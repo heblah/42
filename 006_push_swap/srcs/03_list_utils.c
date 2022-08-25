@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/24 14:17:26 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/25 10:36:11 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_stack	*init_stack(void)
 	stack->a_max = INT_MIN;
 	stack->b = NULL;
 	stack->b_size = 0;
+	stack->b_min = INT_MAX;
+	stack->b_max = INT_MIN;
 	return (stack);
 }
 

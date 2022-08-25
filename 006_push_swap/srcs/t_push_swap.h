@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:01 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/24 14:17:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/25 10:35:54 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_stack
 	int		a_max;
 	t_lst	*b;
 	size_t	b_size;
+	int		b_min;
+	int		b_max;
 }			t_stack;
 
 /* enum of print flags ====================================================== */
