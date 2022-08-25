@@ -6,14 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 12:10:05 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/25 17:13:56 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/25 19:36:20 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_push_swap.h"
 #include "ft_push_swap.h"
 
-int	ft_ss(t_stack **stack)
+void	ft_ss(t_stack **stack)
 {
 	if (*stack)
 	{
@@ -22,10 +22,9 @@ int	ft_ss(t_stack **stack)
 		(*stack)->count--;
 		ft_printf("ss\n");
 	}
-	return (0);
 }
 
-int	ft_rr(t_stack **stack)
+void	ft_rr(t_stack **stack)
 {
 	if (*stack)
 	{
@@ -34,10 +33,9 @@ int	ft_rr(t_stack **stack)
 		(*stack)->count--;
 		ft_printf("rr\n");
 	}
-	return (0);
 }
 
-int	ft_rrr(t_stack **stack)
+void	ft_rrr(t_stack **stack)
 {
 	if (*stack)
 	{
@@ -46,5 +44,4 @@ int	ft_rrr(t_stack **stack)
 		(*stack)->count--;
 		ft_printf("rrr\n");
 	}
-	return (0);
 }

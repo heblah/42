@@ -15,32 +15,32 @@ void	print_1stack(t_lst *lst, char c);
 void	print_2stack(t_stack *stack);
 void	*ft_exit(t_stack **stack, int status);
 
-/* ./02_list_utils.c ======================================================== */
+/* ./02_stack_utils.c ======================================================= */
 t_lst	*lst_addback(t_lst **first, int nbr);
 void	free_lst(t_lst **first);
 size_t	lst_len(t_lst *first);
 void	lst_swap(t_lst *a, t_lst *b);
 int		is_double(t_lst *lst, int nbr);
 
-/* ./03_list_utils.c ======================================================== */
+/* ./03_stack_utils.c ======================================================= */
 t_stack	*init_stack(void);
 void	*free_stack(t_stack **stack);
 void	mvfirst2top(t_stack **stack, int select_stack);
 
-/* ./04_list_utils.c ======================================================== */
+/* ./04_stack_utils.c ======================================================= */
 void	get_stack_data(t_stack *stack, int nb);
 t_lst	**stack_selector(t_stack **stack, int select_stack);
 
 /* ./05_moves.c ============================================================= */
-int		ft_swap(t_stack **stack, int select_stack, int printflag);
-int		ft_push(t_stack **stack, int select_stack, int printflag);
-int		ft_rotate(t_stack **stack, int select_stack, int printflag);
-int		ft_revrotate(t_stack **stack, int select_stack, int printflag);
+void	ft_swap(t_stack **stack, int select_stack, int printflag);
+void	ft_push(t_stack **stack, int select_stack, int printflag);
+void	ft_rotate(t_stack **stack, int select_stack, int printflag);
+void	ft_revrotate(t_stack **stack, int select_stack, int printflag);
 
 /* ./06_doublemoves.c ======================================================= */
-int		ft_ss(t_stack **stack);
-int		ft_rr(t_stack **stack);
-int		ft_rrr(t_stack **stack);
+void	ft_ss(t_stack **stack);
+void	ft_rr(t_stack **stack);
+void	ft_rrr(t_stack **stack);
 
 /* ./07_parser.c ============================================================ */
 t_stack	*parser(const int argc, const char **argv);

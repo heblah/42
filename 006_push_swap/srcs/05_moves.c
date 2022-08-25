@@ -6,14 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:46:05 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/25 19:10:17 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/25 19:36:49 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_push_swap.h"
 #include "ft_push_swap.h"
 
-int	ft_swap(t_stack **stack, int select_stack, int printflag)
+void	ft_swap(t_stack **stack, int select_stack, int printflag)
 {
 	t_lst	**my_stack;
 
@@ -25,10 +25,9 @@ int	ft_swap(t_stack **stack, int select_stack, int printflag)
 		if (printflag)
 			ft_printf("s%c\n", 'a' + select_stack);
 	}
-	return (0);
 }
 
-int	ft_push(t_stack **stack, int select_stack, int printflag)
+void	ft_push(t_stack **stack, int select_stack, int printflag)
 {
 	t_lst	*send;
 
@@ -53,10 +52,9 @@ int	ft_push(t_stack **stack, int select_stack, int printflag)
 		if (printflag)
 			ft_printf("p%c\n", 'a' + select_stack);
 	}
-	return (0);
 }
 
-int	ft_rotate(t_stack **stack, int select_stack, int printflag)
+void	ft_rotate(t_stack **stack, int select_stack, int printflag)
 {
 	t_lst	**my_stack;
 
@@ -68,10 +66,9 @@ int	ft_rotate(t_stack **stack, int select_stack, int printflag)
 		if (printflag)
 			ft_printf("r%c\n", 'a' + select_stack);
 	}
-	return (0);
 }
 
-int	ft_revrotate(t_stack **stack, int select_stack, int printflag)
+void	ft_revrotate(t_stack **stack, int select_stack, int printflag)
 {
 	t_lst	**my_stack;
 
@@ -83,5 +80,4 @@ int	ft_revrotate(t_stack **stack, int select_stack, int printflag)
 		if (printflag)
 			ft_printf("rr%c\n", 'a' + select_stack);
 	}
-	return (0);
 }
