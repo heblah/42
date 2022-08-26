@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   03_list_utils.c                                    :+:      :+:    :+:   */
+/*   03_stack_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/25 18:55:48 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/26 14:49:37 by halvarez         ###   ########.fr       */
 /*   Updated: 2022/08/25 17:06:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -81,7 +81,7 @@ static t_lst	*insert_on_top(t_stack **stack, int select_stack, t_lst *tmp)
 		first = &(*stack)->a;
 	else if (select_stack == b)
 		first = &(*stack)->b;
-	if (first)
+	if (*first)
 	{
 		tmp->previous = (*first)->previous;
 		tmp->next = *first;

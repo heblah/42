@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 11:13:10 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/26 10:46:04 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/26 14:45:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,40 @@ int	is_max(t_stack **stack, int select_stack, int n)
 	return (1);
 }
 
-t_lst	*get_min(t_stack **stack, int select_stack)
+int	get_min_value(t_stack **stack, int select_stack)
 {
 	t_lst	*tmp;
 
 	tmp = stackcpy_selector(stack, select_stack);
 	while (is_min(stack, select_stack, tmp->n) == 0)
 		tmp = tmp->next;
-	return (tmp);
+	return (tmp->n);
 }
 
-t_lst	*get_max(t_stack **stack, int select_stack)
+void	get_shortway2val(t_stack **stack, int select_stack, int nb)
+{
+	t_lst	**my_stack;
+	t_lst	*cpystack;
+	size_t	mv;
+
+	my_stack = stack_selector(stack, select_stack);
+	cpystack = *my_stack;
+	mv = 0;
+	while (cpystack->n != nb)
+	{
+		cpystack = cpystack->next;
+		mv++;
+	}
+	if (mv < (*stack)->a_size / 2)
+		while ((*my_stack)->n != nb)
+			ft_rotate(stack, select_stack, print);
+	else
+		while ((*my_stack)->n != nb)
+			ft_revrotate(stack, select_stack, print);
+}
+
+/*
+t_lst	*get_max_ptr(t_stack **stack, int select_stack)
 {
 	t_lst	*tmp;
 
@@ -97,3 +120,4 @@ t_lst	*get_max(t_stack **stack, int select_stack)
 		tmp = tmp->next;
 	return (tmp);
 }
+*/

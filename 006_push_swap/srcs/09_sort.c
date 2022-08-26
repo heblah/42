@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:06:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/26 12:48:56 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/26 14:56:51 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	sort(t_stack **stack, int select_stack)
 	{
 		if ((*stack)->a_size == 3)
 			sort3nb(stack, select_stack);
-		else if ((*stack)->a_size == 5)
-			return ;
+		else if ((*stack)->a_size <= 100)
+			sort_smallstack(stack, select_stack);
 		else
 			return ;
 	}	
@@ -64,36 +64,24 @@ t_lst	*sort3nb(t_stack **stack, int select_stack)
 	return (*my_stack);
 }
 
-/*
-t_stack	*sort5nb(t_stack **stack)
+void	sort_smallstack(t_stack **stack, int select_stack)
 {
-	ft_pb(stack, print);
-	ft_pb(stack, print);
-	sort3nb(stack);
-	print_2stack(*stack);
-	if ((*stack)->b->n > (*stack)->b->next->n)
-		ft_sb(stack, print);
-	if ((*stack)->b->n == (*stack)->a_min)
-		ft_pa(stack, print);
-	if ((*stack)->b->n == (*stack)->a_max)
-		ft_pa(stack, print);
-	while ((*stack)->b != NULL)
+	int	min;
+
+	while ((*stack)->a_size > 3)
 	{
-		if ((*stack)->b->n < (*stack)->a->n
-			&& (*stack)->b->n > (*stack)->a->previous->n)
-			ft_pa(stack, print);
-		else if ((*stack)->b->n == (*stack)->a_max)
-		{
-			get_beginning(stack);
-			ft_pa(stack, print);
-		}
-		else
-			ft_ra(stack, print);
+		min = get_min_value(stack, select_stack);
+		get_shortway2val(stack, select_stack, min);
+		ft_push(stack, b, print);
 	}
-	get_beginning(stack);
-	return (*stack);
+	sort3nb(stack, select_stack);
+	min = get_min_value(stack, select_stack);
+	get_shortway2val(stack, select_stack, min);
+	while ((*stack)->b != NULL)
+		ft_push(stack, a, print);
 }
 
+/*
 void	insertion(t_stack **stack)
 {
 	while ((*stack)->b != NULL)

@@ -50,13 +50,14 @@ t_stack	*parser(const int argc, const char **argv);
 int		is_sorted(t_stack **stack, int select_stack);
 int		is_min(t_stack **stack, int select_stack, int n);
 int		is_max(t_stack **stack, int select_stack, int n);
-t_lst	*get_min(t_stack **stack, int select_stack);
-t_lst	*get_max(t_stack **stack, int select_stack);
+int		get_min_value(t_stack **stack, int select_stack);
+void	get_shortway2val(t_stack **stack, int select_stack, int nb);
+t_lst	*get_max_ptr(t_stack **stack, int select_stack);
 
 /* ./09_sort.c ============================================================== */
 void	sort(t_stack **stack, int select_stack);
 t_lst	*sort3nb(t_stack **stack, int select_stack);
-t_stack	*sort5nb(t_stack **stack);
+void	sort_smallstack(t_stack **stack, int select_stack);
 void	insertion(t_stack **stack);
 t_stack	*sortxnb(t_stack **stack);
 
