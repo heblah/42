@@ -30,6 +30,7 @@ void	mvfirst2top(t_stack **stack, int select_stack);
 /* ./04_stack_utils.c ======================================================= */
 void	get_stack_data(t_stack *stack, int nb);
 t_lst	**stack_selector(t_stack **stack, int select_stack);
+t_lst	*stackcpy_selector(t_stack **stack, int select_stack);
 
 /* ./05_moves.c ============================================================= */
 void	ft_swap(t_stack **stack, int select_stack, int printflag);
@@ -46,9 +47,11 @@ void	ft_rrr(t_stack **stack);
 t_stack	*parser(const int argc, const char **argv);
 
 /* ./08_check.c ============================================================= */
-int		is_sorted(t_lst *lst);
-int		is_min(t_lst *lst, int n);
-int		is_max(t_lst *lst, int n);
+int		is_sorted(t_stack **stack, int select_stack);
+int		is_min(t_stack **stack, int select_stack, int n);
+int		is_max(t_stack **stack, int select_stack, int n);
+t_lst	*get_min(t_stack **stack, int select_stack);
+t_lst	*get_max(t_stack **stack, int select_stack);
 
 /* ./09_sort.c ============================================================== */
 t_stack	*sort(t_stack **stack);
