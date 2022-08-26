@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:01 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/25 17:43:50 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/26 16:09:11 by halvarez         ###   ########.fr       */
 /*   Updated: 2022/08/25 16:28:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -22,6 +22,7 @@
 typedef struct s_lst
 {
 	int				n;
+	size_t			index;
 	struct s_lst	*previous;
 	struct s_lst	*next;
 }					t_lst;
@@ -29,8 +30,9 @@ typedef struct s_lst
 /* Two-stack-structure ====================================================== */
 typedef struct s_stack
 {
-	t_lst		*a;
 	size_t	count;
+	int		key;
+	t_lst		*a;
 	size_t	a_size;
 	int		a_min;
 	int		a_max;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   08_check.c                                         :+:      :+:    :+:   */
+/*   09_sort_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 11:13:10 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/26 14:45:04 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/26 19:46:47 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,24 +60,6 @@ int	is_min(t_stack **stack, int select_stack, int n)
 	return (1);
 }
 
-int	is_max(t_stack **stack, int select_stack, int n)
-{
-	t_lst	*first;
-	t_lst	*tmp;
-
-	first = stackcpy_selector(stack, select_stack);
-	tmp = first;
-	while (tmp != first->previous)
-	{
-		if (n < tmp->n)
-			return (0);
-		tmp = tmp->next;
-	}
-	if (n < tmp->n)
-		return (0);
-	return (1);
-}
-
 int	get_min_value(t_stack **stack, int select_stack)
 {
 	t_lst	*tmp;
@@ -102,7 +84,7 @@ void	get_shortway2val(t_stack **stack, int select_stack, int nb)
 		cpystack = cpystack->next;
 		mv++;
 	}
-	if (mv < (*stack)->a_size / 2)
+	if (mv <= (*stack)->a_size / 2)
 		while ((*my_stack)->n != nb)
 			ft_rotate(stack, select_stack, print);
 	else
@@ -110,14 +92,38 @@ void	get_shortway2val(t_stack **stack, int select_stack, int nb)
 			ft_revrotate(stack, select_stack, print);
 }
 
-/*
-t_lst	*get_max_ptr(t_stack **stack, int select_stack)
+void	sort_index(t_stack **stack)
 {
 	t_lst	*tmp;
 
-	tmp = stackcpy_selector(stack, select_stack);
-	while (is_max(stack, select_stack, tmp->n) == 0)
+	tmp = (*stack)->a;
+	while (tmp->n != (*stack)->a_min)
 		tmp = tmp->next;
-	return (tmp);
+	tmp->index = 0;
+	index_writer(stack, tmp->n, tmp->index + 1);
 }
-*/
+
+void	index_writer(t_stack **stack, int min, size_t index)
+{
+	t_lst	*min_tmp;
+	t_lst	*tmp;
+	size_t	lena;
+
+	if (index < (*stack)->a_size)
+	{
+		tmp = (*stack)->a;
+		lena = (*stack)->a_size;
+		while (lena-- > 0)
+		{
+		/*c'est le if qui deconne'*/
+			if (tmp->n > min && tmp->n <= (*stack)->a_max)
+			{
+				min = tmp->n;
+				min_tmp = tmp;
+				min_tmp->index = index;
+			}
+			tmp = tmp->next;
+		}
+		index_writer(stack, min_tmp->n, index + 1);
+	}
+}

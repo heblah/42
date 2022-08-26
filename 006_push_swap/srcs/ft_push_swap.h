@@ -11,8 +11,8 @@
 
 /* ./01_ftprint.c =========================================================== */
 void	*print_error(char *s, int line, char *file);
-void	print_1stack(t_lst *lst, char c);
-void	print_2stack(t_stack *stack);
+void	print_index(t_stack *stack);
+void	print_stack(t_stack *stack);
 void	*ft_exit(t_stack **stack, int status);
 
 /* ./02_stack_utils.c ======================================================= */
@@ -56,10 +56,10 @@ void	sort_bigstack(t_stack, int select_stack);
 /* ./09_sort_utils.c ======================================================== */
 int		is_sorted(t_stack **stack, int select_stack);
 int		is_min(t_stack **stack, int select_stack, int n);
-int		is_max(t_stack **stack, int select_stack, int n);
 int		get_min_value(t_stack **stack, int select_stack);
 void	get_shortway2val(t_stack **stack, int select_stack, int nb);
-t_lst	*get_max_ptr(t_stack **stack, int select_stack);
+void	sort_index(t_stack **stack);
+void	index_writer(t_stack **stack, int min, size_t index);
 
 /* ./10_sort_utils.c ======================================================== */
 #endif

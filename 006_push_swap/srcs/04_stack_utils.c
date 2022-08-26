@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 18:52:41 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/26 09:21:08 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/26 16:13:35 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 void	get_stack_data(t_stack *stack, int nb)
 {
+	stack->a->previous->index = stack->a_size;
 	stack->a_size++;
 	if (nb < stack->a_min)
 		stack->a_min = nb;
-
 	if (nb > stack->a_max)
 		stack->a_max = nb;
 }

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:06:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/26 15:25:00 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/26 15:37:16 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	sort(t_stack **stack, int select_stack)
 			sort2nb(stack, select_stack);
 		if ((*stack)->a_size == 3)
 			sort3nb(stack, select_stack);
-		else if ((*stack)->a_size <= 35)
+		else if ((*stack)->a_size <= 3500)
 			sort_smallstack(stack, select_stack);
 		else
 			return ;
