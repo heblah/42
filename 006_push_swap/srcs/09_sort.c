@@ -1,63 +1,70 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   08_sort.c                                          :+:      :+:    :+:   */
+/*   09_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:06:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/25 18:49:10 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/26 12:48:56 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_push_swap.h"
 #include "ft_push_swap.h"
 
-t_stack	*sort(t_stack **stack)
+void	sort(t_stack **stack, int select_stack)
 {
-	if ((*stack) && (is_sorted((*stack)->a) == 1 || (*stack)->a_size == 1))
-		return ((*stack));
+	t_lst	**my_stack;
+
+	my_stack = stack_selector(stack, select_stack);
+	if (*my_stack && (is_sorted(stack, select_stack) == 1
+		|| (*stack)->a_size == 1))
+		return ;
 	else
 	{
 		if ((*stack)->a_size == 3)
-			return (sort3nb(stack));
+			sort3nb(stack, select_stack);
 		else if ((*stack)->a_size == 5)
-			return (sort5nb(stack));
+			return ;
 		else
-			return (*stack);
+			return ;
 	}	
-	return (*stack);
 }
 
-t_stack	*sort3nb(t_stack **stack)
+t_lst	*sort3nb(t_stack **stack, int select_stack)
 {
-	if ((*stack)->a->n > (*stack)->a->next->n
-		&& (*stack)->a->next->n < (*stack)->a->previous->n
-		&& (*stack)->a->n < (*stack)->a->previous->n)
-		ft_sa(stack, print);
-	else if (is_sorted((*stack)->a) == -1)
+	t_lst	**my_stack;
+
+	my_stack = stack_selector(stack, select_stack);
+	if ((*my_stack)->n > (*my_stack)->next->n
+		&& (*my_stack)->next->n < (*my_stack)->previous->n
+		&& (*my_stack)->n < (*my_stack)->previous->n)
+		ft_swap(stack, select_stack, print);
+	else if (is_sorted(stack, select_stack) == -1)
 	{
-		ft_sa(stack, print);
-		ft_rra(stack, print);
+		ft_swap(stack, select_stack, print);
+		ft_revrotate(stack, select_stack, print);
 	}
-	else if ((*stack)->a->n > (*stack)->a->next->n
-		&& (*stack)->a->next->n < (*stack)->a->previous->n
-		&& (*stack)->a->n > (*stack)->a->previous->n)
-		ft_ra(stack, print);
-	else if ((*stack)->a->n < (*stack)->a->next->n
-		&& (*stack)->a->next->n > (*stack)->a->previous->n
-		&& (*stack)->a->n < (*stack)->a->previous->n)
+	else if ((*my_stack)->n > (*my_stack)->next->n
+		&& (*my_stack)->next->n < (*my_stack)->previous->n
+		&& (*my_stack)->n > (*my_stack)->previous->n)
+		ft_rotate(stack, select_stack, print);
+	else if ((*my_stack)->n < (*my_stack)->next->n
+		&& (*my_stack)->next->n > (*my_stack)->previous->n
+		&& (*my_stack)->n < (*my_stack)->previous->n)
 	{
-		ft_sa(stack, print);
-		ft_ra(stack, print);
+		ft_swap(stack, select_stack, print);
+		ft_rotate(stack, select_stack, print);
 	}
-	else if ((*stack)->a->n < (*stack)->a->next->n
-		&& (*stack)->a->next->n > (*stack)->a->previous->n
-		&& (*stack)->a->n > (*stack)->a->previous->n)
-		ft_rra(stack, print);
-	return (*stack);
+	else if ((*my_stack)->n < (*my_stack)->next->n
+		&& (*my_stack)->next->n > (*my_stack)->previous->n
+		&& (*my_stack)->n > (*my_stack)->previous->n)
+		ft_revrotate(stack, select_stack, print);
+	return (*my_stack);
 }
 
+/*
 t_stack	*sort5nb(t_stack **stack)
 {
 	ft_pb(stack, print);
@@ -118,3 +125,4 @@ t_stack	*sortxnb(t_stack **stack)
 	insertion(stack);
 	return (*stack);
 }
+*/

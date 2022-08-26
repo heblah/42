@@ -54,8 +54,8 @@ t_lst	*get_min(t_stack **stack, int select_stack);
 t_lst	*get_max(t_stack **stack, int select_stack);
 
 /* ./09_sort.c ============================================================== */
-t_stack	*sort(t_stack **stack);
-t_stack	*sort3nb(t_stack **stack);
+void	sort(t_stack **stack, int select_stack);
+t_lst	*sort3nb(t_stack **stack, int select_stack);
 t_stack	*sort5nb(t_stack **stack);
 void	insertion(t_stack **stack);
 t_stack	*sortxnb(t_stack **stack);
