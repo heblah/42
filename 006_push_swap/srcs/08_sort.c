@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   09_sort.c                                          :+:      :+:    :+:   */
+/*   08_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:06:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/26 15:17:10 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/26 15:25:00 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,35 +90,8 @@ void	sort_smallstack(t_stack **stack, int select_stack)
 }
 
 /*
-void	insertion(t_stack **stack)
+void	sort_bigstack(t_stack, int select_stack)
 {
-	while ((*stack)->b != NULL)
-	{
-		if (is_min((*stack)->a, (*stack)->b->n))
-		{
-			get_beginning(stack);
-			ft_pa(stack, print);
-		}
-		else if (is_max((*stack)->a, (*stack)->b->n))
-		{
-			get_beginning(stack);
-			ft_pa(stack, print);
-		}
-		else
-		{
-			get_position (stack);
-			ft_pa(stack, print);
-		}
-	}
-	get_beginning(stack);
-}
-
-t_stack	*sortxnb(t_stack **stack)
-{
-	while ((*stack)->a_size > 5)
-		ft_pb(stack, print);
-	sort5nb(stack);
-	insertion(stack);
-	return (*stack);
+	
 }
 */

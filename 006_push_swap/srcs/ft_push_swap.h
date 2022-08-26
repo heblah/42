@@ -46,7 +46,14 @@ void	ft_rrr(t_stack **stack);
 /* ./07_parser.c ============================================================ */
 t_stack	*parser(const int argc, const char **argv);
 
-/* ./08_check.c ============================================================= */
+/* ./08_sort.c ============================================================== */
+void	sort(t_stack **stack, int select_stack);
+void	sort2nb(t_stack **stack, int select_stack);
+void	sort3nb(t_stack **stack, int select_stack);
+void	sort_smallstack(t_stack **stack, int select_stack);
+void	sort_bigstack(t_stack, int select_stack);
+
+/* ./09_sort_utils.c ======================================================== */
 int		is_sorted(t_stack **stack, int select_stack);
 int		is_min(t_stack **stack, int select_stack, int n);
 int		is_max(t_stack **stack, int select_stack, int n);
@@ -54,15 +61,5 @@ int		get_min_value(t_stack **stack, int select_stack);
 void	get_shortway2val(t_stack **stack, int select_stack, int nb);
 t_lst	*get_max_ptr(t_stack **stack, int select_stack);
 
-/* ./09_sort.c ============================================================== */
-void	sort(t_stack **stack, int select_stack);
-void	sort2nb(t_stack **stack, int select_stack);
-void	sort3nb(t_stack **stack, int select_stack);
-void	sort_smallstack(t_stack **stack, int select_stack);
-void	insertion(t_stack **stack);
-t_stack	*sortxnb(t_stack **stack);
-
 /* ./10_sort_utils.c ======================================================== */
-void	get_beginning(t_stack **stack);
-void	get_position(t_stack **stack);
 #endif
