@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:01 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/26 16:09:11 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/26 23:38:40 by halvarez         ###   ########.fr       */
 /*   Updated: 2022/08/25 16:28:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -32,11 +32,11 @@ typedef struct s_stack
 {
 	size_t	count;
 	int		key;
-	t_lst		*a;
+	t_lst	*a;
 	size_t	a_size;
 	int		a_min;
 	int		a_max;
-	t_lst		*b;
+	t_lst	*b;
 	size_t	b_size;
 	int		b_min;
 	int		b_max;

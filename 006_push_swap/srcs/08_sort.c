@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:06:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/26 15:37:16 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/26 23:41:53 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	sort_smallstack(t_stack **stack, int select_stack)
 }
 
 /*
-void	sort_bigstack(t_stack, int select_stack)
+void	sort_bigstack(t_stack **stack, int select_stack)
 {
 	
 }
