@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 11:13:10 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/26 19:46:47 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/26 20:39:58 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	index_writer(t_stack **stack, int min, size_t index)
 		lena = (*stack)->a_size;
 		while (lena-- > 0)
 		{
-		/*c'est le if qui deconne'*/
+		/*c'est le if qui deconne, il faut 'reserrer' le max*/
 			if (tmp->n > min && tmp->n <= (*stack)->a_max)
 			{
 				min = tmp->n;
