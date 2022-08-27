@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 11:39:24 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/26 16:39:23 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/27 11:14:07 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	print_index(t_stack *stack)
 
 	lena = lst_len(stack->a);
 	lenb = lst_len(stack->b);
-	ft_printf("Index a :\t| Index b :\t\n");
+	ft_printf("Index a :\t\t| Index b :\t\n");
 	while (lena > 0 || lenb > 0)
 	{
 		if (lena > 0)
@@ -38,7 +38,7 @@ void	print_index(t_stack *stack)
 			lena--;
 		}
 		else
-			ft_printf("\t\t|");
+			ft_printf("\t\t\t\t|");
 		if (lenb > 0)
 		{
 			ft_printf("  %d\t\t\n", stack->b->index);
@@ -57,20 +57,20 @@ void	print_stack(t_stack *stack)
 
 	lena = lst_len(stack->a);
 	lenb = lst_len(stack->b);
-	ft_printf("Stack a :\t| Stack b :\t\n");
+	ft_printf("Stack a :\t\t| Stack b :\t\n");
 	while (lena > 0 || lenb > 0)
 	{
 		if (lena > 0)
 		{
-			ft_printf("  %d\t\t|", stack->a->n);
+			ft_printf("  %d\t%d\t\t|", stack->a->index, stack->a->n);
 			stack->a = stack->a->next;
 			lena--;
 		}
 		else
-			ft_printf("\t\t|");
+			ft_printf("\t\t\t|");
 		if (lenb > 0)
 		{
-			ft_printf("  %d\t\t\n", stack->b->n);
+			ft_printf("  %d\t%d\t\t\n", stack->b->index, stack->b->n);
 			stack->b = stack->b->next;
 			lenb--;
 		}

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:15 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/27 09:23:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/27 11:23:48 by halvarez         ###   ########.fr       */
 /*   Updated: 2022/08/25 17:11:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -69,12 +69,11 @@ int	main(int argc, char **argv)
 	else
 	{
 		stack = parser((const int)argc, (const char **)argv);
-		print_index(stack);
 		sort_index(&stack);
-		print_index(stack);
-		print_stack(stack);
 		sort(&stack, a);
-		ft_printf("is sorted = %d\n", is_sorted(&stack, a));
+		print_stack(stack);
+		ft_printf("a is sorted = %d\n", is_sorted(&stack, a));
+		ft_printf("b is sorted = %d\n", is_sorted(&stack, b));
 		ft_printf("count=%d\n", stack->count);
 		ft_printf("size=%d\n", stack->a_size);
 	}

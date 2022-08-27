@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/25 18:46:57 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/27 11:17:33 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,17 @@ size_t	lst_len(t_lst *first)
 
 void	lst_swap(t_lst *a, t_lst *b)
 {
-	int	tmp;
+	int		tmp;
+	size_t	idx_tmp;
 
 	if (a && b)
 	{
 		tmp = a->n;
 		a->n = b->n;
 		b->n = tmp;
+		idx_tmp = a->index;
+		a->index = b->index;
+		b->index = idx_tmp;
 	}
 }
 
