@@ -6,14 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 11:13:10 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/26 23:36:17 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/27 09:25:12 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_push_swap.h"
 #include "ft_push_swap.h"
 
-static int	is_min(t_stack **stack, int select_stack, int n)
+static int	is_min(t_stack **stack, int select_stack, size_t index)
 {
 	t_lst	*first;
 	t_lst	*tmp;
@@ -22,11 +22,11 @@ static int	is_min(t_stack **stack, int select_stack, int n)
 	tmp = first;
 	while (tmp != first->previous)
 	{
-		if (n > tmp->n)
+		if (index > tmp->index)
 			return (0);
 		tmp = tmp->next;
 	}
-	if (n > tmp->n)
+	if (index > tmp->index)
 		return (0);
 	return (1);
 }
@@ -36,12 +36,12 @@ int	get_min_value(t_stack **stack, int select_stack)
 	t_lst	*tmp;
 
 	tmp = stackcpy_selector(stack, select_stack);
-	while (is_min(stack, select_stack, tmp->n) == 0)
+	while (is_min(stack, select_stack, tmp->index) == 0)
 		tmp = tmp->next;
-	return (tmp->n);
+	return (tmp->index);
 }
 
-void	get_shortway2val(t_stack **stack, int select_stack, int nb)
+void	get_shortway(t_stack **stack, int select_stack, size_t index)
 {
 	t_lst	**my_stack;
 	t_lst	*cpystack;
@@ -50,16 +50,16 @@ void	get_shortway2val(t_stack **stack, int select_stack, int nb)
 	my_stack = stack_selector(stack, select_stack);
 	cpystack = *my_stack;
 	mv = 0;
-	while (cpystack->n != nb)
+	while (cpystack->index != index)
 	{
 		cpystack = cpystack->next;
 		mv++;
 	}
 	if (mv <= (*stack)->a_size / 2)
-		while ((*my_stack)->n != nb)
+		while ((*my_stack)->index != index)
 			ft_rotate(stack, select_stack, print);
 	else
-		while ((*my_stack)->n != nb)
+		while ((*my_stack)->index != index)
 			ft_revrotate(stack, select_stack, print);
 }
 
