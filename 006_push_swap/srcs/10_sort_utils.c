@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:38:23 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/27 11:24:01 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/27 11:27:48 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_sorted(t_stack **stack, int select_stack)
 	t_lst	*end;
 
 	lst = stackcpy_selector(stack, select_stack);
-	if ((*stack)->a_size == 1)
+	if (lst == NULL || (*stack)->a_size == 1)
 		return (1);
 	sorted = 0;
 	end = lst->previous;
