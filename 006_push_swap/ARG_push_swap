@@ -1,5 +1,6 @@
 #!/bin/sh
 #Genereated with calculatorsoup.com
+#Need to source to be able to use $ARGxxx
 
 export ARG10="-2061 -3820 -1001 737 -1094 3272 978 -3306 -4987 3867"
 

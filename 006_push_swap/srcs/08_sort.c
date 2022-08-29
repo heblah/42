@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:06:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/29 10:21:55 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/29 10:24:03 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,20 +78,22 @@ void	sort_smallstack(t_stack **stack, int select_stack)
 
 	while ((*stack)->a_size > 3)
 	{
-		index_min = get_min_value(stack, select_stack);
+		index_min = get_min_index(stack, select_stack);
 		get_shortway(stack, select_stack, index_min);
 		ft_push(stack, b, print);
 	}
 	sort3nb(stack, select_stack);
-	index_min = get_min_value(stack, select_stack);
+	index_min = get_min_index(stack, select_stack);
 	get_shortway(stack, select_stack, index_min);
 	while ((*stack)->b != NULL)
 		ft_push(stack, a, print);
 }
 
+/*
 void	sort_bigstack(t_stack **stack, int select_stack)
 {
 	size_t	cut;
 
 	cut = (*stack)->a_size / 5;
 }
+*/

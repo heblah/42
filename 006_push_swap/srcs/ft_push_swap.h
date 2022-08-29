@@ -54,7 +54,7 @@ void	sort_smallstack(t_stack **stack, int select_stack);
 void	sort_bigstack(t_stack **stack, int select_stack);
 
 /* ./09_sort_utils.c ======================================================== */
-int		get_min_value(t_stack **stack, int select_stack);
+int		get_min_index(t_stack **stack, int select_stack);
 void	get_shortway(t_stack **stack, int select_stack, size_t index);
 void	sort_index(t_stack **stack);
 

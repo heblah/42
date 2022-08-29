@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 11:13:10 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/29 10:19:45 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/29 10:23:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	is_min(t_stack **stack, int select_stack, size_t index)
 	return (1);
 }
 
-int	get_min_value(t_stack **stack, int select_stack)
+int	get_min_index(t_stack **stack, int select_stack)
 {
 	t_lst	*tmp;
 
