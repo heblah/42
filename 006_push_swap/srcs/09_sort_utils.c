@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 11:13:10 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/27 09:25:12 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/29 10:19:45 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,28 @@ int	get_min_value(t_stack **stack, int select_stack)
 
 void	get_shortway(t_stack **stack, int select_stack, size_t index)
 {
-	t_lst	**my_stack;
 	t_lst	*cpystack;
-	size_t	mv;
+	size_t	mv[2];
 
-	my_stack = stack_selector(stack, select_stack);
-	cpystack = *my_stack;
-	mv = 0;
-	while (cpystack->index != index)
+	cpystack = stackcpy_selector(stack, select_stack);
+	mv[0] = 0;
+	mv[1] = 0;
+	while (cpystack->index > index)
 	{
 		cpystack = cpystack->next;
-		mv++;
+		mv[0]++;
 	}
-	if (mv <= (*stack)->a_size / 2)
-		while ((*my_stack)->index != index)
+	cpystack = stackcpy_selector(stack, select_stack);
+	while (cpystack->index > index)
+	{
+		cpystack = cpystack->previous;
+		mv[1]++;
+	}
+	if (mv[0] < mv [1])
+		while (mv[0]-- > 0)
 			ft_rotate(stack, select_stack, print);
 	else
-		while ((*my_stack)->index != index)
+		while (mv[1]-- > 0)
 			ft_revrotate(stack, select_stack, print);
 }
 
