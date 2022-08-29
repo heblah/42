@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:08:11 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/25 18:59:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/29 15:55:38 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_stack	*parser(const int argc, const char **argv)
 		stack = one_arg_parser(argv);
 	else
 		stack = var_arg_parser(argc, argv);
+	sort_index(&stack);
 	return (stack);
 }
 

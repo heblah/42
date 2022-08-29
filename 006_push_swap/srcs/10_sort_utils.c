@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:38:23 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/29 13:56:38 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:18:11 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,19 @@ void	get_shortway2max(t_stack **stack, int select_stack, size_t index)
 	else
 		while (mv[1]-- > 0)
 			ft_revrotate(stack, select_stack, print);
+}
+
+int	define_cut(t_stack **stack)
+{
+	int	cut;
+
+	if ((*stack)->a_size <= 10)
+		cut = (*stack)->a_size / 3;
+	else if ((*stack)->a_size <= 50)
+		cut = (*stack)->a_size / 4;
+	else if ((*stack)->a_size <= 75)
+		cut = (*stack)->a_size / 7;
+	else if ((*stack)->a_size <= 100)
+		cut = (*stack)->a_size / 7;
+	return (cut);
 }

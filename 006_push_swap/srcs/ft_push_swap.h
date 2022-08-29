@@ -62,4 +62,5 @@ void	sort_index(t_stack **stack);
 int		is_sorted(t_stack **stack, int select_stack);
 int		get_max_index(t_stack **stack, int select_stack);
 void	get_shortway2max(t_stack **stack, int select_stack, size_t index);
+int		define_cut(t_stack **stack);
 #endif

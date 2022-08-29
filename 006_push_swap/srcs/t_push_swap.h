@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:01 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/29 14:55:42 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/29 16:44:51 by halvarez         ###   ########.fr       */
 /*   Updated: 2022/08/25 16:28:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -46,7 +46,7 @@ typedef struct s_stack
 enum	e_printflag
 {
 	noprint,
-	print
+	print = 0
 };
 
 /* stack selector for move-functions ======================================== */
