@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:06:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/29 10:24:03 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/29 15:05:32 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	sort(t_stack **stack, int select_stack)
 			sort2nb(stack, select_stack);
 		else if ((*stack)->a_size == 3)
 			sort3nb(stack, select_stack);
-		else if ((*stack)->a_size <= 3500)
+		else if ((*stack)->a_size <= 35)
 			sort_smallstack(stack, select_stack);
 		else
-			return ;
+			sort_bigstack(stack, select_stack);
 	}	
 }
 
@@ -79,21 +79,44 @@ void	sort_smallstack(t_stack **stack, int select_stack)
 	while ((*stack)->a_size > 3)
 	{
 		index_min = get_min_index(stack, select_stack);
-		get_shortway(stack, select_stack, index_min);
+		get_shortway2min(stack, select_stack, index_min);
 		ft_push(stack, b, print);
 	}
 	sort3nb(stack, select_stack);
 	index_min = get_min_index(stack, select_stack);
-	get_shortway(stack, select_stack, index_min);
+	get_shortway2min(stack, select_stack, index_min);
 	while ((*stack)->b != NULL)
 		ft_push(stack, a, print);
 }
 
-/*
 void	sort_bigstack(t_stack **stack, int select_stack)
 {
-	size_t	cut;
+	size_t	index_cut;
+	size_t	size_cut;
+	size_t	index_tmp;
 
-	cut = (*stack)->a_size / 5;
+	size_cut = (*stack)->a_size / 9;
+	index_cut = size_cut - 1;
+	index_tmp = 0;
+	while ((*stack)->a_size > 3)
+	{
+		while ((*stack)->a_size > 3 && index_tmp <= index_cut)
+		{
+			get_shortway2min(stack, select_stack, index_cut);
+			ft_push(stack, b, print);
+			index_tmp++;
+		}
+		index_cut += size_cut;
+		if (index_cut > (*stack)->a_size + (*stack)->b_size - 1)
+			index_cut = (*stack)->a_size + (*stack)->b_size - 4;
+	}
+	sort3nb(stack, select_stack);
+	while ((*stack)->b != NULL)
+	{
+		index_tmp = get_max_index(stack, b);
+		get_shortway2max(stack, b, index_tmp);
+		ft_push(stack, a, print);
+	}
+	ft_printf("index_cut=%d\n", index_cut);
+	ft_printf("size_cut=%d\n", size_cut);
 }
-*/

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:38:23 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/27 11:27:48 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/29 13:56:38 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,59 @@ int	is_sorted(t_stack **stack, int select_stack)
 	if (lst != end->next && lst != end && lst->n < lst->next->n)
 		sorted = 0;
 	return (sorted);
+}
+
+static int	is_max(t_stack **stack, int select_stack, size_t index)
+{
+	t_lst	*first;
+	t_lst	*tmp;
+
+	first = stackcpy_selector(stack, select_stack);
+	tmp = first;
+	while (tmp != first->previous)
+	{
+		if (index < tmp->index)
+			return (0);
+		tmp = tmp->next;
+	}
+	if (index < tmp->index)
+		return (0);
+	return (1);
+}
+
+int	get_max_index(t_stack **stack, int select_stack)
+{
+	t_lst	*tmp;
+
+	tmp = stackcpy_selector(stack, select_stack);
+	while (is_max(stack, select_stack, tmp->index) == 0)
+		tmp = tmp->next;
+	return (tmp->index);
+}
+
+void	get_shortway2max(t_stack **stack, int select_stack, size_t index)
+{
+	t_lst	*cpystack;
+	size_t	mv[2];
+
+	cpystack = stackcpy_selector(stack, select_stack);
+	mv[0] = 0;
+	mv[1] = 0;
+	while (cpystack->index != index)
+	{
+		cpystack = cpystack->next;
+		mv[0]++;
+	}
+	cpystack = stackcpy_selector(stack, select_stack);
+	while (cpystack->index != index)
+	{
+		cpystack = cpystack->previous;
+		mv[1]++;
+	}
+	if (mv[0] < mv [1])
+		while (mv[0]-- > 0)
+			ft_rotate(stack, select_stack, print);
+	else
+		while (mv[1]-- > 0)
+			ft_revrotate(stack, select_stack, print);
 }

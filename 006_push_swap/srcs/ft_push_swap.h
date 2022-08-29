@@ -55,9 +55,11 @@ void	sort_bigstack(t_stack **stack, int select_stack);
 
 /* ./09_sort_utils.c ======================================================== */
 int		get_min_index(t_stack **stack, int select_stack);
-void	get_shortway(t_stack **stack, int select_stack, size_t index);
+void	get_shortway2min(t_stack **stack, int select_stack, size_t index);
 void	sort_index(t_stack **stack);
 
 /* ./10_sort_utils.c ======================================================== */
 int		is_sorted(t_stack **stack, int select_stack);
+int		get_max_index(t_stack **stack, int select_stack);
+void	get_shortway2max(t_stack **stack, int select_stack, size_t index);
 #endif

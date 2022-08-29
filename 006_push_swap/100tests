@@ -1,0 +1,22 @@
+#!/bin/sh
+
+echo ARG101
+./push_swap $ARG101
+echo ARG102
+./push_swap $ARG102
+echo ARG103
+./push_swap $ARG103
+echo ARG104
+./push_swap $ARG104
+echo ARG105
+./push_swap $ARG105
+echo ARG106
+./push_swap $ARG106
+echo ARG107
+./push_swap $ARG107
+echo ARG108
+./push_swap $ARG108
+echo ARG109
+./push_swap $ARG109
+echo ARG110
+./push_swap $ARG110

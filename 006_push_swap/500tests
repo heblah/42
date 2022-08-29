@@ -1,0 +1,22 @@
+#!/bin/sh
+
+echo ARG501
+./push_swap $ARG501
+echo ARG502
+./push_swap $ARG502
+echo ARG503
+./push_swap $ARG503
+echo ARG504
+./push_swap $ARG504
+echo ARG505
+./push_swap $ARG505
+echo ARG506
+./push_swap $ARG506
+echo ARG507
+./push_swap $ARG507
+echo ARG508
+./push_swap $ARG508
+echo ARG509
+./push_swap $ARG509
+echo ARG510
+./push_swap $ARG510

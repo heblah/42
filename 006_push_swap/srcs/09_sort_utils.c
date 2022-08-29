@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 11:13:10 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/29 10:23:28 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/29 10:55:48 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	get_min_index(t_stack **stack, int select_stack)
 	return (tmp->index);
 }
 
-void	get_shortway(t_stack **stack, int select_stack, size_t index)
+void	get_shortway2min(t_stack **stack, int select_stack, size_t index)
 {
 	t_lst	*cpystack;
 	size_t	mv[2];
