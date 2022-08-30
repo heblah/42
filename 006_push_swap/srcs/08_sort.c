@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:06:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/29 16:44:05 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/08/30 23:08:20 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	sort(t_stack **stack, int select_stack)
 			sort2nb(stack, select_stack);
 		else if ((*stack)->a_size == 3)
 			sort3nb(stack, select_stack);
-		//else if ((*stack)->a_size <= 35)
-		//	sort_smallstack(stack, select_stack);
+		else if ((*stack)->a_size <= 35)
+			sort_smallstack(stack, select_stack);
 		else
 			sort_bigstack(stack, select_stack);
 	}	
@@ -91,8 +91,8 @@ void	sort_smallstack(t_stack **stack, int select_stack)
 
 void	sort_bigstack(t_stack **stack, int select_stack)
 {
-	size_t	index_cut;
 	size_t	size_cut;
+	size_t	index_cut;
 	size_t	index_tmp;
 
 	size_cut = define_cut(stack);
@@ -107,14 +107,13 @@ void	sort_bigstack(t_stack **stack, int select_stack)
 			index_tmp++;
 		}
 		index_cut += size_cut;
-		if (index_cut > (*stack)->a_size + (*stack)->b_size - 4)
+		if (index_cut >= (*stack)->a_size + (*stack)->b_size - 4)
 			index_cut = (*stack)->a_size + (*stack)->b_size - 4;
 	}
 	sort3nb(stack, select_stack);
 	while ((*stack)->b != NULL)
 	{
-		index_tmp = get_max_index(stack, b);
-		get_shortway2max(stack, b, index_tmp);
+		get_shortway2max(stack, b, get_max_index(stack, b));
 		ft_push(stack, a, print);
 	}
 }
