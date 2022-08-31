@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source ./ARG_push_swap
+
 echo ARG101
 ./push_swap $ARG101
 echo ARG102
