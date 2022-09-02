@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:38:23 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/30 23:01:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/01 19:24:02 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,25 +70,13 @@ int	get_max_index(t_stack **stack, int select_stack)
 	return (tmp->index);
 }
 
-void	get_shortway2max(t_stack **stack, int select_stack, size_t index)
+void	get_shortway2index(t_stack **stack, int select_stack, size_t index)
 {
-	t_lst	*cpystack;
 	size_t	mv[2];
 
-	cpystack = stackcpy_selector(stack, select_stack);
 	mv[0] = 0;
 	mv[1] = 0;
-	while (cpystack->index != index)
-	{
-		cpystack = cpystack->next;
-		mv[0]++;
-	}
-	cpystack = stackcpy_selector(stack, select_stack);
-	while (cpystack->index != index)
-	{
-		cpystack = cpystack->previous;
-		mv[1]++;
-	}
+	shortmove2index(stack, select_stack, index, mv);
 	if (mv[0] < mv [1])
 		while (mv[0]-- > 0)
 			ft_rotate(stack, select_stack, print);

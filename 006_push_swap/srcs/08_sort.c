@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:06:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/30 23:08:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/02 12:59:49 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	sort_bigstack(t_stack **stack, int select_stack)
 	sort3nb(stack, select_stack);
 	while ((*stack)->b != NULL)
 	{
-		get_shortway2max(stack, b, get_max_index(stack, b));
+		get_shortway2index(stack, b, get_max_index(stack, b));
 		ft_push(stack, a, print);
 	}
 }

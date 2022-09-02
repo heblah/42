@@ -61,6 +61,11 @@ void	sort_index(t_stack **stack);
 /* ./10_sort_utils.c ======================================================== */
 int		is_sorted(t_stack **stack, int select_stack);
 int		get_max_index(t_stack **stack, int select_stack);
-void	get_shortway2max(t_stack **stack, int select_stack, size_t index);
+void	get_shortway2index(t_stack **stack, int select_stack, size_t index);
 int		define_cut(t_stack **stack);
+
+/* ./11_sort_utils.c ======================================================== */
+void	shortmove2index(t_stack **stack, int select_stack, size_t index,
+	size_t *mv);
+size_t	closest_index(t_stack **stack, int select_stack);
 #endif
