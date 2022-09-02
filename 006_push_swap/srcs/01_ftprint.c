@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 11:39:24 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/02 11:24:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/02 14:34:06 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,25 @@ void	*ft_exit(t_stack **stack, int status)
 }
 
 /*
-void	print_moves(t_stack **stack, char *mv, int select_stack)
+void	print_moves(t_stack **stack, int select_stack, int mv)
 {
-	char	*new_mv[4
-	if ()
-	if ()
+	if (mv == 'r' && ft_abs(mv + 'a' + select_stack - ((*stack)->prev_mv)) == 1)
+	{
+		ft_printf("%s\n", "rr");
+		prev_mv = 0;
+	}
+	else if (mv == 's' && ft_abs(mv + 'a' + select_stack - ((*stack)->prev_mv)) == 1)
+	{
+		ft_printf("%s\n", "ss");
+		prev_mv = 0;
+	}
+		
+}
+
+int	ft_abs(int n)
+{
+	if (n < 0)
+		return (-1 * n);
+	return (n);
 }
 */

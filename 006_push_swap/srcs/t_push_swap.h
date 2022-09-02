@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:01 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/02 11:24:50 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/02 14:34:25 by halvarez         ###   ########.fr       */
 /*   Updated: 2022/08/25 16:28:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -31,7 +31,7 @@ typedef struct s_lst
 typedef struct s_stack
 {
 	size_t	count;
-//	char	moves[7];
+//	int		prev_mv;
 //	int		key;
 	t_lst	*a;
 	size_t	a_size;
