@@ -6,15 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 18:20:12 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/01 19:11:32 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/02 19:59:40 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_push_swap.h"
 #include "ft_push_swap.h"
 
-void	shortmove2index(t_stack **stack, int select_stack, size_t index,
-	size_t *mv)
+void	shortmove2index(t_stack **stack, int select_stack, size_t index, size_t *mv)
 {
 	t_lst	*cpystack;
 
@@ -53,4 +52,27 @@ size_t	closest_index(t_stack **stack, int select_stack)
 		return (index_min);
 	else
 		return (index_max);
+}
+
+int	almost_sorted(t_stack **stack, int select_stack)
+{
+	int		sorted;
+	t_lst	*lst;
+	t_lst	*end;
+
+	lst = stackcpy_selector(stack, select_stack);
+	if (lst == NULL || (*stack)->a_size == 1)
+		return (1);
+	while (lst->index != 0)
+		lst = lst->next;
+	sorted = 0;
+	end = lst->previous;
+	while (lst != end && lst->n < lst->next->n)
+	{
+		sorted = 1;
+		lst = lst->next;
+	}
+	if (lst != end && lst->n > lst->next->n)
+		sorted = 0;
+	return (sorted);
 }

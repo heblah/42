@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:06:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/02 12:59:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/02 20:25:20 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,3 +117,32 @@ void	sort_bigstack(t_stack **stack, int select_stack)
 		ft_push(stack, a, print);
 	}
 }
+
+/*
+void	sorting_test(t_stack **stack)
+{
+	size_t	idx_max;
+	int		mv[2];
+
+	idx_max = (*stack)->a_size - 1;
+	mv[0] = 0;
+	mv[1] = 0;
+	while (almost_sorted(stack, a) == 0 && (*stack)->a_size > 3)
+	{
+		if ((*stack)->a->index != 0 && (*stack)->a->index != idx_max
+			&& (*stack)->a->index > (*stack)->a->next->index)
+			ft_push(stack, b, print);
+		else
+			ft_rotate(stack, a, print);
+	}
+	if ((*stack)->a_size == 3)
+		sort3nb(stack, a);
+	while ((*stack)->a_size < (*stack)->b_size)
+	{
+		while ((*stack)->b->index > (*stack)->a->index || (*stack)->b->index < (*stack)->a->previous->index)
+			ft_rotate(stack, a, print);
+		ft_push(stack, a, print);
+	}
+	print_stack(*stack);
+}
+*/

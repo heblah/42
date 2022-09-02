@@ -11,9 +11,10 @@
 
 /* ./01_ftprint.c =========================================================== */
 void	*print_error(char *s, int line, char *file);
-void	print_index(t_stack *stack);
 void	print_stack(t_stack *stack);
 void	*ft_exit(t_stack **stack, int status);
+void	print_moves(t_stack **stack, int select_stack, int mv);
+int		ft_abs(int n);
 
 /* ./02_stack_utils.c ======================================================= */
 t_lst	*lst_addback(t_lst **first, int nbr);
@@ -52,6 +53,7 @@ void	sort2nb(t_stack **stack, int select_stack);
 void	sort3nb(t_stack **stack, int select_stack);
 void	sort_smallstack(t_stack **stack, int select_stack);
 void	sort_bigstack(t_stack **stack, int select_stack);
+void	sorting_test(t_stack **stack);
 
 /* ./09_sort_utils.c ======================================================== */
 int		get_min_index(t_stack **stack, int select_stack);
@@ -65,7 +67,7 @@ void	get_shortway2index(t_stack **stack, int select_stack, size_t index);
 int		define_cut(t_stack **stack);
 
 /* ./11_sort_utils.c ======================================================== */
-void	shortmove2index(t_stack **stack, int select_stack, size_t index,
-	size_t *mv);
+void	shortmove2index(t_stack **stack, int select_stack, size_t index, size_t *mv);
 size_t	closest_index(t_stack **stack, int select_stack);
+int		almost_sorted(t_stack **stack, int select_stack);
 #endif
