@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   unicode_tests.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 16:14:55 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/19 16:23:34 by halvarez         ###   ########.fr       */
+/*   Created: 2022/09/03 11:48:17 by halvarez          #+#    #+#             */
+/*   Updated: 2022/09/03 12:28:39 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 
-long foo(long nr) {
-    long var_8 = 0;
-
-    while(nr != 0) {
-        var_8 += nr--;
-    } 
-    return var_8;
-}
-
-int main(void)
+int	main(void)
 {
-	printf("%ld", foo(1));
+	int	utf;
+
+	utf = 222;
+	write(1, &utf, 1);
+	utf = 143;
+	write(1, &utf, 1);
+	utf = 143;
+	write(1, &utf, 1);
+	return (0);
 }

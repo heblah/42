@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:02:18 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/12 10:15:03 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/03 11:59:35 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,22 @@ int	main(void)
 	*(long *)ptr = (long)ULONG_MAX;
 	//*ptr = 0;
 	//*(int *)ptr = 2;
-	printf("*ptr = ULONG_MAX = %lu;\n"
-		"printf(*ptr) = %lu\n"
-		"printf(*(ptr + 1)) = %lu\n"
-		"printf(ptr) = %p\n"
-		"printf(ptr + 1) = %p\n"
-		"printf(&ptr) = %p\n"
-		"printf(&(ptr + 1)) = %u\n",
+	printf("\n*ptr=ULONG_MAX\t=\t%lu;\n"
+		"(*ptr)\t\t=\t%lu\n"
+		"(*(ptr + 1))\t=\t%lu\n"
+		"(ptr)\t\t=\t%p\n"
+		"(ptr + 1)\t=\t%p\n"
+		"(&ptr)\t\t=\t%p\n"
+		"(&(ptr + 1))\t=\t%u\n",
 		ULONG_MAX, *ptr, *(ptr + 1), ptr, ptr + 1, &ptr, UINT_MAX);
+
+	char	*c;
+
+	c = malloc(10 * sizeof(char));
+	printf("\n");
+	printf("c\t\t=\t%p\n", c);
+	printf("c+1\t\t=\t%p\n", c + 1);
+	printf("(int *)(c+1)\t=\t%p\n", (int *)(c + 1));
+	printf("(int *)c+1\t=\t%p\n", (int *)c + 1);
 	return (0);
 }
