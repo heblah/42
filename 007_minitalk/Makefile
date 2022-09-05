@@ -6,18 +6,18 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/05 16:26:08 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/05 22:05:18 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CLI	    	= client
-CLI_DIR		= ./client/
-CLI_SRCS	= 00_client.c
+CLI_DIR		= ./client_srcs/
+CLI_SRCS	= 00_client.c 01_parser.c
+CLI_OBJS	= $(addprefix ${CLI_DIR}, ${CLI_SRCS:.c=.o})
 SRV			= server
-SRV_DIR		= ./server/
-SRV_SRCS	= 00_server.c
-OBJS		= $(addprefix ${CLI_DIR}, ${CLI_SRCS:.c=.o})
-OBJS		+=$(addprefix ${SRV_DIR}, ${SRV_SRCS:.c=.o})
+SRV_DIR		= ./server_srcs/
+SRV_SRCS	= 00_server.c 01_print.c
+SRV_OBJS	= $(addprefix ${SRV_DIR}, ${SRV_SRCS:.c=.o})
 CC			= cc -g 
 CFLAGS		= -Wall -Wextra -Werror
 #CLIB		= -Llibft -lft
@@ -26,21 +26,25 @@ CLEAN		= make clean
 FCLEAN		= make fclean
 RM			= rm -rf
 
+all:    ${SRV} ${CLI}
+
 .c.o:	
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}:${OBJS}
-	#	${MAKE} -C libft
-		${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+${CLI}:${CLI_OBJS}
+		${CC} ${CFLAGS} ${CLI_OBJS} -o ${CLI}
 
-all:    ${NAME}
+${SRV}:${SRV_OBJS}
+		${CC} ${CFLAGS} ${SRV_OBJS} -o ${SRV}
 
 clean:
-		${RM} ${OBJS}
+		${RM} ${CLI_OBJS}
+		${RM} ${SRV_OBJS}
 	#	${CLEAN} -C libft
 
 fclean: clean
-		${RM} ${NAME}
+		${RM} ${CLI}
+		${RM} ${SRV}
 	#	${FCLEAN} -C libft
 
 re:     fclean all
