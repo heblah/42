@@ -6,12 +6,19 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:28:08 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/28 11:34:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/05 15:06:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "enum.h"
+
+enum e_xyz
+{
+	x,
+	y,
+	z,
+
+};
 
 void f1(void)
 {

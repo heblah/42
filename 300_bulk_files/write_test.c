@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enum.h                                             :+:      :+:    :+:   */
+/*   write_test.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/28 11:33:40 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/28 11:34:22 by halvarez         ###   ########.fr       */
+/*   Created: 2022/09/04 15:39:24 by halvarez          #+#    #+#             */
+/*   Updated: 2022/09/04 15:43:44 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-enum e_xyz
-{
-	x,
-	y,
-	z,
+#include <unistd.h>
+#include <string.h>
 
-};
+int	main(int argc, char **argv)
+{
+	write(1, *(argv + 1), strlen(*(argv + 1)));
+	return (0);
+}
