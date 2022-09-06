@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/06 13:11:25 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/06 20:18:43 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ SRV_SRCS	= 00_server.c 01_print.c
 SRV_OBJS	= $(addprefix ${SRV_DIR}, ${SRV_SRCS:.c=.o})
 CC			= cc -g 
 CFLAGS		= -Wall -Wextra -Werror
-#CLIB		= -Llibft -lft
 MAKE		= make
 CLEAN		= make clean
 FCLEAN		= make fclean
@@ -40,12 +39,10 @@ ${SRV}:${SRV_OBJS}
 clean:
 		${RM} ${CLI_OBJS}
 		${RM} ${SRV_OBJS}
-	#	${CLEAN} -C libft
 
 fclean: clean
 		${RM} ${CLI}
 		${RM} ${SRV}
-	#	${FCLEAN} -C libft
 
 re:     fclean all
 

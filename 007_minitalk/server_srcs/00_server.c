@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:27:41 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 17:43:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/06 20:09:05 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	handle_msg(int sig, siginfo_t *info, void *context __attribute__((unused)))
 	{
 		write(1, "\n", 1);
 		kill(info->si_pid, SIGUSR1);
+		usleep(100);
 		c = 0;
 		bit = 0;
 	}
-
 }
