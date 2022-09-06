@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:33:15 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 17:16:37 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/06 20:26:31 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,17 @@ size_t	ft_strlen(char *s)
 
 static int	is_pid(char *s)
 {
-	while (*s && (*s >= '0' || *s <= '0'))
+	while (*s && (*s >= '0' && *s <= '9'))
 		s++;
-	if (*s != '\0')
-		return (0);
-	return (1);
+	if (*s == '\0')
+		return (1);
+	return (0);
 }
 
 int	parser(int argc, char **argv)
 {
 	char	*err_msg;
+	//int		srv_pid;
 
 	err_msg = "Wrong input, do : ./client [pid_srv > -1] \"text\"\n";
 	if (argc != 3 || is_pid(*(argv + 1)) == 0)
