@@ -6,11 +6,12 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <limits.h>
+# include <signal.h>
 
 /* ./00_server.c ============================================================ */
-int		ft_strlen(char *s);
+void	handle_msg(int sig, siginfo_t *info, void *context);
 
 /* ./01_print.c ============================================================= */
-void	ft_putpid(pid_t pid);
-void	srv_pid(pid_t pid);
+void	srv_pid(void);
+int		ft_strlen(char *s);
 #endif

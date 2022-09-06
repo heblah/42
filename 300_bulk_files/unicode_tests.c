@@ -6,11 +6,16 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:48:17 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/05 17:18:14 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:38:06 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
 int	main(void)
 {
@@ -29,6 +34,11 @@ int	main(void)
 
 	write(1, utf, 1);
 	write(1, utf + 1, 2);
+	write(1, "\n", 1);
+
+	ft_putchar(utf[0]);
+	ft_putchar(utf[1]);
+	ft_putchar(utf[2]);
 	write(1, "\n", 1);
 	return (0);
 }

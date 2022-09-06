@@ -6,14 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:33:15 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/05 22:31:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:16:37 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_client.h"
 #include <signal.h>
 
-int	ft_atoi(char *s)
+static int	ft_atoi(char *s)
 {
 	int	n;
 	int	i;
@@ -45,4 +45,26 @@ size_t	ft_strlen(char *s)
 	while (*(s + i))
 		i++;
 	return (i);
+}
+
+static int	is_pid(char *s)
+{
+	while (*s && (*s >= '0' || *s <= '0'))
+		s++;
+	if (*s != '\0')
+		return (0);
+	return (1);
+}
+
+int	parser(int argc, char **argv)
+{
+	char	*err_msg;
+
+	err_msg = "Wrong input, do : ./client [pid_srv > -1] \"text\"\n";
+	if (argc != 3 || is_pid(*(argv + 1)) == 0)
+	{
+		write(1, err_msg, ft_strlen(err_msg));
+		exit(1);
+	}
+	return (ft_atoi(*(argv + 1)));
 }

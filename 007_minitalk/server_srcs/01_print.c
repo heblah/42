@@ -6,14 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:26:04 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/05 22:28:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:26:06 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_server.h"
-#include <signal.h>
+//#include <signal.h>
 
-void	ft_putpid(pid_t pid)
+static void	ft_putpid(pid_t pid)
 {
 	if (pid > 9)
 		ft_putpid(pid / 10);
@@ -21,12 +21,24 @@ void	ft_putpid(pid_t pid)
 	write(1, &pid, 1);
 }
 
-void	srv_pid(pid_t pid)
+void	srv_pid(void)
 {
 	char	*msg;
+	int		srv_pid;
 
+	srv_pid = getpid();
 	msg = "pid server : ";
 	write(1, msg, ft_strlen(msg));
-	ft_putpid(pid);
+	ft_putpid(srv_pid);
 	write(1, "\n", 1);
+}
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (*(s + i))
+		i++;
+	return (i);
 }
