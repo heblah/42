@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:26:04 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 17:26:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/07 14:58:27 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,17 @@ int	ft_strlen(char *s)
 	int	i;
 
 	i = 0;
-	while (*(s + i))
+	while (s && *(s + i))
 		i++;
 	return (i);
+}
+
+void	*ft_free(unsigned char **s)
+{
+	if (*s)
+	{
+		free(*s);
+		*s = NULL;
+	}
+	return (NULL);
 }
