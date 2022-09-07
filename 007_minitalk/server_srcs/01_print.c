@@ -6,12 +6,11 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:26:04 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 17:26:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/07 20:11:50 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_server.h"
-//#include <signal.h>
 
 static void	ft_putpid(pid_t pid)
 {

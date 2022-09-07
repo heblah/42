@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:33:15 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 20:26:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/07 20:18:10 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static int	is_pid(char *s)
 int	parser(int argc, char **argv)
 {
 	char	*err_msg;
-	//int		srv_pid;
 
 	err_msg = "Wrong input, do : ./client [pid_srv > -1] \"text\"\n";
 	if (argc != 3 || is_pid(*(argv + 1)) == 0)

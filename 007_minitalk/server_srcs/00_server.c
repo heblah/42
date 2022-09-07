@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:27:41 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/07 10:49:08 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/07 20:38:58 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void	handle_msg(int sig, siginfo_t *info, void *ctx __attribute__((unused)))
 	}
 	else if (bit == 8 && c == 0)
 	{
-		write(1, "\n", 1);
 		kill(info->si_pid, SIGUSR1);
 		usleep(50);
 		c = 0;
 		bit = 0;
+		write(1, "\n\nEnd of the transmission.\n\n", 28);
 	}
 }
