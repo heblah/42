@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:27:41 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 20:09:05 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/07 10:49:08 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(void)
 }
 
 /*== si_pid is the process sending the signal ==*/
-void	handle_msg(int sig, siginfo_t *info, void *context __attribute__((unused)))
+void	handle_msg(int sig, siginfo_t *info, void *ctx __attribute__((unused)))
 {
 	static unsigned char	c = 0;
 	static unsigned char	bit = 0;
@@ -46,7 +46,7 @@ void	handle_msg(int sig, siginfo_t *info, void *context __attribute__((unused)))
 	{
 		write(1, "\n", 1);
 		kill(info->si_pid, SIGUSR1);
-		usleep(100);
+		usleep(50);
 		c = 0;
 		bit = 0;
 	}

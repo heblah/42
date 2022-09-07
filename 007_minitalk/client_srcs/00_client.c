@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:28:37 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 20:17:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/07 10:50:14 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@
 int	main(int argc, char **argv)
 {
 	int					srv_pid;
+	sigset_t			set;
 	struct sigaction	cli_action;
 
-	printf("pid client : %d\n", getpid());
-	srv_pid = parser(argc, argv);
-	msg2server(srv_pid, *(argv + 2));
+	//printf("pid client : %d\n", getpid());
+	sigemptyset(&set);
+	sigaddset(&set, SIGUSR1);
 	cli_action.sa_flags = SA_SIGINFO;
 	cli_action.sa_sigaction = &msg_received;
 	sigaction(SIGUSR1, &cli_action, NULL);
-	pause();
-	printf("kdejh\n");
+	srv_pid = parser(argc, argv);
+	msg2server(srv_pid, *(argv + 2));
 	return (0);
 }
 
@@ -44,7 +45,7 @@ void	msg2server(int srv_pid, char *msg)
 				kill(srv_pid, SIGUSR1);
 			else
 				kill(srv_pid, SIGUSR2);
-			usleep(100);
+			usleep(75);
 			bit++;
 		}
 		msg++;
@@ -53,20 +54,29 @@ void	msg2server(int srv_pid, char *msg)
 	while (bit++ < 8)
 	{
 		kill(srv_pid, SIGUSR2);
-		usleep(100);
+		usleep(75);
 	}
+}
+
+static void ft_putpid(pid_t pid)
+{
+    if (pid > 9)
+        ft_putpid(pid / 10);
+    pid = pid % 10 + '0';
+    write(1, &pid, 1); 
 }
 
 /*== SIGUSR1 is sent by the server to confirm
 than the last null byte has been received ==*/
-void	msg_received(int sig, siginfo_t *info, void *context __attribute__((unused)))
+void	msg_received(int sig, siginfo_t *info, void *ctx __attribute__((unused)))
 {
 	char	*msg;
 
 	if (sig == SIGUSR1)
 	{
-		msg = "Message received by the server :)\n";
+		msg = "\nMessage received by the server of pid ";
 		write(1, msg, ft_strlen(msg));
-		printf("server %d\n", info->si_pid);
+		ft_putpid(info->si_pid);
+		write(1, " :)\n", 4);
 	}
 }
