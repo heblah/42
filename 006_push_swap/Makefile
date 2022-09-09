@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/01 18:33:42 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/07 21:55:53 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ SRCS		= 00_main.c 01_ftprint.c 02_stack_utils.c 03_stack_utils.c 04_stack_utils.
 SRCS		+= 05_moves.c 06_doublemoves.c 07_parser.c 08_sort.c 09_sort_utils.c
 SRCS		+= 10_sort_utils.c 11_sort_utils.c
 OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
-CC			= cc -g 
-CFLAGS		= -Wall -Wextra -Werror
+DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
+CC			= cc 
+CFLAGS		= -g -Wall -Wextra -Werror -MMD -MP
 CLIB		= -Llibft -lft
 MAKE		= make
 CLEAN		= make clean
@@ -29,12 +30,14 @@ RM			= rm -rf
 
 ${NAME}:${OBJS}
 		${MAKE} -C libft
-		${CC} ${OBJS} ${CLIB} -o ${NAME}
+		${CC} ${OBJS} ${DEPS} ${CLIB} -o ${NAME}
 
 all:    ${NAME}
 
+-include ${DEPS}
+
 clean:
-		${RM} ${OBJS}
+		${RM} ${OBJS} ${DEPS}
 		${CLEAN} -C libft
 
 fclean: clean
