@@ -6,41 +6,40 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/09 16:26:49 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/09 16:49:57 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    	= push_swap
+NAME    	= philo
 SRCS_DIR	= ./srcs/
-SRCS		= 00_main.c 01_ftprint.c 02_stack_utils.c 03_stack_utils.c 04_stack_utils.c
-SRCS		+= 05_moves.c 06_doublemoves.c 07_parser.c 08_sort.c 09_sort_utils.c
-SRCS		+= 10_sort_utils.c 11_sort_utils.c
+SRCS		= 00_main.c
 OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
 DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
+BONUS_DIR	= ./bonus/
+BONUS_SRCS	= 00_main.c
+BONUS_OBJS	= $(addprefix ${BONUS_DIR}, ${BONUS_SRCS:.c=.o})
+BONUS_DEPS	= $(addprefix ${BONUS_DIR}, ${BONUS_SRCS:.c=.d})
 CC			= cc 
-CFLAGS		= -g -Wall -Wextra -Werror -MMD -MP
-CLIB		= -Llibft -lft
-MAKE		= make
-CLEAN		= make clean
-FCLEAN		= make fclean
+CFLAGS		= -Wall -Wextra -Werror -g -MMD -MP
 RM			= rm -rf
 
 .c.o:	
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:${OBJS}
-		${MAKE} -C libft
-		${CC} ${OBJS} ${CLIB} -o ${NAME}
+		${CC} ${OBJS} -o ${NAME}
 
 all:    ${NAME}
 
+bonus:	fclean ${BONUS_OBJS}
+		${CC} ${BONUS_OBJS} -o ${NAME}
+
 clean:
 		${RM} ${OBJS} ${DEPS}
-		${CLEAN} -C libft
+		${RM} ${BONUS_OBJS} ${BONUS_DEPS}
 
 fclean: clean
 		${RM} ${NAME}
-		${FCLEAN} -C libft
 
 re:     fclean all
 
