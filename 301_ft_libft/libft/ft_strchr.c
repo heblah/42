@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bits_tests.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 12:02:17 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/09 12:40:28 by halvarez         ###   ########.fr       */
+/*   Created: 2022/05/03 12:41:17 by halvarez          #+#    #+#             */
+/*   Updated: 2022/05/06 10:32:12 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
+char	*ft_strchr(const char *s, int c)
 {
-	char	a, b, c;
+	int	len;
 
-	a = 0;
-	a = 1 << 2;
-	printf("a\t=\t%d\n", a);
-	a = a << 1;
-	printf("a\t=\t%d\n", a << 0);
-	a = 255;
-	a &= ~a;
-	printf("a\t=\t%d\n", a);
-	return (0);
+	len = ft_strlen(s);
+	while (len-- >= 0)
+	{
+		if (*s == c % 256)
+			return ((char *)s);
+		s++;
+	}
+	return ((void *)0);
 }

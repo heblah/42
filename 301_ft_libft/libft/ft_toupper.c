@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bits_tests.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 12:02:17 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/09 12:40:28 by halvarez         ###   ########.fr       */
+/*   Created: 2022/05/03 12:21:43 by halvarez          #+#    #+#             */
+/*   Updated: 2022/05/05 16:52:46 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
+int	ft_toupper(int c)
 {
-	char	a, b, c;
-
-	a = 0;
-	a = 1 << 2;
-	printf("a\t=\t%d\n", a);
-	a = a << 1;
-	printf("a\t=\t%d\n", a << 0);
-	a = 255;
-	a &= ~a;
-	printf("a\t=\t%d\n", a);
-	return (0);
+	if (c >= 'a' && c <= 'z')
+		c = c - ('a' - 'A');
+	return (c);
 }

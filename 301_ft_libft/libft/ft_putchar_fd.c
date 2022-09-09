@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bits_tests.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 12:02:17 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/09 12:40:28 by halvarez         ###   ########.fr       */
+/*   Created: 2022/05/05 11:39:57 by halvarez          #+#    #+#             */
+/*   Updated: 2022/05/05 15:15:18 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
+void	ft_putchar_fd(char c, int fd)
 {
-	char	a, b, c;
-
-	a = 0;
-	a = 1 << 2;
-	printf("a\t=\t%d\n", a);
-	a = a << 1;
-	printf("a\t=\t%d\n", a << 0);
-	a = 255;
-	a &= ~a;
-	printf("a\t=\t%d\n", a);
-	return (0);
+	write(fd, &c, 1);
 }

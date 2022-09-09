@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bits_tests.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 12:02:17 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/09 12:40:28 by halvarez         ###   ########.fr       */
+/*   Created: 2022/05/03 18:08:04 by halvarez          #+#    #+#             */
+/*   Updated: 2022/05/07 18:00:16 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 #include <stdio.h>
 
-int	main(void)
+char	*ft_strdup(const char *s)
 {
-	char	a, b, c;
+	char	*d;
+	int		i;
 
-	a = 0;
-	a = 1 << 2;
-	printf("a\t=\t%d\n", a);
-	a = a << 1;
-	printf("a\t=\t%d\n", a << 0);
-	a = 255;
-	a &= ~a;
-	printf("a\t=\t%d\n", a);
-	return (0);
+	i = -1;
+	d = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!d)
+		return ((void *)0);
+	while (s[++i])
+		d[i] = s[i];
+	d[i] = '\0';
+	return (d);
 }

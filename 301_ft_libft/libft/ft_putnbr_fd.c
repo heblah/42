@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bits_tests.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 12:02:17 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/09 12:40:28 by halvarez         ###   ########.fr       */
+/*   Created: 2022/05/05 11:52:15 by halvarez          #+#    #+#             */
+/*   Updated: 2022/05/06 17:34:35 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	a, b, c;
+	long	nb;
 
-	a = 0;
-	a = 1 << 2;
-	printf("a\t=\t%d\n", a);
-	a = a << 1;
-	printf("a\t=\t%d\n", a << 0);
-	a = 255;
-	a &= ~a;
-	printf("a\t=\t%d\n", a);
-	return (0);
+	nb = n;
+	if (nb < 0)
+	{
+		write(fd, "-", 1);
+		nb *= -1;
+	}
+	if (nb > 9)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putchar_fd(nb % 10 + '0', fd);
+	}
+	else
+		ft_putchar_fd(nb + '0', fd);
 }
