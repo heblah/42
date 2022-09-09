@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/09 10:24:17 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/09 11:06:10 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <sys/wait.h>
 
 void	sig_stop_cont(void);
-void	handle_test(int sig, siginfo_t *info, void *ct);
+void	handle_test(int sig);
 void	sigaction_test(void);
 void	ft_signal(void);
 
@@ -28,41 +28,6 @@ int	main(void)
 	return (0);
 }
 
-void ft_signal(void)
-{
-	int					i;
-	int					pid;
-	int					parent_pid;
-	sigset_t			set;
-	struct sigaction	my_sig;
-
-	i = 0;
-	pid = fork();
-	parent_pid = getpid();
-	sigemptyset(&set);
-	sigaddset(&set, SIGUSR1);
-	sigaddset(&set, 147);
-	my_sig.sa_sigaction = &handle_test;	
-	if (pid == -1)
-		return ;
-	if (pid == 0)
-	{
-		printf("Child actions, pid = %d :\n", pid);
-		printf("\tParent_pid = %d :\n", parent_pid);
-	}
-	else
-	{
-		printf("Parent actions, pid = %d :\n", pid);
-		usleep(100);
-		kill(147, SIGUSR1);
-		usleep(100);
-		//usleep(150);
-		//printf("\tsignal sent.\n");
-		wait(&pid);
-	}
-}
-
-/*
 void	sigaction_test(void)
 {
 	struct sigaction	test_sig;
@@ -74,7 +39,6 @@ void	sigaction_test(void)
 		pause();
 	write(1, "One CTRL+Z executed\n", 20);
 }
-*/
 
 void	handle_test(int sig, siginfo_t *info, void *ct)
 {

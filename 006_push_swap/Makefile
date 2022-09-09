@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/07 21:55:53 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/09 11:15:10 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,9 @@ RM			= rm -rf
 
 ${NAME}:${OBJS}
 		${MAKE} -C libft
-		${CC} ${OBJS} ${DEPS} ${CLIB} -o ${NAME}
+		${CC} ${OBJS} ${CLIB} -o ${NAME}
 
 all:    ${NAME}
-
--include ${DEPS}
 
 clean:
 		${RM} ${OBJS} ${DEPS}
@@ -45,5 +43,7 @@ fclean: clean
 		${FCLEAN} -C libft
 
 re:     fclean all
+
+-include ${DEPS}
 
 .PHONY: all clean fclean re bonus

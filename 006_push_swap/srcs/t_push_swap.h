@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:01:01 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/02 14:34:25 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/09 11:16:10 by halvarez         ###   ########.fr       */
 /*   Updated: 2022/08/25 16:28:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -17,6 +17,7 @@
 # include "../libft/libft/libft.h"
 # include "../libft/printf/ft_printf.h"
 # include "../libft/gnl/get_next_line_bonus.h"
+# define TEST 0
 
 /* Chained list structure =================================================== */
 typedef struct s_lst
