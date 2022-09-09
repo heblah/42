@@ -6,12 +6,13 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:27:41 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/09 10:31:59 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:33:24 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_server.h"
 #include <signal.h>
+#define SIG_DELAY 75
 
 int	main(void)
 {
@@ -45,7 +46,7 @@ void	handle_msg(int sig, siginfo_t *info, void *ctx __attribute__((unused)))
 	else if (bit == 8 && c == 0)
 	{
 		kill(info->si_pid, SIGUSR1);
-		usleep(50);
+		usleep(SIG_DELAY);
 		c = 0;
 		bit = 0;
 		write(1, "\n\nEnd of the transmission.\n\n", 28);
