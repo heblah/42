@@ -6,7 +6,7 @@
 #    By: halvarez <marvin42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 15:39:44 by halvarez          #+#    #+#              #
-#    Updated: 2022/06/22 16:30:39 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/09 12:27:02 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,6 @@ SRCS	  	= ./libft/ft_lstdelone.c \
 		./srcs/ft_puthex.c \
 		./srcs/ft_putnbr.c \
 		./srcs/ft_puttxt.c
-#SRCS_PRTF  	= srcs/ft_printf.c srcs/ft_puthex.c srcs/ft_putnbr.c srcs/ft_puttxt.c
 OBJS		= ${SRCS:.c=.o}
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
