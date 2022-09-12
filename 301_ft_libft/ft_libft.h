@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_libft.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 14:39:52 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/12 11:47:00 by halvarez         ###   ########.fr       */
+/*   Created: 2022/09/12 11:30:48 by halvarez          #+#    #+#             */
+/*   Updated: 2022/09/12 11:32:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_LIBFT_H
+# define FT_LIBFT_H
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
+# include "libft/libft.h"
+# include "gnl/get_next_line_bonus.h"
+# include "printf/ft_printf.h"
 
-	i = 0;
-	while (s && *(s + i))
-		i++;
-	return (i);
-}
+#endif

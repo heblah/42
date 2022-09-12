@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 14:44:37 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/09 14:44:38 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/12 11:47:07 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
 /* ./ft_strlen.c ============================================================ */
 size_t	ft_strlen(const char *s);
+
+/* ./ft_strcmp.c ============================================================ */
+int		ft_strcmp(const char *s1, const char *s2);
 
 /* ./ft_strncmp.c =========================================================== */
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
