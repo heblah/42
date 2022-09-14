@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/02 14:34:59 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/14 17:44:32 by halvarez         ###   ########.fr       */
 /*   Updated: 2022/08/25 17:06:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -17,10 +17,7 @@
 t_stack	*init_stack(void)
 {
 	t_stack	*stack;
-	//int		i;
-//	int		j;
 
-//	i = -1;
 	stack = malloc(1 * sizeof(t_stack));
 	if (stack == NULL)
 		return (NULL);
@@ -33,14 +30,6 @@ t_stack	*init_stack(void)
 	stack->b_size = 0;
 	stack->b_min = INT_MAX;
 	stack->b_max = INT_MIN;
-	/*
-	while (++i < 2)
-	{
-		j = -1;
-		while (++j < 4)
-			stack->moves[i] = '\0';
-	}
-	*/
 	return (stack);
 }
 
@@ -55,7 +44,6 @@ void	*free_stack(t_stack **stack)
 	return (NULL);
 }
 
-//
 static t_lst	*extractfirst(t_stack **stack, int select_stack)
 {
 	t_lst	*extract;

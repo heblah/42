@@ -6,13 +6,13 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:27:41 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/09 15:33:24 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/14 12:23:33 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_server.h"
 #include <signal.h>
-#define SIG_DELAY 75
+#define SIG_DELAY 1500
 
 int	main(void)
 {

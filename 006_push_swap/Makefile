@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/09 16:26:49 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/14 17:43:52 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS		+= 05_moves.c 06_doublemoves.c 07_parser.c 08_sort.c 09_sort_utils.c
 SRCS		+= 10_sort_utils.c 11_sort_utils.c
 OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
 DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
-CC			= cc 
+CC			= gcc 
 CFLAGS		= -g -Wall -Wextra -Werror -MMD -MP
 CLIB		= -Llibft -lft
 MAKE		= make
