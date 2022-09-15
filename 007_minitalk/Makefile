@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/09 11:22:11 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/15 17:52:09 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,8 @@ fclean: clean
 		${RM} ${SRV}
 
 re:     fclean all
+
+bonus:	all
 
 -include ${CLI_DEPS} ${SRV_DEPS}
 

@@ -6,22 +6,23 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/15 17:43:22 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/15 17:51:19 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    	= fdf
+
 SRCS_DIR	= ./ft_fdf/
-HEADER		= ft_${NAME}.h
 SRCS		= 00_main.c 01_handle_events.c 02_handle_img.c 03_parsing.c
 SRCS		+= 04_parsing_utils.c 05_parsing_utils.c 06_matrix_utils.c 
 SRCS		+= 07_matrix_utils.c 08_matrix_utils.c 09_put2screen.c 
 SRCS		+= 10_put2screen.c 11_projections.c 12_bresenham.c
+
 OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
 DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
 OMLX		= -I/usr/include -Imlx_linux
 CC			= cc 
-CFLAGS		= -Wall -Wextra -Werror -g -MMD -MP -fsanitize=address
+CFLAGS		= -Wall -Wextra -Werror -g -MMD -MP
 CLIB		= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lm -lXext -lX11
 CLIB		+= -lz -Llibft -lft
 MAKE		= make
