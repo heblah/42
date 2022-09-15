@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:27:41 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/15 12:03:34 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/15 12:48:40 by halvarez         ###   ########.fr       */
 /*   Updated: 2022/09/15 09:15:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -18,8 +18,13 @@
 int	main(void)
 {
 	struct sigaction	srv_action;
+	sigset_t			set;
 
 	srv_pid();
+	sigemptyset(&set);
+	sigemptyset(&srv_action.sa_mask);
+	sigaddset(&set, SIGUSR1);
+	sigaddset(&set, SIGUSR2);
 	srv_action.sa_flags = SA_SIGINFO;
 	srv_action.sa_sigaction = &handle_msg;
 	sigaction(SIGUSR1, &srv_action, NULL);
