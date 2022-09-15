@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:28:37 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/15 12:03:26 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/15 13:53:59 by halvarez         ###   ########.fr       */
 /*   Updated: 2022/09/15 09:07:02 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -25,7 +25,8 @@ int	main(int argc, char **argv)
 	sigaddset(&set, SIGUSR1);
 	cli_action.sa_flags = SA_SIGINFO;
 	cli_action.sa_sigaction = &msg_received;
-	sigaction(SIGUSR1, &cli_action, NULL);
+	if (sigaction(SIGUSR1, &cli_action, NULL) == -1)
+		return (-1);
 	srv_pid = parser(argc, argv);
 	msg2server(srv_pid, *(argv + 2));
 	return (0);

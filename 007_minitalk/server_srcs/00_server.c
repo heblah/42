@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:27:41 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/15 12:48:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/15 13:53:36 by halvarez         ###   ########.fr       */
 /*   Updated: 2022/09/15 09:15:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -27,8 +27,10 @@ int	main(void)
 	sigaddset(&set, SIGUSR2);
 	srv_action.sa_flags = SA_SIGINFO;
 	srv_action.sa_sigaction = &handle_msg;
-	sigaction(SIGUSR1, &srv_action, NULL);
-	sigaction(SIGUSR2, &srv_action, NULL);
+	if (sigaction(SIGUSR1, &srv_action, NULL) == -1)
+		return (-1);
+	if (sigaction(SIGUSR2, &srv_action, NULL) == -1)
+		return (-1);
 	while (1)
 		pause();
 	return (0);
