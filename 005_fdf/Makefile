@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/09 12:22:31 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/15 17:40:13 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,8 @@ ${NAME}:${OBJS}
 
 all:    ${NAME}
 
+bonus:	all
+
 clean:
 		${RM} ${OBJS} ${DEPS}
 		${CLEAN} -C mlx_linux
@@ -52,4 +54,4 @@ re:     fclean all
 
 -include ${DEPS}
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

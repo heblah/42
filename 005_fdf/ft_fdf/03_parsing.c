@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:04:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/09 17:27:26 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/15 17:39:03 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static t_map	*file2lst(int fd, t_map *lst_map)
 		free(line_map);
 		line_map = get_next_line(fd);
 	}
+	clean_gnl(fd, line_map);
 	return (first);
 }
 
@@ -106,7 +107,7 @@ t_matrix	*map_parser(const char *file_map, t_matrix *m_map, t_data *data)
 
 	lst_map = NULL;
 	errno = 0;
-	if (!*file_map)
+	if (!*file_map || ft_strncmp(file_map + ft_strlen(file_map) - 4, ".fdf", 4))
 		return (NULL);
 	fd = open(file_map, O_RDONLY);
 	if (fd == -1 || read(fd, buf, 0) == -1)
@@ -124,22 +125,3 @@ t_matrix	*map_parser(const char *file_map, t_matrix *m_map, t_data *data)
 		return (NULL);
 	return (m_map);
 }
-
-/*
-void	puttab(double **tab, int row __attribute__((unused)), int col)
-{
-	int	i;
-
-	if (tab)
-		printf("======== print dbl **tab====\n");
-	else
-		printf("======== tab = NULL ========\n");
-	i = 0;
-	while (tab && i < col)
-	{
-		printf("i=%d\tx=%.00f\ty=%.00f\tz=%.00f\n",
-			i, tab[x][i], tab[y][i], tab[z][i]);
-		i++;
-	}
-}
-*/

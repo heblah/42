@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/24 09:25:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/15 17:39:46 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 static int	open_window(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
+	if (data->mlx_ptr == NULL)
+		return (MLX_ERROR);
 	data->win_ptr = mlx_new_window(data->mlx_ptr, W_WIDTH, W_HEIGHT,
 			"My  fdf  !");
 	if (data->win_ptr == NULL)
 	{
-		free(data->win_ptr);
+		free(data->mlx_ptr);
 		return (MLX_ERROR);
 	}
 	return (0);
@@ -31,6 +33,7 @@ int	close_window(t_data *data)
 	if (data->mlx_ptr && data->img.mlx_img)
 	{
 		mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
+		data->img.mlx_img = NULL;
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		data->win_ptr = NULL;
 		mlx_destroy_display(data->mlx_ptr);
