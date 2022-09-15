@@ -6,7 +6,9 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 20:11:03 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/07 20:11:04 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/15 09:21:30 by halvarez         ###   ########.fr       */
+/*   Created: 2022/09/07 14:28:26 by halvarez          #+#    #+#             */
+/*   Updated: 2022/09/07 14:58:43 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +23,11 @@
 # include <signal.h>
 
 /* ./00_server.c ============================================================ */
-void	handle_msg(int sig, siginfo_t *info, void *context);
+void			handle_msg(int sig, siginfo_t *info, void *context);
+unsigned char	*add2buf(unsigned char *buf, unsigned char c);
 
 /* ./01_print.c ============================================================= */
-void	srv_pid(void);
-int		ft_strlen(char *s);
+void			srv_pid(void);
+int				ft_strlen(char *s);
+void			*ft_free(unsigned char **s);
 #endif

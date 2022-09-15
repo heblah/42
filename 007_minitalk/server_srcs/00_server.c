@@ -6,7 +6,8 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:27:41 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/14 12:23:33 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/15 09:28:29 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/15 09:15:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +34,52 @@ void	handle_msg(int sig, siginfo_t *info, void *ctx __attribute__((unused)))
 {
 	static unsigned char	c = 0;
 	static unsigned char	bit = 0;
+	static unsigned char	*buf = NULL;
 
 	if (sig == SIGUSR1)
 		c = c | 1 << bit;
 	bit++;
 	if (bit == 8 && c != 0)
 	{
-		write(1, &c, 1);
+		buf = add2buf(buf, c);
+		if (buf == NULL)
+			exit (-1);
 		c = 0;
 		bit = 0;
 	}
 	else if (bit == 8 && c == 0)
 	{
+		write(1, buf, ft_strlen((char *)buf));
 		kill(info->si_pid, SIGUSR1);
 		usleep(SIG_DELAY);
+		ft_free(&buf);
 		c = 0;
 		bit = 0;
 		write(1, "\n\nEnd of the transmission.\n\n", 28);
 	}
+}
+
+unsigned char	*add2buf(unsigned char *buf, unsigned char c)
+{
+	int				len;
+	unsigned char	*dest;
+
+	len = ft_strlen((char *)buf);
+	dest = malloc((len + 2) * sizeof(char));
+	if (dest == NULL)
+		return (ft_free(&buf));
+	if (len == 0)
+	{
+		*dest = c;
+		*(dest + 1) = '\0';
+	}
+	else
+	{
+		*(dest + len + 1) = '\0';
+		*(dest + len) = c;
+		while (--len >= 0)
+			*(dest + len) = *(buf + len);
+		ft_free(&buf);
+	}
+	return (dest);
 }

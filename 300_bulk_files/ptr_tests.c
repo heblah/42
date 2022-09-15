@@ -6,27 +6,20 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 15:39:43 by halvarez          #+#    #+#             */
-/*   Updated: 2022/07/22 15:56:41 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/07 14:14:17 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+#include <stdlib.h>
 #include <stdio.h>
-
-int	*test(void);
 
 int main(void)
 {
-	int	*p;
+	char	*p;
 
-	p = test();
+	p = malloc(1 * sizeof(char));
+	*p = '\0';
 	printf("%d\n", *p);
 	return (0);
-}
-
-int	*test(void)
-{
-	int a;
-
-	a = 9999;
-	return (&a);
 }
