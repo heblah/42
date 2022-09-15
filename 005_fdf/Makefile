@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/15 17:40:13 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/15 17:43:22 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
 DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
 OMLX		= -I/usr/include -Imlx_linux
 CC			= cc 
-CFLAGS		= -Wall -Wextra -Werror -g -MMD -MP
+CFLAGS		= -Wall -Wextra -Werror -g -MMD -MP -fsanitize=address
 CLIB		= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lm -lXext -lX11
 CLIB		+= -lz -Llibft -lft
 MAKE		= make
