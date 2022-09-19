@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/15 17:39:46 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/19 16:13:29 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	open_window(t_data *data)
 
 int	close_window(t_data *data)
 {
-	if (data->mlx_ptr && data->img.mlx_img)
+	if (data->img.mlx_img && data->mlx_ptr && data->img.mlx_img)
 	{
 		mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 		data->img.mlx_img = NULL;

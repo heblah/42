@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 17:06:59 by halvarez          #+#    #+#             */
-/*   Updated: 2022/06/22 17:07:02 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/19 15:49:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ int	gnl_strlen(char *s)
 {
 	int	i;
 
+	i = 0;
 	if (!s)
 		return (0);
-	i = 0;
 	while (*(s + i))
 		i++;
 	return (i);
