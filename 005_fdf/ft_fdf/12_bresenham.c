@@ -6,12 +6,43 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:49:38 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/09 12:39:14 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/19 12:38:21 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_fdf.h"
 #include "ft_fdf.h"
+
+/*
+void	ft_bresenham(t_data *data, t_point pt1, t_point pt2)
+{
+	int	slope;
+	int	x;
+	int	x_max;
+	int	y;
+	int	y0;
+
+	slope = (pt2.y3d - pt1.y3d) / (pt2.x3d - pt1.x3d);
+	if (pt1.x3d < pt2.x3d)
+	{
+		x = pt1.x3d;
+		x_max = pt2.x3d;
+		y_max = pt2.y3d;
+	}
+	else
+	{
+		x = pt2.x3d;
+		x_max = pt1.x3d;
+		y_max = pt1.y3d;
+	}
+	while (x < x_max)
+	{
+		y = slope * x + y0;
+		img_pixel_put(&data->img, x, y, data);
+		x++;
+	}
+}
+*/
 
 void	ft_bresenham(t_data *data, t_point pt1, t_point pt2)
 {
@@ -35,7 +66,7 @@ void	vert_bresenham(t_data *data, int dx, int dy, int ex)
 	int	i;
 
 	i = -1;
-	while (++i <= dx)
+	while (++i < dx)
 	{
 		img_pixel_put(&data->img, data->pt1.x3d, data->pt1.y3d, data);
 		if (data->pt1.x3d > data->pt2.x3d)
@@ -59,7 +90,7 @@ void	horz_bresenham(t_data *data, int dx, int dy, int ey)
 	int	i;
 
 	i = -1;
-	while (++i <= dy)
+	while (++i < dy)
 	{
 		img_pixel_put(&data->img, data->pt1.x3d, data->pt1.y3d, data);
 		if (data->pt1.y3d > data->pt2.y3d)

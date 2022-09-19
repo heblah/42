@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/12 11:25:35 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/19 14:28:33 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJS		+= $(addprefix ${GNL_DIR}, ${GNL:.c=.o})
 DEPS		= $(addprefix ${LIBFT_DIR}, ${LIBFT:.c=.d})
 DEPS		+= $(addprefix ${PRINTF_DIR}, ${PRINTF:.c=.d})
 DEPS		+= $(addprefix ${GNL_DIR}, ${GNL:.c=.d})
-CC			= gcc
+CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -MMD -MP
 RM			= rm -rf
 
