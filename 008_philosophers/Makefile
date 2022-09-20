@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/20 12:03:26 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/20 15:09:23 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ fclean: clean
 
 re:     fclean all
 
-#Others
+#Dependencies list
 -include ${DEP} ${BONUS_DEP} ${SHARED_DEP}
 
 .PHONY: all clean fclean re bonus
