@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/20 16:43:02 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/20 18:39:53 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS		+= 10_sort_utils.c 11_sort_utils.c
 OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
 DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
 
-CC			= cc 
+CC			= cc
 CLIB		= -Llibft -lft
 
 #Rules for calling of other Makefiles
@@ -35,7 +35,7 @@ RM			= rm -rf
 cflags.release	:= -Wall -Wextra -Werror -MMD -MP
 cflags.gdb		:= -g
 cflags.sanitize	:= -g -fsanitize=address
-CFLAGS			= ${cflags.release} ${cflags.${BUILD}}
+CFLAGS			:= ${cflags.release} ${cflags.${BUILD}}
 
 .c.o:	
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
@@ -43,7 +43,7 @@ CFLAGS			= ${cflags.release} ${cflags.${BUILD}}
 #Mandatory rules
 ${NAME}:${OBJS}
 		${MAKE} -C libft
-		${CC} ${OBJS} ${CLIB} -o ${NAME}
+		${CC} ${CFLAGS} ${OBJS} ${CLIB} -o ${NAME}
 
 all:    ${NAME}
 
@@ -56,7 +56,8 @@ fclean: clean
 		${RM} ${NAME}
 		${FCLEAN} -C libft
 
-re:     fclean all
+re:     fclean
+		${MAKE} all
 
 #Dependencies list to be included
 -include ${DEPS}

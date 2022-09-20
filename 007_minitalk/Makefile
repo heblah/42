@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/20 15:28:10 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/20 18:40:26 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,8 @@ fclean: clean
 		${RM} ${CLI}
 		${RM} ${SRV}
 
-re:     fclean all
+re:     fclean
+		${MAKE} all
 
 #Dependencies list
 -include ${CLI_DEPS} ${SRV_DEPS}
