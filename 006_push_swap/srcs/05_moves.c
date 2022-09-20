@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:46:05 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/25 19:36:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:42:52 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_push(t_stack **stack, int select_stack, int printflag)
 
 	if (select_stack == a)
 		send = (*stack)->b;
-	else if (select_stack == b)
+	else
 		send = (*stack)->a;
 	if (send)
 	{

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 18:52:41 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/26 16:13:35 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:41:02 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_lst	**stack_selector(t_stack **stack, int select_stack)
 
 	if (select_stack == a)
 		my_stack = &(*stack)->a;
-	else if (select_stack == b)
+	else
 		my_stack = &(*stack)->b;
 	return (my_stack);
 }
@@ -40,7 +40,7 @@ t_lst	*stackcpy_selector(t_stack **stack, int select_stack)
 
 	if (select_stack == a)
 		my_stack = (*stack)->a;
-	else if (select_stack == b)
+	else
 		my_stack = (*stack)->b;
 	return (my_stack);
 }

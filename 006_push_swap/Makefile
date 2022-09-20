@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/20 15:27:18 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/20 16:43:02 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS		+= 10_sort_utils.c 11_sort_utils.c
 OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
 DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
 
-CC			= gcc 
+CC			= cc 
 CLIB		= -Llibft -lft
 
 #Rules for calling of other Makefiles

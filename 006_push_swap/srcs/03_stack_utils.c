@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:27:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/14 17:44:32 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:40:29 by halvarez         ###   ########.fr       */
 /*   Updated: 2022/08/25 17:06:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@ t_stack	*init_stack(void)
 
 	stack = malloc(1 * sizeof(t_stack));
 	if (stack == NULL)
-		return (NULL);
+		exit(-1);
 	stack->a = NULL;
 	stack->b = NULL;
 	stack->count = 0;
@@ -54,7 +54,7 @@ static t_lst	*extractfirst(t_stack **stack, int select_stack)
 		extract = (*stack)->b;
 		my_stack = &(*stack)->b;
 	}
-	else if (select_stack == b)
+	else
 	{
 		extract = (*stack)->a;
 		my_stack = &(*stack)->a;
@@ -78,7 +78,7 @@ static t_lst	*insert_on_top(t_stack **stack, int select_stack, t_lst *tmp)
 
 	if (select_stack == a)
 		first = &(*stack)->a;
-	else if (select_stack == b)
+	else
 		first = &(*stack)->b;
 	if (*first)
 	{
@@ -104,7 +104,7 @@ void	mvfirst2top(t_stack **stack, int select_stack)
 
 	if (select_stack == a)
 		send = (*stack)->b;
-	else if (select_stack == b)
+	else
 		send = (*stack)->a;
 	if (send)
 	{
