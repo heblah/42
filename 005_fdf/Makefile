@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/20 15:12:43 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/20 15:29:38 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,11 @@ DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
 
 #Libraries
 OMLX		= -I/usr/include -Imlx_linux
-CFLAGS		= -Wall -Wextra -Werror -g -MMD -MP
 CLIB		= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lm -lXext -lX11
 CLIB		+= -lz -Llibft -lft
 
 #Conditionnal flags depending on the building version
-cflags.release	:= -Wall -Wextra -Werror -MMD -MP -pthread -Ishared
+cflags.release	:= -Wall -Wextra -Werror -MMD -MP
 cflags.gdb		:= -g
 cflags.sanitize	:= -g -fsanitize=address
 CFLAGS			= ${cflags.release} ${cflags.${BUILD}}
