@@ -13,6 +13,6 @@
 int		print_manual(int output);
 
 /* ./02_parser.c ============================================================ */
-int		*parser(int argc, char **argv, t_philo *philo);
+int		parser(int argc, char **argv, t_philo *philo);
 int		are_valid_args(int argc, char **argv);
 #endif

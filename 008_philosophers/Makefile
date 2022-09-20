@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/19 18:27:58 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/20 10:20:44 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,25 +28,26 @@ SHARED_OBJ	= $(addprefix ${SHARED_DIR}, ${SHARED_SRC:.c=.o})
 SHARED_DEP	= $(addprefix ${SHARED_DIR}, ${SHARED_SRC:.c=.d})
 
 CC			= cc 
-CFLAGS		= -Wall -Wextra -Werror -g -MMD -MP -pthread
+CFLAGS		= -Wall -Wextra -Werror -g -MMD -MP -pthread -Ishared
 RM			= rm -rf
 
 .c.o:	
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:${OBJ} ${SHARED_OBJ}
-		${CC} ${OBJ} -o ${NAME}
+		${CC} ${CFLAGS} ${OBJ} ${SHARED_OBJ} -o ${NAME}
 
 all:    ${NAME}
 
 ${BNS}:	${BONUS_OBJ} ${SHARED_OBJ}
-		${CC} ${BONUS_OBJ} -o ${BNS}
+		${CC} ${BONUS_OBJ} ${SHARED_OBJ} -o ${BNS}
 
 bonus:	${BNS}
 
 clean:
 		${RM} ${OBJ} ${DEP}
 		${RM} ${BONUS_OBJ} ${BONUS_DEP}
+		${RM} ${SHARED_OBJ} ${SHARED_DEP}
 
 fclean: clean
 		${RM} ${NAME}
@@ -54,6 +55,6 @@ fclean: clean
 
 re:     fclean all
 
--include ${DEPS} ${BONUS_DEP} ${SHARED_DEP}
+-include ${DEP} ${BONUS_DEP} ${SHARED_DEP}
 
 .PHONY: all clean fclean re bonus
