@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/20 15:18:57 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/20 15:28:10 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ FCLEAN		= make fclean
 RM			= rm -rf
 
 #Conditionnal flags depending on the building version
-cflags.release	:= -Wall -Wextra -Werror -MMD -MP -pthread -Ishared
+cflags.release	:= -Wall -Wextra -Werror -MMD -MP
 cflags.gdb		:= -g
 cflags.sanitize	:= -g -fsanitize=address
 CFLAGS			= ${cflags.release} ${cflags.${BUILD}}

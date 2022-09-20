@@ -6,10 +6,14 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/14 17:43:52 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/20 15:27:18 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+#Default build version = release letting it emty
+BUILD			:=
+
+#Compilation of the push_swap program
 NAME    	= push_swap
 SRCS_DIR	= ./srcs/
 SRCS		= 00_main.c 01_ftprint.c 02_stack_utils.c 03_stack_utils.c 04_stack_utils.c
@@ -17,23 +21,33 @@ SRCS		+= 05_moves.c 06_doublemoves.c 07_parser.c 08_sort.c 09_sort_utils.c
 SRCS		+= 10_sort_utils.c 11_sort_utils.c
 OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
 DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
+
 CC			= gcc 
-CFLAGS		= -g -Wall -Wextra -Werror -MMD -MP
 CLIB		= -Llibft -lft
+
+#Rules for calling of other Makefiles
 MAKE		= make
 CLEAN		= make clean
 FCLEAN		= make fclean
 RM			= rm -rf
 
+#Conditionnal flags depending on the building version
+cflags.release	:= -Wall -Wextra -Werror -MMD -MP
+cflags.gdb		:= -g
+cflags.sanitize	:= -g -fsanitize=address
+CFLAGS			= ${cflags.release} ${cflags.${BUILD}}
+
 .c.o:	
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
+#Mandatory rules
 ${NAME}:${OBJS}
 		${MAKE} -C libft
 		${CC} ${OBJS} ${CLIB} -o ${NAME}
 
 all:    ${NAME}
 
+#Cleaning rules
 clean:
 		${RM} ${OBJS} ${DEPS}
 		${CLEAN} -C libft
@@ -44,6 +58,7 @@ fclean: clean
 
 re:     fclean all
 
+#Dependencies list to be included
 -include ${DEPS}
 
 .PHONY: all clean fclean re bonus
