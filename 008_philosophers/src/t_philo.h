@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/20 10:11:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/21 11:51:30 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,19 @@ typedef struct s_times
 /* Structure of times ======================================================= */
 typedef struct s_philo
 {
-	unsigned int	nbr;
+	unsigned long	nbr;
 	unsigned long	n_of_meals;
+	pthread_t		*philo;
 	t_times			times;
+	unsigned long	*state;
 }	t_philo;
+
+/* Enum of state philosophers =============================================== */
+enum e_state
+{
+	died,
+	thinking,
+	eating,
+	sleeping
+}
 #endif

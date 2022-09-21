@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:04:02 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/19 16:12:58 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/21 14:30:23 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ static t_map	*file2lst(int fd, t_map *lst_map)
 		free(line_map);
 		line_map = get_next_line(fd);
 	}
-	clean_gnl(fd, line_map);
-	return (first);
+	return (clean_gnl(fd, line_map), first);
 }
 
 static t_matrix	*lst2matrix(t_map *lst_map, t_matrix *m_map, t_data *data)

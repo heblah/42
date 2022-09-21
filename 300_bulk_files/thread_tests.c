@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/20 09:40:52 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:29:35 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,26 @@ void	*ft_test(void *ptr);
 int	main(void)
 {
 	pthread_t	thread;
+	int			data;
 
-	if (pthread_create(&thread, NULL, &ft_test, NULL) != 0)
+	data = 147;
+	if (pthread_create(&thread, NULL, &ft_test, &data) != 0)
 	{
 		printf("Error.\n");
 		return (1);
 	}
+	pthread_join(thread, NULL);
+	printf("thread = %lu\n", thread);
+	//pthread_detach(thread);
 	return (0);
 }
 
-void	*ft_test(void *ptr __attribute__((unused)))
+void	*ft_test(void *data)
 {
-	printf("printf from a thread\n");
+	int	*n;
+
+	n = (int *)data;
+	printf("printf from a thread with data = %d\n", *n);
+	write(1, "Hello\n", 6);
 	return (NULL);
 }
