@@ -14,6 +14,7 @@ int		print_manual(int output);
 void	*test(void *ptr __attribute__((unused)));
 
 /* ./02_parser.c ============================================================ */
-int		parser(int argc, char **argv, t_philo *philo);
+int		parser(int argc, char **argv, t_table *table);
 int		are_valid_args(int argc, char **argv);
+void	init_table(t_table *table);
 #endif

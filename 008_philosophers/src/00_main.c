@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:29:58 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/21 11:04:03 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:57:26 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 
 int	main(int argc, char **argv __attribute__((unused)))
 {
-	t_philo		philo;
+	t_table		table;
 	pthread_t	thread;
 
-	if ((argc != 5 && argc != 6) || parser(argc, argv, &philo) == 1)
+	if ((argc != 5 && argc != 6) || parser(argc, argv, &table) == 1)
 		return (print_manual(1));
-	pthread_create(&thread, &test, &test, NULL);
+	pthread_create(&thread, NULL, &test, NULL);
+	pthread_join(thread, NULL);
+	printf("table.philo = %p\n", table.philo);
+	printf("table.state = %p\n", table.state);
+	printf("table.meals = %p\n", table.meals);
 	return (0);
 }
