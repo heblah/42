@@ -6,13 +6,13 @@
 "    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2022/06/02 17:34:20 by halvarez          #+#    #+#              "
-"    Updated: 2022/08/11 10:04:55 by halvarez         ###   ########.fr        "
+"    Updated: 2022/08/04 15:01:06 by halvarez         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
 "vim config ====================================================================
 :syntax on
-color default
+colorscheme default
 set	number
 set	tabstop=4
 set	shiftwidth=4
@@ -29,12 +29,15 @@ nnoremap <C-up> :resize +2<cr>
 nnoremap <C-down> :resize -2<cr>
 nnoremap <C-right> :vertical resize +2<cr>
 nnoremap <C-left> :vertical resize -2<cr>
-inoremap <Esc> <Esc>:w<CR>
+nnoremap <C-l> <C-w>l
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
+nnoremap <C-h> <C-w>h
 
 "autoclosing ===================================================================
 inoremap ( ()<Left>
 inoremap [ []<Left>
-inoremap { {}<Left>
 inoremap " ""<Left>
 inoremap ' ''<Left>
+inoremap { {}<Left>
 inoremap /* /**/<Left><Left>

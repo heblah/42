@@ -6,7 +6,7 @@
 /*   By: hans </var/spool/mail/hans>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:10:43 by hans              #+#    #+#             */
-/*   Updated: 2022/06/22 17:12:38 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/22 11:52:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,8 @@ int	gnl_strlen(char *s)
 {
 	int	i;
 
-	if (!s)
-		return (0);
 	i = 0;
-	while (*(s + i))
+	while (s && *(s + i))
 		i++;
 	return (i);
 }

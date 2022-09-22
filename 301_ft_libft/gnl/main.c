@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_tests.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/22 11:28:36 by halvarez         ###   ########.fr       */
+/*   Created: 2022/09/22 12:37:40 by halvarez          #+#    #+#             */
+/*   Updated: 2022/09/22 12:40:12 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <sys/time.h>
+#include "get_next_line_bonus.h"
 
-int	main(void)
+int main(void)
 {
-	struct timeval	time;
+	int	fd;
+	char	*line;
 
-	gettimeofday(&time, NULL);
-	printf("time = %ld\n", time.tv_sec);
-	printf("time = %ld\n", time.tv_sec / 1000000);
+	fd = open("test", O_RDONLY);
+	if (fd == -1)
+		return (-1);
+	line = get_next_line(fd);
+	printf("line\t=\t%s\n", line);
+	free(line);
 	return (0);
 }

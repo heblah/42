@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:32:26 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/12 17:12:10 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/22 13:05:08 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,16 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*gnl[1024];
-	char		*print_nl;
-	t_flag		f;
+	char	*gnl;
+	char	*print_nl;
+	t_flag	f;
 
 	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
-	print_nl = NULL;
+	gnl = NULL;
 	f.eol = -1;
 	gnl[fd] = get_gnl(&f, fd, gnl[fd]);
-	print_nl = get_print_nl(&f, gnl[fd], print_nl);
-	gnl[fd] = gnl_memmove(&f, gnl[fd]);
-	if (gnl[fd] && *gnl[fd] == '\0')
-	{
-		free(gnl[fd]);
-		gnl[fd] = NULL;
-	}
-	return (print_nl);
+	return (gnl);
 }
 
 char	*get_gnl(t_flag *f, int fd, char *gnl)

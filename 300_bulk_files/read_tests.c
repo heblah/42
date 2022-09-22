@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests_read.c                                       :+:      :+:    :+:   */
+/*   read_tests.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 14:00:46 by halvarez          #+#    #+#             */
-/*   Updated: 2022/05/23 15:25:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/22 13:02:50 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,21 @@ char	*fill_buf(int fd, char *buf)
 
 int	main(void)
 {
-	char	*buf;
-	int		fd1;
-	int		fd2;
+	char	buf[100];
+	int		fd;
+	int		i;
 
-	buf = malloc(100 * sizeof(char));
-	fd1 = open("txt", O_RDONLY);
-	fd2 = open("txt2", O_RDONLY);
-	buf = fill_buf(fd1, buf);
-	printf("appel1=%s\n", buf);
-	buf = fill_buf(fd2, buf);
-	printf("appel2=%s\n", buf);
-	buf = fill_buf(fd1, buf);
-	printf("appel3=%s\n", buf);
-	buf = fill_buf(fd2, buf);
-	printf("appel4=%s\n", buf);
-	free (buf);
+	i = 0;
+	fd = open("txt", O_RDONLY);
+	if (fd == -1)
+		return (-1);
+	printf("fd = %d\n", fd);
+	while (i < 6)
+	{
+		if (read(fd, buf + i, 1) == -1)
+			return (-1);
+		i++;
+	}
+	printf("buf = %s\n", buf);
 	return (0);
 }
