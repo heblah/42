@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:49:38 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/19 12:38:21 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:54:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,17 @@ void	vert_bresenham(t_data *data, int dx, int dy, int ex)
 {
 	int	i;
 
-	i = -1;
-	while (++i < dx)
+	i = 0;
+	while (i < dx)
 	{
 		img_pixel_put(&data->img, data->pt1.x3d, data->pt1.y3d, data);
+		i++;
 		if (data->pt1.x3d > data->pt2.x3d)
 			data->pt1.x3d -= 1;
 		else
 			data->pt1.x3d += 1;
 		ex -= dy;
-		if (ex <= 0)
+		if (ex < 0)
 		{
 			if (data->pt1.y3d > data->pt2.y3d)
 				data->pt1.y3d -= 1;
@@ -89,16 +90,17 @@ void	horz_bresenham(t_data *data, int dx, int dy, int ey)
 {
 	int	i;
 
-	i = -1;
-	while (++i < dy)
+	i = 0;
+	while (i < dy)
 	{
 		img_pixel_put(&data->img, data->pt1.x3d, data->pt1.y3d, data);
+		i++;
 		if (data->pt1.y3d > data->pt2.y3d)
 			data->pt1.y3d -= 1;
 		else
 			data->pt1.y3d += 1;
 		ey -= dx;
-		if (ey <= 0)
+		if (ey < 0)
 		{
 			if (data->pt1.x3d > data->pt2.x3d)
 				data->pt1.x3d -= 1;

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:32:26 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/22 13:05:08 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/22 16:53:25 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,67 +14,45 @@
 
 char	*get_next_line(int fd)
 {
-	char	*gnl;
-	char	*print_nl;
+	char	*gnl[1024];
 	t_flag	f;
+	int		i;
 
+	i = 0;
 	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
-	gnl = NULL;
+	while (i < 1024)
+		gnl[i++] = NULL;
 	f.eol = -1;
 	gnl[fd] = get_gnl(&f, fd, gnl[fd]);
-	return (gnl);
+	return (gnl[fd]);
 }
 
 char	*get_gnl(t_flag *f, int fd, char *gnl)
 {
 	char	*buffer;
 	int		rd;
+	int		i;
 
 	buffer = gnl_calloc(BUFFER_SIZE + 1);
 	if (!buffer)
-	{
-		free(gnl);
 		return (NULL);
-	}
 	rd = 1;
 	while (f->eol == -1 && rd > 0)
 	{
-		rd = read(fd, buffer, BUFFER_SIZE);
-		if (rd == -1)
+		i = 0;
+		while (f->eol == -1 && rd > 0 && i < BUFFER_SIZE)
 		{
-			free(buffer);
-			return (NULL);
+			rd = read(fd, buffer + i, 1);
+			if (rd == -1)
+				return (free(buffer), NULL);
+			buffer[i + 1] = '\0';
+			if (buffer[i] == '\n')
+				f->eol = 1;
+			if (rd > 0 && ++i >= BUFFER_SIZE)
+				gnl = gnl_cat(gnl, buffer);
 		}
-		buffer[rd] = '\0';
-		if (rd > 0)
-			gnl = gnl_cat(f, gnl, buffer);
 	}
-	free(buffer);
-	return (gnl);
-}
-
-char	*get_print_nl(t_flag *f, char *gnl, char *print_nl)
-{
-	int		i;
-
-	if (!gnl)
-		return (NULL);
-	print_nl = gnl_calloc(gnl_strlen(gnl) + 1);
-	if (!print_nl)
-		return (NULL);
-	i = 0;
-	while (*(gnl + i) && *(gnl + i) != '\n')
-	{
-		*(print_nl + i) = *(gnl + i);
-		*(gnl + i) = '\0';
-		i++;
-	}
-	if (*(gnl + i) == '\n')
-	{
-		*(print_nl + i++) = '\n';
-		f->eol = i;
-	}
-	*(print_nl + i) = '\0';
-	return (print_nl);
+	gnl = gnl_cat(gnl, buffer);
+	return (free(buffer), gnl);
 }

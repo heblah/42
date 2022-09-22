@@ -6,7 +6,7 @@
 /*   By: hans </var/spool/mail/hans>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:10:43 by hans              #+#    #+#             */
-/*   Updated: 2022/09/22 11:52:57 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/22 16:46:18 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,28 @@ char	*gnl_calloc(size_t size)
 	return ((char *)s);
 }
 
-char	*gnl_cat(t_flag *f, char *gnl, char *buffer)
+char	*gnl_cat(char *gnl, char *buffer)
 {
 	char	*d;
+	size_t	len;
 
-	d = gnl_calloc(gnl_strlen(gnl) + gnl_strlen(buffer) + 1);
-	if (!d || (!gnl && !buffer))
-	{
-		free (gnl);
+	len = gnl_strlen(gnl) + gnl_strlen(buffer);
+	if (len == 0)
 		return (NULL);
-	}
+	d = gnl_calloc(len + 1);
+	if (!d || (!gnl && !buffer))
+		return (free (gnl), NULL);
 	if (gnl)
 	{
-		d = gnl_cpy(f, d, gnl);
+		d = gnl_cpy(d, gnl);
 		free(gnl);
 	}
 	if (buffer)
-		d = gnl_cpy(f, d, buffer);
+		d = gnl_cpy(d, buffer);
 	return (d);
 }
 
-char	*gnl_cpy(t_flag *f, char *dst, char *src)
+char	*gnl_cpy(char *dst, char *src)
 {
 	int	i;
 
@@ -58,8 +59,6 @@ char	*gnl_cpy(t_flag *f, char *dst, char *src)
 	{
 		*(dst + i) = *src;
 		*src++ = '\0';
-		if (f->eol == -1 && *(dst + i) == '\n')
-			f->eol = i + 1;
 		i++;
 	}
 	*(dst + i) = '\0';
@@ -74,24 +73,4 @@ int	gnl_strlen(char *s)
 	while (s && *(s + i))
 		i++;
 	return (i);
-}
-
-char	*gnl_memmove(t_flag *f, char *gnl)
-{
-	int	i;
-
-	if (!gnl || f->eol == -1)
-	{
-		free(gnl);
-		return (NULL);
-	}
-	i = 0;
-	while (*(gnl + f->eol + i))
-	{
-		*(gnl + i) = *(gnl + f->eol + i);
-		*(gnl + f->eol + i) = '\0';
-		i++;
-	}
-	*(gnl + i) = '\0';
-	return (gnl);
 }

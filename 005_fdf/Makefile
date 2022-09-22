@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/20 16:21:44 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/21 21:07:07 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,8 @@ ${NAME}:${OBJS}
 all:    ${NAME}
 
 bonus:	all
+love:	
+		@echo -e "\nlove you ouech ouech\n"
 
 #Cleaning rules
 clean:
