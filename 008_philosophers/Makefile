@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/20 15:17:43 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/23 17:28:58 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,8 @@ fclean: clean
 		${RM} ${NAME}
 		${RM} ${BNS}
 
-re:     fclean all
+re:     fclean
+		${MAKE} all
 
 #Dependencies list
 -include ${DEP} ${BONUS_DEP} ${SHARED_DEP}
