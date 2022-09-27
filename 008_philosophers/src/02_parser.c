@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:01:53 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/26 17:59:39 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/27 17:49:23 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,16 @@ int	parser(int argc, char **argv, t_table *table)
 		table->n_of_meals = -1;
 	else
 		table->n_of_meals = ft_atol(*(argv + 5));
-	table->times.eat_time = ft_atol(*(argv + 2));
-	table->times.think_time = ft_atol(*(argv + 3));
-	table->times.sleep_time = ft_atol(*(argv + 4));
+	table->times.eat = ft_atol(*(argv + 2));
+	table->times.think = ft_atol(*(argv + 3));
+	table->times.sleep = ft_atol(*(argv + 4));
 	if (alloc_table(table) == NULL)
-		exit(-1);
+		exit(1);
+	if (create_mutex(table) != 0)
+	{
+		close_table(table);
+		exit(2);
+	}
 	return (0);
 }
 
@@ -54,6 +59,7 @@ int	are_valid_args(int argc, char **argv)
 void	init_table(t_table *table)
 {
 	table->philo = NULL;
+	table->fork = NULL;
 	table->state = NULL;
 	table->meals = NULL;
 }
@@ -62,31 +68,41 @@ void	*alloc_table(t_table *table)
 {
 	table->philo = malloc(table->n_of_philos * sizeof(pthread_t));
 	if (!table->philo)
-		return (NULL);
+		return(close_table(table), NULL);
+	table->fork = malloc(table->n_of_philos * sizeof(pthread_mutex_t));
+	if (!table->fork)
+		return(close_table(table), NULL);
 	table->state = malloc(table->n_of_philos * sizeof(unsigned long));
 	if (!table->state)
-		return (ft_free((void **)&table->philo), NULL);
+		return(close_table(table), NULL);
 	if (table->n_of_meals == -1)
 		table->meals = NULL;
 	else
 	{
 		table->meals = malloc(table->n_of_meals * sizeof(long));
 		if (!table->meals)
-		{
-			ft_free((void **)&table->philo);
-			return (ft_free((void **)&table->state), NULL);
-		}
+			return(close_table(table), NULL);
 	}
 	return (table);
 }
 
-void	*close_table(t_table *table)
+int	init_mutex(t_table *table)
 {
-	if (table->philo)
-		ft_free((void **)&table->philo);
-	if (table->state)
-		ft_free((void **)&table->state);
-	if (table->meals)
-		ft_free((void **)&table->meals);
-	return (NULL);
+	unsigned long	i;
+
+	i = 0;
+	if (pthread_mutex_init(&table->print, NULL) != 0)
+		return (1);
+	while (i < table->n_of_philos)
+	{
+		if (pthread_mutex_init(table->fork + i, NULL) != 0)
+		{
+			while (--i >= 0)
+				pthread_mutex_destroy(fork + i);
+			table->fork = NULL;
+			return (2);
+		}
+		i++;
+	}
+	return (0);
 }

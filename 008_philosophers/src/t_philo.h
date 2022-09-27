@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/26 18:23:38 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/27 17:52:17 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include <sys/time.h>
 # include <pthread.h>
 # include "ft_shared.h"
+
+/*
+# define malloc(...)				0
+# define pthread_mutex_create(...)	1
+# define pthread_mutex_destroy(...)	1
+*/
 
 /* Structure of times ======================================================= */
 typedef struct s_times
@@ -31,7 +37,9 @@ typedef struct s_table
 	unsigned long	n_of_philos;
 	long			n_of_meals;
 	t_times			times;
+	pthread_mutex_t	print;
 	pthread_t		*philo;
+	pthread_mutex_t	*fork;
 	unsigned long	*state;
 	long			*meals;
 }	t_table;
