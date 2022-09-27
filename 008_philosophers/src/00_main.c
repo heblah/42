@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:29:58 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/21 16:57:26 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:59:24 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,13 @@ int	main(int argc, char **argv __attribute__((unused)))
 	printf("table.state = %p\n", table.state);
 	printf("table.meals = %p\n", table.meals);
 	return (0);
+}
+
+void	ft_free(void **ptr)
+{
+	if (*ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+	}
 }

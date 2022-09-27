@@ -6,12 +6,12 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/20 18:39:53 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/26 16:33:18 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#Default build version = release letting it emty
-BUILD			:=
+#Default build version = release letting it empty
+BUILD		:=
 
 #Compilation of the push_swap program
 NAME    	= push_swap
@@ -26,9 +26,6 @@ CC			= cc
 CLIB		= -Llibft -lft
 
 #Rules for calling of other Makefiles
-MAKE		= make
-CLEAN		= make clean
-FCLEAN		= make fclean
 RM			= rm -rf
 
 #Conditionnal flags depending on the building version
@@ -37,7 +34,7 @@ cflags.gdb		:= -g
 cflags.sanitize	:= -g -fsanitize=address
 CFLAGS			:= ${cflags.release} ${cflags.${BUILD}}
 
-.c.o:	
+.c.o	:
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 #Mandatory rules
@@ -50,11 +47,11 @@ all:    ${NAME}
 #Cleaning rules
 clean:
 		${RM} ${OBJS} ${DEPS}
-		${CLEAN} -C libft
+		${MAKE} clean -C libft
 
 fclean: clean
 		${RM} ${NAME}
-		${FCLEAN} -C libft
+		${MAKE} fclean -C libft
 
 re:     fclean
 		${MAKE} all
