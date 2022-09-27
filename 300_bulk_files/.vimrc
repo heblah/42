@@ -6,7 +6,7 @@
 "    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2022/06/02 17:34:20 by halvarez          #+#    #+#              "
-"    Updated: 2022/08/04 15:01:06 by halvarez         ###   ########.fr        "
+"    Updated: 2022/09/27 17:41:55 by halvarez         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -19,6 +19,7 @@ set	shiftwidth=4
 set	showcmd
 set	autoindent
 set	listchars=tab:>-,trail:.,precedes:<,extends:>,eol:$
+set splitbelow
 
 "42header ======================================================================
 let g:user42 = 'halvarez'
