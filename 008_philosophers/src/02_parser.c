@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:01:53 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/28 12:39:39 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/28 18:20:31 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	parser(int argc, char **argv, t_table *table)
 {
 	if (are_valid_args(argc, argv) == 0)
 		return (1);
-	init_table(table);
+	table->philo = NULL;
 	table->n_of_philo = ft_atol(*(argv + 1));
 	if (argc == 5)
 		table->n_of_meals = -1;
@@ -26,13 +26,10 @@ int	parser(int argc, char **argv, t_table *table)
 	table->times.eat = ft_atol(*(argv + 2));
 	table->times.think = ft_atol(*(argv + 3));
 	table->times.sleep = ft_atol(*(argv + 4));
-	if (alloc_table(table) == NULL)
-		exit(1);
-	if (init_mutex(table) != 0)
-	{
-		close_table(table);
-		exit(2);
-	}
+	if (pthread_mutex_init(&table->print, NULL) != 0)
+		return (printf("Error initializing printing mutex.\n"), 2);
+	if (init_philo(table) != 0)
+		return (ft_free((void **)&table->philo), 3);
 	return (0);
 }
 
@@ -56,56 +53,25 @@ int	are_valid_args(int argc, char **argv)
 	return (1);
 }
 
-void	init_table(t_table *table)
-{
-	table->philo = NULL;
-	table->fork = NULL;
-	table->state = NULL;
-	table->meals = NULL;
-}
-
-void	*alloc_table(t_table *table)
-{
-	table->philo = malloc(table->n_of_philo * sizeof(pthread_t));
-	if (!table->philo)
-		return (close_table(table), NULL);
-	table->fork = malloc(table->n_of_philo * sizeof(pthread_mutex_t));
-	if (!table->fork)
-		return (close_table(table), NULL);
-	table->state = malloc(table->n_of_philo * sizeof(unsigned long));
-	if (!table->state)
-		return (close_table(table), NULL);
-	if (table->n_of_meals == -1)
-		table->meals = NULL;
-	else
-	{
-		table->meals = malloc(table->n_of_meals * sizeof(long));
-		if (!table->meals)
-			return (close_table(table), NULL);
-	}
-	return (table);
-}
-
-int	init_mutex(t_table *table)
+int	init_philo(t_table *table)
 {
 	unsigned long	i;
 
 	i = 0;
-	if (pthread_mutex_init(&table->print, NULL) != 0)
-	{
-		printf("Error initializing mutex.\n");
+	table->philo = malloc(table->n_of_philo * sizeof(t_philo));
+	if (table->philo == NULL)
 		return (1);
-	}
 	while (i < table->n_of_philo)
 	{
-		if (pthread_mutex_init(table->fork + i, NULL) != 0)
+		if (pthread_mutex_init(&(table->philo + i)->fork, NULL) != 0)
 		{
-			printf("Error initializing mutex.\n");
 			while (--i >= 0)
-				pthread_mutex_destroy(table->fork + i);
-			table->fork = NULL;
-			return (2);
+				if (pthread_mutex_destroy(&(table->philo + i)->fork) != 0)
+					printf("Error destroying mutex %lu.\n", i);
+			return (1);
 		}
+		(table->philo + i)->state = i % 3;
+		(table->philo + i)->meals = table->n_of_meals;
 		i++;
 	}
 	return (0);

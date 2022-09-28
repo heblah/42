@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/28 16:25:26 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:49:36 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	create_threads(t_table *table)
 	i = 0;
 	while (i < table->n_of_philo)
 	{
-		if (pthread_create(table->philo + i, NULL, &routine, table) != 0)
+		if (pthread_create(&(table->philo + i)->thread, NULL, &routine, table) != 0)
 		{
 			printf("Error creating thread philo + %lu.\n", i);
 			return (1);
@@ -30,7 +30,7 @@ int	create_threads(t_table *table)
 	i = 0;
 	while (i < table->n_of_philo)
 	{
-		if (pthread_join(*(table->philo + i), NULL) != 0)
+		if (pthread_join((table->philo + i)->thread, NULL) != 0)
 		{
 			printf("Error joining thread philo + %lu.\n", i);
 			return (2);

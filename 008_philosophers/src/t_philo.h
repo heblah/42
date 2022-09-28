@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/28 12:38:55 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:24:27 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@ typedef struct s_times
 	unsigned long	sleep;
 }	t_times;
 
+/* Structure of philosophers ================================================ */
+typedef struct s_philo
+{
+	pthread_t		thread;
+	pthread_mutex_t	fork;
+	unsigned long	state;
+	long			meals;
+}	t_philo;
+
 /* Structure of times ======================================================= */
 typedef struct s_table
 {
@@ -38,18 +47,15 @@ typedef struct s_table
 	long			n_of_meals;
 	t_times			times;
 	pthread_mutex_t	print;
-	pthread_t		*philo;
-	pthread_mutex_t	*fork;
-	unsigned long	*state;
-	long			*meals;
+	t_philo			*philo;
 }	t_table;
 
 /* Enum of state philosophers =============================================== */
 enum e_state
 {
-	died,
 	thinking,
 	eating,
-	sleeping
+	sleeping,
+	died,
 };
 #endif
