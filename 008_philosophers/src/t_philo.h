@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/28 10:05:35 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:38:55 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_times
 /* Structure of times ======================================================= */
 typedef struct s_table
 {
-	unsigned long	n_of_philos;
+	unsigned long	n_of_philo;
 	long			n_of_meals;
 	t_times			times;
 	pthread_mutex_t	print;

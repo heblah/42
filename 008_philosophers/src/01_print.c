@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:00:43 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/21 10:19:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:41:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,9 @@ void	*test(void *ptr __attribute__((unused)))
 {
 	printf("test\n");
 	return (NULL);
+}
+
+void	print_activity(void)
+{
+
 }

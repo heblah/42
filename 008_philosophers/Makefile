@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/23 17:28:58 by halvarez         ###   ########.fr        #
+#    Updated: 2022/09/28 15:12:14 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ BUILD			:=
 #Compilation of the mandatory part
 NAME    	= philo
 SRC_DIR		= ./src/
-SRC			= 00_main.c 01_print.c 02_parser.c
+SRC			= 00_main.c 01_print.c 02_parser.c 03_routine.c
 OBJ			= $(addprefix ${SRC_DIR}, ${SRC:.c=.o})
 DEP			= $(addprefix ${SRC_DIR}, ${SRC:.c=.d})
 
