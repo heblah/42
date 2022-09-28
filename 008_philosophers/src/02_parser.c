@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:01:53 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/27 17:49:23 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/28 10:04:11 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	parser(int argc, char **argv, t_table *table)
 	table->times.sleep = ft_atol(*(argv + 4));
 	if (alloc_table(table) == NULL)
 		exit(1);
-	if (create_mutex(table) != 0)
+	if (init_mutex(table) != 0)
 	{
 		close_table(table);
 		exit(2);
@@ -68,20 +68,20 @@ void	*alloc_table(t_table *table)
 {
 	table->philo = malloc(table->n_of_philos * sizeof(pthread_t));
 	if (!table->philo)
-		return(close_table(table), NULL);
+		return (close_table(table), NULL);
 	table->fork = malloc(table->n_of_philos * sizeof(pthread_mutex_t));
 	if (!table->fork)
-		return(close_table(table), NULL);
+		return (close_table(table), NULL);
 	table->state = malloc(table->n_of_philos * sizeof(unsigned long));
 	if (!table->state)
-		return(close_table(table), NULL);
+		return (close_table(table), NULL);
 	if (table->n_of_meals == -1)
 		table->meals = NULL;
 	else
 	{
 		table->meals = malloc(table->n_of_meals * sizeof(long));
 		if (!table->meals)
-			return(close_table(table), NULL);
+			return (close_table(table), NULL);
 	}
 	return (table);
 }
@@ -92,13 +92,17 @@ int	init_mutex(t_table *table)
 
 	i = 0;
 	if (pthread_mutex_init(&table->print, NULL) != 0)
+	{
+		printf("Error initializing mutex.\n");
 		return (1);
+	}
 	while (i < table->n_of_philos)
 	{
 		if (pthread_mutex_init(table->fork + i, NULL) != 0)
 		{
+			printf("Error initializing mutex.\n");
 			while (--i >= 0)
-				pthread_mutex_destroy(fork + i);
+				pthread_mutex_destroy(table->fork + i);
 			table->fork = NULL;
 			return (2);
 		}

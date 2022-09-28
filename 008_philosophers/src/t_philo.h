@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/27 17:52:17 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/28 10:05:35 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 /*
 # define malloc(...)				0
-# define pthread_mutex_create(...)	1
+# define pthread_mutex_init(...)	1
 # define pthread_mutex_destroy(...)	1
 */
 
