@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:29:58 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/28 17:30:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/29 12:31:31 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	main(int argc, char **argv __attribute__((unused)))
 
 	if ((argc != 5 && argc != 6) || parser(argc, argv, &table) == 1)
 		return (print_manual(1));
-	//if (create_threads(&table) != 0)
-	//	return (close_table(&table), 1);
+	if (create_threads(&table) != 0)
+		return (close_table(&table), 1);
 	return (close_table(&table), 0);
 }
 
@@ -36,16 +36,18 @@ void	*ft_free(void **ptr)
 
 void	*close_table(t_table *table)
 {
-	unsigned long	i;
+	int	i;
 
 	i = 0;
-	while (table->philo && i < table->n_of_philo)
+	while (table->forks && i < table->n_of_philo)
 	{
-		if (pthread_mutex_destroy(&(table->philo + i)->fork) != 0)
-			printf("Error destroying mutex fork + %lu.\n", i);
+		if (pthread_mutex_destroy(table->forks + i) != 0)
+			printf("Error destroying mutex fork + %d.\n", i);
 		i++;
 	}
 	if (table->philo)
 		ft_free((void **)&table->philo);
+	if (table->forks)
+		ft_free((void **)&table->forks);
 	return (NULL);
 }

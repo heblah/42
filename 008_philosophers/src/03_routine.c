@@ -6,43 +6,34 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/28 17:49:36 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:05:15 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_philo.h"
 #include "ft_philo.h"
 
-int	create_threads(t_table *table)
+void	*routine(void *thread_philo __attribute__((unused)))
 {
-	unsigned long	i;
+	t_philo			*philo;
 
-	i = 0;
-	while (i < table->n_of_philo)
+	philo = thread_philo;
+	gettimeofday(&philo.t0, NULL);
+	while (philo->state != died && philo->stop == 0)
 	{
-		if (pthread_create(&(table->philo + i)->thread, NULL, &routine, table) != 0)
-		{
-			printf("Error creating thread philo + %lu.\n", i);
-			return (1);
-		}
-		i++;
+		//
 	}
-	i = 0;
-	while (i < table->n_of_philo)
-	{
-		if (pthread_join((table->philo + i)->thread, NULL) != 0)
-		{
-			printf("Error joining thread philo + %lu.\n", i);
-			return (2);
-		}
-		i++;
-	}
-	return (0);
+	return (NULL);
 }
 
-void	*routine(void *table __attribute__((unused)))
+unsigned long	get_timestamp(t_philo *philo)
 {
-	sleep(3);
-	printf("thread + \n");
-	return (0);
+	struct timeval	t;
+
+	gettimeofday(&t, NULL);
+	philo->timestamp = (t.tv_sec - philo->t0.tv_sec) * 1000
+		+ (t.tv_usec - philo->t0.tv_usec) / 1000;
+	philo->t0 = t;
+	//ajouter un flag pour redefinir t0
+	return (philo->timestamp);
 }

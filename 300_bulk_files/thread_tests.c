@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/26 16:55:29 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:08:37 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,26 @@ int	main(void)
 
 int	pth_join_test(pthread_t *thread, int data)
 {
+	pthread_mutex_t	mutex;
+
 	data = 0;
+	pthread_mutex_init(&mutex, NULL);
 	if (pthread_create(&thread[0], NULL, &ft_jointest, &data) != 0)
 		return (printf("Error.\n"), 1);
 	usleep(500);
 	data = 10;
 	if (pthread_create(&thread[1], NULL, &ft_jointest, &data) != 0)
 		return (printf("Error.\n"), 2);
-	pthread_join(thread[0], NULL);
-	pthread_join(thread[1], NULL);
+	pthread_detach(thread[0]);
+	pthread_detach(thread[1]);
+	pthread_mutex_destroy(&mutex);
 	printf("Print after 2 joined threads exec.\n");
 	return (0);
 }
 
-void	*ft_jointest(void *data)
+void	*ft_jointest(void *data __attribute__((unused)))
 {
+	/*
 	int	*n;
 	int	i;
 
@@ -65,6 +70,9 @@ void	*ft_jointest(void *data)
 		printf("printf from joined thread[%d]\n", *n);
 		usleep(50);
 	}
+	*/
+	//write(1, "screen is locked.\n", 18);
+	sleep(2);
 	return (NULL);
 }
 

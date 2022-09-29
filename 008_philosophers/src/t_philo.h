@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/28 17:24:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:23:08 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,36 +26,45 @@
 /* Structure of times ======================================================= */
 typedef struct s_times
 {
-	unsigned long	eat;
-	unsigned long	think;
-	unsigned long	sleep;
+	int	die;
+	int	eat;
+	int	sleep;
+	///int	think;
 }	t_times;
 
 /* Structure of philosophers ================================================ */
 typedef struct s_philo
 {
 	pthread_t		thread;
-	pthread_mutex_t	fork;
-	unsigned long	state;
-	long			meals;
+	int				id;
+	struct timeval	t0;
+	unsigned long	timestamp;
+	pthread_mutex_t	*l_fork;
+	pthread_mutex_t	*r_fork;
+	pthread_mutex_t	*print;
+	t_times			*times;
+	int				state;
+	int				meals;
+	int				stop;
 }	t_philo;
 
 /* Structure of times ======================================================= */
 typedef struct s_table
 {
-	unsigned long	n_of_philo;
-	long			n_of_meals;
+	int				n_of_philo;
+	int				n_of_meals;
 	t_times			times;
-	pthread_mutex_t	print;
 	t_philo			*philo;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	print;
 }	t_table;
 
 /* Enum of state philosophers =============================================== */
 enum e_state
 {
-	thinking,
 	eating,
 	sleeping,
+	thinking,
 	died,
 };
 #endif

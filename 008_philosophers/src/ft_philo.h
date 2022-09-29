@@ -20,8 +20,12 @@ void	print_activity(void);
 int		parser(int argc, char **argv, t_table *table);
 int		are_valid_args(int argc, char **argv);
 int		init_philo(t_table *table);
+int		alloc_philo(t_table *table);
+int		create_threads(t_table *table);
 
 /* ./03_routine.c =========================================================== */
-int		create_threads(t_table *table);
-void	*routine(void *table __attribute__((unused)));
+void	*routine(void *thread_philo __attribute__((unused)));
+
+/* ./04_monitor.c =========================================================== */
+int		whoisdead(t_table table);
 #endif
