@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/30 15:18:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:22:18 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	whosdead(t_table *table)
 	j = 0;
 	while (i < table->n_of_philo)
 	{
-		if (table->philo->state == died)
+		if ((table->philo + i)->state == died)
 		{
 			while (j < table->n_of_philo)
 				(table->philo + j++)->stop = 1;
