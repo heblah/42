@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/29 19:08:37 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:02:38 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ int	pth_join_test(pthread_t *thread, int data)
 	data = 10;
 	if (pthread_create(&thread[1], NULL, &ft_jointest, &data) != 0)
 		return (printf("Error.\n"), 2);
-	pthread_detach(thread[0]);
-	pthread_detach(thread[1]);
+	pthread_join(thread[0], NULL);
+	pthread_join(thread[1], NULL);
 	pthread_mutex_destroy(&mutex);
 	printf("Print after 2 joined threads exec.\n");
 	return (0);

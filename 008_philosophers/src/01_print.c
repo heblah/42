@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:00:43 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/29 18:52:10 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/30 11:28:12 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,18 @@ void	*test(void *ptr __attribute__((unused)))
 	return (NULL);
 }
 
-void	print_activity(t_philo *philo, char *msg)
+int	print_activity(t_philo *philo, char *msg)
 {
 	if (pthread_mutex_lock(philo->print) != 0)
-		printf("Error locking printing mutex.\n");
+	{
+		philo->stop = 1;
+		return (printf("Error locking printing mutex.\n"));
+	}	
 	printf("%lu %d %s.\n", philo->timestamp, philo->id, msg);
 	if (pthread_mutex_unlock(philo->print) != 0)
-		printf("Error unlocking printing mutex.\n");
+	{
+		philo->stop = 1;
+		return (printf("Error unlocking printing mutex.\n"));
+	}	
+	return (0);
 }

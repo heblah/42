@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:01:53 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/29 17:58:43 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/09/30 14:59:48 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,33 +91,5 @@ int	alloc_philo(t_table *table)
 	table->forks = malloc(table->n_of_philo * sizeof(pthread_mutex_t));
 	if (table->forks == NULL)
 		return (ft_free((void **)&table->philo), 1);
-	return (0);
-}
-
-int	create_threads(t_table *table)
-{
-	int	i;
-
-	i = 0;
-	while (i < table->n_of_philo)
-	{
-		if (pthread_create(&(table->philo + i)->thread, NULL,
-				&routine, table) != 0)
-		{
-			printf("Error creating thread philo + %d.\n", i);
-			return (1);
-		}
-		i++;
-	}
-	i = 0;
-	while (i < table->n_of_philo)
-	{
-		if (pthread_join((table->philo + i)->thread, NULL) != 0)
-		{
-			printf("Error joining thread philo + %d.\n", i);
-			return (2);
-		}
-		i++;
-	}
 	return (0);
 }
