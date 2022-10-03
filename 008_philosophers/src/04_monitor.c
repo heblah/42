@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/30 15:22:18 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/03 12:09:43 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	get_philosophy(t_table *table)
 {
 	while (1)
 	{
-		if (whosdead(table) == -1)
+		if (whosdead(table) != -1)
 		{
 			join_threads(table);
 			break ;
@@ -38,7 +38,10 @@ int	whosdead(t_table *table)
 		if ((table->philo + i)->state == died)
 		{
 			while (j < table->n_of_philo)
-				(table->philo + j++)->stop = 1;
+			{
+				(table->philo + j)->stop = 1;
+				j++;
+			}
 			return (i);
 		}
 		i++;
@@ -54,7 +57,7 @@ int	create_threads(t_table *table)
 	while (i < table->n_of_philo)
 	{
 		if (pthread_create(&(table->philo + i)->thread, NULL,
-				&routine, table) != 0)
+				&routine, (table->philo + i)) != 0)
 		{
 			printf("Error creating thread philo + %d.\n", i);
 			return (1);
@@ -64,7 +67,7 @@ int	create_threads(t_table *table)
 	return (0);
 }
 
-int	join_threads(table *table)
+int	join_threads(t_table *table)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:01:53 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/30 14:59:48 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/03 10:42:11 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	init_philo(t_table *table)
 			return (ft_free((void **)&table->forks), 2);
 		}
 		(table->philo + i)->id = i + 1;
-		(table->philo + i)->t0 = 0;
+		gettimeofday(&(table->philo + i)->t0, NULL);
 		(table->philo + i)->l_fork = table->forks + i;
 		(table->philo + i)->r_fork = table->forks
 			+ ((i + 1) % table->n_of_philo);

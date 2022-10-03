@@ -6,22 +6,22 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/30 15:20:33 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/03 12:34:48 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_philo.h"
 #include "ft_philo.h"
 
-void	*routine(void *thread_philo __attribute__((unused)))
+void	*routine(void *thread_philo)
 {
 	t_philo			*philo;
 
 	philo = thread_philo;
-	gettimeofday(&philo.t0, NULL);
+	gettimeofday(&philo->t0, NULL);
 	while (1)
 	{
-		if (philo->state != eating && take->fork(philo) != 0)
+		if (philo->state != eating && take_fork(philo) != 0)
 			return (NULL);
 		if (philo->state != sleeping && is_sleeping(philo) != 0)
 			return (NULL);

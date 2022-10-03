@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/30 14:26:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/03 10:12:32 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ typedef int reset;
 /* Structure of times ======================================================= */
 typedef struct s_times
 {
-	int	die;
-	int	eat;
-	int	sleep;
+	unsigned long	die;
+	unsigned long	eat;
+	unsigned long	sleep;
 	///int	think;
 }	t_times;
 

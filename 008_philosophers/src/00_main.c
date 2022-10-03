@@ -6,21 +6,23 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:29:58 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/29 12:31:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/03 11:45:23 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_philo.h"
 #include "ft_philo.h"
 
-int	main(int argc, char **argv __attribute__((unused)))
+int	main(int argc, char **argv)
 {
 	t_table		table;
 
 	if ((argc != 5 && argc != 6) || parser(argc, argv, &table) == 1)
 		return (print_manual(1));
+	//check_parsing(table);
 	if (create_threads(&table) != 0)
 		return (close_table(&table), 1);
+	get_philosophy(&table);
 	return (close_table(&table), 0);
 }
 
@@ -50,4 +52,28 @@ void	*close_table(t_table *table)
 	if (table->forks)
 		ft_free((void **)&table->forks);
 	return (NULL);
+}
+
+void	check_parsing(t_table table)
+{
+	int	i = 0;
+
+	printf("n of philo \t=\t%d\n", table.n_of_philo);
+	printf("n of meals \t=\t%d\n", table.n_of_meals);
+	printf("time to die \t=\t%lu\n", table.times.die);
+	printf("time to eat \t=\t%lu\n", table.times.eat);
+	printf("time to sleep \t=\t%lu\n", table.times.sleep);
+	while (i < table.n_of_philo)
+	{
+		printf("philo[%d].idi \t= %d\n", i, table.philo[i].id);
+		printf("philo[%d].times \t= %p\n", i, table.philo[i].times);
+		printf("philo[%d].times->die \t= %lu\n", i, table.philo[i].times->die);
+		printf("philo[%d].times->die \t= %lu\n", i, table.philo[i].times->eat);
+		printf("philo[%d].times->die \t= %lu\n", i, table.philo[i].times->sleep);
+		printf("philo[%d].state \t= %d\n", i, table.philo[i].state);
+		printf("philo[%d].meals \t= %d\n", i, table.philo[i].meals);
+		printf("philo[%d].stop \t= %d\n", i, table.philo[i].stop);
+		i++;
+	}
+	exit(1);
 }
