@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:34:45 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/03 12:16:44 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:18:10 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ int	take_fork(t_philo *philo)
 	am_i_dead(philo);
 	if (philo->state != died && philo->stop == no)
 	{
+		//printf("\nPass here, %s:%d\n", __func__, __LINE__);
 		if (pthread_mutex_lock(philo->l_fork) != 0
-			|| pthread_mutex_lock(philo->l_fork) != 0)
+			|| pthread_mutex_lock(philo->r_fork) != 0)
 		{
 			philo->stop = yes;
 			return (printf("Error locking a fork.\n"));
@@ -28,7 +29,7 @@ int	take_fork(t_philo *philo)
 		print_activity(philo, "has taken a fork.\n");
 		is_eating(philo);
 		if (pthread_mutex_unlock(philo->l_fork) != 0
-			|| pthread_mutex_unlock(philo->l_fork) != 0)
+			|| pthread_mutex_unlock(philo->r_fork) != 0)
 		{
 			philo->stop = yes;
 			return (printf("Error unlocking a fork.\n"));
@@ -48,9 +49,9 @@ int	is_eating(t_philo *philo)
 		{
 			usleep(philo->times->eat * 1000);
 			philo->state = eating;
+			get_timestamp(philo, yes);
 			if (print_activity(philo, "is eating.\n") != 0)
 				return (1);
-			get_timestamp(philo, yes);
 		}
 		if (philo->meals > 0)
 			if (--philo->meals == 0)
@@ -64,10 +65,10 @@ int	is_sleeping(t_philo *philo)
 {
 	if (am_i_dead(philo) == no && philo->stop == no)
 	{
+		philo->state = sleeping;
 		usleep(philo->times->sleep * 1000);//act time
 		if (print_activity(philo, "is sleeping.\n") != 0)
 			return (1);
-		philo->state = sleeping;
 		return (am_i_dead(philo), 0);
 	}
 	return (am_i_dead(philo), 1);
@@ -87,10 +88,12 @@ int	is_thinking(t_philo *philo)
 
 int	am_i_dead(t_philo *philo)
 {
-	if (get_timestamp(philo, no) >= philo->times->die)
+	//printf("%s [%d] = %lu\n", __func__, philo->id, get_timestamp(philo, no));
+	if (philo->state != died && get_timestamp(philo, no) >= philo->times->die)
 	{
 		philo->state = died;
-		philo->stop = yes;
+		print_activity(philo, "is dead.\n");
+		pthread_mutex_unlock(philo->print);
 		return (yes);
 	}
 	return (no);

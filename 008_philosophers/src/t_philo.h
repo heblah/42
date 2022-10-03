@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/03 10:12:32 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:52:30 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 # include <sys/time.h>
 # include <pthread.h>
 # include "ft_shared.h"
+
+# define KNRM  "\x1B[0m"
+# define KRED  "\x1B[31m"
+# define KGRN  "\x1B[32m"
+# define KYEL  "\x1B[33m"
+# define KBLU  "\x1B[34m"
+# define KMAG  "\x1B[35m"
+# define KCYN  "\x1B[36m"
+# define KWHT  "\x1B[37m"
+# define RESET "\033[0m"
 
 /*
 # define malloc(...)				0
@@ -31,7 +41,6 @@ typedef struct s_times
 	unsigned long	die;
 	unsigned long	eat;
 	unsigned long	sleep;
-	///int	think;
 }	t_times;
 
 /* Structure of philosophers ================================================ */

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:00:43 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/03 12:16:29 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:12:31 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	print_manual(int output)
 	return (output);
 }
 
-int	print_activity(t_philo *philo, char *msg)
+int	print_activity(t_philo *philo, char *msg __attribute__((unused)))
 {
 	if (pthread_mutex_lock(philo->print) != 0)
 	{
@@ -29,7 +29,7 @@ int	print_activity(t_philo *philo, char *msg)
 		return (printf("Error locking printing mutex.\n"));
 	}	
 	get_timestamp(philo, no);
-	printf("%lu %d %s\n", philo->timestamp, philo->id, msg);
+	printf(KYEL "%lu %d %s" RESET, philo->timestamp, philo->id, msg);
 	if (pthread_mutex_unlock(philo->print) != 0)
 	{
 		philo->stop = 1;
