@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/03 12:09:43 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/04 10:27:47 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,39 @@
 
 int	get_philosophy(t_table *table)
 {
+	pthread_mutex_t	mutex;
+
+	pthread_mutex_init(&mutex, NULL);
 	while (1)
 	{
-		if (whosdead(table) != -1)
+		if (whosdead(table, mutex) != -1)
 		{
 			join_threads(table);
 			break ;
 		}
 	}
+	pthread_mutex_destroy(&mutex);
 	return (0);
 }
 
-int	whosdead(t_table *table)
+int	whosdead(t_table *table, pthread_mutex_t mutex)
 {
-	int	i;
-	int	j;
+	int				i;
+	int				j;
 
 	i = 0;
 	j = 0;
 	while (i < table->n_of_philo)
 	{
-		if ((table->philo + i)->state == died)
+		if ((table->philo + i)->state == dead)
 		{
+			pthread_mutex_lock(&mutex);
 			while (j < table->n_of_philo)
 			{
 				(table->philo + j)->stop = 1;
 				j++;
 			}
+			pthread_mutex_unlock(&mutex);
 			return (i);
 		}
 		i++;

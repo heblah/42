@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:01:53 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/03 17:42:46 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/04 10:47:06 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,8 @@ int	init_philo(t_table *table)
 					printf("Error destroying mutex %d.\n", i);
 			return (ft_free((void **)&table->forks), 2);
 		}
-		(table->philo + i)->id = i + 1;
-		(table->philo + i)->l_fork = table->forks + i;
-		(table->philo + i)->r_fork = table->forks
-			+ ((i + 1) % table->n_of_philo);
-		(table->philo + i)->print = &table->print;
-		(table->philo + i)->times = &table->times;
-		(table->philo + i)->state = i % 3;
-		(table->philo + i)->meals = table->n_of_meals;
-		(table->philo + i)->stop = no;
+		if (data_philo(table, &i) != 0)
+			return (3);
 	}
 	return (0);
 }
@@ -91,5 +84,22 @@ int	alloc_philo(t_table *table)
 	table->forks = malloc(table->n_of_philo * sizeof(pthread_mutex_t));
 	if (table->forks == NULL)
 		return (ft_free((void **)&table->philo), 1);
+	return (0);
+}
+
+int	data_philo(t_table *table, int *i)
+{
+	(table->philo + *i)->id = *i + 1;
+	(table->philo + *i)->l_fork = table->forks + *i;
+	if (table->n_of_philo > 1)
+		(table->philo + *i)->r_fork = table->forks
+			+ ((*i + 1) % table->n_of_philo);
+	else
+		(table->philo + *i)->r_fork = NULL;
+	(table->philo + *i)->print = &table->print;
+	(table->philo + *i)->times = &table->times;
+	(table->philo + *i)->state = *i % 3;
+	(table->philo + *i)->meals = table->n_of_meals;
+	(table->philo + *i)->stop = no;
 	return (0);
 }

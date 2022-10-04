@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/03 17:52:30 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/04 11:06:17 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@
 # define pthread_mutex_init(...)	1
 # define pthread_mutex_destroy(...)	1
 */
-
-typedef int reset;
 
 /* Structure of times ======================================================= */
 typedef struct s_times
@@ -76,7 +74,7 @@ enum e_state
 	eating,
 	sleeping,
 	thinking,
-	died,
+	dead,
 };
 
 /* Enum of continuation ===================================================== */
