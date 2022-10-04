@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:01:53 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/04 10:47:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/04 18:11:58 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int	alloc_philo(t_table *table)
 int	data_philo(t_table *table, int *i)
 {
 	(table->philo + *i)->id = *i + 1;
+	get_timestamp(table->philo + *i, yes);
 	(table->philo + *i)->l_fork = table->forks + *i;
 	if (table->n_of_philo > 1)
 		(table->philo + *i)->r_fork = table->forks

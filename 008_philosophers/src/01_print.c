@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:00:43 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/04 11:41:56 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:31:12 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@ int	print_manual(int output)
 	return (output);
 }
 
-int	print_activity(t_philo *philo, char *msg, int e_state, int reset_flag)
+int	print_activity(t_philo *philo, char *msg, int e_state)
 {
 	if (pthread_mutex_lock(philo->print) != 0)
 		return (printf("Error locking printing mutex.\n"));
-	get_timestamp(philo, reset_flag);
-	printf("%lu %d %s" RESET, philo->timestamp, philo->id, msg);
-	philo->state = e_state;
-	if (pthread_mutex_unlock(philo->print) != 0)
-		return (printf("Error unlocking printing mutex.\n"));
+	{
+		if (philo->stop == no)
+			printf("%lu\t%d\t%s" RESET, philo->timestamp, philo->id, msg);
+		philo->state = e_state;
+		if (pthread_mutex_unlock(philo->print) != 0)
+			return (printf("Error unlocking printing mutex.\n"));
+	}
 	return (0);
 }

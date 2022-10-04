@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/04 10:27:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/04 17:58:44 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*routine(void *thread_philo)
 
 	philo = thread_philo;
 	get_timestamp(philo, yes);
-	while (1)
+	while (philo->stop == no)
 	{
 		if (philo->stop == no && philo->state != eating && take_fork(philo) != 0)
 			return (NULL);
@@ -28,7 +28,6 @@ void	*routine(void *thread_philo)
 		if (philo->stop == no && philo->state != thinking && is_thinking(philo) != 0)
 			return (NULL);
 	}
-	printf("\nPass here, %s:%d\n", __func__, __LINE__);
 	return (NULL);
 }
 

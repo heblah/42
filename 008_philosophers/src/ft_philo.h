@@ -14,7 +14,7 @@ void			check_parsing(t_table table);
 
 /* ./01_print.c ============================================================= */
 int				print_manual(int output);
-int				print_activity(t_philo *philo, char *msg, int e_state, int reset_flag);
+int				print_activity(t_philo *philo, char *msg, int e_state);
 
 /* ./02_parser.c ============================================================ */
 int				parser(int argc, char **argv, t_table *table);
@@ -29,7 +29,7 @@ unsigned long	get_timestamp(t_philo *philo, int reset_flag);
 
 /* ./04_monitor.c =========================================================== */
 int				get_philosophy(t_table *table);
-int				whosdead(t_table *table, pthread_mutex_t mutex);
+int				whosdead(t_table *table);
 int				create_threads(t_table *table);
 int				join_threads(t_table *table);
 
