@@ -1,36 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_print.c                                         :+:      :+:    :+:   */
+/*   01_threads.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:00:43 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/04 15:31:12 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/05 13:06:46 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_philo.h"
 #include "ft_philo.h"
 
-int	print_manual(int output)
+int	create_threads(t_table *table)
 {
-	printf("\nPlease enter unsigned int as follow :\n"
-		"N_of_philo   time_to_die   time_to_eat   time_to_sleep   "
-		"[optional]N_of_meals_per_philo\n\n");
-	return (output);
+	int	i;
+
+	i = 0;
+	while (i < table->n_of_philo)
+	{
+		get_timestamp(table->philo + i, yes);
+		if (pthread_create(&(table->philo + i)->thread, NULL,
+				&routine, (table->philo + i)) != 0)
+		{
+			printf("Error creating thread philo + %d.\n", i);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
 }
 
-int	print_activity(t_philo *philo, char *msg, int e_state)
+int	join_threads(t_table *table)
 {
-	if (pthread_mutex_lock(philo->print) != 0)
-		return (printf("Error locking printing mutex.\n"));
+	int	i;
+
+	i = 0;
+	while (i < table->n_of_philo)
 	{
-		if (philo->stop == no)
-			printf("%lu\t%d\t%s" RESET, philo->timestamp, philo->id, msg);
-		philo->state = e_state;
-		if (pthread_mutex_unlock(philo->print) != 0)
-			return (printf("Error unlocking printing mutex.\n"));
+		if (pthread_join((table->philo + i)->thread, NULL) != 0)
+		{
+			printf("Error joining thread philo + %d.\n", i);
+			return (2);
+		}
+		i++;
 	}
 	return (0);
 }

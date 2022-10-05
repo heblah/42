@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/04 11:06:17 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/05 12:31:53 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_philo
 	unsigned long	timestamp;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	*print;
+	pthread_mutex_t	*mutex;
 	t_times			*times;
 	int				state;
 	int				meals;
@@ -65,7 +65,7 @@ typedef struct s_table
 	t_times			times;
 	t_philo			*philo;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t	print;
+	pthread_mutex_t	mutex;
 }	t_table;
 
 /* Enum of state philosophers =============================================== */

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:29:58 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/04 10:42:23 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/05 11:35:07 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	if ((argc != 5 && argc != 6) || parser(argc, argv, &table) == 1)
 		return (print_manual(1));
-	//check_parsing(table);
+	check_parsing(table);
 	if (create_threads(&table) != 0)
 		return (close_table(&table), 1);
 	get_philosophy(&table);
@@ -34,6 +34,14 @@ void	*ft_free(void **ptr)
 		*ptr = NULL;
 	}
 	return (NULL);
+}
+
+int	print_manual(int output)
+{
+	printf("\nPlease enter unsigned int as follow :\n"
+		"N_of_philo   time_to_die   time_to_eat   time_to_sleep   "
+		"[optional]N_of_meals_per_philo\n\n");
+	return (output);
 }
 
 void	*close_table(t_table *table)
@@ -78,5 +86,6 @@ void	check_parsing(t_table table)
 		printf("philo[%d].stop \t\t= %d\n", i, table.philo[i].stop);
 		i++;
 	}
+	close_table(&table);
 	exit(1);
 }

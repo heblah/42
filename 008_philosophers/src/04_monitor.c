@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/04 18:15:08 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/05 12:30:09 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	get_philosophy(t_table *table)
 	return (0);
 }
 
-int	whosdead(t_table *table)
+/* change for monitoring function*/
+int	monitoring(t_table *table)
 {
 	int				i;
 	int				j;
@@ -35,7 +36,6 @@ int	whosdead(t_table *table)
 	j = 0;
 	while (i < table->n_of_philo)
 	{
-		pthread_mutex_lock(&table->print);
 		if ((table->philo + i)->state == dead || (table->philo + i)->meals == 0
 			|| get_timestamp(table->philo + i , no) >= table->times.die)
 		{
@@ -46,43 +46,41 @@ int	whosdead(t_table *table)
 			}
 			return (i);
 		}
-		pthread_mutex_unlock(&table->print);
 		i++;
 	}
 	return (-1);
 }
+/* change for monitoring function*/
 
-int	create_threads(t_table *table)
+int	do_i_continue(t_philo *philo)
 {
-	int	i;
-
-	i = 0;
-	while (i < table->n_of_philo)
+	lock_monitoring(philo);
+	if (philo->state != dead && philo->stop == no
+		&& get_timestamp(philo, no) >= philo->times->die)
 	{
-		if (pthread_create(&(table->philo + i)->thread, NULL,
-				&routine, (table->philo + i)) != 0)
-		{
-			printf("Error creating thread philo + %d.\n", i);
-			return (1);
-		}
-		i++;
+		print_activity(philo, KRED "is dead.\n", dead);
+		return (no);
 	}
-	return (0);
+	else if (philo->state != dead && philo->stop == yes)
+		return (no);
+	else if (philo->state == dead)
+		return (no);
+	unlock_monitoring(philo);
+	return (yes);
 }
 
-int	join_threads(t_table *table)
+int	lock_forks(t_philo)
 {
-	int	i;
+	if (pthread_mutex_lock(philo->l_fork) != 0
+		|| pthread_mutex_lock(philo->r_fork) != 0)
+		return (printf("Error locking a fork.\n"), no);
+	return (yes)
+}
 
-	i = 0;
-	while (i < table->n_of_philo)
-	{
-		if (pthread_join((table->philo + i)->thread, NULL) != 0)
-		{
-			printf("Error joining thread philo + %d.\n", i);
-			return (2);
-		}
-		i++;
-	}
-	return (0);
+int	unlock_forks(t_philo)
+{
+	if (pthread_mutex_unlock(philo->l_fork) != 0
+		|| pthread_mutex_unlock(philo->r_fork) != 0)
+		return (printf("Error unlocking a fork.\n"), no);
+	return (yes);
 }
