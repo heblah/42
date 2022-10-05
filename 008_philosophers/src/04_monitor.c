@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/05 15:59:33 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:24:20 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	monitoring(t_table *table)
 	count = 0;
 	while (++i < table->n_of_philo)
 	{
-		lock_monitoring(table->philo + 1);
+		lock_monitoring(table->philo + i);
 		if ((table->philo + i)->meals == 0)
 			count++;
 		if ((table->philo + i)->state == dead
@@ -82,8 +82,8 @@ int	lock_forks(t_philo *philo)
 
 int	unlock_forks(t_philo *philo)
 {
-	if (pthread_mutex_unlock(philo->l_fork) != 0
-		|| pthread_mutex_unlock(philo->r_fork) != 0)
+	if (pthread_mutex_unlock(philo->r_fork) != 0
+		|| pthread_mutex_unlock(philo->l_fork) != 0)
 		return (printf("Error unlocking a fork.\n"), no);
 	return (yes);
 }

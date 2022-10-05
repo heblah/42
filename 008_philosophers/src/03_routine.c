@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/05 16:01:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:23:38 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	*routine(void *thread_philo)
 	printf("Pass here, %s[%d]:%d\n\n", __func__, philo->id, __LINE__);
 	while (do_i_continue(philo) == yes)
 	{
-		if (do_i_continue(philo) == yes && philo->state != eating && take_forks(philo) != 0)
+		if (do_i_continue(philo) == yes && take_forks(philo) != 0)
 			return (NULL);
-		if (do_i_continue(philo) == yes && philo->state != sleeping && is_sleeping(philo) != 0)
+		if (do_i_continue(philo) == yes && is_sleeping(philo) != 0)
 			return (NULL);
-		if (do_i_continue(philo) == yes && philo->state != thinking && is_thinking(philo) != 0)
+		if (do_i_continue(philo) == yes && is_thinking(philo) != 0)
 			return (NULL);
 	}
 	printf("Pass here, %s[%d]:%d\n\n", __func__, philo->id, __LINE__);
