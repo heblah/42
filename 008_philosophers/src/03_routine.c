@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/05 16:23:38 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:42:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,14 @@ int	print_activity(t_philo *philo, char *msg, int e_state)
 	return (0);
 }
 
-int	lock_monitoring(t_philo *philo __attribute__((unused)))
+int	lock_monitoring(t_philo *philo)
 {
 	if (pthread_mutex_lock(philo->mutex) != 0)
 		return (printf("Error locking monitoring mutex.\n"), no);
 	return (yes);
 }
 
-int	unlock_monitoring(t_philo *philo __attribute((unused)))
+int	unlock_monitoring(t_philo *philo)
 {
 	if (pthread_mutex_unlock(philo->mutex) != 0)
 		return (printf("Error unlocking monitoring mutex.\n"), no);

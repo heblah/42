@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/05 16:24:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/05 17:17:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	get_philosophy(t_table *table)
 		if (monitoring(table) != -1)
 		{
 			join_threads(table);
+			sleep(1);
 			break ;
 		}
 	}
@@ -41,7 +42,7 @@ int	monitoring(t_table *table)
 		if ((table->philo + i)->meals == 0)
 			count++;
 		if ((table->philo + i)->state == dead
-			|| get_timestamp(table->philo + i , no) >= table->times.die
+			|| get_timestamp(table->philo + i, no) >= table->times.die
 			|| count == table->n_of_philo)
 		{
 			while (++j < table->n_of_philo)
