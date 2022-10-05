@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:29:58 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/05 11:35:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:46:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	if ((argc != 5 && argc != 6) || parser(argc, argv, &table) == 1)
 		return (print_manual(1));
-	check_parsing(table);
+	//check_parsing(table);
 	if (create_threads(&table) != 0)
 		return (close_table(&table), 1);
 	get_philosophy(&table);
@@ -73,8 +73,8 @@ void	check_parsing(t_table table)
 	printf("time to sleep \t=\t%lu\n", table.times.sleep);
 	while (i < table.n_of_philo)
 	{
-		printf("\n====== data philo[%d] ======\n", i + 1);
-		printf("philo[%d].id \t= %d\n", i, table.philo[i].id);
+		printf("\n============= data philo[%d] =============\n", i);
+		printf("philo[%d].id \t\t= %d\n", i, table.philo[i].id);
 		printf("philo[%d].l_fork \t= %p\n", i, table.philo[i].l_fork);
 		printf("philo[%d].r_fork \t= %p\n", i, table.philo[i].r_fork);
 		printf("philo[%d].times \t\t= %p\n", i, table.philo[i].times);

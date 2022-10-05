@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/05 12:30:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:59:33 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	get_philosophy(t_table *table)
 {
 	while (1)
 	{
-		if (whosdead(table) != -1)
+		if (monitoring(table) != -1)
 		{
 			join_threads(table);
 			break ;
@@ -26,31 +26,32 @@ int	get_philosophy(t_table *table)
 	return (0);
 }
 
-/* change for monitoring function*/
 int	monitoring(t_table *table)
 {
-	int				i;
-	int				j;
+	int	i;
+	int	j;
+	int	count;
 
-	i = 0;
-	j = 0;
-	while (i < table->n_of_philo)
+	i = -1;
+	j = -1;
+	count = 0;
+	while (++i < table->n_of_philo)
 	{
-		if ((table->philo + i)->state == dead || (table->philo + i)->meals == 0
-			|| get_timestamp(table->philo + i , no) >= table->times.die)
+		lock_monitoring(table->philo + 1);
+		if ((table->philo + i)->meals == 0)
+			count++;
+		if ((table->philo + i)->state == dead
+			|| get_timestamp(table->philo + i , no) >= table->times.die
+			|| count == table->n_of_philo)
 		{
-			while (j < table->n_of_philo)
-			{
-				(table->philo + j)->stop = yes; /* data race */
-				j++;
-			}
+			while (++j < table->n_of_philo)
+				(table->philo + j)->stop = yes;
 			return (i);
 		}
-		i++;
+		unlock_monitoring(table->philo + i);
 	}
 	return (-1);
 }
-/* change for monitoring function*/
 
 int	do_i_continue(t_philo *philo)
 {
@@ -58,26 +59,28 @@ int	do_i_continue(t_philo *philo)
 	if (philo->state != dead && philo->stop == no
 		&& get_timestamp(philo, no) >= philo->times->die)
 	{
+		get_timestamp(philo, yes);
 		print_activity(philo, KRED "is dead.\n", dead);
-		return (no);
+		return (unlock_monitoring(philo), no);
 	}
 	else if (philo->state != dead && philo->stop == yes)
-		return (no);
+		return (unlock_monitoring(philo), no);
 	else if (philo->state == dead)
-		return (no);
-	unlock_monitoring(philo);
-	return (yes);
+		return (unlock_monitoring(philo), no);
+	else if (philo->stop == yes)
+		return (unlock_monitoring(philo), no);
+	return (unlock_monitoring(philo), yes);
 }
 
-int	lock_forks(t_philo)
+int	lock_forks(t_philo *philo)
 {
 	if (pthread_mutex_lock(philo->l_fork) != 0
 		|| pthread_mutex_lock(philo->r_fork) != 0)
 		return (printf("Error locking a fork.\n"), no);
-	return (yes)
+	return (yes);
 }
 
-int	unlock_forks(t_philo)
+int	unlock_forks(t_philo *philo)
 {
 	if (pthread_mutex_unlock(philo->l_fork) != 0
 		|| pthread_mutex_unlock(philo->r_fork) != 0)
