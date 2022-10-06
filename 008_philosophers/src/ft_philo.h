@@ -16,6 +16,7 @@ void			check_parsing(t_table table);
 /* ./01_threads.c =========================================================== */
 int				create_threads(t_table *table);
 int				join_threads(t_table *table);
+int				sync_philo(t_philo *philo);
 
 /* ./02_parser.c ============================================================ */
 int				parser(int argc, char **argv, t_table *table);

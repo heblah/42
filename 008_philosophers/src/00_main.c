@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:29:58 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/05 15:46:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:00:37 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	*close_table(t_table *table)
 
 void	check_parsing(t_table table)
 {
-	int	i = 0;
+	static int	i = 0;
 
 	printf("n of philo \t=\t%d\n", table.n_of_philo);
 	printf("n of meals \t=\t%d\n", table.n_of_meals);
@@ -80,7 +80,8 @@ void	check_parsing(t_table table)
 		printf("philo[%d].times \t\t= %p\n", i, table.philo[i].times);
 		printf("philo[%d].times->die \t= %lu\n", i, table.philo[i].times->die);
 		printf("philo[%d].times->eat \t= %lu\n", i, table.philo[i].times->eat);
-		printf("philo[%d].times->sleep \t= %lu\n", i, table.philo[i].times->sleep);
+		printf("philo[%d].times->sleep \t= %lu\n",
+			i, table.philo[i].times->sleep);
 		printf("philo[%d].state \t\t= %d\n", i, table.philo[i].state);
 		printf("philo[%d].meals \t\t= %d\n", i, table.philo[i].meals);
 		printf("philo[%d].stop \t\t= %d\n", i, table.philo[i].stop);

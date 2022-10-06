@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/05 16:42:57 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 11:51:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,8 @@ void	*routine(void *thread_philo)
 	philo = thread_philo;
 	printf("Pass here, %s[%d]:%d\n\n", __func__, philo->id, __LINE__);
 	while (do_i_continue(philo) == yes)
-	{
-		if (do_i_continue(philo) == yes && take_forks(philo) != 0)
+		if (sync_philo(philo) != 0)
 			return (NULL);
-		if (do_i_continue(philo) == yes && is_sleeping(philo) != 0)
-			return (NULL);
-		if (do_i_continue(philo) == yes && is_thinking(philo) != 0)
-			return (NULL);
-	}
 	printf("Pass here, %s[%d]:%d\n\n", __func__, philo->id, __LINE__);
 	return (NULL);
 }
@@ -54,9 +48,15 @@ int	print_activity(t_philo *philo, char *msg, int e_state)
 {
 	philo->state = e_state;
 	if (philo->stop == no && philo->state != dead)
+	{
 		printf("%lu\t%d\t%s" RESET, philo->timestamp, philo->id, msg);
+		philo->state = (philo->state + 1) % 3;
+	}
 	else if (philo->stop == no && philo->state == dead)
+	{
 		printf("%lu\t%d\t""is dead.\n" RESET, philo->timestamp, philo->id);
+		usleep(1000);
+	}
 	return (0);
 }
 

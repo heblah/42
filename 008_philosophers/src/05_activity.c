@@ -6,15 +6,13 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:34:45 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/05 17:28:50 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 11:59:14 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_philo.h"
 #include "ft_philo.h"
 
-//printf("timestamp[%d]:%d = %lu\n", philo->id, __LINE__, get_timestamp(philo, no));
-/* il faut desynchroniser l'ordre des philo pour eviter un deadlock sur les fourchettes */
 int	take_forks(t_philo *philo)
 {
 	if (philo->r_fork != NULL && philo->meals != 0)
@@ -28,9 +26,8 @@ int	take_forks(t_philo *philo)
 				print_activity(philo, KGRN "has taken forks.\n", eating);
 				is_eating(philo);
 				unlock_monitoring(philo);
-				unlock_forks(philo);
 			}
-			return (0);
+			return (unlock_forks(philo), 0);
 		}
 	}
 	else if (philo->r_fork == NULL)
@@ -39,7 +36,6 @@ int	take_forks(t_philo *philo)
 		get_timestamp(philo, no);
 		usleep(philo->times->die * 1000 - philo->timestamp);
 		unlock_monitoring(philo);
-		do_i_continue(philo);
 	}
 	return (1);
 }
