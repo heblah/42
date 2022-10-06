@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 12:07:13 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:27:39 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	print_activity(t_philo *philo, char *msg, int e_state)
 	else if (philo->stop == no && philo->state == dead)
 	{
 		printf("%lu\t%d\t""is dead.\n" RESET, philo->timestamp, philo->id);
-		usleep(1000);
+		//usleep(1000);
 	}
 	return (0);
 }
