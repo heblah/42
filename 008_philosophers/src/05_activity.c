@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:34:45 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 11:59:14 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 14:07:09 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ int	is_thinking(t_philo *philo)
 	if (do_i_continue(philo) == yes)
 	{
 		lock_monitoring(philo);
-		get_timestamp(philo, no);
 		print_activity(philo, KYEL "is thinking.\n", thinking);
+		get_timestamp(philo, no);
 		return (unlock_monitoring(philo), 0);
 	}
 	return (1);

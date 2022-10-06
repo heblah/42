@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/10/05 11:52:49 by halvarez         ###   ########.fr        #
+#    Updated: 2022/10/06 14:01:03 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ BUILD			:=
 NAME    	= philo
 SRC_DIR		= ./src/
 SRC			= 00_main.c 01_threads.c 02_parser.c 03_routine.c 04_monitor.c
-SRC			+= 05_activity.c
+SRC			+= 05_activity.c 06_monitor_utils.c
 OBJ			= $(addprefix ${SRC_DIR}, ${SRC:.c=.o})
 DEP			= $(addprefix ${SRC_DIR}, ${SRC:.c=.d})
 

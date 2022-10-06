@@ -44,4 +44,8 @@ int				take_forks(t_philo *philo);
 int				is_eating(t_philo *philo);
 int				is_sleeping(t_philo *philo);
 int				is_thinking(t_philo *philo);
+
+/* ./06_monitor_utils.c ===================================================== */
+int				is_dead(t_philo *philo);
+int				stop_all_philo(t_table *table);
 #endif

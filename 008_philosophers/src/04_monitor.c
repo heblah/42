@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 12:45:52 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 14:08:18 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,21 @@ int	get_philosophy(t_table *table)
 int	monitoring(t_table *table)
 {
 	int	i;
-	int	j;
 	int	count;
 
 	i = -1;
-	j = -1;
 	count = 0;
 	while (++i < table->n_of_philo)
 	{
 		lock_monitoring(table->philo + i);
 		if ((table->philo + i)->meals == 0)
 			count++;
-		if ((table->philo + i)->state == dead
-			|| get_timestamp(table->philo + i, no) >= table->times.die
-			|| count == table->n_of_philo)
+		if (is_dead(table->philo + i) == yes)
+			printf("%lu\t%d\t""is dead.\n" RESET,
+				(table->philo + i)->timestamp, (table->philo + i)->id);
+		if (is_dead(table->philo + i) == yes || count == table->n_of_philo)
 		{
-			while (++j < table->n_of_philo)
-				(table->philo + j)->stop = yes;
+			stop_all_philo(table);
 			return (unlock_monitoring(table->philo + i), i);
 		}
 		unlock_monitoring(table->philo + i);
@@ -60,7 +58,7 @@ int	do_i_continue(t_philo *philo)
 	if (philo->state != dead && philo->stop == no
 		&& get_timestamp(philo, no) >= philo->times->die)
 	{
-		get_timestamp(philo, yes);
+		//get_timestamp(philo, yes);
 		print_activity(philo, KRED "is dead.\n", dead);
 		return (unlock_monitoring(philo), no);
 	}

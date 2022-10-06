@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:00:43 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 11:58:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 14:21:49 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,16 @@ int	join_threads(t_table *table)
 
 int	sync_philo(t_philo *philo)
 {
+	int	p_state __attribute__((unused));
 	int	(*f_activity[3])(t_philo *);
 
 	f_activity[0] = &take_forks;
 	f_activity[1] = &is_sleeping;
 	f_activity[2] = &is_thinking;
+	/*
 	lock_monitoring(philo);
-	return (unlock_monitoring(philo), (*f_activity[philo->state])(philo));
+	p_state = philo->state;
+	unlock_monitoring(philo);
+	*/
+	return ((*f_activity[philo->state])(philo));
 }
