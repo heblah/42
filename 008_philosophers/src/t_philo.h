@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 18:06:32 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:00:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define KWHT  "\x1B[37m"
 # define RESET "\033[0m"
 
-#define DBG	printf("\nPass here, %s[%d]:%d\n", __func__, philo->id, __LINE__);
+#define DBG printf("\nPass here, %s[%d]:%d\n", __func__, philo->id, __LINE__);
 
 /*
 # define malloc(...)				0

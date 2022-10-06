@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 18:10:35 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:01:11 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	*routine(void *thread_philo)
 	while (do_i_continue(philo) == yes)
 		if (sync_philo(philo) != 0)
 			return (NULL);
+	DBG
 	return (NULL);
 }
 

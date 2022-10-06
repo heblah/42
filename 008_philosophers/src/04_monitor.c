@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 18:27:18 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:02:44 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	get_philosophy(t_table *table)
 		if (monitoring(table) != -1)
 		{
 			join_threads(table);
+			printf("pass here %s\n", __func__);
 			//sleep(1);
 			break ;
 		}
