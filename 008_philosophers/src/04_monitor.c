@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 12:00:59 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:18:43 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	get_philosophy(t_table *table)
 		if (monitoring(table) != -1)
 		{
 			join_threads(table);
-			sleep(1);
+			//sleep(1);
 			break ;
 		}
 	}
@@ -47,7 +47,7 @@ int	monitoring(t_table *table)
 		{
 			while (++j < table->n_of_philo)
 				(table->philo + j)->stop = yes;
-			return (i);
+			return (unlock_monitoring(table->philo + i), i);
 		}
 		unlock_monitoring(table->philo + i);
 	}
@@ -76,7 +76,7 @@ int	do_i_continue(t_philo *philo)
 int	lock_forks(t_philo *philo)
 {
 	if (pthread_mutex_lock(philo->l_fork) != 0
-		|| pthread_mutex_lock(philo->r_fork) != 0)
+		|| pthread_mutex_trylock(philo->r_fork) != 0)
 		return (printf("Error locking a fork.\n"), no);
 	return (yes);
 }

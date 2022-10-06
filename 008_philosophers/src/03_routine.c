@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 11:51:41 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:07:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	*routine(void *thread_philo)
 	t_philo			*philo;
 
 	philo = thread_philo;
-	printf("Pass here, %s[%d]:%d\n\n", __func__, philo->id, __LINE__);
+//	printf("Pass here, %s[%d]:%d\n\n", __func__, philo->id, __LINE__);
 	while (do_i_continue(philo) == yes)
 		if (sync_philo(philo) != 0)
 			return (NULL);
-	printf("Pass here, %s[%d]:%d\n\n", __func__, philo->id, __LINE__);
+//	printf("Pass here, %s[%d]:%d\n\n", __func__, philo->id, __LINE__);
 	return (NULL);
 }
 
