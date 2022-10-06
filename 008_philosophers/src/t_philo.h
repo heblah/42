@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/05 12:31:53 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 18:06:32 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,17 @@
 # define KWHT  "\x1B[37m"
 # define RESET "\033[0m"
 
+#define DBG	printf("\nPass here, %s[%d]:%d\n", __func__, philo->id, __LINE__);
+
 /*
 # define malloc(...)				0
 # define pthread_mutex_init(...)	1
 # define pthread_mutex_destroy(...)	1
 */
+
+/* test: 4 310 200 100 doit echouer a 310*/
+/* test: 4 410 200 200 doit passer*/
+/* test: 3 810 300 200 doit echouer*/
 
 /* Structure of times ======================================================= */
 typedef struct s_times
@@ -48,13 +54,15 @@ typedef struct s_philo
 	int				id;
 	struct timeval	t0;
 	unsigned long	timestamp;
+	unsigned long	time2death;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	*mutex;
-	t_times			*times;
+	pthread_mutex_t	*monitor;
+	pthread_mutex_t	*print;
+	t_times			times;
 	int				state;
 	int				meals;
-	int				stop;
+	int				*stop;
 }	t_philo;
 
 /* Structure of times ======================================================= */
@@ -65,7 +73,9 @@ typedef struct s_table
 	t_times			times;
 	t_philo			*philo;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t	mutex;
+	pthread_mutex_t	monitor;
+	pthread_mutex_t	print;
+	int				stop;
 }	t_table;
 
 /* Enum of state philosophers =============================================== */
@@ -82,5 +92,12 @@ enum e_flag
 {
 	no,
 	yes,
+};
+
+/* Enum of locking flags ==================================================== */
+enum e_lock
+{
+	noprotect,
+	protect,
 };
 #endif

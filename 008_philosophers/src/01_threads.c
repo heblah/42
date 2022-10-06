@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:00:43 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 14:21:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 18:09:01 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	create_threads(t_table *table)
 	i = 0;
 	while (i < table->n_of_philo)
 	{
-		get_timestamp(table->philo + i, yes);
+		get_timestamp(table->philo + i, yes, noprotect);
 		if (pthread_create(&(table->philo + i)->thread, NULL,
 				&routine, (table->philo + i)) != 0)
 		{

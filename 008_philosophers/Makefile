@@ -6,12 +6,12 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/10/06 14:01:03 by halvarez         ###   ########.fr        #
+#    Updated: 2022/10/06 14:34:46 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#Default build version = release
-BUILD			:=
+#Default build version called with make rule = release
+build			:=
 
 #Compilation of the mandatory part
 NAME    	= philo
@@ -41,7 +41,7 @@ RM			= rm -rf
 cflags.release	:= -Wall -Wextra -Werror -MMD -MP -pthread -Ishared
 cflags.gdb		:= -g
 cflags.sanitize	:= -g -fsanitize=thread
-CFLAGS			= ${cflags.release} ${cflags.${BUILD}}
+CFLAGS			= ${cflags.release} ${cflags.${build}}
 
 .c.o:	
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:49:19 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 14:04:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 17:41:58 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 int	is_dead(t_philo *philo)
 {
-	if (philo->state == dead || get_timestamp(philo, no) >= philo->times->die)
+	if (philo->state == dead
+		|| get_timestamp(philo, no, noprotect) >= philo->times.die)
 		return (yes);
 	return (no);
 }
@@ -27,8 +28,22 @@ int	stop_all_philo(t_table *table)
 	i = 0;
 	while (i < table->n_of_philo)
 	{
-		(table->philo + i)->stop = yes;
+		*(table->philo + i)->stop = yes;
 		i++;
 	}
 	return (0);
+}
+
+int	lock_printing(t_philo *philo)
+{
+	if (pthread_mutex_lock(philo->print) != 0)
+		return (printf("Error locking print mutex.\n"), no);
+	return (yes);
+}
+
+int	unlock_printing(t_philo *philo)
+{
+	if (pthread_mutex_unlock(philo->print) != 0)
+		return (printf("Error unlocking print mutex.\n"), no);
+	return (yes);
 }

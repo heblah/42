@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:01:53 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 11:38:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 17:56:40 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ int	parser(int argc, char **argv, t_table *table)
 	table->times.die = ft_atol(*(argv + 2));
 	table->times.eat = ft_atol(*(argv + 3));
 	table->times.sleep = ft_atol(*(argv + 4));
-	if (pthread_mutex_init(&table->mutex, NULL) != 0)
+	if (pthread_mutex_init(&table->monitor, NULL) != 0)
 		return (printf("Error initializing monitoring mutex.\n"), 2);
+	if (pthread_mutex_init(&table->print, NULL) != 0)
+		return (printf("Error initializing printing mutex.\n"), 2);
+	table->stop = no;
 	if (init_philo(table) != 0)
 		return (close_table(table), 3);
 	return (0);
@@ -87,21 +90,24 @@ int	alloc_philo(t_table *table)
 	return (0);
 }
 
-/*L103 : possible data race but write before threads creation */
+/*L105 : possible data race but write before threads creation */
 int	data_philo(t_table *table, int *i)
 {
 	(table->philo + *i)->id = *i + 1;
-	get_timestamp(table->philo + *i, yes);
+	get_timestamp(table->philo + *i, yes, noprotect);
 	(table->philo + *i)->l_fork = table->forks + *i;
 	if (table->n_of_philo > 1)
 		(table->philo + *i)->r_fork = table->forks
 			+ ((*i + 1) % table->n_of_philo);
 	else
 		(table->philo + *i)->r_fork = NULL;
-	(table->philo + *i)->mutex = &table->mutex;
-	(table->philo + *i)->times = &table->times;
+	(table->philo + *i)->monitor = &table->monitor;
+	(table->philo + *i)->print = &table->print;
+	(table->philo + *i)->times.die = table->times.die;
+	(table->philo + *i)->times.eat = table->times.eat;
+	(table->philo + *i)->times.sleep = table->times.sleep;
 	(table->philo + *i)->state = *i % 3;
 	(table->philo + *i)->meals = table->n_of_meals;
-	(table->philo + *i)->stop = no;
+	(table->philo + *i)->stop = &table->stop;
 	return (0);
 }

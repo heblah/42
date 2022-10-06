@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:29:58 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 12:00:37 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:31:55 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,14 @@ void	check_parsing(t_table table)
 		printf("philo[%d].id \t\t= %d\n", i, table.philo[i].id);
 		printf("philo[%d].l_fork \t= %p\n", i, table.philo[i].l_fork);
 		printf("philo[%d].r_fork \t= %p\n", i, table.philo[i].r_fork);
-		printf("philo[%d].times \t\t= %p\n", i, table.philo[i].times);
-		printf("philo[%d].times->die \t= %lu\n", i, table.philo[i].times->die);
-		printf("philo[%d].times->eat \t= %lu\n", i, table.philo[i].times->eat);
-		printf("philo[%d].times->sleep \t= %lu\n",
-			i, table.philo[i].times->sleep);
+		printf("philo[%d].times.die \t= %lu\n", i, table.philo[i].times.die);
+		printf("philo[%d].times.eat \t= %lu\n", i, table.philo[i].times.eat);
+		printf("philo[%d].times.sleep \t= %lu\n",
+			i, table.philo[i].times.sleep);
 		printf("philo[%d].state \t\t= %d\n", i, table.philo[i].state);
 		printf("philo[%d].meals \t\t= %d\n", i, table.philo[i].meals);
-		printf("philo[%d].stop \t\t= %d\n", i, table.philo[i].stop);
+		printf("philo[%d].stop \t\t= %p\n", i, table.philo[i].stop);
+		printf("philo[%d]->stop \t\t= %d\n", i, *(table.philo[i].stop));
 		i++;
 	}
 	close_table(&table);

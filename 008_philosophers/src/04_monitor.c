@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 14:08:18 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/06 18:27:18 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,11 @@ int	monitoring(t_table *table)
 		lock_monitoring(table->philo + i);
 		if ((table->philo + i)->meals == 0)
 			count++;
-		if (is_dead(table->philo + i) == yes)
+		if (is_dead(table->philo + i) == yes && table->stop == no)
+		{
+			table->stop = yes;
 			printf("%lu\t%d\t""is dead.\n" RESET,
 				(table->philo + i)->timestamp, (table->philo + i)->id);
-		if (is_dead(table->philo + i) == yes || count == table->n_of_philo)
-		{
-			stop_all_philo(table);
-			return (unlock_monitoring(table->philo + i), i);
 		}
 		unlock_monitoring(table->philo + i);
 	}
@@ -55,26 +53,25 @@ int	monitoring(t_table *table)
 int	do_i_continue(t_philo *philo)
 {
 	lock_monitoring(philo);
-	if (philo->state != dead && philo->stop == no
-		&& get_timestamp(philo, no) >= philo->times->die)
+	if (get_timestamp(philo, no, noprotect) >= philo->times.die)
 	{
-		//get_timestamp(philo, yes);
-		print_activity(philo, KRED "is dead.\n", dead);
-		return (unlock_monitoring(philo), no);
+		*philo->stop = yes;
+		unlock_monitoring(philo);
+		return (no);
 	}
-	else if (philo->state != dead && philo->stop == yes)
-		return (unlock_monitoring(philo), no);
-	else if (philo->state == dead)
-		return (unlock_monitoring(philo), no);
-	else if (philo->stop == yes)
-		return (unlock_monitoring(philo), no);
-	return (unlock_monitoring(philo), yes);
+	if (philo->stop == no)
+	{
+		unlock_monitoring(philo);
+		return (no);
+	}
+	unlock_monitoring(philo);
+	return (yes);
 }
 
 int	lock_forks(t_philo *philo)
 {
 	if (pthread_mutex_lock(philo->l_fork) != 0
-		|| pthread_mutex_trylock(philo->r_fork) != 0)
+		|| pthread_mutex_lock(philo->r_fork) != 0)
 		return (printf("Error locking a fork.\n"), no);
 	return (yes);
 }
