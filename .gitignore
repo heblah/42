@@ -6,6 +6,7 @@ Makefile.gen
 .vscode/*
 *~
 \#*\#
+*.swp
 
 # Prerequisites
 *.d
