@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 09:55:54 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/07 10:39:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	get_philosophy(t_table *table)
 	{
 		if (monitoring(table) != -1)
 		{
+			unlock_all_forks(table);
+			pthread_mutex_unlock(&table->print);
 			join_threads(table);
 			break ;
 		}
@@ -41,16 +43,13 @@ int	monitoring(t_table *table)
 		if (is_dead(table->philo + i) == yes && table->stop == no)
 		{
 			table->stop = yes;
+			pthread_mutex_lock(&table->print);
 			printf("%lu\t%d\t""is dead.\n" RESET,
 				(table->philo + i)->timestamp, (table->philo + i)->id);
-			unlock_monitoring(table->philo + i);
-			return (i);
+			return (unlock_monitoring(table->philo + i), i);
 		}
 		if (count == table->n_of_meals)
-		{
-			unlock_monitoring(table->philo + i);
-			return (i);
-		}
+			return (unlock_monitoring(table->philo + i), i);
 		unlock_monitoring(table->philo + i);
 	}
 	return (-1);

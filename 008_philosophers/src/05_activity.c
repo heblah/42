@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:34:45 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 09:54:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/07 10:34:33 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	is_eating(t_philo *philo)
 
 	if (do_i_continue(philo) == yes)
 	{
-		ts = get_timestamp(philo, no, protect);
+		ts = get_timestamp(philo, yes, protect);
 		usleep(philo->times.eat * 1000);
 		printa(philo, KCYN "is eating.\n", eating, ts);
 		lock_monitoring(philo);
@@ -77,6 +77,7 @@ int	is_thinking(t_philo *philo)
 	if (do_i_continue(philo) == yes)
 	{
 		ts = get_timestamp(philo, no, protect);
+		usleep((philo->times.die - (philo->times.eat + philo->times.sleep)) * 0.2);
 		if (do_i_continue(philo) == yes)
 			printa(philo, KYEL "is thinking.\n", thinking, ts);
 		return (0);
