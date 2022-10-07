@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 14:22:16 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/07 14:27:23 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,7 @@ int	monitoring(t_table *table)
 			return (unlock_monitoring(table->philo + i), i);
 		}
 		if (is_dead(table->philo + i) == yes && table->stop == no)
-		{
-			table->stop = yes;
-			lock_printing(table->philo + i);
-			printf(KRED "%lu\t%d\t""is dead.\n" RESET,
-				(table->philo + i)->timestamp, (table->philo + i)->id);
-			sleep(1);
-			unlock_printing(table->philo + i);
-			return (unlock_monitoring(table->philo + i), i);
-		}
+			return (declare_death(table, i), i);
 		unlock_monitoring(table->philo + i);
 	}
 	return (-1);

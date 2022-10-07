@@ -49,4 +49,5 @@ int				is_thinking(t_philo *philo);
 int				is_dead(t_philo *philo);
 int				lock_printing(t_philo *philo);
 int				unlock_printing(t_philo *philo);
+void			declare_death(t_table *table, int i);
 #endif
