@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 19:02:44 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/07 09:55:54 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	get_philosophy(t_table *table)
 		if (monitoring(table) != -1)
 		{
 			join_threads(table);
-			printf("pass here %s\n", __func__);
-			//sleep(1);
 			break ;
 		}
 	}
@@ -45,6 +43,13 @@ int	monitoring(t_table *table)
 			table->stop = yes;
 			printf("%lu\t%d\t""is dead.\n" RESET,
 				(table->philo + i)->timestamp, (table->philo + i)->id);
+			unlock_monitoring(table->philo + i);
+			return (i);
+		}
+		if (count == table->n_of_meals)
+		{
+			unlock_monitoring(table->philo + i);
+			return (i);
 		}
 		unlock_monitoring(table->philo + i);
 	}

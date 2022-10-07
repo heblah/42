@@ -28,7 +28,7 @@ int				data_philo(t_table *table, int *i);
 /* ./03_routine.c =========================================================== */
 void			*routine(void *thread_philo);
 unsigned long	get_timestamp(t_philo *philo, int reset_flag, int protect_flag);
-int				put_action(t_philo *philo, char *msg, int e_state);
+int				printa(t_philo *philo, char *msg, int e_state, unsigned long ts);
 int				lock_monitoring(t_philo *philo);
 int				unlock_monitoring(t_philo *philo);
 
@@ -47,7 +47,6 @@ int				is_thinking(t_philo *philo);
 
 /* ./06_monitor_utils.c ===================================================== */
 int				is_dead(t_philo *philo);
-int				stop_all_philo(t_table *table);
 int				lock_printing(t_philo *philo);
 int				unlock_printing(t_philo *philo);
 #endif

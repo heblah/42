@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 19:01:11 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/07 09:56:08 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	*routine(void *thread_philo)
 	while (do_i_continue(philo) == yes)
 		if (sync_philo(philo) != 0)
 			return (NULL);
-	DBG
 	return (NULL);
 }
 
@@ -52,17 +51,15 @@ unsigned long	get_timestamp(t_philo *philo, int reset_flag, int protect_flag)
 	return (ts);
 }
 
-int	put_action(t_philo *philo, char *msg, int e_state)
+int	printa(t_philo *philo, char *msg, int e_state, unsigned long ts)
 {
 	lock_printing(philo);
-	philo->state = e_state;
-	if (philo->state != dead)
+	if (do_i_continue(philo))
 	{
-		printf("%lu\t%d\t%s" RESET, philo->timestamp, philo->id, msg);
+		philo->state = e_state;
+		printf("%lu\t%d\t%s" RESET, ts, philo->id, msg);
 		philo->state = (philo->state + 1) % 3;
 	}
-	else if (philo->state == dead)
-		printf("%lu\t%d\t""is dead.\n" RESET, philo->timestamp, philo->id);
 	return (unlock_printing(philo), 0);
 }
 

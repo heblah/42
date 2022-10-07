@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:34:45 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/06 18:07:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/07 09:54:20 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	take_forks(t_philo *philo)
 		{
 			if (do_i_continue(philo) == yes)
 			{
-				get_timestamp(philo, no, protect);
-				put_action(philo, KGRN "has taken forks.\n", eating);
+				ts = get_timestamp(philo, no, protect);
+				printa(philo, KGRN "has taken forks.\n", eating, ts);
 				if (do_i_continue(philo) == yes)
 					is_eating(philo);
 			}
@@ -41,11 +41,13 @@ int	take_forks(t_philo *philo)
 
 int	is_eating(t_philo *philo)
 {
+	unsigned long	ts;
+
 	if (do_i_continue(philo) == yes)
 	{
-		get_timestamp(philo, no, protect);
+		ts = get_timestamp(philo, no, protect);
 		usleep(philo->times.eat * 1000);
-		put_action(philo, KCYN "is eating.\n", eating);
+		printa(philo, KCYN "is eating.\n", eating, ts);
 		lock_monitoring(philo);
 		if (philo->meals > 0)
 			--philo->meals;
@@ -56,11 +58,13 @@ int	is_eating(t_philo *philo)
 
 int	is_sleeping(t_philo *philo)
 {
+	unsigned long	ts;
+
 	if (do_i_continue(philo) == yes)
 	{
-		get_timestamp(philo, no, protect);
+		ts = get_timestamp(philo, no, protect);
 		usleep(philo->times.sleep * 1000);
-		put_action(philo, KBLU "is sleeping.\n", sleeping);
+		printa(philo, KBLU "is sleeping.\n", sleeping, ts);
 		return (0);
 	}
 	return (1);
@@ -68,11 +72,13 @@ int	is_sleeping(t_philo *philo)
 
 int	is_thinking(t_philo *philo)
 {
+	unsigned long	ts;
+
 	if (do_i_continue(philo) == yes)
 	{
-		get_timestamp(philo, no, protect);
+		ts = get_timestamp(philo, no, protect);
 		if (do_i_continue(philo) == yes)
-			put_action(philo, KYEL "is thinking.\n", thinking);
+			printa(philo, KYEL "is thinking.\n", thinking, ts);
 		return (0);
 	}
 	return (1);
