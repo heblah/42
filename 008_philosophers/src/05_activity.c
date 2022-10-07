@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:34:45 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 11:38:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/07 14:21:34 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	take_forks(t_philo *philo)
 {
 	unsigned long	ts;
 
-	if (philo->r_fork != NULL && philo->meals != 0)
+	if (philo->r_fork != NULL)
 	{
 		if (lock_forks(philo) == yes)
 		{
@@ -50,7 +50,7 @@ int	is_eating(t_philo *philo)
 		printa(philo, KCYN "is eating.\n", eating, ts);
 		lock_monitoring(philo);
 		if (philo->meals > 0)
-			--philo->meals;
+			philo->meals--;
 		unlock_monitoring(philo);
 	}
 	return (0);

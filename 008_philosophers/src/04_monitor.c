@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 11:53:57 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/07 14:22:16 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ int	monitoring(t_table *table)
 		lock_monitoring(table->philo + i);
 		if ((table->philo + i)->meals == 0)
 			count++;
+		if (count == table->n_of_philo)
+		{
+			table->stop = yes;
+			sleep(1);
+			return (unlock_monitoring(table->philo + i), i);
+		}
 		if (is_dead(table->philo + i) == yes && table->stop == no)
 		{
 			table->stop = yes;
@@ -46,12 +52,6 @@ int	monitoring(t_table *table)
 				(table->philo + i)->timestamp, (table->philo + i)->id);
 			sleep(1);
 			unlock_printing(table->philo + i);
-			return (unlock_monitoring(table->philo + i), i);
-		}
-		if (count == table->n_of_meals && table->stop == no)
-		{
-			table->stop = yes;
-			sleep(1);
 			return (unlock_monitoring(table->philo + i), i);
 		}
 		unlock_monitoring(table->philo + i);

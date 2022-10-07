@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:49:19 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 10:53:47 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:37:29 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,4 @@ int	unlock_printing(t_philo *philo)
 	if (pthread_mutex_unlock(philo->print) != 0)
 		return (printf("Error unlocking print mutex.\n"), no);
 	return (yes);
-}
-
-int	unlock_all_forks(t_table *table)
-{
-	int	i;
-
-	i = 0;
-	while (i < table->n_of_philo)
-	{
-		pthread_mutex_unlock(table->forks + i);
-		i++;
-	}
-	return (0);
 }

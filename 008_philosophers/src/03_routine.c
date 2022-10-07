@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 11:27:56 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:44:52 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,13 @@ int	printa(t_philo *philo, char *msg, int e_state, unsigned long ts)
 	lock_printing(philo);
 	if (do_i_continue(philo) == yes && e_state != dead)
 	{
-		philo->state = e_state;
 		printf("%lu\t%d\t%s" RESET, ts, philo->id, msg);
+		lock_monitoring(philo);
+		philo->state = e_state;
 		philo->state = (philo->state + 1) % 3;
+		unlock_monitoring(philo);
 	}
-	else if (e_state == dead)
+	else if (do_i_continue(philo) == yes && e_state == dead)
 		printf("%lu\t%d\t%s" RESET, ts, philo->id, msg);
 	return (unlock_printing(philo), 0);
 }
