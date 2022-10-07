@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:49:19 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 10:29:42 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/07 10:53:47 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	unlock_all_forks(t_table *table)
 	int	i;
 
 	i = 0;
-	while (i< table->n_of_philo)
+	while (i < table->n_of_philo)
 	{
 		pthread_mutex_unlock(table->forks + i);
 		i++;
