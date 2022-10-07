@@ -6,13 +6,13 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/07 15:14:13 by halvarez          #+#    #+#              #
-#    Updated: 2022/10/07 15:21:39 by halvarez         ###   ########.fr        #
+#    Updated: 2022/10/07 15:26:33 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 section	.data
 hello:
-	.string db "Hello world !", 10
+	.string db `Hello world !\n`
 	.len 	equ $ - hello.string
 
 section	.text
