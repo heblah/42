@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_philo.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/07 14:49:11 by halvarez          #+#    #+#             */
+/*   Updated: 2022/10/07 14:50:58 by halvarez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PHILO_H
 # define FT_PHILO_H
 
@@ -28,7 +40,8 @@ int				data_philo(t_table *table, int *i);
 /* ./03_routine.c =========================================================== */
 void			*routine(void *thread_philo);
 unsigned long	get_timestamp(t_philo *philo, int reset_flag, int protect_flag);
-int				printa(t_philo *philo, char *msg, int e_state, unsigned long ts);
+int				printa(t_philo *philo, char *msg, int e_state, unsigned long ts)
+				;
 int				lock_monitoring(t_philo *philo);
 int				unlock_monitoring(t_philo *philo);
 
