@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:00:43 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 10:50:58 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/07 11:55:20 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	create_threads(t_table *table)
 			printf("Error creating thread philo + %d.\n", i);
 			return (1);
 		}
+		usleep(table->times.eat);
 		i++;
 	}
 	return (0);
