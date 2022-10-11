@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:49:19 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 14:27:43 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:42:12 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	declare_death(t_table *table, int i)
 	lock_printing(table->philo + i);
 	printf(KRED "%lu\t%d\t""is dead.\n" RESET,
 		(table->philo + i)->timestamp, (table->philo + i)->id);
-	sleep(1);
+	usleep(1000000);
 	unlock_printing(table->philo + i);
 	unlock_monitoring(table->philo + i);
 }
