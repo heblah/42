@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 14:27:23 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/11 10:04:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	monitoring(t_table *table)
 		if (count == table->n_of_philo)
 		{
 			table->stop = yes;
-			sleep(1);
+			usleep(1000000);
 			return (unlock_monitoring(table->philo + i), i);
 		}
 		if (is_dead(table->philo + i) == yes && table->stop == no)
@@ -69,11 +69,30 @@ int	do_i_continue(t_philo *philo)
 	return (yes);
 }
 
+/*
 int	lock_forks(t_philo *philo)
 {
 	if (pthread_mutex_lock(philo->l_fork) != 0
 		|| pthread_mutex_lock(philo->r_fork) != 0)
 		return (printf("Error locking a fork.\n"), no);
+	return (yes);
+}
+*/
+
+int	lock_forks(t_philo *philo)
+{
+	if (philo->id % 2 == 0)
+	{
+		if (pthread_mutex_lock(philo->l_fork) != 0
+			|| pthread_mutex_lock(philo->r_fork) != 0)
+			return (printf("Error locking a fork.\n"), no);
+	}
+	else
+	{
+		if (pthread_mutex_lock(philo->r_fork) != 0
+			|| pthread_mutex_lock(philo->l_fork) != 0)
+			return (printf("Error locking a fork.\n"), no);
+	}
 	return (yes);
 }
 
