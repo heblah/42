@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/09/26 16:33:18 by halvarez         ###   ########.fr        #
+#    Updated: 2022/10/11 10:40:25 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,10 @@ SRCS_DIR	= ./srcs/
 SRCS		= 00_main.c 01_ftprint.c 02_stack_utils.c 03_stack_utils.c 04_stack_utils.c
 SRCS		+= 05_moves.c 06_doublemoves.c 07_parser.c 08_sort.c 09_sort_utils.c
 SRCS		+= 10_sort_utils.c 11_sort_utils.c
-OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
-DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
+OBJ_DIR		= obj/
+FILES		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
+OBJS		= $(addprefix ${OBJ_DIR}, ${FILES})
+DEPS		= $(addprefix ${OBJ_DIR}, ${SRCS:.c=.d})
 
 CC			= cc
 CLIB		= -Llibft -lft
