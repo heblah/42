@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:34:45 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 14:49:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:07:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	is_thinking(t_philo *philo)
 	{
 		ts = get_timestamp(philo, no, protect);
 		usleep((philo->times.die
-				- (philo->times.eat + philo->times.sleep)) * 0.2);
+				- (philo->times.eat + philo->times.sleep)) * 0.5);
 		if (do_i_continue(philo) == yes)
 			printa(philo, KYEL "is thinking.\n", thinking, ts);
 		return (0);

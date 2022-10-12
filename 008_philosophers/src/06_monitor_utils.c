@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:49:19 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/11 11:42:12 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:32:53 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,15 @@ int	unlock_printing(t_philo *philo)
 {
 	if (pthread_mutex_unlock(philo->print) != 0)
 		return (printf("Error unlocking print mutex.\n"), no);
+	usleep(200);
 	return (yes);
 }
 
 void	declare_death(t_table *table, int i)
 {
+	unsigned long	ts;
+
+	ts = get_timestamp(table->philo + i, no, noprotect);
 	table->stop = yes;
-	lock_printing(table->philo + i);
-	printf(KRED "%lu\t%d\t""is dead.\n" RESET,
-		(table->philo + i)->timestamp, (table->philo + i)->id);
-	usleep(1000000);
-	unlock_printing(table->philo + i);
-	unlock_monitoring(table->philo + i);
+	printa(table->philo + i, "is dead.\n", dead, ts);
 }

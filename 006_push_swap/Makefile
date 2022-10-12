@@ -6,12 +6,12 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/10/11 12:32:59 by halvarez         ###   ########.fr        #
+#    Updated: 2022/10/12 14:31:23 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Default build version = release letting it empty
-BUILD		:=
+build		:=
 
 #Compilation of the push_swap program
 NAME    	= push_swap
@@ -32,7 +32,7 @@ RM			= rm -rf
 cflags.release	:= -Wall -Wextra -Werror -MMD -MP
 cflags.gdb		:= -g
 cflags.sanitize	:= -g -fsanitize=address
-CFLAGS			:= ${cflags.release} ${cflags.${BUILD}}
+CFLAGS			:= ${cflags.release} ${cflags.${build}}
 
 .c.o	:
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}

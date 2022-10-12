@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:01:53 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 11:55:41 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:18:54 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int	alloc_philo(t_table *table)
 	return (0);
 }
 
-/*L105 : possible data race but write before threads creation */
 int	data_philo(t_table *table, int *i)
 {
 	(table->philo + *i)->id = *i + 1;

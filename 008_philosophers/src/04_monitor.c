@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/11 16:43:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:33:01 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	monitoring(t_table *table)
 		if (count == table->n_of_philo)
 		{
 			table->stop = yes;
-			usleep(1000000);
 			return (unlock_monitoring(table->philo + i), i);
 		}
 		if (is_dead(table->philo + i) == yes && table->stop == no)

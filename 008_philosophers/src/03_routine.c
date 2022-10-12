@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 13:44:52 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:30:11 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,23 @@ unsigned long	get_timestamp(t_philo *philo, int reset_flag, int protect_flag)
 
 int	printa(t_philo *philo, char *msg, int e_state, unsigned long ts)
 {
-	lock_printing(philo);
-	if (do_i_continue(philo) == yes && e_state != dead)
+	if (e_state != dead)
 	{
-		printf("%lu\t%d\t%s" RESET, ts, philo->id, msg);
 		lock_monitoring(philo);
+		lock_printing(philo);
+		if (*philo->stop == no)
+			printf("%lu\t%d\t%s" RESET, ts, philo->id, msg);
 		philo->state = e_state;
 		philo->state = (philo->state + 1) % 3;
-		unlock_monitoring(philo);
 	}
-	else if (do_i_continue(philo) == yes && e_state == dead)
+	else if (e_state == dead)
+	{
+		lock_printing(philo);
 		printf("%lu\t%d\t%s" RESET, ts, philo->id, msg);
-	return (unlock_printing(philo), 0);
+	}
+	unlock_printing(philo);
+	unlock_monitoring(philo);
+	return (0);
 }
 
 int	lock_monitoring(t_philo *philo)
