@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/12 17:33:01 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:37:46 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	do_i_continue(t_philo *philo)
 		unlock_monitoring(philo);
 		return (no);
 	}
-	if (philo->stop == no)
+	if (*philo->stop == yes)
 	{
 		unlock_monitoring(philo);
 		return (no);

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:49:19 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/12 17:32:53 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:38:40 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ void	declare_death(t_table *table, int i)
 
 	ts = get_timestamp(table->philo + i, no, noprotect);
 	table->stop = yes;
-	printa(table->philo + i, "is dead.\n", dead, ts);
+	printa(table->philo + i, KRED "is dead.\n", dead, ts);
 }
