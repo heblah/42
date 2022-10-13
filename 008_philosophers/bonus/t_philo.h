@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/13 11:15:38 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:29:12 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <sys/time.h>
 # include <sys/types.h>
+# include <sys/stat.h>
 # include <semaphore.h>
 # include <pthread.h>
 # include <signal.h>
@@ -53,9 +54,9 @@ typedef struct s_philo
 	int				id;
 	struct timeval	t0;
 	unsigned long	timestamp;
-	sem_t			*forks;
-	sem_t			*monitor;
-	sem_t			*print;
+	sem_t			**forks;
+	sem_t			**monitor;
+	sem_t			**print;
 	t_times			times;
 	int				state;
 	int				meals;
@@ -70,8 +71,8 @@ typedef struct s_table
 	t_times	times;
 	t_philo	*philo;
 	sem_t	*forks;
-	sem_t	monitor;
-	sem_t	print;
+	sem_t	*monitor;
+	sem_t	*print;
 	int		stop;
 }	t_table;
 

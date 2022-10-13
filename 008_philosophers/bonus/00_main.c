@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:29:58 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/12 18:27:16 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:39:36 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ int	main(int argc, char **argv)
 
 	if ((argc != 5 && argc != 6) || parser(argc, argv, &table) == 1)
 		return (print_manual(1));
-	if (create_threads(&table) != 0)
-		return (close_table(&table), 1);
-	get_philosophy(&table);
+	check_parsing(table);
+	//if (create_threads(&table) != 0)
+	//	return (close_table(&table), 1);
+	//get_philosophy(&table);
 	return (close_table(&table), 0);
 }
 
@@ -45,19 +46,14 @@ int	print_manual(int output)
 
 void	*close_table(t_table *table)
 {
-	int	i;
-
-	i = 0;
-	while (table->forks && i < table->n_of_philo)
-	{
-		if (pthread_mutex_destroy(table->forks + i) != 0)
-			printf("Error destroying mutex fork + %d.\n", i);
-		i++;
-	}
+	if (sem_close(table->forks) != 0)
+		printf("Error closing forks\n");
+	if (sem_close(table->print) != 0)
+		printf("Error closing forks\n");
+	if (sem_close(table->monitor) != 0)
+		printf("Error closing forks\n");
 	if (table->philo)
 		ft_free((void **)&table->philo);
-	if (table->forks)
-		ft_free((void **)&table->forks);
 	return (NULL);
 }
 
@@ -67,6 +63,8 @@ void	check_parsing(t_table table)
 
 	printf("n of philo \t=\t%d\n", table.n_of_philo);
 	printf("n of meals \t=\t%d\n", table.n_of_meals);
+	printf("table.philo \t=\t%p\n", table.philo);
+	printf("table.forks \t=\t%p\n", table.forks);
 	printf("time to die \t=\t%lu\n", table.times.die);
 	printf("time to eat \t=\t%lu\n", table.times.eat);
 	printf("time to sleep \t=\t%lu\n", table.times.sleep);
@@ -74,8 +72,9 @@ void	check_parsing(t_table table)
 	{
 		printf("\n============= data philo[%d] =============\n", i);
 		printf("philo[%d].id \t\t= %d\n", i, table.philo[i].id);
-		printf("philo[%d].l_fork \t= %p\n", i, table.philo[i].l_fork);
-		printf("philo[%d].r_fork \t= %p\n", i, table.philo[i].r_fork);
+		printf("philo[%d].forks \t\t= %p\n", i, table.philo[i].forks);
+		printf("philo[%d].monitor \t= %p\n", i, table.philo[i].monitor);
+		printf("philo[%d].print \t\t= %p\n", i, table.philo[i].print);
 		printf("philo[%d].times.die \t= %lu\n", i, table.philo[i].times.die);
 		printf("philo[%d].times.eat \t= %lu\n", i, table.philo[i].times.eat);
 		printf("philo[%d].times.sleep \t= %lu\n",

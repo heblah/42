@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/10/06 14:34:46 by halvarez         ###   ########.fr        #
+#    Updated: 2022/10/13 14:32:54 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ DEP			= $(addprefix ${SRC_DIR}, ${SRC:.c=.d})
 #Compilation of the bonus part
 BNS			= philo_bonus
 BONUS_DIR	= ./bonus/
-BONUS_SRC	= 00_main.c
+BONUS_SRC	= 00_main.c 02_parser.c #01_threads.c 
+#BONUS_SRC	= 00_main.c 01_threads.c 02_parser.c 03_routine.c 04_monitor.c
+#BONUS_SRC	+= 05_activity.c 06_monitor_utils.c
 BONUS_OBJ	= $(addprefix ${BONUS_DIR}, ${BONUS_SRC:.c=.o})
 BONUS_DEP	= $(addprefix ${BONUS_DIR}, ${BONUS_SRC:.c=.d})
 
