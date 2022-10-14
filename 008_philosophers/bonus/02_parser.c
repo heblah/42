@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:01:53 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/13 15:47:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/14 10:40:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	init_philo(t_table *table)
 	table->philo = malloc(table->n_of_philo * sizeof(t_philo));
 	if (table->philo == NULL)
 		return (1);
-	printf("table->philo \t=\t%p\n", table->philo);
 	while (++i < table->n_of_philo)
 	{
 		sem_post(table->forks);

@@ -6,7 +6,7 @@
 "    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2022/06/02 17:34:20 by halvarez          #+#    #+#              "
-"    Updated: 2022/09/29 17:34:09 by halvarez         ###   ########.fr        "
+"    Updated: 2022/10/14 15:44:58 by halvarez         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -33,6 +33,8 @@ nnoremap <C-right> 	:vertical resize +2 <cr>
 nnoremap <C-left> 	:vertical resize -2 <cr>
 nnoremap <C-t>		:vert ter <cr>
 nnoremap <S-t>		:ter <cr>
+nnoremap <tab>		:tabnext <cr>
+nnoremap <S-tab>	:tabNext <cr>
 nnoremap <C-l> <C-w>l
 nnoremap <C-k> <C-w>k
 nnoremap <C-j> <C-w>j
