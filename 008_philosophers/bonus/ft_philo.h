@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_philo.h                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 14:49:11 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 14:50:58 by halvarez         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FT_PHILO_H
 # define FT_PHILO_H
 
@@ -25,29 +13,26 @@ int				print_manual(int output);
 void			*close_table(t_table *table);
 void			check_parsing(t_table table);
 
-/* ./01_threads.c =========================================================== */
-int				create_threads(t_table *table);
-int				join_threads(t_table *table);
+/* ./01_processes.c ========================================================= */
+int				create_processes(t_table *table);
 int				sync_philo(t_philo *philo);
 
 /* ./02_parser.c ============================================================ */
 int				parser(int argc, char **argv, t_table *table);
 int				are_valid_args(int argc, char **argv);
 int				init_philo(t_table *table);
-int				alloc_philo(t_table *table);
 int				data_philo(t_table *table, int *i);
 
 /* ./03_routine.c =========================================================== */
-void			*routine(void *thread_philo);
+void			*routine(void  *thread_philo);
 unsigned long	get_timestamp(t_philo *philo, int reset_flag, int protect_flag);
-int				printa(t_philo *philo, char *msg, int e_state, unsigned long ts)
-				;
+int				printa(t_philo *philo, char *msg, int e_state, unsigned long ts);
 int				lock_monitoring(t_philo *philo);
 int				unlock_monitoring(t_philo *philo);
 
 /* ./04_monitor.c =========================================================== */
-int				get_philosophy(t_table *table);
-int				monitoring(t_table *table);
+int				get_philosophy(t_table *table, int i);
+int				monitoring(t_table *table, int i);
 int				do_i_continue(t_philo *philo);
 int				lock_forks(t_philo *philo);
 int				unlock_forks(t_philo *philo);

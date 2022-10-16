@@ -6,47 +6,37 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/12 18:37:46 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/16 18:03:35 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_philo.h"
 #include "ft_philo.h"
 
-int	get_philosophy(t_table *table)
+int	get_philosophy(t_table *table, int i)
 {
 	while (1)
-	{
-		if (monitoring(table) != -1)
-		{
-			join_threads(table);
-			break ;
-		}
-	}
+		if (monitoring(table, i) != -1)
+			return (exit(1), 1);
 	return (0);
 }
 
-int	monitoring(t_table *table)
+int	monitoring(t_table *table, int i)
 {
-	int	i;
 	int	count;
 
-	i = -1;
 	count = 0;
-	while (++i < table->n_of_philo)
+	lock_monitoring(table->philo + i);
+	if ((table->philo + i)->meals == 0)
+		count++;
+	if (count == table->n_of_philo)
 	{
-		lock_monitoring(table->philo + i);
-		if ((table->philo + i)->meals == 0)
-			count++;
-		if (count == table->n_of_philo)
-		{
-			table->stop = yes;
-			return (unlock_monitoring(table->philo + i), i);
-		}
-		if (is_dead(table->philo + i) == yes && table->stop == no)
-			return (declare_death(table, i), i);
-		unlock_monitoring(table->philo + i);
+		table->stop = yes;
+		return (unlock_monitoring(table->philo + i), i);
 	}
+	if (is_dead(table->philo + i) == yes && table->stop == no)
+		return (declare_death(table, i), i);
+	unlock_monitoring(table->philo + i);
 	return (-1);
 }
 

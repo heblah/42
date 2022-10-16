@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:34:45 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/13 12:07:21 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/16 13:19:45 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	take_forks(t_philo *philo)
 			if (do_i_continue(philo) == yes)
 			{
 				ts = get_timestamp(philo, no, protect);
-				printa(philo, KGRN "has taken forks.\n", eating, ts);
+				printa(philo, KGRN "has taken a fork.\n", eating, ts);
 				is_eating(philo);
 			}
 			return (unlock_forks(philo), 0);

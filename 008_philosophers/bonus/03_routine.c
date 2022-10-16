@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/12 18:21:33 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/16 15:46:14 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "ft_philo.h"
 
 //	printf("Pass here, %s[%d]:%d\n\n", __func__, philo->id, __LINE__);
-void	*routine(void *thread_philo)
+void	*routine(void  *thread_philo)
 {
-	t_philo			*philo;
+	t_philo	*philo;
 
 	philo = thread_philo;
 	while (do_i_continue(philo) == yes)

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:29:58 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/14 10:42:16 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/16 15:27:01 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	main(int argc, char **argv)
 	if ((argc != 5 && argc != 6) || parser(argc, argv, &table) == 1)
 		return (print_manual(1));
 	check_parsing(table);
-	//if (create_threads(&table) != 0)
-	//	return (close_table(&table), 1);
+	if (create_processes(&table) != 0)
+		return (close_table(&table), 1);
 	//get_philosophy(&table);
 	return (close_table(&table), 0);
 }
