@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/16 18:03:35 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/17 09:18:24 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	get_philosophy(t_table *table, int i)
 {
 	while (1)
 		if (monitoring(table, i) != -1)
-			return (exit(1), 1);
+			return (1);
 	return (0);
 }
 

@@ -15,7 +15,9 @@ void			check_parsing(t_table table);
 
 /* ./01_processes.c ========================================================= */
 int				create_processes(t_table *table);
+int				manage_child(t_table *table, int *pid, int i);
 int				sync_philo(t_philo *philo);
+int				detsroy_philo(t_table *table, int *pid, int current);
 
 /* ./02_parser.c ============================================================ */
 int				parser(int argc, char **argv, t_table *table);

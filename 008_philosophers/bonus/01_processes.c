@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:00:43 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/16 18:00:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/17 09:23:24 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,20 @@ int	create_processes(t_table *table)
 		if (*(pid + i) == -1)
 			return (-1);
 		if (*(pid + i) == CHILD)
-		{
-			if (create_thread(&(table->philo + i)->thread, NULL, &routine,
-					table->philo + i) != 0)
-				printf("Error creating thread.\n");
-			get_philosophy(table, i);
-			//*(pid + i) == -1;
-			return (0);
-		}
+			manage_child(table, pid, i);
 	}
 	waitpid(-1, 1, 0);
 	return (free(pid), 0);
+}
+
+int	manage_child(t_table *table, int *pid, int i)
+{
+	if (create_thread(&(table->philo + i)->thread, NULL, &routine,
+			table->philo + i) != 0)
+		printf("Error creating thread.\n");
+	get_philosophy(table, i);
+	destroy_philo(table, pid, i);
+	return (exit(1), 0);
 }
 
 int	sync_philo(t_philo *philo)
