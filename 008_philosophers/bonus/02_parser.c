@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:01:53 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/17 10:39:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/17 11:27:39 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ int	parser(int argc, char **argv, t_table *table)
 	table->times.sleep = ft_atol(*(argv + 4));
 	table->stop = no;
 	table->forks = sem_open("sem_forks", O_CREAT, 0600, table->n_of_philo);
+	sem_unlink("sem_forks");
 	table->monitor = sem_open("sem_monitor", O_CREAT, 0600, 1);
+	sem_unlink("sem_monitor");
 	table->print = sem_open("sem_print", O_CREAT, 0600, 1);
+	sem_unlink("sem_print");
 	if (init_philo(table) != 0)
 		return (close_table(table), 3);
 	return (0);

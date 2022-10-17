@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/17 10:42:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/17 11:48:25 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*routine(void  *thread_philo)
 	t_philo	*philo;
 
 	philo = thread_philo;
-	DBG			/*======== Erase line ========*/
+	usleep(philo->times.eat);
 	while (do_i_continue(philo) == yes)
 		if (sync_philo(philo) != 0)
 			return (NULL);
