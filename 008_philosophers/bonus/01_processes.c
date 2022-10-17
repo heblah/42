@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:00:43 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/17 11:53:16 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/17 18:30:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ int	create_processes(t_table *table)
 		return (1);
 	while (++i < table->n_of_philo)
 	{
-		usleep(table->times.eat);
 		*(pid + i) = fork();
 		if (*(pid + i) == -1)
 			return (-1);
 		if (*(pid + i) == CHILD)
 			manage_child(table, pid, i);
-		usleep(100);
+		//usleep(table->times.eat);
 	}
 	waitpid(-1, &status, 0);
+	printf("\nHere %s:%d\n", __func__, __LINE__);  /* DELETE LINE */
 	return (free(pid), 0);
 }
 
@@ -47,6 +47,11 @@ int	manage_child(t_table *table, int *pid, int i)
 		printf("Error creating thread.\n");
 	get_philosophy(table, i);
 	destroy_philo(table, pid, i);
+	printf("\nHere %s:%d\n", __func__, __LINE__);  /* DELETE LINE */
+	unlock_printing(table->philo + i);
+	printf("\nHere %s:%d\n", __func__, __LINE__);  /* DELETE LINE */
+	unlock_monitoring(table->philo + i);
+	printf("\nHere %s:%d\n", __func__, __LINE__);  /* DELETE LINE */
 	return (exit(1), 0);
 }
 
@@ -67,6 +72,9 @@ int	destroy_philo(t_table *table, int *pid, int current)
 	i = 0;
 	while (i < table->n_of_philo)
 	{
+		printf("\nphilo pid = %d\n", getpid());
+		printf("*(pid + %d) = %d\n", i, *(pid + i));
+		printf("Here[%d] %s:%d\n", i, __func__, __LINE__);  /* DELETE LINE */
 		if (i != current)
 			kill(*(pid + i), SIGKILL);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/17 11:48:25 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/17 17:13:00 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	printa(t_philo *philo, char *msg, int e_state, unsigned long ts)
 	{
 		lock_printing(philo);
 		printf("%lu\t%d\t%s" RESET, ts, philo->id, msg);
+		return (1);
 	}
 	unlock_printing(philo);
 	unlock_monitoring(philo);
@@ -84,5 +85,6 @@ int	unlock_monitoring(t_philo *philo)
 {
 	if (sem_post(*philo->monitor) != 0)
 		return (printf("Error unlocking monitoring semaphore.\n"), no);
+	//usleep(200);
 	return (yes);
 }

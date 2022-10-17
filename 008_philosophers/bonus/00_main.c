@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:29:58 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/17 11:53:14 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/17 17:52:17 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@ int	main(int argc, char **argv)
 {
 	t_table		table;
 
+	printf("\nparent pid = %d\n\n", getpid());
 	if ((argc != 5 && argc != 6) || parser(argc, argv, &table) == 1)
 		return (print_manual(1));
+	//check_parsing(table);
 	if (create_processes(&table) != 0)
 		return (close_table(&table), 1);
+	printf("\nHere %s:%d\n", __func__, __LINE__);  /* DELETE LINE */
 	return (close_table(&table), 0);
 }
 
@@ -58,20 +61,25 @@ void	*close_table(t_table *table)
 void	check_parsing(t_table table)
 {
 	static int	i = 0;
+	int			nforks;
 
+	sem_getvalue(table.forks, &nforks);
 	printf("\n=============== data table ===============\n");
 	printf("n of philo \t\t= %d\n", table.n_of_philo);
 	printf("n of meals \t\t= %d\n", table.n_of_meals);
 	printf("table.philo \t\t= %p\n", table.philo);
 	printf("table.forks \t\t= %p\n", table.forks);
+	printf("table.forks \t\t= %d\n", nforks);
 	printf("time to die \t\t= %lu\n", table.times.die);
 	printf("time to eat \t\t= %lu\n", table.times.eat);
 	printf("time to sleep \t\t= %lu\n", table.times.sleep);
 	while (i < table.n_of_philo)
 	{
+		sem_getvalue(*table.philo[i].forks, &nforks);
 		printf("\n============= data philo[%d] =============\n", i);
 		printf("philo[%d].id \t\t= %d\n", i, table.philo[i].id);
 		printf("philo[%d].forks \t\t= %p\n", i, table.philo[i].forks);
+		printf("philo[%d].forks \t\t= %d\n", i, nforks);
 		printf("philo[%d].monitor \t= %p\n", i, table.philo[i].monitor);
 		printf("philo[%d].print \t\t= %p\n", i, table.philo[i].print);
 		printf("philo[%d].times.die \t= %lu\n", i, table.philo[i].times.die);

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:01:53 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/17 11:27:39 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/17 17:36:56 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	data_philo(t_table *table, int *i)
 	(table->philo + *i)->times.die = table->times.die;
 	(table->philo + *i)->times.eat = table->times.eat;
 	(table->philo + *i)->times.sleep = table->times.sleep;
-	(table->philo + *i)->state = eating;
+	(table->philo + *i)->state = (table->philo + *i)->id % 3;
 	(table->philo + *i)->meals = table->n_of_meals;
 	(table->philo + *i)->stop = &table->stop;
 	return (0);
