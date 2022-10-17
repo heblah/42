@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 16:31:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/16 15:46:14 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/17 10:42:31 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	*routine(void  *thread_philo)
 	t_philo	*philo;
 
 	philo = thread_philo;
+	DBG			/*======== Erase line ========*/
 	while (do_i_continue(philo) == yes)
 		if (sync_philo(philo) != 0)
 			return (NULL);
@@ -74,14 +75,14 @@ int	printa(t_philo *philo, char *msg, int e_state, unsigned long ts)
 
 int	lock_monitoring(t_philo *philo)
 {
-	if (pthread_mutex_lock(philo->monitor) != 0)
-		return (printf("Error locking monitoring mutex.\n"), no);
+	if (sem_wait(*philo->monitor) != 0)
+		return (printf("Error locking monitoring semaphore.\n"), no);
 	return (yes);
 }
 
 int	unlock_monitoring(t_philo *philo)
 {
-	if (pthread_mutex_unlock(philo->monitor) != 0)
-		return (printf("Error unlocking monitoring mutex.\n"), no);
+	if (sem_post(*philo->monitor) != 0)
+		return (printf("Error unlocking monitoring semaphore.\n"), no);
 	return (yes);
 }

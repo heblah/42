@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:34:45 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/12 18:38:05 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/17 10:17:55 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	take_forks(t_philo *philo)
 {
 	unsigned long	ts;
 
-	if (philo->r_fork != NULL)
+	if (*philo->n_of_philo > 1)
 	{
 		if (lock_forks(philo) == yes)
 		{
@@ -31,7 +31,7 @@ int	take_forks(t_philo *philo)
 			return (unlock_forks(philo), 0);
 		}
 	}
-	else if (philo->r_fork == NULL)
+	else if (*philo->n_of_philo == 1)
 	{
 		ts = get_timestamp(philo, no, protect);
 		usleep(philo->times.die * 1000 - ts);

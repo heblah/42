@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:49:19 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/12 18:38:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/17 10:18:26 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ int	is_dead(t_philo *philo)
 
 int	lock_printing(t_philo *philo)
 {
-	if (pthread_mutex_lock(philo->print) != 0)
+	if (sem_wait(*philo->print) != 0)
 		return (printf("Error locking print mutex.\n"), no);
 	return (yes);
 }
 
 int	unlock_printing(t_philo *philo)
 {
-	if (pthread_mutex_unlock(philo->print) != 0)
+	if (sem_post(*philo->print) != 0)
 		return (printf("Error unlocking print mutex.\n"), no);
 	usleep(200);
 	return (yes);

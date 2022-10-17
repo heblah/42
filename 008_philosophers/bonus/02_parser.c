@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:01:53 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/14 10:40:28 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/17 10:39:27 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ int	init_philo(t_table *table)
 int	data_philo(t_table *table, int *i)
 {
 	(table->philo + *i)->id = *i + 1;
-	//get_timestamp(table->philo + *i, yes, noprotect);
+	(table->philo + *i)->n_of_philo = &table->n_of_philo;
+	get_timestamp(table->philo + *i, yes, noprotect);
 	(table->philo + *i)->forks = &table->forks;
 	(table->philo + *i)->monitor = &table->monitor;
 	(table->philo + *i)->print = &table->print;

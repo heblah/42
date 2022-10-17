@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/17 09:18:24 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/17 10:04:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,25 +60,16 @@ int	do_i_continue(t_philo *philo)
 
 int	lock_forks(t_philo *philo)
 {
-	if (philo->id % 2 == 0)
-	{
-		if (pthread_mutex_lock(philo->l_fork) != 0
-			|| pthread_mutex_lock(philo->r_fork) != 0)
-			return (printf("Error locking a fork.\n"), no);
-	}
-	else
-	{
-		if (pthread_mutex_lock(philo->r_fork) != 0
-			|| pthread_mutex_lock(philo->l_fork) != 0)
-			return (printf("Error locking a fork.\n"), no);
-	}
+	if (sem_wait(*philo->forks) != 0
+		|| sem_wait(*philo->forks) != 0)
+		return (printf("Error unlocking a fork.\n"), no);
 	return (yes);
 }
 
 int	unlock_forks(t_philo *philo)
 {
-	if (pthread_mutex_unlock(philo->r_fork) != 0
-		|| pthread_mutex_unlock(philo->l_fork) != 0)
+	if (sem_post(*philo->forks) != 0
+		|| sem_post(*philo->forks) != 0)
 		return (printf("Error unlocking a fork.\n"), no);
 	return (yes);
 }

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/13 15:29:12 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/17 10:41:51 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <sys/time.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <sys/wait.h>
 # include <semaphore.h>
 # include <pthread.h>
 # include <signal.h>
@@ -31,7 +32,7 @@
 # define KWHT  "\x1B[37m"
 # define RESET "\033[0m"
 
-//#define DBG printf("\nPass here, %s[%d]:%d\n", __func__, philo->id, __LINE__);
+#define DBG printf("\nHere[%d] %s:%d\n", philo->id, __func__, __LINE__);
 
 /*
 # define malloc(...)				0
@@ -51,6 +52,7 @@ typedef struct s_times
 typedef struct s_philo
 {
 	pthread_t		thread;
+	int				*n_of_philo;
 	int				id;
 	struct timeval	t0;
 	unsigned long	timestamp;
