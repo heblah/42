@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:00:43 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/18 09:59:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/18 13:59:45 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	destroy_philo(t_table *table, int *pid, int current)
 	while (i < table->n_of_philo)
 	{
 		if (i != current)
-			kill(*(pid + i), SIGKILL);
+			kill(*(pid + i), SIGINT);
 		i++;
 	}
 	return (0);
