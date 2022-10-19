@@ -6,7 +6,7 @@
 "    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2022/06/02 17:34:20 by halvarez          #+#    #+#              "
-"    Updated: 2022/10/14 15:44:58 by halvarez         ###   ########.fr        "
+"    Updated: 2022/10/19 09:38:14 by halvarez         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -35,6 +35,9 @@ nnoremap <C-t>		:vert ter <cr>
 nnoremap <S-t>		:ter <cr>
 nnoremap <tab>		:tabnext <cr>
 nnoremap <S-tab>	:tabNext <cr>
+nnoremap <S-h>		:Stdheader <cr>
+nnoremap <C-e>		:Ve! <cr>
+nnoremap <S-e>		:E <cr>
 nnoremap <C-l> <C-w>l
 nnoremap <C-k> <C-w>k
 nnoremap <C-j> <C-w>j
@@ -45,9 +48,9 @@ nnoremap <C-v> <C-w>v
 nnoremap <S-v> <C-w>s
 
 "autoclosing ===================================================================
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap " ""<Left>
-inoremap ' ''<Left>
-inoremap { {}<Left>
+"inoremap ( ()<Left>
+"inoremap [ []<Left>
+"inoremap " ""<Left>
+"inoremap ' ''<Left>
+"inoremap { {}<Left>
 inoremap /* /**/<Left><Left>
