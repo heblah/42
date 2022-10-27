@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 17:25:14 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/27 13:08:25 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/27 17:55:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,10 @@ void	shortmove2index(t_stack **stack, int select_stack, size_t index,
 			size_t *mv);
 size_t	closest_index(t_stack **stack, int select_stack);
 int		almost_sorted(t_stack **stack, int select_stack);
+
+/* ./12_sort_utils.c ======================================================== */
+void	sort_bigstack2(t_stack **stack, int select_stack);
+void	empty_stack_a(t_stack **stack, int select_stack);
+void	fill_stack_a(t_stack **stack);
+void	insert2(t_stack **stack, int *mv);
 #endif

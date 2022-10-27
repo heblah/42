@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 18:20:12 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/27 12:18:36 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/27 17:33:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	shortmove2index(t_stack **stack, int select_stack, size_t index,
 	}
 }
 
+/*
 size_t	closest_index(t_stack **stack, int select_stack)
 {
 	size_t	index_min;
@@ -77,3 +78,4 @@ int	almost_sorted(t_stack **stack, int select_stack)
 		sorted = 0;
 	return (sorted);
 }
+*/

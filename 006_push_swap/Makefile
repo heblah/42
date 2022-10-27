@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/10/27 13:09:22 by halvarez         ###   ########.fr        #
+#    Updated: 2022/10/27 17:49:05 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME    	= push_swap
 SRCS_DIR	= ./srcs/
 SRCS		= 00_main.c 01_ftprint.c 02_stack_utils.c 03_stack_utils.c 04_stack_utils.c
 SRCS		+= 05_moves.c 06_doublemoves.c 07_parser.c 08_sort.c 09_sort_utils.c
-SRCS		+= 10_sort_utils.c 11_sort_utils.c
+SRCS		+= 10_sort_utils.c 11_sort_utils.c  12_sort.c
 OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
 DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
 
@@ -60,3 +60,22 @@ re:     fclean
 -include ${DEPS}
 
 .PHONY: all clean fclean re bonus
+
+test5:		$(NAME)	
+		$(eval ARG = $(shell shuf -i 0-50 -n 5))
+		valgrind ./push_swap $(ARG) | ./checker_linux $(ARG) 
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
+
+	
+test100:	$(NAME)	
+		$(eval ARG = $(shell shuf -i 0-1000 -n 100))
+		valgrind ./push_swap $(ARG) | ./checker_linux $(ARG) 
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
+
+test500:	$(NAME)	
+		$(eval ARG = $(shell shuf -i 0-2000 -n 500))
+		valgrind ./push_swap $(ARG) | ./checker_linux $(ARG) 
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
