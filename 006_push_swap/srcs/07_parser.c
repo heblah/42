@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:08:11 by halvarez          #+#    #+#             */
-/*   Updated: 2022/08/29 15:55:38 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/27 14:25:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	is_valid_lst(const char *s)
 static t_stack	*one_arg_parser(const char **argv)
 {
 	int		i;
-	int		nb;
+	long	nb;
 	t_stack	*stack;
 
 	i = 0;
@@ -70,8 +70,8 @@ static t_stack	*one_arg_parser(const char **argv)
 		if (argv[1][i] == '\0')
 			return (stack);
 		nb = ft_atoi(&argv[1][i]);
-		if (is_double(stack->a, nb))
-			return (ft_exit(&stack, 2));
+		if (is_double(stack->a, nb) || nb > INT_MAX || nb < INT_MIN)
+			return (ft_exit(&stack, 1));
 		lst_addback(&stack->a, nb);
 		get_stack_data(stack, nb);
 		while (argv[1][i] && is_digit(argv[1][i]))
@@ -83,7 +83,7 @@ static t_stack	*one_arg_parser(const char **argv)
 static t_stack	*var_arg_parser(const int argc, const char **argv)
 {
 	int		i;
-	int		nb;
+	long	nb;
 	t_stack	*stack;
 
 	i = 0;
@@ -93,8 +93,8 @@ static t_stack	*var_arg_parser(const int argc, const char **argv)
 		if (is_valid_lst(argv[1 + i]) == 0)
 			return (ft_exit(&stack, 1));
 		nb = ft_atoi(argv[1 + i]);
-		if (is_double(stack->a, nb))
-			return (ft_exit(&stack, 2));
+		if (is_double(stack->a, nb) || nb > INT_MAX || nb < INT_MIN)
+			return (ft_exit(&stack, 1));
 		lst_addback(&stack->a, nb);
 		get_stack_data(stack, nb);
 		i++;
