@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 11:39:24 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/27 12:20:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/27 13:19:24 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	print_stack(t_stack *stack)
 void	*ft_exit(t_stack **stack, int status)
 {
 	if (status == 1)
-		ft_printf("Error : wrong input.\n");
+		ft_putstr_fd("Error : wrong input.\n", 2);
 	else if (status == 2)
-		ft_printf("Error : there is at least one duplicate.\n");
+		ft_putstr_fd("Error : there is at least one duplicate.\n", 2);
 	if (*stack)
 		free_stack(stack);
 	exit(status);
