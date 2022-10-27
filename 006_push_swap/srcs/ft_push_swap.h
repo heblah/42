@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 17:25:14 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/20 17:25:22 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/27 12:21:03 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ void	get_shortway2index(t_stack **stack, int select_stack, size_t index);
 int		define_cut(t_stack **stack);
 
 /* ./11_sort_utils.c ======================================================== */
-void	shortmove2index(t_stack **stack, int select_stack, size_t index, size_t *mv);
+void	shortmove2index(t_stack **stack, int select_stack, size_t index,
+			size_t *mv);
 size_t	closest_index(t_stack **stack, int select_stack);
 int		almost_sorted(t_stack **stack, int select_stack);
 #endif

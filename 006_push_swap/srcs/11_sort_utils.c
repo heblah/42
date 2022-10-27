@@ -6,14 +6,15 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 18:20:12 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/02 19:59:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/27 12:18:36 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_push_swap.h"
 #include "ft_push_swap.h"
 
-void	shortmove2index(t_stack **stack, int select_stack, size_t index, size_t *mv)
+void	shortmove2index(t_stack **stack, int select_stack, size_t index,
+	size_t *mv)
 {
 	t_lst	*cpystack;
 

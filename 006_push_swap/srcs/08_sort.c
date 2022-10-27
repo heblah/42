@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:06:51 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/02 20:25:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/27 12:19:14 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,8 @@ void	sorting_test(t_stack **stack)
 		sort3nb(stack, a);
 	while ((*stack)->a_size < (*stack)->b_size)
 	{
-		while ((*stack)->b->index > (*stack)->a->index || (*stack)->b->index < (*stack)->a->previous->index)
+		while ((*stack)->b->index > (*stack)->a->index
+			|| (*stack)->b->index < (*stack)->a->previous->index)
 			ft_rotate(stack, a, print);
 		ft_push(stack, a, print);
 	}
