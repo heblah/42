@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 10:12:37 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/27 16:08:39 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/28 19:04:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 void		sh_pipe(int input_fd, t_lst *lst_cmds);
 static void	redir_fd(int oldfd, int newfd);
 static void	child_exec(int input_fd, int fd[], t_lst *lst_cmds);
-static void	parent_exec(int pid, int fd[], int input_fd, t_lst *lst_cmds);
+static void	parent_exec(int fd[], int input_fd, t_lst *lst_cmds);
 
 static void	redir_fd(int oldfd, int newfd)
 {
@@ -61,9 +61,8 @@ static void	child_exec(int input_fd, int fd[], t_lst *lst_cmds)
 
 /* Don't wait for child : yes | head */
 /* if problem check 3 pipes solutions */
-static void	parent_exec(int pid __attribute__((unused)), int fd[], int input_fd, t_lst *lst_cmds)
+static void	parent_exec(int fd[], int input_fd, t_lst *lst_cmds)
 {
-	//waitpid(pid, NULL, 0);
 	if (close(fd[1]) == -1)
 		perror("close error");
 	if (close(input_fd) == -1)
@@ -71,11 +70,23 @@ static void	parent_exec(int pid __attribute__((unused)), int fd[], int input_fd,
 	sh_pipe(fd[0], lst_cmds->next);
 }
 
+/* NOT FINISHED */
 static void	lastcmd_exec(int input_fd, t_lst *lst_cmds)
 {
-	redir_fd(input_fd, STDIN_FILENO);
-	//redir_fd(output_fd, STDOUT_FILENO);
-	execve(*(lst_cmds->cmd + 0), lst_cmds->cmd, environ);
+	int	fd[2];
+	int	pid;
+
+	pid = fork();
+	if (pid == -1)
+		perror("Fork");
+	if (pid == CHILD)
+	{
+		redir_fd(input_fd, STDIN_FILENO);
+		//redir_fd(output_fd, STDOUT_FILENO);
+		execve(*(lst_cmds->cmd + 0), lst_cmds->cmd, environ);
+	}
+	else
+		waitpid(pid, NULL, 0);
 }
 
 /* Make a fork for the last command */
