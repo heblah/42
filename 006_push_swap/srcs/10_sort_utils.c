@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 12:38:23 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/27 17:33:04 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:19:27 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	define_cut(t_stack **stack)
 	else if ((*stack)->a_size <= 75)
 		cut = (*stack)->a_size / 8;
 	else if ((*stack)->a_size <= 100)
-		cut = (*stack)->a_size / 7;
+		cut = (*stack)->a_size / 5;
 	else
 		cut = (*stack)->a_size / 12;
 	return (cut);

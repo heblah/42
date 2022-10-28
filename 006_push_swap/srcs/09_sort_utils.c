@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 11:13:10 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/27 18:35:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/28 11:30:11 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,12 @@ void	get_shortway2min(t_stack **stack, int select_stack, size_t index)
 {
 	t_lst	*cpystack;
 	size_t	mv[2];
+	size_t	exclude;
 
 	cpystack = stackcpy_selector(stack, select_stack);
 	mv[0] = 0;
 	mv[1] = 0;
+	exclude = 0;
 	while (cpystack->index > index)
 	{
 		cpystack = cpystack->next;
