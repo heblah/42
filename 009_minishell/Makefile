@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/10/27 15:59:44 by halvarez         ###   ########.fr        #
+#    Updated: 2022/10/31 13:37:26 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,10 @@ SRC			+= $(addprefix ${PROMPT_DIR}, ${PROMPT})
 SIGNALS_DIR	= src/signals/
 SIGNALS		=
 SRC			+= $(addprefix ${SIGNALS_DIR}, ${SIGNALS})
+
+UTILS_DIR	= src/utils/
+SIGNALS		=
+SRC			+= $(addprefix ${UTILS_DIR}, ${UTILS})
 
 OBJ			= ${SRC:.c=.o}
 DEP			= ${OBJ:.o=.d}
