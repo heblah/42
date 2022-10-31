@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 10:12:37 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/28 19:04:41 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/31 10:30:35 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@
 
 #define CHILD 0
 
-void		sh_pipe(int input_fd, t_lst *lst_cmds);
+void		sh_pipe(int input_fd, t_lst *lst_cmds, int output_fd);
 static void	redir_fd(int oldfd, int newfd);
 static void	child_exec(int input_fd, int fd[], t_lst *lst_cmds);
-static void	parent_exec(int fd[], int input_fd, t_lst *lst_cmds);
+static void	parent_exec(int fd[], int input_fd, t_lst *lst_cmds, int output_fd);
+static void	lastcmd_exec(int input_fd, t_lst *lst_cmds, int output_fd);
 
 static void	redir_fd(int oldfd, int newfd)
 {
@@ -61,20 +62,20 @@ static void	child_exec(int input_fd, int fd[], t_lst *lst_cmds)
 
 /* Don't wait for child : yes | head */
 /* if problem check 3 pipes solutions */
-static void	parent_exec(int fd[], int input_fd, t_lst *lst_cmds)
+static void	parent_exec(int fd[], int input_fd, t_lst *lst_cmds, int output_fd)
 {
 	if (close(fd[1]) == -1)
 		perror("close error");
 	if (close(input_fd) == -1)
 		perror("close error");
-	sh_pipe(fd[0], lst_cmds->next);
+	sh_pipe(fd[0], lst_cmds->next, output_fd);
 }
 
 /* NOT FINISHED */
-static void	lastcmd_exec(int input_fd, t_lst *lst_cmds)
+static void	lastcmd_exec(int input_fd, t_lst *lst_cmds, int output_fd __attribute__((unused)))
 {
-	int	fd[2];
-	int	pid;
+	extern char	**environ;
+	int			pid;
 
 	pid = fork();
 	if (pid == -1)
@@ -82,7 +83,7 @@ static void	lastcmd_exec(int input_fd, t_lst *lst_cmds)
 	if (pid == CHILD)
 	{
 		redir_fd(input_fd, STDIN_FILENO);
-		//redir_fd(output_fd, STDOUT_FILENO);
+		redir_fd(output_fd, STDOUT_FILENO);
 		execve(*(lst_cmds->cmd + 0), lst_cmds->cmd, environ);
 	}
 	else
@@ -91,7 +92,7 @@ static void	lastcmd_exec(int input_fd, t_lst *lst_cmds)
 
 /* Make a fork for the last command */
 /* Maybe waitpid before end of program */
-void	sh_pipe(int input_fd, t_lst *lst_cmds)
+void	sh_pipe(int input_fd, t_lst *lst_cmds, int output_fd)
 {
 	extern char	**environ;
 	int			fd[2];
@@ -107,16 +108,15 @@ void	sh_pipe(int input_fd, t_lst *lst_cmds)
 		if (pid == CHILD)
 			child_exec(input_fd, fd, lst_cmds);
 		else
-			parent_exec(pid, fd, input_fd, lst_cmds);
+			parent_exec(fd, input_fd, lst_cmds, output_fd);
 	}
 	else if (lst_cmds->cmd && lst_cmds->next == NULL && environ != NULL)
-		lastcmd_exec
+		lastcmd_exec(input_fd, lst_cmds, output_fd);
 }
 
 /*============================================================================*/
 /*		Testing functions													  */
 /*============================================================================*/
-/*
 t_lst	*new_cmd(t_lst *first, char **cmd)
 {
 	t_lst	*new;
@@ -141,20 +141,19 @@ t_lst	*new_cmd(t_lst *first, char **cmd)
 
 int	main(void)
 {
-	t_lst	*lst_cmds;
+	t_lst		*lst_cmds;
 	extern char	**environ;
 	lst_cmds = NULL;
 
-	char	*cmd[] = {"/usr/bin/cat",  NULL, NULL};
+	char	*cmd[] = {"/usr/bin/ls",  "-l", NULL};
 	lst_cmds = new_cmd(lst_cmds, cmd);
 	
-	char	*cmd2[] = {"/usr/bin/ls", NULL, NULL};
+	char	*cmd2[] = {"/usr/bin/grep", "00", NULL};
 	lst_cmds = new_cmd(lst_cmds, cmd2);
 
-	//char	*cmd3[] = {"/usr/bin/wc", "-l", NULL};
-	//lst_cmds = new_cmd(lst_cmds, cmd3);
+	char	*cmd3[] = {"/usr/bin/wc", "-l", NULL};
+	lst_cmds = new_cmd(lst_cmds, cmd3);
 
-	sh_pipe(STDIN_FILENO, lst_cmds);
+	sh_pipe(STDIN_FILENO, lst_cmds, STDOUT_FILENO);
 	//execve(*lst_cmds->cmd, lst_cmds->cmd, environ);
 }
-*/

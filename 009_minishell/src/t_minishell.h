@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:11:09 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/28 17:02:55 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/31 09:45:43 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,13 @@ typedef enum	e_token
 	C_OR,
 	C_WILDCARD
 }				t_token;
+
+/* fd enum for input (read) and output (write) ============================== */
+typedef enum	e_fdio
+{
+	READ = 0,
+	WRITE,
+}				t_fdio;
 
 /* Structure of the commands list =========================================== */
 typedef struct s_lst
