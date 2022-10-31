@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 10:12:37 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/31 12:22:39 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/31 13:33:53 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 
 void		sh_pipe(int input_fd, t_lst *lst_cmds, int output_fd);
 static void	redir_fd(int oldfd, int newfd);
-static void	child_exec(int input_fd, int fd[], t_lst *lst_cmds);
-static void	parent_exec(int fd[], int input_fd, t_lst *lst_cmds, int output_fd);
+static void	child_exec(int input_fd, int tmp_fd[], t_lst *lst_cmds);
+static void	parent_exec(int tmp_fd[], int input_fd, t_lst *lst_cmds, int output_fd);
 static void	lastcmd_exec(int input_fd, t_lst *lst_cmds, int output_fd);
 
 void		ft_putstr_fd(char *str, int fd);
@@ -55,48 +55,48 @@ static void	redir_fd(int oldfd, int newfd)
 	}
 }
 
-static void	child_exec(int input_fd, int fd[], t_lst *lst_cmds)
+static void	child_exec(int input_fd, int tmp_fd[], t_lst *lst_cmds)
 {
 	extern char	**environ;
 
 	if (environ != NULL)
 	{
-		if (close(fd[READ]) == -1)
+		if (close(tmp_fd[READ]) == -1)
 			perror("close error");
 		redir_fd(input_fd, STDIN_FILENO);
-		redir_fd(fd[WRITE], STDOUT_FILENO);
+		redir_fd(tmp_fd[WRITE], STDOUT_FILENO);
 		execve(*(lst_cmds->cmd + 0), lst_cmds->cmd, environ);
 	}
 }
 
 /* Don't wait for child : yes | head */
 /* if problem check 3 pipes solutions */
-static void	parent_exec(int fd[], int input_fd, t_lst *lst_cmds, int output_fd)
+static void	parent_exec(int tmp_fd[], int input_fd, t_lst *lst_cmds, int output_fd)
 {
-	if (close(fd[WRITE]) == -1)
+	if (close(tmp_fd[WRITE]) == -1)
 		perror("close error");
 	if (close(input_fd) == -1)
 		perror("close error");
-	sh_pipe(fd[READ], lst_cmds->next, output_fd);
+	sh_pipe(tmp_fd[READ], lst_cmds->next, output_fd);
 }
 
 void	sh_pipe(int input_fd, t_lst *lst_cmds, int output_fd)
 {
 	extern char	**environ;
-	int			fd[2];
+	int			tmp_fd[2];
 	int			pid;
 
 	if (lst_cmds->cmd && lst_cmds->next != NULL && environ != NULL)
 	{
-		if (pipe(fd) == -1)
+		if (pipe(tmp_fd) == -1)
 			perror("Pipe error");
 		pid = fork();
 		if (pid == -1)
 			perror("Fork error");
 		if (pid == CHILD)
-			child_exec(input_fd, fd, lst_cmds);
+			child_exec(input_fd, tmp_fd, lst_cmds);
 		else
-			parent_exec(fd, input_fd, lst_cmds, output_fd);
+			parent_exec(tmp_fd, input_fd, lst_cmds, output_fd);
 	}
 	else if (lst_cmds->cmd && lst_cmds->next == NULL && environ != NULL)
 		lastcmd_exec(input_fd, lst_cmds, output_fd);
