@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:11:09 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/27 10:47:11 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/31 10:43:33 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <sys/types.h>
+//# include "ft_libft.h"
 # include <dirent.h>
 # include <string.h>
 # include <errno.h> /* for perror*/
@@ -36,17 +37,28 @@ typedef struct s_lexer
 /* Lexer enum to determine type ============================================= */
 typedef enum	e_token
 {
-	word = 0,
-	cmd,
-	ft_pipe,
-	rdir_inpt,
-	rdir_otpt,
-	delimiter,
-	rdir_apnd,
-	var,
-	squote,
-	dquote
+	C_NULL = 0,
+	C_WORD,
+	C_PIPE,
+	C_AMPERSAND,
+	C_REDIR_IN,
+	C_REDIR_OUT,
+	C_SQUOTE,
+	C_DQUOTE,
+	C_DOLLAR,
+	C_DELIMITER,
+	/* bonus token */
+	C_AND,
+	C_OR,
+	C_WILDCARD
 }				t_token;
+
+/* fd enum for input (read) and output (write) ============================== */
+typedef enum	e_fdio
+{
+	READ = 0,
+	WRITE,
+}				t_fdio;
 
 /* Structure of the commands list =========================================== */
 typedef struct s_lst

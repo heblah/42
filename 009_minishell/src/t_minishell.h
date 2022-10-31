@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:11:09 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/31 09:45:43 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/31 10:43:33 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <sys/types.h>
-# include "ft_libft.h"
+//# include "ft_libft.h"
 # include <dirent.h>
 # include <string.h>
 # include <errno.h> /* for perror*/

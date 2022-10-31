@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 10:12:37 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/31 10:30:35 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/31 10:45:06 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ static void	child_exec(int input_fd, int fd[], t_lst *lst_cmds)
 
 	if (environ != NULL)
 	{
-		if (close(fd[0]) == -1)
+		if (close(fd[READ]) == -1)
 			perror("close error");
 		redir_fd(input_fd, STDIN_FILENO);
-		redir_fd(fd[1], STDOUT_FILENO);
+		redir_fd(fd[WRITE], STDOUT_FILENO);
 		execve(*(lst_cmds->cmd + 0), lst_cmds->cmd, environ);
 	}
 }
@@ -64,11 +64,11 @@ static void	child_exec(int input_fd, int fd[], t_lst *lst_cmds)
 /* if problem check 3 pipes solutions */
 static void	parent_exec(int fd[], int input_fd, t_lst *lst_cmds, int output_fd)
 {
-	if (close(fd[1]) == -1)
+	if (close(fd[WRITE]) == -1)
 		perror("close error");
 	if (close(input_fd) == -1)
 		perror("close error");
-	sh_pipe(fd[0], lst_cmds->next, output_fd);
+	sh_pipe(fd[READ], lst_cmds->next, output_fd);
 }
 
 /* NOT FINISHED */
