@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 10:12:37 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/31 13:33:53 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/10/31 13:36:12 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,6 @@ void		ft_putnbr_fd(int n, int fd);
 
 static void	redir_fd(int oldfd, int newfd)
 {
-	ft_putstr_fd("Old fd = ", 2);
-	ft_putnbr_fd(oldfd, 2);
-	ft_putstr_fd("\n", 2);
-	ft_putstr_fd("New fd = ", 2);
-	ft_putnbr_fd(newfd, 2);
-	ft_putstr_fd("\n", 2);
 	if (oldfd != newfd)
 	{
 		if (dup2(oldfd, newfd) == -1)
@@ -123,6 +117,7 @@ static void	lastcmd_exec(int input_fd, t_lst *lst_cmds, int output_fd)
 /*============================================================================*/
 /*		Testing functions													  */
 /*============================================================================*/
+/*
 t_lst	*new_cmd(t_lst *first, char **cmd)
 {
 	t_lst	*new;
@@ -175,11 +170,7 @@ int	main(void)
 	char	*cmd8[] = {"/usr/bin/rev", NULL, NULL};
 	lst_cmds = new_cmd(lst_cmds, cmd8);
 
-	/*
-	char	*cmd6[] = {"/usr/bin/wc", "-l", NULL};
-	lst_cmds = new_cmd(lst_cmds, cmd6);
-	*/
-
 	sh_pipe(STDIN_FILENO, lst_cmds, STDOUT_FILENO);
 	//execve(*lst_cmds->cmd, lst_cmds->cmd, environ);
 }
+*/
