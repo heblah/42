@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/11/02 13:54:01 by halvarez         ###   ########.fr        #
+#    Updated: 2022/11/02 16:36:58 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@
 build		:=
 
 #Compilation of the push_swap program
-NAME    	= push_swap
-SRCS_DIR	= ./src/
-SRCS		= 
+NAME    	= megaphone
+SRCS_DIR	= 
+SRCS		= megaphone.cpp
 OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
 DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
 
