@@ -6,7 +6,7 @@
 "    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2022/06/02 17:34:20 by halvarez          #+#    #+#              "
-"    Updated: 2022/10/19 09:38:14 by halvarez         ###   ########.fr        "
+"    Updated: 2022/11/02 15:26:16 by halvarez         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -47,10 +47,9 @@ nnoremap <C-x> <C-w>x
 nnoremap <C-v> <C-w>v
 nnoremap <S-v> <C-w>s
 
-"autoclosing ===================================================================
-"inoremap ( ()<Left>
-"inoremap [ []<Left>
-"inoremap " ""<Left>
-"inoremap ' ''<Left>
-"inoremap { {}<Left>
-inoremap /* /**/<Left><Left>
+"fold settings =================================================================
+set foldmethod=indent
+set foldlevel=0
+set foldnestmax=1
+set foldclose=all
+hi Folded ctermbg=300
