@@ -6,7 +6,7 @@
 "    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2022/06/02 17:34:20 by halvarez          #+#    #+#              "
-"    Updated: 2022/11/02 15:26:16 by halvarez         ###   ########.fr        "
+"    Updated: 2022/11/04 11:36:45 by halvarez         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -51,5 +51,5 @@ nnoremap <S-v> <C-w>s
 set foldmethod=indent
 set foldlevel=0
 set foldnestmax=1
-set foldclose=all
+"set foldclose=all "folds auto-closes when cursor in going out
 hi Folded ctermbg=300

@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bash_tests.c                                       :+:      :+:    :+:   */
+/*   mapping_tests.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/31 17:15:37 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/11/03 16:50:35 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <sys/types.h>
-#include <sys/wait.h>
 
 int	main(void)
 {
-	extern char	**environ;
-	static char	*cmd[] = {"/bin/bash", NULL};
-	int			pid;
+	const int	map[] = {['a'] = 97, ['b'] = 98, ['f'] = 102};
+	int	i __attribute__((unused));
 
-	pid = fork();
-	if (pid == -1)
-		return (1);
-	if (pid == 0)
-		execve(*cmd, cmd, environ);
-	else
-		waitpid(-1, NULL, 0);
+	i = 2;
+	printf("map[%d] = %d\n", 'f', map['f']);
+	printf("map[%d] = %c\n", 'e', map['e']);
 	return (0);
 }

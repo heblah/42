@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:02:18 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/05 14:37:16 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/11/07 17:18:59 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(void)
 	printf("(char *)test->c\t\t\t=\t%c\n", (char)*(char *)test);
 	printf("*(short int *)((char *)test + 2)=\t%i\n", *(short int *)((char *)test + 2));
 	printf("*(int *)((char *)test + 4)\t=\t%i\n", *(int *)((char *)test + 4));
-	printf("*(long *)((char *)test + 8)\t=\t%i\n", *(long *)((char *)test + 8));
+	printf("*(long *)((char *)test + 8)\t=\t%li\n", *(long *)((char *)test + 8));
 	
 	free(c);
 	free(test);
