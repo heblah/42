@@ -6,7 +6,7 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:12:07 by halvarez          #+#    #+#             */
-/*   Updated: 2022/03/28 18:12:50 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/11/08 10:39:47 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,12 +111,3 @@ char	*ft_strcpy(char **strtab, char *str, int *i, char *charset)
 	*(*(strtab) + k) = '\0';
 	return (*(strtab));
 }
-/*
-int	main(void)
-{
-	char sep[] = "|||";
-	char str[] = "i| oijrfj |f| ||  ||2";
-
-	ft_split(str, sep);
-}
-*/

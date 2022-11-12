@@ -6,7 +6,7 @@
 "    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2022/06/02 17:34:20 by halvarez          #+#    #+#              "
-"    Updated: 2022/11/04 11:36:45 by halvarez         ###   ########.fr        "
+"    Updated: 2022/11/10 15:20:56 by halvarez         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -14,10 +14,13 @@
 syntax on
 colorscheme default
 set	number
+set incsearch
+set ignorecase
 set	tabstop=4
 set	shiftwidth=4
 set	showcmd
 set	autoindent
+set	smartindent
 set	listchars=tab:>-,trail:.,precedes:<,extends:>,eol:$
 set	splitbelow
 set	splitright
@@ -51,5 +54,5 @@ nnoremap <S-v> <C-w>s
 set foldmethod=indent
 set foldlevel=0
 set foldnestmax=1
+hi Folded ctermbg=300 "Color of folded line
 "set foldclose=all "folds auto-closes when cursor in going out
-hi Folded ctermbg=300

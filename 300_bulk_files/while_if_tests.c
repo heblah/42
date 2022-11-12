@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write_test.c                                       :+:      :+:    :+:   */
+/*   template_tests.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:39:24 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/04 15:43:44 by halvarez         ###   ########.fr       */
+/*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
+/*   Updated: 2022/09/05 16:51:08 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	write(1, *(argv + 1), strlen(*(argv + 1)));
 	return (0);
 }
