@@ -6,7 +6,7 @@
 #    By: <3 halvarez <halvarez@student.42.fr>        #+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 16:25:07 by halvarez          #+#    #+#              #
-#    Updated: 2022/07/02 22:37:01 by halvarez         ###   ########.fr        #
+#    Updated: 2022/11/12 14:16:21 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@
 # log as root and execute                                                      #
 #                                                                              #
 # notes :                                                                      #
+#  - script executed on Debian 11.4                                            #
 #  - sleepdelay.sh in cron setting is commented because not really reliable    #
 #  - simple crontab is set, activated every 10th min : 1h00, 1h10, 1h20...     #
 #  - hostname config is commented because it's should be done during           #
