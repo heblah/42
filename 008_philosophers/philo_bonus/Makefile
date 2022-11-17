@@ -6,23 +6,15 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/10/17 10:53:08 by halvarez         ###   ########.fr        #
+#    Updated: 2022/11/17 14:07:51 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Default build version called with make rule = release
 build			:=
 
-#Compilation of the mandatory part
-NAME    	= philo
-SRC_DIR		= ./src/
-SRC			= 00_main.c 01_threads.c 02_parser.c 03_routine.c 04_monitor.c
-SRC			+= 05_activity.c 06_monitor_utils.c
-OBJ			= $(addprefix ${SRC_DIR}, ${SRC:.c=.o})
-DEP			= $(addprefix ${SRC_DIR}, ${SRC:.c=.d})
-
 #Compilation of the bonus part
-BNS			= philo_bonus
+NAME		= philo_bonus
 BONUS_DIR	= ./bonus/
 #BONUS_SRC	= 00_main.c 02_parser.c #01_threads.c 
 BONUS_SRC	= 00_main.c 01_processes.c 02_parser.c 03_routine.c 04_monitor.c
@@ -49,16 +41,10 @@ CFLAGS			= ${cflags.release} ${cflags.${build}}
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 #Mandatory rules
-${NAME}:${OBJ} ${SHARED_OBJ}
-		${CC} ${CFLAGS} ${OBJ} ${SHARED_OBJ} -o ${NAME}
+${NAME}:${BONUS_OBJ} ${SHARED_OBJ}
+		${CC} ${CFLAGS} ${BONUS_OBJ} ${SHARED_OBJ} -o ${NAME}
 
 all:    ${NAME}
-
-#Bonus rules
-${BNS}:	${BONUS_OBJ} ${SHARED_OBJ}
-		${CC} ${BONUS_OBJ} ${SHARED_OBJ} -o ${BNS}
-
-bonus:	${BNS}
 
 #Cleaning rules
 clean:
@@ -74,6 +60,6 @@ re:     fclean
 		${MAKE} all
 
 #Dependencies list
--include ${DEP} ${BONUS_DEP} ${SHARED_DEP}
+-include ${BONUS_DEP} ${SHARED_DEP}
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
