@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:49:11 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/07 14:50:58 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/11/18 14:13:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,5 @@ int				is_dead(t_philo *philo);
 int				lock_printing(t_philo *philo);
 int				unlock_printing(t_philo *philo);
 void			declare_death(t_table *table, int i);
+void			ft_usleep(t_philo *philo, unsigned long time);
 #endif

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:49:19 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/13 12:10:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/11/18 15:16:14 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,20 @@ void	declare_death(t_table *table, int i)
 	ts = get_timestamp(table->philo + i, no, noprotect);
 	table->stop = yes;
 	printa(table->philo + i, KRED "is dead.\n", dead, ts);
+}
+
+void	ft_usleep(t_philo *philo, unsigned long time)
+{
+	unsigned long	inter;
+
+	inter = 200;
+	if (inter > time)
+		inter = time;
+	while (do_i_continue(philo) == yes && time > 0)
+	{
+		usleep(inter);
+		if (time - inter < 0)
+			inter = time;
+		time -= inter;
+	}
 }

@@ -6,9 +6,11 @@
 /*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:05:40 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/19 17:37:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/11/18 14:14:42 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <limits.h>
 
 long	ft_atol(const char *nptr)
 {
@@ -29,5 +31,7 @@ long	ft_atol(const char *nptr)
 	}
 	while (nptr[i] && (nptr[i] >= '0' && nptr[i] <= '9'))
 		n = n * 10 + nptr[i++] - '0';
+	if (sign * n > INT_MAX)
+		return (INT_MAX);
 	return (sign * n);
 }
