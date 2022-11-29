@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:01:53 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/12 16:18:54 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:32:59 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	parser(int argc, char **argv, t_table *table)
 	table->philo = NULL;
 	table->forks = NULL;
 	table->n_of_philo = ft_atol(*(argv + 1));
+	if (table->n_of_philo < 1)
+		return (1);
 	if (argc == 5)
 		table->n_of_meals = -1;
 	else

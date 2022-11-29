@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 10:25:58 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 19:15:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/11/21 18:06:50 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 int	main(void)
 {
+	extern char	**environ;
+
+	printf("%s\n", *environ);
+
 	printf("\\0=%c\n", 0);
 	return (0);
 }

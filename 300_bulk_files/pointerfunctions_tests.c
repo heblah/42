@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 15:37:36 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/05 16:15:28 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:36:37 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,19 @@
 
 int	addition(int a, int b);
 int	soustraction(int a, int b);
+int	add_3nb(int a, int b, int c);
 int	(*select(char c))(int, int);
 
 int	main(void)
 {
 	char	c;
-	int		(*fp)(int, int);
+	int		(*fp)();
 
 	c = '-';
-	fp = select(c);
-	printf("a+b=%d\n", (*fp)(1, 5));
+//	fp = &add_3nb;
+	fp = select('+');
+	printf("a+b=%d\n", (*fp)(10, 13));
+
 	return (0);
 }
 
@@ -38,10 +41,17 @@ int	soustraction(int a, int b)
 	return (a - b);
 }
 
-int	(*select(char c))(int, int)
+int	add_3nb(int a, int b, int c)
 {
-	if (c == '+')
-		return (&addition);
-	else
-		return (&soustraction);
+	return (a + b + c);
+}
+
+int	(*select(char c))()
+{
+	int	(*calcul[])() = {
+		['+'] = &addition,
+		['-'] = &soustraction,
+		['d'] = &add_3nb
+		};
+	return (*(calcul + c));
 }
