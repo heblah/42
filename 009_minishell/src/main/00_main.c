@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:28:49 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/31 16:40:28 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/12/14 16:39:59 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,28 @@
 
 int	main(void)
 {
-	t_data	data __attribute__((unused));
+	t_data	*data;
 
 	init_data(&data);
-	data.input = prompt();
-	prompt();
+	prompt(data);
 	return (0);
 }
 
-int	init_data(t_data *data)
+//(*data)->nb_cmds = 0; /* probably unused, to uncomment is nedded */
+int	init_data(t_data **data)
 {
-	data->input = NULL;
-	data->prv_dir = NULL;
-	data->cur_dir = NULL;
-	init_tokentab(t_token *token);
-	data->lst_cmds = NULL;
+	*data = get_data();
+	(*data)->garbage = NULL;
+	(*data)->lexer = NULL;
+	(*data)->parser = NULL;
+	(*data)->cmd_lst = NULL;
+	(*data)->env = init_env(*data);
+	(*data)->status = 0;
+	(*data)->isminishell = false;
+	(*data)->instance = false;
+	(*data)->run = true;
+	(*data)->heredoc = false;
+	(*data)->buf = NULL;
 	return (0);
 }
 
@@ -40,7 +47,7 @@ void	*init_tokentab(t_token *token)
 
 	i = 0;
 	size = 13;
-	token = malloc(size * sizeof(t_token));
+	token = memg(MALLOC, size * sizeof(t_token), NULL, INIT);
 	if (token == NULL)
 		return (perror("Init token"), NULL);
 	while (i < size)

@@ -3,40 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   00_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 10:12:37 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/31 13:36:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/12/15 09:36:45 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_minishell.h"
-//#include "ft_minishell.h"
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <limits.h>
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-//# include "ft_libft.h"
-# include <dirent.h>
-# include <string.h>
-# include <errno.h> /* for perror*/
+#include "ft_minishell.h"
 
 #define CHILD 0
-
-void		sh_pipe(int input_fd, t_lst *lst_cmds, int output_fd);
-static void	redir_fd(int oldfd, int newfd);
-static void	child_exec(int input_fd, int tmp_fd[], t_lst *lst_cmds);
-static void	parent_exec(int tmp_fd[], int input_fd, t_lst *lst_cmds, int output_fd);
-static void	lastcmd_exec(int input_fd, t_lst *lst_cmds, int output_fd);
-
-void		ft_putstr_fd(char *str, int fd);
-void		ft_putnbr_fd(int n, int fd);
 
 static void	redir_fd(int oldfd, int newfd)
 {
@@ -52,26 +29,60 @@ static void	redir_fd(int oldfd, int newfd)
 static void	child_exec(int input_fd, int tmp_fd[], t_lst *lst_cmds)
 {
 	extern char	**environ;
+	t_data		*data;
 
-	if (environ != NULL)
+	signal(SIGINT, signal_handler);
+	if (*environ != NULL)
 	{
+		data = get_data();
 		if (close(tmp_fd[READ]) == -1)
 			perror("close error");
+		if (lst_cmds->internal)
+			return (exit(data->status));
 		redir_fd(input_fd, STDIN_FILENO);
 		redir_fd(tmp_fd[WRITE], STDOUT_FILENO);
-		execve(*(lst_cmds->cmd + 0), lst_cmds->cmd, environ);
+		if (execve(*(lst_cmds->cmd + 0), lst_cmds->cmd, environ) == -1)
+			return (perror("EXECVE"), exit(data->status));
 	}
 }
 
 /* Don't wait for child : yes | head */
 /* if problem check 3 pipes solutions */
-static void	parent_exec(int tmp_fd[], int input_fd, t_lst *lst_cmds, int output_fd)
+static void	parent_exec(int tmp_fd[], t_lst *lst_cmds, int output_fd)
 {
+	signal(SIGINT, signal_parent);
 	if (close(tmp_fd[WRITE]) == -1)
 		perror("close error");
-	if (close(input_fd) == -1)
-		perror("close error");
 	sh_pipe(tmp_fd[READ], lst_cmds->next, output_fd);
+}
+
+static void	lastcmd_exec(int input_fd, t_lst *lst_cmds, int output_fd)
+{
+	extern char	**environ;
+	int			pid;
+	t_data		*data;
+
+	data = get_data();
+	pid = fork();
+	if (pid == -1)
+		perror("Fork");
+	if (pid == CHILD)
+	{
+		if (lst_cmds->internal)
+			return (exit(data->status));
+		redir_fd(input_fd, STDIN_FILENO);
+		redir_fd(output_fd, STDOUT_FILENO);
+		if (execve(*(lst_cmds->cmd + 0), lst_cmds->cmd, environ) == -1)
+			return (perror("EXECVE"), exit(data->status));
+	}
+	else
+	{
+		if (lst_cmds->internal)
+			internal_cmd(lst_cmds);
+		else
+			waitpid(pid, &data->status, 0);
+		do_it_bro(data, NULL, 0);
+	}
 }
 
 void	sh_pipe(int input_fd, t_lst *lst_cmds, int output_fd)
@@ -79,8 +90,13 @@ void	sh_pipe(int input_fd, t_lst *lst_cmds, int output_fd)
 	extern char	**environ;
 	int			tmp_fd[2];
 	int			pid;
+	t_data		*data;
 
-	if (lst_cmds->cmd && lst_cmds->next != NULL && environ != NULL)
+	data = get_data();
+	do_it_bro(data, lst_cmds, 1);
+	if (lst_cmds && lst_cmds->next && lst_cmds->exec == false)
+		sh_pipe(lst_cmds->next->fd_in, lst_cmds->next, lst_cmds->next->fd_out);
+	else if (lst_cmds->cmd && lst_cmds->next != NULL && *environ != NULL)
 	{
 		if (pipe(tmp_fd) == -1)
 			perror("Pipe error");
@@ -90,87 +106,10 @@ void	sh_pipe(int input_fd, t_lst *lst_cmds, int output_fd)
 		if (pid == CHILD)
 			child_exec(input_fd, tmp_fd, lst_cmds);
 		else
-			parent_exec(tmp_fd, input_fd, lst_cmds, output_fd);
+			parent_exec(tmp_fd, lst_cmds, output_fd);
 	}
-	else if (lst_cmds->cmd && lst_cmds->next == NULL && environ != NULL)
-		lastcmd_exec(input_fd, lst_cmds, output_fd);
+	else if (lst_cmds->cmd && lst_cmds->next == NULL && *environ != NULL
+		&& lst_cmds->exec == true)
+		lastcmd_exec(input_fd, lst_cmds, lst_cmds->fd_out);
+	data->instance = false;
 }
-
-static void	lastcmd_exec(int input_fd, t_lst *lst_cmds, int output_fd)
-{
-	extern char	**environ;
-	int			pid;
-
-	pid = fork();
-	if (pid == -1)
-		perror("Fork");
-	if (pid == CHILD)
-	{
-		redir_fd(input_fd, STDIN_FILENO);
-		redir_fd(output_fd, STDOUT_FILENO);
-		execve(*(lst_cmds->cmd + 0), lst_cmds->cmd, environ);
-	}
-	else
-		waitpid(pid, NULL, 0);
-}
-
-/*============================================================================*/
-/*		Testing functions													  */
-/*============================================================================*/
-/*
-t_lst	*new_cmd(t_lst *first, char **cmd)
-{
-	t_lst	*new;
-	t_lst	*tmp;
-
-	tmp = first;
-	new = malloc(1 * sizeof(t_lst));
-	if (!new)
-		return (NULL);
-	new->cmd = cmd;
-	new->next = NULL;
-	if (first == NULL)
-		return (new);
-	else
-	{
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = new;
-		return (first);
-	}
-}
-
-int	main(void)
-{
-	t_lst		*lst_cmds;
-	extern char	**environ;
-	lst_cmds = NULL;
-
-	char	*cmd[] = {"/usr/bin/ls",  "-l", NULL};
-	lst_cmds = new_cmd(lst_cmds, cmd);
-	
-	char	*cmd2[] = {"/usr/bin/rev", NULL, NULL};
-	lst_cmds = new_cmd(lst_cmds, cmd2);
-
-	char	*cmd3[] = {"/usr/bin/cat", NULL, NULL};
-	lst_cmds = new_cmd(lst_cmds, cmd3);
-
-	char	*cmd4[] = {"/usr/bin/rev", NULL, NULL};
-	lst_cmds = new_cmd(lst_cmds, cmd4);
-
-	char	*cmd5[] = {"/usr/bin/cat", NULL, NULL};
-	lst_cmds = new_cmd(lst_cmds, cmd5);
-
-	char	*cmd6[] = {"/usr/bin/rev", NULL, NULL};
-	lst_cmds = new_cmd(lst_cmds, cmd6);
-
-	char	*cmd7[] = {"/usr/bin/cat", NULL, NULL};
-	lst_cmds = new_cmd(lst_cmds, cmd7);
-
-	char	*cmd8[] = {"/usr/bin/rev", NULL, NULL};
-	lst_cmds = new_cmd(lst_cmds, cmd8);
-
-	sh_pipe(STDIN_FILENO, lst_cmds, STDOUT_FILENO);
-	//execve(*lst_cmds->cmd, lst_cmds->cmd, environ);
-}
-*/
