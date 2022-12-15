@@ -1,26 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   00_echo.c                                          :+:      :+:    :+:   */
+/*   hexa_tests.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 20:21:23 by halvarez          #+#    #+#             */
-/*   Updated: 2022/10/26 20:33:39 by halvarez         ###   ########.fr       */
+/*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
+/*   Updated: 2022/12/15 13:59:27 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define "t_minishell.h"
-#define "ft_moinishell.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-int	echo(char **str)
+void	int2hex(char *base, unsigned int n);
+
+int	main(void)
 {
-	if (ft_strncmp("-n", *str, 3) == 0)
+	int		n;
+	char	*base;
+
+	n = -123456;
+	base = "0123456789abcdef";
+	/*
+	if (n < 0)
 	{
-		write(1, *(str + 1), ft_strlen(*(str + 1)));
-		write(1, "\n", 1);
+		printf("-");
+		n *= -1;
+	}
+	*/
+	int2hex(base, (unsigned int)n);
+	return (0);
+}
+
+void	int2hex(char *base, unsigned int n)
+{
+	if (n > 15)
+	{
+		int2hex(base, n / 16);
+		printf("%c", base[n % 16]);
 	}
 	else
-		write(1, *str, ft_strlen(*str));
-	return (0);
+		printf("%c", base[n]); 
 }
