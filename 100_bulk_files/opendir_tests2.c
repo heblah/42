@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2022/12/16 19:19:05 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:30:55 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <string.h>
 
 #define NAME "Sully_"
-#define X 150
+#define X 15
 #define N(x) (x > 0) ? x  : (-1 * x)
 #define N_HLP(x) #x
 #define N_STR(x) N_HLP(x)
@@ -26,13 +26,23 @@
 
 void ft_itoa(unsigned int n, char *s)
 {
+	char n_str[] = "0123456789";
+	int i = 0;
+
 	if (n > 9)
-	{
 		ft_itoa(n / 10, s + 1);
-		*s = n % 10 + '0';
+	else if (n < 10)
+	{
+		*s = n_str[n];
+		*(s + 1) = '\0';
+		return ;
 	}
-	else
-		*(s - 1) = n + '0';
+	while (n - 10 > 10)
+	{
+		n -= 10;
+		i++;
+	}
+	*s = n_str[i];
 }
 
 int	main(void)
@@ -42,11 +52,15 @@ int	main(void)
 	char filename[50] = "./Sully_";
 
 	n = N(X);
-	while (n > 100)
+	while (n > 0)
 	{
+		//filename = NAME n_str[n];
 		ft_itoa(n, filename + 8);
+		//fd = open(filename, O_RDWR | O_CREAT);
 		fd = fopen(filename, "wr+");
+		//printf("n = %s\n", fd);
 		printf("filename = %s\n", filename);
+			
 		n--;
 	}
 	return (0);
