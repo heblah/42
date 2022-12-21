@@ -1,0 +1,6 @@
+#!/bin/sh
+a=`printf "%08d" $(echo "obase=2; $1" | bc)`
+b=`printf "%08d" $(echo "obase=2; $2" | bc)`
+c=`printf "%08d" $(echo "obase=2; $3" | bc)`
+d=`printf "%08d" $(echo "obase=2; $4" | bc)`
+echo $a.$b.$c.$d

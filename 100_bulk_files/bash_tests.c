@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2022/12/16 11:19:38 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/12/20 09:25:50 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 	extern char **environ;
 	int			pid;
 	int			status;
-	const char	*cmd[] = {"/b"/*arnaque*/"in/ba"/*intellectuelle*/"sh", NULL};
+	const char	*cmd[] = {"/b"/*arnaque*/"in/ba"/*intellectuelle*/"sh", "--posix", NULL};
 
 	status = 0;
 	pid = fork();
