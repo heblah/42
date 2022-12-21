@@ -3,4 +3,4 @@ a=`echo "ibase=2; $1" | bc`
 b=`echo "ibase=2; $2" | bc`
 c=`echo "ibase=2; $3" | bc`
 d=`echo "ibase=2; $4" | bc`
-echo $a.$b.$c.$d
+echo $a $b $c $d
