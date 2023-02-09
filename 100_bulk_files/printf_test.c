@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 10:25:58 by halvarez          #+#    #+#             */
-/*   Updated: 2022/12/16 12:15:29 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/17 09:19:00 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,9 @@
 #define HLP(x) CMD(x)
 #define EXC(x) HLP(x)
 
-int	main(void)
+int	main(int argc __attribute__((unused)), char **argv)
 {
-	char	*s;
-
-	s = "mot1%2$smot2%4$cmot3%4$cmot4";
-
-	printf(s, 9, "test", 10, 92);
-	printf("\n---end of line ---");
+	while (*argv)
+		printf("%s\n", *argv++);
 	return (0);
 }

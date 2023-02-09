@@ -3,47 +3,50 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
+#    By: awallet <awallet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/11/02 16:36:58 by halvarez         ###   ########.fr        #
+#    Updated: 2023/02/09 11:20:49 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#Default build version = release letting it empty
+#Default build version called with make rule = release
 build		:=
 
-#Compilation of the push_swap program
-NAME    	= megaphone
-SRCS_DIR	= 
-SRCS		= megaphone.cpp
-OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
-DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
+#Compilation of the mandatory part
+NAME		= megaphone
 
-CC			= c++
-CLIB		= -Llibft -lft
+#Buildings objects
+DIR			=
+FILES		= megaphone.cpp
+SRC			+= $(addprefix ${DIR}, ${FILES})
 
-#Rules for calling of other Makefiles
+OBJ			= ${SRC:.cpp=.o}
+DEP			= ${OBJ:.o=.d}
+
+CC			= c++ -std=c++98
 RM			= rm -rf
 
 #Conditionnal flags depending on the building version
-cflags.release	:= -Wall -Wextra -Werror -std=c++98 -MMD -MP
-cflags.gdb		:= -g
-cflags.sanitize	:= -g -fsanitize=address
-CFLAGS			:= ${cflags.release} ${cflags.${build}}
+cflags.release	:= -Wall -Wextra -Werror -MMD -MP
+cflags.gdb		:= -g3
+cflags.sanitize	:= -g3 -fsanitize=address
+CFLAGS			= ${cflags.release} ${cflags.${build}}
+export			CFLAGS
 
-.c.o	:
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+%.o : %.cpp
+		${CC} ${CFLAGS} -c $< -o $@
 
 #Mandatory rules
-${NAME}:${OBJS}
-		${CC} ${CFLAGS} ${OBJS} ${CLIB} -o ${NAME}
-
 all:    ${NAME}
+
+${NAME}:${OBJ}
+		${CC} ${CFLAGS} ${OBJ} -o ${NAME}
+
 
 #Cleaning rules
 clean:
-		${RM} ${OBJS} ${DEPS}
+		${RM} ${OBJ} ${DEP}
 
 fclean: clean
 		${RM} ${NAME}
@@ -51,7 +54,7 @@ fclean: clean
 re:     fclean
 		${MAKE} all
 
-#Dependencies list to be included
--include ${DEPS}
+#Dependencies list
+-include ${DEP}
 
 .PHONY: all clean fclean re bonus
