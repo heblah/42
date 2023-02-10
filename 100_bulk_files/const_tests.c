@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contacts.hpp                                       :+:      :+:    :+:   */
+/*   const_tests.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 12:01:22 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/10 11:40:24 by halvarez         ###   ########.fr       */
+/*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
+/*   Updated: 2023/02/09 13:37:39 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
- #define CONTACT_HPP
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-class Contact{
+int	main(void)
+{
+	int const i = 147;
 
-	public:
-		Contact(void);
-		~Contact(void);
-
-		void	getcontact(int i) const;
-		void	setcontact(int i);
-
-	private:
-		std::string	_firstname;
-		std::string	_lastname;
-		std::string	_nickname;
-		std::string	_number;
-		std::string	_secret;
-
-};
-#endif
+	printf("i = %d\n", i);
+	return (0);
+}

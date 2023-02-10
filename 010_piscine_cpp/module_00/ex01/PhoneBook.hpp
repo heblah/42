@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:34:58 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/09 18:20:48 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/10 11:58:18 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ class PhoneBook{
 		PhoneBook(void);
 		~PhoneBook(void);
 
-	private:
-		Contact		contact[8];
-		uint8_t		n;
+		void	add(void);
+		void	search(void) const;
+		void	exit(void);
 
-		void	_add(void);
-		void	_search(void) const;
-		void	_exit(void);
+	private:
+		Contact		_contact[8];
+		uint8_t		_index;
+		
+		void	_resume(void) const;
 
 };
 

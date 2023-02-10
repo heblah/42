@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contacts.hpp                                       :+:      :+:    :+:   */
+/*   class_tests.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 12:01:22 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/10 11:40:24 by halvarez         ###   ########.fr       */
+/*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
+/*   Updated: 2023/02/10 10:23:30 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
- #define CONTACT_HPP
+#ifndef CLASS_HPP
+ #define CLASS_HPP
 
-class Contact{
+class ft_classe{
 
-	public:
-		Contact(void);
-		~Contact(void);
+public:
+	std::string buf;
 
-		void	getcontact(int i) const;
-		void	setcontact(int i);
+	ft_classe(void);
+	~ft_classe(void);
 
-	private:
-		std::string	_firstname;
-		std::string	_lastname;
-		std::string	_nickname;
-		std::string	_number;
-		std::string	_secret;
+private:
+	void	foo(void) const;
 
 };
 #endif
