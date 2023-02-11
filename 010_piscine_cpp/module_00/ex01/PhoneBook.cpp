@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:05:59 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/11 15:51:26 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/11 16:08:25 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,10 @@ void	PhoneBook::search(void) const
 	std::cout << std::endl << "Please select a contact to display : ";
 	std::cin >> index;
 	std::cin.clear();
-	this->_contact[index].displaycontact();
-//	if (index < 0 || index > this->_index % 8)
+	if (index < 0 || index > this->_index % 8)
+		std::cout << "Sorry, no contact corresponding." << std::endl;
+	else
+		this->_contact[index].displaycontact();
 }
 
 void	PhoneBook::_resume(void) const
