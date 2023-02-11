@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 12:58:37 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/11 16:04:03 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/11 16:13:06 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ int	main(void)
 		else
 			std::cout << "Invalid choice, available options : ADD, SEARCH and EXIT"
 				<< std::endl;
-		input.clear();
 		std::cin.clear();
+		std::cout.clear();
+		input.clear();
 	}
 	return (0);
 }

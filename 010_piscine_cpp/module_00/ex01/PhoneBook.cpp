@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:05:59 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/11 16:08:25 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/11 16:18:52 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,6 @@ PhoneBook::PhoneBook(void)
 	this->_index = -1;
 	return;
 }
-
-/*
-PhoneBook::~PhoneBook(void)
-{
-	int	i;
-
-	i = 0;
-	while (i < 8)
-	{
-		this->_contact[i].~Contact();
-		i++;
-	}
-	return;
-}
-*/
 
 void	PhoneBook::add(void)
 {
@@ -89,17 +74,23 @@ void	PhoneBook::search(void) const
 {
 	int			data;
 	int			index;
+	std::string	buffer;
 
 	data = 0;
 	index = 0;
 	this->_resume();
 	std::cout << std::endl << "Please select a contact to display : ";
-	std::cin >> index;
-	std::cin.clear();
-	if (index < 0 || index > this->_index % 8)
+	std::getline(std::cin, buffer);
+	if (buffer.size() > 1)
 		std::cout << "Sorry, no contact corresponding." << std::endl;
 	else
-		this->_contact[index].displaycontact();
+	{
+		index = buffer.at(0) - '0';
+		if (index < 0 || index > this->_index % 8)
+			std::cout << "Sorry, no contact corresponding." << std::endl;
+		else
+			this->_contact[index].displaycontact();
+	}
 }
 
 void	PhoneBook::_resume(void) const
