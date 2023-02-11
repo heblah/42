@@ -6,19 +6,19 @@
 #    By: awallet <awallet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/09 11:20:49 by halvarez         ###   ########.fr        #
+#    Updated: 2023/02/11 14:30:41 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Default build version called with make rule = release
-build		:=
+build		:= gdb
 
 #Compilation of the mandatory part
-NAME		= megaphone
+NAME		= phone
 
 #Buildings objects
 DIR			=
-FILES		= megaphone.cpp
+FILES		= PhoneBook.cpp Contact.cpp main.cpp
 SRC			+= $(addprefix ${DIR}, ${FILES})
 
 OBJ			= ${SRC:.cpp=.o}
@@ -29,8 +29,8 @@ RM			= rm -rf
 
 #Conditionnal flags depending on the building version
 cflags.release	:= -Wall -Wextra -Werror -MMD -MP
-cflags.gdb		:= -g3
-cflags.sanitize	:= -g3 -fsanitize=address
+cflags.gdb		:= -g3 -fstandalone-debug
+cflags.sanitize	:= -g3-fstandalone-debug -fsanitize=address
 CFLAGS			= ${cflags.release} ${cflags.${build}}
 export			CFLAGS
 
