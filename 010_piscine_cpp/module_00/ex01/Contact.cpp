@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 10:46:26 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/11 14:33:57 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/11 15:16:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,30 +42,28 @@ std::string Contact::getcontact(int i) const
 
 void Contact::setcontact(int i)
 {
-	switch (i)
+	switch ( i )
 	{
 		case 0:
 			std::cout << "First name : ";
 			std::getline(std::cin, this->_firstname);
-			break;
+			return;
 		case 1:
 			std::cout << "Last name : ";
 			std::getline(std::cin, this->_lastname);
-			break;
+			return;
 		case 2:
 			std::cout << "Nickname : ";
 			std::getline(std::cin, this->_nickname);
-			break;
+			return;
 		case 3:
 			std::cout << "Phone number : ";
 			std::getline(std::cin, this->_number);
-			break;
+			return;
 		case 4:
 			std::cout << "Darkest secret : ";
 			std::getline(std::cin, this->_secret);
-			break;
-		default :
-			break;
+			return;
 		}
 	return;
 }

@@ -6,12 +6,12 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:05:59 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/11 14:39:33 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/11 15:51:26 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
 #include <iostream>
+#include <string>
 #include "PhoneBook.hpp"
 
 void	truncate(std::string str)
@@ -36,7 +36,7 @@ void	display_data(std::string str, int len)
 
 PhoneBook::PhoneBook(void)
 {
-	this->_index = 0;
+	this->_index = -1;
 	return;
 }
 
@@ -60,6 +60,7 @@ void	PhoneBook::add(void)
 	int	i;
 	int	data;
 
+	i = 0;
 	data = 0;
 	if (this->_index + 1 < 8)
 	{
@@ -86,14 +87,15 @@ void	PhoneBook::add(void)
 
 void	PhoneBook::search(void) const
 {
-	int	data;
-	int	index;
+	int			data;
+	int			index;
 
 	data = 0;
 	index = 0;
 	this->_resume();
-	std::cout << std::endl << "Please select a contact to display :";
+	std::cout << std::endl << "Please select a contact to display : ";
 	std::cin >> index;
+	std::cin.clear();
 	this->_contact[index].displaycontact();
 //	if (index < 0 || index > this->_index % 8)
 }
@@ -109,7 +111,7 @@ void	PhoneBook::_resume(void) const
 	std::cout << "|     index| fist name| last name|  nickname|" << std::endl;
 	std::cout << hsep << std::endl;
 
-	while (i < index)
+	while (i <= index)
 	{
 		std::cout << "|";
 		for (int j = 0; j < 9; j++)
@@ -124,8 +126,9 @@ void	PhoneBook::_resume(void) const
 			else
 				truncate(this->_contact[i].getcontact(data));
 			data++;
-			std::cout << "|" << std::endl;
+			std::cout << "|";
 		}
+		std::cout << std::endl;
 		i++;
 	}
 	std::cout << hsep << std::endl << std::endl;
