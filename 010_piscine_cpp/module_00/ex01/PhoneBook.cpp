@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:05:59 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/11 16:18:52 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:43:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,12 @@ void	PhoneBook::search(void) const
 {
 	int			data;
 	int			index;
+	int			index_max;
 	std::string	buffer;
 
 	data = 0;
 	index = 0;
+	index_max = (this->_index > 7) ? 7 : (this->_index % 8);
 	this->_resume();
 	std::cout << std::endl << "Please select a contact to display : ";
 	std::getline(std::cin, buffer);
@@ -86,7 +88,7 @@ void	PhoneBook::search(void) const
 	else
 	{
 		index = buffer.at(0) - '0';
-		if (index < 0 || index > this->_index % 8)
+		if (index < 0 || index > index_max)
 			std::cout << "Sorry, no contact corresponding." << std::endl;
 		else
 			this->_contact[index].displaycontact();
@@ -96,7 +98,7 @@ void	PhoneBook::search(void) const
 void	PhoneBook::_resume(void) const
 {
 	int			i = 0;
-	int			index = this->_index % 8;
+	int			index;
 	int			data = 0;
 	std::string	hsep = "|----------|----------|----------|----------|";
 
@@ -104,6 +106,7 @@ void	PhoneBook::_resume(void) const
 	std::cout << "|     index| fist name| last name|  nickname|" << std::endl;
 	std::cout << hsep << std::endl;
 
+	index = (this->_index > 7) ? 7 : (this->_index % 8);
 	while (i <= index)
 	{
 		std::cout << "|";
