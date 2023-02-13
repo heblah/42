@@ -6,7 +6,7 @@
 #    By: awallet <awallet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/11 16:37:41 by halvarez         ###   ########.fr        #
+#    Updated: 2023/02/13 15:47:47 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME		= bank
 
 #Buildings objects
 DIR			=
-FILES		= Account.cpp test.cpp
+FILES		= Account.cpp tests.cpp
 SRC			+= $(addprefix ${DIR}, ${FILES})
 
 OBJ			= ${SRC:.cpp=.o}

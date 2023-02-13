@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/12 16:44:52 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:42:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,17 @@ void	ft_classe::foo(void) const
 int	main(void)
 {
 	ft_classe	test;
-	std::time_t	time;
+	std::time_t	now = std::time(0);
+	struct tm	*time;
+	char		*dt;
 	int	i = 0;
 
 	std::cout << "value entered :" << i  << std::endl;
 	std::cout << test.buf << std::endl;
 
-	std::time(&time);
-	std::cout << "Time :" << static_cast<int>(std::localtime(&time)->tm_year) << std::endl;
+	time = std::localtime(&now);
+	dt = std::asctime(time);
+	std::cout << "Time :\n" << ( (1 + time->tm_mon) < 10 ? "0" : "" ) << std::endl;
+	std::cout << 1 + time->tm_mon;
 	return (0);
 }
