@@ -6,11 +6,12 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 16:38:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/09 11:21:11 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:35:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
@@ -19,7 +20,7 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		argv++;
-		while (*argv)
+		while (*argv != NULL)
 		{
 			i = 0;
 			while (*(*argv + i))

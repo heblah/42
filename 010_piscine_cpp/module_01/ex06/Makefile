@@ -3,22 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
+#    By: awallet <awallet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/14 14:19:06 by halvarez         ###   ########.fr        #
+#    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
+#    Updated: 2023/02/13 15:47:47 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Default build version called with make rule = release
-build		:= san
+build		:= gdb
 
 #Compilation of the mandatory part
-NAME		= zombie
+NAME		= bank
 
 #Buildings objects
 DIR			=
-FILES		= newZombie.cpp randomChump.cpp Zombie.cpp main.cpp
+FILES		= Account.cpp tests.cpp
 SRC			+= $(addprefix ${DIR}, ${FILES})
 
 OBJ			= ${SRC:.cpp=.o}
@@ -28,9 +28,9 @@ CC			= c++ -std=c++98
 RM			= rm -rf
 
 #Conditionnal flags depending on the building version
-cflags.rls		:= -Wall -Wextra -Werror -MMD -MP
+cflags.release	:= -Wall -Wextra -Werror -MMD -MP
 cflags.gdb		:= -g3 -fstandalone-debug
-cflags.san		:= -g3 -fstandalone-debug -fsanitize=address
+cflags.sanitize	:= -g3 -fstandalone-debug -fsanitize=address
 CFLAGS			= ${cflags.release} ${cflags.${build}}
 export			CFLAGS
 

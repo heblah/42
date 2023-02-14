@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/14 14:18:35 by halvarez         ###   ########.fr       */
+/*   Created: 2023/02/13 16:30:41 by halvarez          #+#    #+#             */
+/*   Updated: 2023/02/14 14:42:12 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include "Zombie.hpp"
+class Zombie {
 
-Zombie::Zombie(std::string name) : _name(name)
-{
-	
-	return;
-}
+	public:
+		Zombie(void);
+		~Zombie(void);
 
-Zombie::~Zombie(void)
-{
-	return;
-}
+		void	announce(void) const;
+		void	set_name(std::string name);
 
-void	Zombie::announce(void) const
-{
-	std::cout << this->_name;
-	std::cout << ": BraiiiiiiinnnzzzZ..." << std::endl;
-	return;
-}
+	private:
+		std::string	_name;
+
+};

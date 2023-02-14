@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/14 14:18:35 by halvarez         ###   ########.fr       */
+/*   Created: 2023/02/13 19:19:09 by halvarez          #+#    #+#             */
+/*   Updated: 2023/02/14 14:53:14 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,15 @@
 #include <string>
 #include "Zombie.hpp"
 
-Zombie::Zombie(std::string name) : _name(name)
+Zombie	*zombieHorde(int n, std::string name);
+
+int	main(void)
 {
+
+	Zombie	*horde;
 	
-	return;
-}
+	horde = zombieHorde(15, "ft_horde");
 
-Zombie::~Zombie(void)
-{
-	return;
-}
-
-void	Zombie::announce(void) const
-{
-	std::cout << this->_name;
-	std::cout << ": BraiiiiiiinnnzzzZ..." << std::endl;
-	return;
+	delete[] horde;
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/14 14:19:06 by halvarez         ###   ########.fr        #
+#    Updated: 2023/02/14 16:01:22 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@
 build		:= san
 
 #Compilation of the mandatory part
-NAME		= zombie
+NAME		= brain
 
 #Buildings objects
 DIR			=
-FILES		= newZombie.cpp randomChump.cpp Zombie.cpp main.cpp
+FILES		= main.cpp
 SRC			+= $(addprefix ${DIR}, ${FILES})
 
 OBJ			= ${SRC:.cpp=.o}
