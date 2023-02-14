@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 11:34:58 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/14 17:14:25 by halvarez         ###   ########.fr       */
+/*   Created: 2023/02/14 16:26:26 by halvarez          #+#    #+#             */
+/*   Updated: 2023/02/14 17:20:26 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef WEAPON_H
+# define WEAPON_H
 
-# include "Contact.hpp"
-
-class PhoneBook{
+class Weapon {
 
 	public:
-		PhoneBook(void);
-
-		void	add(void);
-		void	search(void) const;
+				Weapon(std::string type);
+		const	std::string	&getType(void) const;
+		void	setType(std::string type);
 
 	private:
-		Contact	_contact[8];
-		int		_index;
-		
-		void	_resume(void) const;
+		std::string	_type;
 
 };
 

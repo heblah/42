@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 11:34:58 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/14 17:14:25 by halvarez         ###   ########.fr       */
+/*   Created: 2023/02/14 16:34:45 by halvarez          #+#    #+#             */
+/*   Updated: 2023/02/14 19:02:49 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include <iostream>
+#include <string>
+#include "HumanA.hpp"
 
-# include "Contact.hpp"
+HumanA::HumanA(std::string name, Weapon &weapon) : _name(name), _weapon(weapon)
+{
+	return;
+}
 
-class PhoneBook{
+void	HumanA::attack(void) const
+{
+	std::cout << this->_name << " attacks with their ";
+	std::cout << this->_weapon.getType() << std::endl;
+	return;
+}
 
-	public:
-		PhoneBook(void);
-
-		void	add(void);
-		void	search(void) const;
-
-	private:
-		Contact	_contact[8];
-		int		_index;
-		
-		void	_resume(void) const;
-
-};
-
-#endif
+void	HumanA::setWeapon(Weapon weapon)
+{
+	this->_weapon = weapon.getType();
+	return;
+}

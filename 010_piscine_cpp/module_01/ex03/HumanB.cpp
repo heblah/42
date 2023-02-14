@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 11:34:58 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/14 17:14:25 by halvarez         ###   ########.fr       */
+/*   Created: 2023/02/14 16:34:45 by halvarez          #+#    #+#             */
+/*   Updated: 2023/02/14 19:14:54 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include <iostream>
+#include <string>
+#include "HumanB.hpp"
 
-# include "Contact.hpp"
+HumanB::HumanB(std::string name) : _name(name)
+{
+	return;
+}
 
-class PhoneBook{
+void	HumanB::attack(void) const
+{
+	std::cout << this->_name << " attacks with their ";
+	std::cout << this->_weapon->getType() << std::endl;
+	return;
+}
 
-	public:
-		PhoneBook(void);
-
-		void	add(void);
-		void	search(void) const;
-
-	private:
-		Contact	_contact[8];
-		int		_index;
-		
-		void	_resume(void) const;
-
-};
-
-#endif
+void	HumanB::setWeapon(Weapon weapon)
+{
+	this->_weapon = &weapon;
+	return;
+}

@@ -6,9 +6,12 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:30:41 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/14 11:40:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:16:46 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
 class Zombie {
 
@@ -21,3 +24,5 @@ class Zombie {
 		std::string	_name;
 
 };
+
+#endif

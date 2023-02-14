@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:01:22 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/11 14:19:29 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:14:08 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 class Contact{
 
 	public:
-		//Contact(void);
-		//~Contact(void);
-
 		std::string	getcontact(int i) const;
 		void		setcontact(int i);
 		void		displaycontact(void) const;

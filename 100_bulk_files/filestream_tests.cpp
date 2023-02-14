@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   filestream_tests.cpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 11:34:58 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/14 17:14:25 by halvarez         ###   ########.fr       */
+/*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
+/*   Updated: 2023/02/13 17:15:59 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include <iostream>
+#include <fstream>
 
-# include "Contact.hpp"
+int	main(void)
+{
+	std::fstream	ifs("test");
+	int		buffer;
+	int		buf;
 
-class PhoneBook{
-
-	public:
-		PhoneBook(void);
-
-		void	add(void);
-		void	search(void) const;
-
-	private:
-		Contact	_contact[8];
-		int		_index;
-		
-		void	_resume(void) const;
-
-};
-
-#endif
+	ifs >> buffer >> buf;
+	std::cout << buffer << std::endl;
+	std::cout << buf << std::endl;
+	return (0);
+}
