@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:57 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/14 14:14:59 by halvarez         ###   ########.fr        #
+#    Updated: 2023/02/15 19:09:59 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,10 @@ CC			= c++ -std=c++98
 RM			= rm -rf
 
 #Conditionnal flags depending on the building version
-cflags.release	:= -Wall -Wextra -Werror -MMD -MP
+cflags.rls		:= -Wall -Wextra -Werror -MMD -MP
 cflags.gdb		:= -g3 -fstandalone-debug
-cflags.sanitize	:= -g3 -fstandalone-debug -fsanitize=address
-CFLAGS			= ${cflags.release} ${cflags.${build}}
+cflags.san		:= -g3 -fstandalone-debug -fsanitize=address
+CFLAGS			= ${cflags.rls} ${cflags.${build}}
 export			CFLAGS
 
 %.o : %.cpp
