@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2022/12/16 19:19:05 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/12/17 15:00:32 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,22 @@
 #include <string.h>
 
 #define NAME "Sully_"
-#define X 150
-#define N(x) (x > 0) ? x  : (-1 * x)
+#define X 9
+#define N(x) (x > 0) ? (x % 10) : (-1 * x % 10)
 #define N_HLP(x) #x
 #define N_STR(x) N_HLP(x)
 #define EXT ".c"
 
-void ft_itoa(unsigned int n, char *s)
-{
-	if (n > 9)
-	{
-		ft_itoa(n / 10, s + 1);
-		*s = n % 10 + '0';
-	}
-	else
-		*(s - 1) = n + '0';
-}
-
 int	main(void)
 {
-	FILE *fd;
+	FILE *fd __attribute__((unused));
 	unsigned int n;
-	char filename[50] = "./Sully_";
+	char filename[] = "Sully_X.c";
 
 	n = N(X);
-	while (n > 100)
+	while (n > 0)
 	{
-		ft_itoa(n, filename + 8);
+		filename[6] = n % 10 + '0';
 		fd = fopen(filename, "wr+");
 		printf("filename = %s\n", filename);
 		n--;
