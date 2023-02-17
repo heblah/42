@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:40:40 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/17 14:29:34 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/17 14:34:14 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	Harl::complain(std::string level __attribute__((unused))) const
 	if (fmap.find(level) != fmap.end())
 		(this->*fmap[level])();
 	else
-		std::cout << "Error: Harl doesn't know complain this way." << std::endl;
+		std::cout << "Error: Harl can't complain this way." << std::endl;
 	return;
 }
 
