@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/16 15:48:46 by halvarez         ###   ########.fr        #
+#    Updated: 2023/02/17 13:22:34 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@
 build		:= san
 
 #Compilation of the mandatory part
-NAME		= fight
+NAME		= complain
 
 #Buildings objects
 DIR			=
-FILES		= HumanA.cpp HumanB.cpp main.cpp Weapon.cpp
+FILES		= main.cpp Harl.cpp
 SRC			+= $(addprefix ${DIR}, ${FILES})
 
 OBJ			= ${SRC:.cpp=.o}
