@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:40:40 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/17 15:43:12 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/18 09:44:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	Harl::complain(std::string level __attribute__((unused))) const
 	std::map<std::string, MFP>	fmap;
 	std::string					tlevel[] = {"debug", "info", "warning", "error"};
 
-	fmap["debug"] = &Harl::_debug;
-	fmap["info"] = &Harl::_info;
-	fmap["warning"] = &Harl::_warning;
-	fmap["error"] = &Harl::_error;
+	fmap["debug"]	= &Harl::_debug;
+	fmap["info"]	= &Harl::_info;
+	fmap["warning"]	= &Harl::_warning;
+	fmap["error"]	= &Harl::_error;
 	switch (fmap.find(level) != fmap.end())
 	{
 		case 1:

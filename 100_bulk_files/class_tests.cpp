@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/14 17:07:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/20 12:08:45 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ int	main(void)
 	time = std::localtime(&now);
 	dt = std::asctime(time);
 	std::cout << "Time :\n" << ( (1 + time->tm_mon) < 10 ? "0" : "" ) << std::endl;
-	std::cout << 1 + time->tm_mon;
+	std::cout << 1 + time->tm_mon << std::endl;
 
-	std::cout << std::endl << "test str uninitialized : " << str << std::endl;
-	std::cout << std::endl << "test str[0] : " << str.at(1) << std::endl;
-
+//	std::cout << std::endl << "test str uninitialized : " << str << std::endl;
+//	std::cout << std::endl << "test str[0] : " << str.at(1) << std::endl;
+	std::cout << "sizeof(float) = " << sizeof(float) << std::endl;
 	return (0);
 }
