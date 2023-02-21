@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:44:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/20 18:00:00 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/21 09:44:49 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class Fixed {
 		float	toFloat(void) const;
 		int		toInt(void) const;
 
+		Fixed	*operator=(Fixed const &val);
 
 	private:
 		int					_n;

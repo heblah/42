@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:45:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/21 09:04:12 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:37:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,24 @@ const int Fixed::_bits = 8;
 // Constructors ================================================================
 Fixed::Fixed(void)
 {
-	std::cout << "Int constructor called" <<std::endl;
 	this->_n = 0;
 	return;
 }
 
 Fixed::Fixed(int const n) : _n(n)
 {
-	std::cout << "Int constructor called" <<std::endl;
-	this->_n = n * pow(2, this->_bits);
+	this->_n = n << this->_bits;
 	return;
 }
 
 Fixed::Fixed(float const n)
 {
-	std::cout << "Float constructor called" <<std::endl;
-	this->_n = roundf(n * pow(2, this->_bits));
+	this->_n = roundf(n * (1 << this->_bits));
 	return;
 }
 
 Fixed::Fixed(const Fixed& nb)
 {
-	std::cout << "Copy constructor called" <<std::endl;
 	this->_n = nb.getRawBits();
 	return;
 }
@@ -55,21 +51,17 @@ Fixed::Fixed(const Fixed& nb)
 // Destructor ==================================================================
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
 	return;
 }
 
 // Member functions ============================================================
 int	Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (this->_n);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	
-	std::cout << "setRawBits member function called" << std::endl;
 	this->_n = raw;
 	return;
 }
@@ -84,12 +76,140 @@ int	Fixed::toInt(void) const
 	return (this->_n >> Fixed::_bits);
 }
 
+Fixed&	Fixed::min(Fixed &a, Fixed &b)
+{
+	if (a > b)
+		return (b);
+	else
+		return (a);
+}
+
+const Fixed&	Fixed::min(Fixed const &a, Fixed const &b)
+{
+	if (a > b)
+		return (b);
+	else
+		return (a);
+}
+
+Fixed&	Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a < b)
+		return (b);
+	else
+		return (a);
+}
+
+const Fixed&	Fixed::max(Fixed const &a, Fixed const &b)
+{
+	if (a < b)
+		return (b);
+	else
+		return (a);
+}
+
 /*
- * Overload operator
+ * Operators
  */
-// Overload operator ===========================================================
+// Operators ===================================================================
 std::ostream	&operator<<(std::ostream &os, Fixed const &nb)
 {
 	os << nb.toFloat();
 	return (os);
+}
+
+void	Fixed::operator=(Fixed const &fixed)
+{
+	this->_n = fixed.getRawBits();
+	return;
+}
+
+bool	Fixed::operator<(Fixed const &cmp) const
+{
+	return (this->_n < cmp.getRawBits());
+}
+
+bool	Fixed::operator>(Fixed const &cmp) const
+{
+	return (this->_n > cmp.getRawBits());
+}
+
+bool	Fixed::operator<=(Fixed const &cmp) const
+{
+	return (this->_n <= cmp.getRawBits());
+}
+
+bool	Fixed::operator>=(Fixed const &cmp) const
+{
+	return (this->_n >= cmp.getRawBits());
+}
+
+bool	Fixed::operator==(Fixed const &cmp) const
+{
+	return (this->_n == cmp.getRawBits());
+}
+
+bool	Fixed::operator!=(Fixed const &cmp) const
+{
+	return (this->_n == cmp.getRawBits());
+}
+
+Fixed	Fixed::operator+(Fixed const &a) const
+{
+	Fixed	result;
+
+	result.setRawBits(this->getRawBits() + a.getRawBits());
+	return (result);
+}
+
+Fixed	Fixed::operator-(Fixed const &a) const
+{
+	Fixed	result;
+
+	result.setRawBits(this->getRawBits() - a.getRawBits());
+	return (result);
+}
+
+Fixed	Fixed::operator*(Fixed const &a) const
+{
+	Fixed	result;
+
+	result = this->toFloat() * a.toFloat();
+	return (result);
+}
+
+Fixed	Fixed::operator/(Fixed const &a) const
+{
+	Fixed	result;
+
+	result = this->toFloat() / a.toFloat();
+	return (result);
+}
+
+Fixed	Fixed::operator++(int)
+{
+	Fixed	old(*this);
+
+	this->_n++;
+	return (old);
+}
+
+Fixed	Fixed::operator++(void)
+{
+	this->_n++;
+	return (*this);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	old(*this);
+
+	this->_n--;
+	return (old);
+}
+
+Fixed	Fixed::operator--(void)
+{
+	this->_n--;
+	return (*this);
 }

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:45:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/21 09:20:26 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/21 09:49:01 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Fixed::Fixed(int const n) : _n(n)
 Fixed::Fixed(float const n)
 {
 	std::cout << "Float constructor called" <<std::endl;
-	this->_n = n << this->_bits;
+	this->_n = roundf(n * (1 << this->_bits));
 	return;
 }
 
@@ -92,4 +92,10 @@ std::ostream	&operator<<(std::ostream &os, Fixed const &nb)
 {
 	os << nb.toFloat();
 	return (os);
+}
+
+Fixed	*Fixed::operator=(Fixed const &val)
+{
+	this->_n = val.getRawBits();
+	return (this);
 }
