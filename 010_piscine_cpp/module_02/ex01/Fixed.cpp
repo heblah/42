@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:45:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/20 18:41:34 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/21 09:00:20 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	Fixed::getRawBits(void) const
 
 void	Fixed::setRawBits(int const raw)
 {
+	
 	std::cout << "setRawBits member function called" << std::endl;
 	this->_n = raw;
 	return;
@@ -75,12 +76,12 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat(void) const
 {
-	return ((float)this->_n / pow(2, this->_bits));
+	return (this->_n /((float)(1 << Fixed::_bits)));
 }
 
 int	Fixed::toInt(void) const
 {
-	return ((int)this->_n / pow(2, this->_bits));
+	return (this->_n >> Fixed::_bits);
 }
 
 /*
