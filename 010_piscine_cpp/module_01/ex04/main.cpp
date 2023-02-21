@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:32:23 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/17 11:31:24 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/21 17:12:58 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <fstream>
 #include <string>
 
-std::string	file2string(std::ifstream &ifs __attribute__((unused)))
+std::string	file2string(std::ifstream &ifs)
 {
 	std::string	str;
 	std::string	buffer;

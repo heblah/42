@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:40:40 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/18 09:51:04 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/21 17:12:34 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /*
  * Public functions
  */
-void	Harl::complain(std::string level __attribute__((unused))) const
+void	Harl::complain(std::string level) const
 {
 	std::map <std::string, MFP>	fmap;
 
