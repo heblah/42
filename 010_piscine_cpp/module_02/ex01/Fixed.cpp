@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:45:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/21 09:00:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/21 09:20:26 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ Fixed::Fixed(void)
 Fixed::Fixed(int const n) : _n(n)
 {
 	std::cout << "Int constructor called" <<std::endl;
-	this->_n = n * pow(2, this->_bits);
+	this->_n = n << this->_bits;
 	return;
 }
 
 Fixed::Fixed(float const n)
 {
 	std::cout << "Float constructor called" <<std::endl;
-	this->_n = roundf(n * pow(2, this->_bits));
+	this->_n = n << this->_bits;
 	return;
 }
 

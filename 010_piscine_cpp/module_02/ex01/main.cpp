@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:17:32 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/20 18:37:02 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/21 09:22:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ int	main(void)
 {
 	Fixed		a;
 	Fixed const	b(10);
-	Fixed const	c(42.42f);
+	Fixed const	c(42.4288f);
 	Fixed const d(b);
-	float		flt __attribute__((unused)) = 1234.4321f;
 
 	a = Fixed(1234.4321f);
 
