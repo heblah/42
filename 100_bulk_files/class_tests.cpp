@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/20 12:08:45 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/20 20:40:10 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ int	main(void)
 
 //	std::cout << std::endl << "test str uninitialized : " << str << std::endl;
 //	std::cout << std::endl << "test str[0] : " << str.at(1) << std::endl;
-	std::cout << "sizeof(float) = " << sizeof(float) << std::endl;
+	
+	char n = 8;
+//	std::cout << "sizeof(char) = " << sizeof(byte) << std::endl;
+	n = n >>2;
+	std::cout << "n = "<< (int)n << std::endl;
 	return (0);
 }

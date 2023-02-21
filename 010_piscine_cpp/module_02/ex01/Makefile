@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/20 08:43:45 by halvarez         ###   ########.fr        #
+#    Updated: 2023/02/20 18:42:02 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 build		:= san
 
 #Compilation of the mandatory part
-NAME		= float
+NAME		= fixed
 
 #Buildings objects
 DIR			=
