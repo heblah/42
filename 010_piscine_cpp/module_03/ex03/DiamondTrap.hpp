@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 16:20:35 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/22 17:10:01 by halvarez         ###   ########.fr       */
+/*   Created: 2023/02/22 16:53:41 by halvarez          #+#    #+#             */
+/*   Updated: 2023/02/22 17:20:23 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
 #include "ClapTrap.hpp"
+#include "FragTrap.hpp"
 
-class FragTrap : public ClapTrap {
+class DiamondTrap : public ClapTrap, public FragTrap
+{
 	public:
-				FragTrap(void);
-				FragTrap(const std::string &name);
-				~FragTrap(void);
+				DiamondTrap(void);
+				DiamondTrap(const std::string &name);
+				~DiamondTrap(void);
 
-		void	highFivesGuys(void) const;
+	void		whoAmI(void) const;
+
+	private:
+		std::string	_name;
 
 };
 
