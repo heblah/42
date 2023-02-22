@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:52:13 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/22 13:08:02 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/22 14:01:25 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,21 @@
 int	main(void)
 {
 	ClapTrap	clap("Vegeta");
+	int			attack = 8;
+	int			damage = 5;
+	int			repair = 6;
 
-	clap.attack("Goku");
-	clap.attack("Goku");
-	clap.attack("Goku");
-	clap.attack("Goku");
-	clap.attack("Goku");
-	clap.beRepaired(5);
-	clap.takeDamage(3);
-	clap.takeDamage(3);
-	clap.takeDamage(3);
-	clap.takeDamage(3);
-	clap.takeDamage(3);
-	clap.takeDamage(3);
-	std::cout << "Energy = " <<  clap.getEnergy() << std::endl;
-	std::cout << "hit = " <<  clap.getHit() << std::endl;
+	while (attack-- > 0)
+		clap.attack("Goku");
+	while (repair-- >0)
+		clap.beRepaired(50);
+	while (damage-- > 0)
+		clap.takeDamage(3);
+
+	std::cout << std::endl;
+	std::cout << "ClapTrap " << clap.getName() << " final state is :" <<std::endl;
+	std::cout << "Energy = " <<  clap.getEnergy() << ", ";
+	std::cout << "hit = " <<  clap.getHit() << ", ";
+	std::cout << "Attack = " <<  clap.getAttack() << std::endl;
 	return (0);
 }
