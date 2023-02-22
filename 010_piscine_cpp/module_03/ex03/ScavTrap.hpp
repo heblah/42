@@ -6,16 +6,16 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:06:17 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/22 17:18:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/22 18:02:26 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRRAP_HPP
+#ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : virtual public ClapTrap {
 	public:
 				ScavTrap(void);
 				ScavTrap(const std::string &name);

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:52:13 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/22 17:20:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/22 18:33:53 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 int	main(void)
 {
+	/* ClapTrap tests ======================================================= */
 	ClapTrap	clap("Vegeta");
 	int			attack = 8;
 	int			damage = 5;
@@ -33,10 +34,11 @@ int	main(void)
 
 	std::cout << std::endl;
 	std::cout << "ClapTrap " << clap.getName() << " final state is :" <<std::endl;
-	std::cout << "Energy = " <<  clap.getEnergy() << ", ";
 	std::cout << "hit = " <<  clap.getHit() << ", ";
+	std::cout << "Energy = " <<  clap.getEnergy() << ", ";
 	std::cout << "Attack = " <<  clap.getAttack() << std::endl << std::endl;
 
+	/* ScavTrap tests ======================================================= */
 	ScavTrap	scav("Schwarzenegger");
 
 	std::cout << std::endl;
@@ -53,23 +55,34 @@ int	main(void)
 
 	std::cout << std::endl;
 	std::cout << "ScavTrap " << scav.getName() << " final state is :" <<std::endl;
-	std::cout << "Energy = " <<  scav.getEnergy() << ", ";
 	std::cout << "hit = " <<  scav.getHit() << ", ";
+	std::cout << "Energy = " <<  scav.getEnergy() << ", ";
 	std::cout << "Attack = " <<  scav.getAttack() << std::endl << std::endl;
 
-	ScavTrap	def;
+	ScavTrap	def("Scavenger");
 	def.guardGate();
 
 	std::cout << std::endl;
+	/* FragTrap tests ======================================================= */
 	FragTrap	frag("377 Magnum");
 
 	frag.highFivesGuys();
 
 	std::cout << std::endl;
-	std::cout << "fragTrap " << frag.getName() << " final state is :" <<std::endl;
-	std::cout << "Energy = " <<  frag.getEnergy() << ", ";
+	std::cout << "FragTrap " << frag.getName() << " final state is :" <<std::endl;
 	std::cout << "hit = " <<  frag.getHit() << ", ";
+	std::cout << "Energy = " <<  frag.getEnergy() << ", ";
 	std::cout << "Attack = " <<  frag.getAttack() << std::endl << std::endl;
+
+	std::cout << std::endl;
+	/* DiamondTrap tests ==================================================== */
+	DiamondTrap	diams("Diam's");
+
+	std::cout << std::endl;
+	std::cout << "Diamond Trap " << diams.getName() << " final state is :" <<std::endl;
+	std::cout << "hit = " <<  diams.getHit() << ", ";
+	std::cout << "Energy = " <<  diams.getEnergy() << ", ";
+	std::cout << "Attack = " <<  diams.getAttack() << std::endl << std::endl;
 
 	std::cout << std::endl;
 	return (0);

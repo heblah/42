@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 08:43:17 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/22 16:18:53 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/22 19:11:12 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,19 @@ ClapTrap::ClapTrap(void)
 	return;
 }
 
+ClapTrap::ClapTrap(const ClapTrap &clap)
+{
+	std::cout << "ClapTrap copy constructor called." << std::endl << std::endl;
+	this->_name = clap._name;
+	this->_hit_points = clap._hit_points;
+	this->_energy_points = clap._energy_points;
+	this->_attack_damage = clap._attack_damage;
+	return;
+}
+
 ClapTrap::ClapTrap(const std::string &name)
 {
-	std::cout << "ClapTrap copy constructor called." << std::endl;
+	std::cout << "ClapTrap constructor by name called." << std::endl << std::endl;
 	this->_name = name;
 	this->_hit_points = 10;
 	this->_energy_points = 10;
@@ -37,7 +47,7 @@ ClapTrap::ClapTrap(const std::string &name)
 /* Destructor =============================================================== */
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "ClapTrap destructor called." << std::endl;
+	std::cout << std::endl << "ClapTrap destructor called." << std::endl;
 	return;
 }
 
@@ -119,15 +129,15 @@ unsigned int	ClapTrap::getAttack(void) const
 	return (this->_attack_damage);
 }
 
-void	ClapTrap::setClapTrap(std::string *name, unsigned int *hit, unsigned int *energy, unsigned int *attack)
+void	ClapTrap::setClapTrap(const std::string *name, const unsigned int *hit, const unsigned int *energy, const unsigned int *attack)
 {
 	if (name != NULL)
 		this->_name = *name;
 	if (hit != NULL)
 		this->_hit_points = *hit;
 	if (energy != NULL)
-		this->_energy_points = *energy;
+		this->_energy_points = *hit;
 	if (attack != NULL)
-		this->_attack_damage = *attack;
+		this->_attack_damage = *hit;
 	return;
 }

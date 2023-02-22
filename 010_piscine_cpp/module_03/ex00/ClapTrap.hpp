@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 08:36:45 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/22 12:18:38 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/22 18:52:51 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ class ClapTrap
 {
 	public:
 						ClapTrap(void);
+						ClapTrap(const ClapTrap &clap);
 						ClapTrap(const std::string &name);
 						~ClapTrap(void);
 						

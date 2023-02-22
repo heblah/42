@@ -6,11 +6,11 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:06:17 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/22 16:31:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/22 18:02:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRRAP_HPP
+#ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
