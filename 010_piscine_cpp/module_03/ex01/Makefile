@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/22 15:51:22 by halvarez         ###   ########.fr        #
+#    Updated: 2023/02/23 09:32:35 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 build		:= san
 
 #Compilation of the mandatory part
-NAME		= scavtrap
+NAME		= claptrap
 
 #Buildings objects
 DIR			=

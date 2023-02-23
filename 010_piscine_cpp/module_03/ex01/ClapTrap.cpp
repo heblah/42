@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 08:43:17 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/22 19:11:12 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:00:58 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 ClapTrap::ClapTrap(void)
 {
 	std::cout << "ClapTrap default constructor called." << std::endl;
-	this->_hit_points = 10;
-	this->_energy_points = 10;
-	this->_attack_damage = 0;
+	this->_hit_points = 100;
+	this->_energy_points = 50;
+	this->_attack_damage = 20;
 	return;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &clap)
 {
-	std::cout << "ClapTrap copy constructor called." << std::endl << std::endl;
+	std::cout << "ClapTrap copy constructor called." << std::endl;
 	this->_name = clap._name;
 	this->_hit_points = clap._hit_points;
 	this->_energy_points = clap._energy_points;
@@ -36,18 +36,18 @@ ClapTrap::ClapTrap(const ClapTrap &clap)
 
 ClapTrap::ClapTrap(const std::string &name)
 {
-	std::cout << "ClapTrap constructor by name called." << std::endl << std::endl;
+	std::cout << "ClapTrap constructor by name called." << std::endl;
 	this->_name = name;
-	this->_hit_points = 10;
-	this->_energy_points = 10;
-	this->_attack_damage = 0;
+	this->_hit_points = 100;
+	this->_energy_points = 50;
+	this->_attack_damage = 20;
 	return;
 }
 
 /* Destructor =============================================================== */
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << std::endl << "ClapTrap destructor called." << std::endl;
+	std::cout << "ClapTrap destructor called." << std::endl;
 	return;
 }
 
@@ -129,7 +129,16 @@ unsigned int	ClapTrap::getAttack(void) const
 	return (this->_attack_damage);
 }
 
-void	ClapTrap::setClapTrap(const std::string *name, const unsigned int *hit, const unsigned int *energy, const unsigned int *attack)
+void	ClapTrap::putStats(void) const
+{
+	std::cout << "The stats of this Trap are :" << std::endl;
+	std::cout << "Name: " << this->getName();
+	std::cout << ", H: " << this->getHit() << ", E: " << this->getEnergy();
+	std::cout << ", A: " << this->getAttack() << std::endl;
+	return;
+}
+
+void	ClapTrap::setClapTrap(std::string *name, unsigned int *hit, unsigned int *energy, unsigned int *attack)
 {
 	if (name != NULL)
 		this->_name = *name;
