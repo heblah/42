@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/22 17:21:20 by halvarez         ###   ########.fr        #
+#    Updated: 2023/02/23 11:09:41 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 build		:= san
 
 #Compilation of the mandatory part
-NAME		= diamondtrap
+NAME		= claptrap
 
 #Buildings objects
 DIR			=
@@ -28,7 +28,7 @@ CC			= c++ -std=c++98
 RM			= rm -rf
 
 #Conditionnal flags depending on the building version
-cflags.rls		:= -Wall -Wextra -Werror -MMD -MP -Wshadow
+cflags.rls		:= -Wall -Wextra -Werror -MMD -MP
 cflags.gdb		:= -g3 #-fstandalone-debug
 cflags.san		:= -g3 -fsanitize=address #-fstandalone-debug 
 CFLAGS			= ${cflags.rls} ${cflags.${build}}

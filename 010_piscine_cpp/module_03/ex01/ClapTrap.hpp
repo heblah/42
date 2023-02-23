@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 08:36:45 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/23 09:29:38 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:04:07 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class ClapTrap
 
 		void			setClapTrap(std::string *name, unsigned int *hit,
 							unsigned int *energy, unsigned int *attack);
-	private:
+	protected:
 		std::string		_name;
 		unsigned int	_hit_points;
 		unsigned int	_energy_points;

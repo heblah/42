@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:06:32 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/22 16:30:55 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:03:06 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 #include "ScavTrap.hpp"
 
 /* Constructors ============================================================= */
-ScavTrap::ScavTrap(void)
+ScavTrap::ScavTrap(void) : ClapTrap()
 {
-	unsigned int	spec[3] = {100, 50, 20};
-
 	std::cout << "ScavTrap default constructor called." << std::endl;
-	this->setClapTrap(NULL, spec, spec + 1, spec + 2);
+	return;
+}
+
+ScavTrap::ScavTrap(const ScavTrap &scav) : ClapTrap(scav)
+{
+	std::cout << "ScavTrap copy constructor called." << std::endl;
 	return;
 }
 
 ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
 {
-	unsigned int	spec[3] = {100, 50, 20};
-
-	std::cout << "ScavTrap copy constructor called." << std::endl;
-	this->setClapTrap(NULL, spec, spec + 1, spec + 2);
+	std::cout << "ScavTrap constructor by name called." << std::endl;
 	return;
 }
 
@@ -39,8 +39,35 @@ ScavTrap::~ScavTrap(void)
 	return;
 }
 
+/* Operators ================================================================ */
+ScavTrap &	ScavTrap::operator=(const ScavTrap &scav)
+{
+	std::string		name = scav.getName();
+	unsigned int	hit = scav.getHit();
+	unsigned int	energy = scav.getEnergy();
+	unsigned int	attack = scav.getAttack();
+
+	this->setClapTrap(&name, &hit, &energy, &attack);
+	return (*this);
+}
+
 /* Public member functions ================================================== */
-void	ScavTrap::guardGate(void) const
+void	ScavTrap::attack(const std::string &target)
+{
+	if (this->_energy_points > 0 && this->_hit_points > 0)
+	{
+		this->_energy_points--;
+		std::cout << "ScavTrap " << this->_name;
+		std::cout << " attacks " << target;
+		std::cout << " causing " << this->_attack_damage << " point of damage!";
+		std::cout << std::endl;
+	}
+	else
+		std::cout << "ScavTrap " << this->_name << " is down!" << std::endl;
+	return;
+}
+
+void ScavTrap::guardGate(void)
 {
 	std::cout << "ScavTrap " << this->getName() << " is keeping the gate!" << std::endl;
 	return;

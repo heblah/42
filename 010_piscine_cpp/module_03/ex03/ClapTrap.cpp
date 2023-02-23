@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 08:43:17 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/22 16:20:01 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:42:42 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,29 @@
 ClapTrap::ClapTrap(void)
 {
 	std::cout << "ClapTrap default constructor called." << std::endl;
-	this->_hit_points = 10;
-	this->_energy_points = 10;
-	this->_attack_damage = 0;
+	this->_hit_points = 100;
+	this->_energy_points = 50;
+	this->_attack_damage = 20;
+	return;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &clap)
+{
+	std::cout << "ClapTrap copy constructor called." << std::endl;
+	this->_name = clap._name;
+	this->_hit_points = clap._hit_points;
+	this->_energy_points = clap._energy_points;
+	this->_attack_damage = clap._attack_damage;
 	return;
 }
 
 ClapTrap::ClapTrap(const std::string &name)
 {
-	std::cout << "ClapTrap copy constructor called." << std::endl;
+	std::cout << "ClapTrap constructor by name called." << std::endl;
 	this->_name = name;
-	this->_hit_points = 10;
-	this->_energy_points = 10;
-	this->_attack_damage = 0;
+	this->_hit_points = 100;
+	this->_energy_points = 50;
+	this->_attack_damage = 20;
 	return;
 }
 
@@ -117,6 +127,15 @@ unsigned int	ClapTrap::getEnergy(void) const
 unsigned int	ClapTrap::getAttack(void) const
 {
 	return (this->_attack_damage);
+}
+
+void	ClapTrap::putStats(void) const
+{
+	std::cout << "The stats of this Trap are :" << std::endl;
+	std::cout << "Name: " << this->getName();
+	std::cout << ", H: " << this->getHit() << ", E: " << this->getEnergy();
+	std::cout << ", A: " << this->getAttack() << std::endl;
+	return;
 }
 
 void	ClapTrap::setClapTrap(std::string *name, unsigned int *hit, unsigned int *energy, unsigned int *attack)

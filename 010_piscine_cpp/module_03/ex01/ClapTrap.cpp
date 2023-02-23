@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 08:43:17 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/23 10:00:58 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:42:42 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,8 +145,8 @@ void	ClapTrap::setClapTrap(std::string *name, unsigned int *hit, unsigned int *e
 	if (hit != NULL)
 		this->_hit_points = *hit;
 	if (energy != NULL)
-		this->_energy_points = *hit;
+		this->_energy_points = *energy;
 	if (attack != NULL)
-		this->_attack_damage = *hit;
+		this->_attack_damage = *attack;
 	return;
 }

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:52:13 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/23 10:22:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/23 11:01:37 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ int	main(void)
 	std::cout << std::endl;
 	scav.putStats();
 	clone.putStats();
+
+	std::cout << std::endl;
 	scav.attack("Vegeta");
+	scav.guardGate();
+	scav.putStats();
 
 	std::cout << std::endl;
 	clone = scav;
