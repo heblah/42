@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 08:36:45 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/22 18:52:51 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/23 09:29:38 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class ClapTrap
 		unsigned int	getHit(void) const;
 		unsigned int	getEnergy(void) const;
 		unsigned int	getAttack(void) const;
+		void			putStats(void) const;
 
 		void			setClapTrap(std::string *name, unsigned int *hit,
 							unsigned int *energy, unsigned int *attack);
