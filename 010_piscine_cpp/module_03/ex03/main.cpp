@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:52:13 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/23 14:39:37 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:01:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,32 @@ int	main(void)
 	frag.attack("Sarah Connor");
 	frag.highFivesGuys();
 	frag.putStats();
+	std::cout << std::endl;
+
+/* DiamondTrap tests ======================================================== */
+	std::cout << "Testing DiamondTrap class ===================================";
+	std::cout << std::endl;
+	DiamondTrap	diam("Diams");
+
+	std::cout << std::endl;
+	std::cout << "Default attack :" << std::endl;
+	diam.attack("Doc Gyneco");
+	std::cout << "Attack forcing other base classes :" << std::endl;
+	diam.FragTrap::attack("Joeystarr");
+	diam.ClapTrap::attack("Joeystarr");
+
+	std::cout << std::endl;
+	diam.guardGate();
+	diam.highFivesGuys();
+	diam.whoAmI();
+	
+	std::cout << std::endl;
+	DiamondTrap	un_named;
+	un_named.putStats();
+	std::cout << "The DiamondTrap with no name = Diam's :" << std::endl;
+	un_named = diam;
+	un_named.putStats();
+
 	std::cout << std::endl;
 	return (0);
 }
