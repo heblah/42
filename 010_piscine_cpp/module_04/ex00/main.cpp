@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:31:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/24 15:36:29 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:37:44 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	tests_cat(void)
 	pcat->Animal::makeSound();
 	std::cout << std::endl;
 
-	delete pAcat;
+	delete pcat;
 	return;
 }
 
