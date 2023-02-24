@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:31:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/24 15:37:44 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:23:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <string>
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "WrongCat.hpp"
 
 void	tests_animal(void)
 {
@@ -39,8 +40,8 @@ void	tests_animal(void)
 void	tests_cat(void)
 {
 	std::cout << "==================== Testing Cat =======================" << std::endl;
-	Animal	*pAcat = new Cat("Idefix by alloc");
-	Cat		cat("Idefix by stack");
+	Animal	*pAcat = new Cat("Miaouss by alloc");
+	Cat		cat("Miaouss by stack");
 	Cat		*pcat;
 
 
@@ -54,10 +55,25 @@ void	tests_cat(void)
 	pcat = &cat;
 	std::cout << pcat->getType() << " ";
 	pcat->makeSound();
-	std::cout << pcat->getType() << " ";
+	std::cout << pcat->getType() << " using pcat->Animal::makeSound() ";
 	pcat->Animal::makeSound();
 	std::cout << std::endl;
 
+	std::cout << "Casting Cat* into Dog* using memory allocated on Animal* with :";
+	std::cout << std::endl;
+	std::cout << "Animal *pAcat = new Cat(\"Miaouss by alloc\"); " <<std::endl;
+	Dog	*pdog = (Dog *)pcat;
+	std::cout << "pdog->makeSound(); :" <<std::endl;
+	pdog->makeSound();
+	std::cout << "pdog->Cat::makeSound(); Sends a compilation error:" << std::endl;
+	std::cout << "error: ‘Cat’ is not a base of ‘Dog’" << std::endl;
+	std::cout << "pdog->Dog::makeSound(); :" <<std::endl;
+	pdog->Dog::makeSound();
+	std::cout << "pdog->Animal::makeSound(); :" <<std::endl;
+	pdog->Animal::makeSound();
+
+	std::cout << std::endl << "pcat = (Cat *)pAcat;\ndelete pcat;" << std::endl;
+	pcat = (Cat *)pAcat;
 	delete pcat;
 	return;
 }
@@ -80,11 +96,25 @@ void	tests_dog(void)
 	pdog = &dog;
 	std::cout << pdog->getType() << " ";
 	pdog->makeSound();
-	std::cout << pdog->getType() << " ";
+	std::cout << pdog->getType() << " using pdog->Animal::makeSound() ";
 	pdog->Animal::makeSound();
 	std::cout << std::endl;
 
 	delete pAdog;
+	return;
+}
+
+void	tests_wrong(void)
+{
+	std::cout << "==================== Testing Wrong Animal and WrongCat =" << std::endl;
+	WrongAnimal wa("Tortue Géniale");
+	WrongCat	wcat("Felix le chat");
+
+	std::cout << "Tortue Géniale :";
+	wa.makeSound();
+	std::cout << "Vieux chat:";
+	wcat.makeSound();
+	std::cout << std::endl;
 	return;
 }
 
@@ -97,6 +127,9 @@ int	main(void)
 	std::cout << std::endl;
 	
 	tests_dog();
+	std::cout << std::endl;
+
+	tests_wrong();
 	std::cout << std::endl;
 	return (0);
 }
