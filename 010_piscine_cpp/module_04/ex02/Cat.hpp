@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:02:12 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/24 17:20:36 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:18:40 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "Animal.hpp"
 
-class Cat : public Animal {
+class Cat : public AAnimal {
 	public:
 				Cat(void);
 				Cat(const Cat &cat);

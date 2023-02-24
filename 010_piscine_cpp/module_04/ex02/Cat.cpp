@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:11:13 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/24 15:22:01 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:19:49 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Cat::Cat(void)
 	return;
 }
 
-Cat::Cat(const Cat &cat) : Animal(cat)
+Cat::Cat(const Cat &cat) : AAnimal(cat)
 {
 	std::cout << "Copy Cat constructor called" << std::endl;
 	//this->setType(cat.getType());
@@ -35,7 +35,7 @@ Cat::~Cat(void)
 	return;
 }
 
-Cat::Cat(const std::string &type) : Animal(type)
+Cat::Cat(const std::string &type) : AAnimal(type)
 {
 	std::cout << "Cat constructor by name called" << std::endl;
 	return;

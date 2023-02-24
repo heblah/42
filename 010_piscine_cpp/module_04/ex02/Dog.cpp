@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:11:13 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/24 15:21:39 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:20:05 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ Dog::Dog(void)
 	return;
 }
 
-Dog::Dog(const Dog &dog) : Animal(dog)
+Dog::Dog(const Dog &dog) : AAnimal(dog)
 {
 	std::cout << "Copy Dog constructor called" << std::endl;
 	//this->setType(dog.getType());
 	return;
 }
 
-Dog::Dog(const std::string &type) : Animal(type)
+Dog::Dog(const std::string &type) : AAnimal(type)
 {
 	std::cout << "Dog constructor by name called" << std::endl;
 	return;

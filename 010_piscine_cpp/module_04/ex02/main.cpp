@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:31:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/24 19:14:45 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:22:07 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	tests_animal(void)
 void	tests_cat(void)
 {
 	std::cout << "==================== Testing Cat =======================" << std::endl;
-	Animal	*pAcat = new Cat("Miaouss by alloc");
+	AAnimal	*pAcat = new Cat("Miaouss by alloc");
 	Cat		cat("Miaouss by stack");
 	Cat		*pcat;
 
@@ -64,7 +64,7 @@ void	tests_cat(void)
 
 	std::cout << "Casting Cat* into Dog* using memory allocated on Animal* with :";
 	std::cout << std::endl;
-	std::cout << "Animal *pAcat = new Cat(\"Miaouss by alloc\"); " <<std::endl;
+	std::cout << "AAnimal *pAcat = new Cat(\"Miaouss by alloc\"); " <<std::endl;
 	Dog	*pdog = (Dog *)pcat;
 	std::cout << "pdog->makeSound(); :" <<std::endl;
 	pdog->makeSound();
@@ -84,7 +84,7 @@ void	tests_cat(void)
 void	tests_dog(void)
 {
 	std::cout << "==================== Testing Dog =======================" << std::endl;
-	Animal	*pAdog = new Dog("Idefix by alloc");
+	AAnimal	*pAdog = new Dog("Idefix by alloc");
 	Dog		dog("Idefix by stack");
 	Dog		*pdog;
 
@@ -109,7 +109,7 @@ void	tests_dog(void)
 
 void	tests_wrong(void)
 {
-	std::cout << "==================== Testing Wrong Animal and WrongCat =" << std::endl;
+	std::cout << "==================== Testing Wrong AAnimal and WrongCat =" << std::endl;
 	WrongAnimal wa("Tortue Géniale");
 	WrongCat	wcat("Felix le chat");
 
@@ -124,7 +124,7 @@ void	tests_wrong(void)
 void	tests_brain_array(void)
 {
 	std::cout << "==================== Testing brain animals ==============" << std::endl;
-	Animal			*panimal[SIZE];
+	AAnimal			*panimal[SIZE];
 	unsigned int	n = SIZE;
 
 	while (--n > 0)
