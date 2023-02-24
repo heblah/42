@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/24 09:10:18 by halvarez         ###   ########.fr        #
+#    Updated: 2023/02/24 09:09:32 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@
 build		:= san
 
 #Compilation of the mandatory part
-NAME		= claptrap
+NAME		= 
 
 #Buildings objects
 DIR			=
-FILES		= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+FILES		= main.cpp ClapTrap.cpp
 SRC			+= $(addprefix ${DIR}, ${FILES})
 
 OBJ			= ${SRC:.cpp=.o}
@@ -27,12 +27,12 @@ DEP			= ${OBJ:.o=.d}
 CC			= c++ -std=c++98
 RM			= rm -rf
 
-#Conditionnal flags depending on the building version
-cflags.rls		:= -Wall -Wextra -Werror -MMD -MP
-cflags.gdb		:= -g3 #-fstandalone-debug
-cflags.san		:= -g3 -fsanitize=address #-fstandalone-debug 
-CFLAGS			= ${cflags.rls} ${cflags.${build}}
-export			CFLAGS
+#Conditionnal flags depending on building version
+cflags.rls	:= -Wall -Wextra -Werror -MMD -MP
+cflags.gdb	:= -g3 #-fstandalone-debug
+cflags.san	:= -g3 -fsanitize=address #-fstandalone-debug 
+CFLAGS		= ${cflags.rls} ${cflags.${build}}
+export		CFLAGS
 
 %.o : %.cpp
 		${CC} ${CFLAGS} -c $< -o $@
