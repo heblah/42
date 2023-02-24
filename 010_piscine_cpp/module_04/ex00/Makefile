@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/24 09:09:32 by halvarez         ###   ########.fr        #
+#    Updated: 2023/02/24 14:43:34 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@
 build		:= san
 
 #Compilation of the mandatory part
-NAME		= 
+NAME		= animals
 
 #Buildings objects
 DIR			=
-FILES		= main.cpp ClapTrap.cpp
+FILES		= Animal.cpp Cat.cpp Dog.cpp main.cpp
 SRC			+= $(addprefix ${DIR}, ${FILES})
 
 OBJ			= ${SRC:.cpp=.o}
@@ -28,7 +28,7 @@ CC			= c++ -std=c++98
 RM			= rm -rf
 
 #Conditionnal flags depending on building version
-cflags.rls	:= -Wall -Wextra -Werror -MMD -MP
+cflags.rls	:= -Wall -Wextra -Werror -MMD -MP -Wshadow
 cflags.gdb	:= -g3 #-fstandalone-debug
 cflags.san	:= -g3 -fsanitize=address #-fstandalone-debug 
 CFLAGS		= ${cflags.rls} ${cflags.${build}}

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:02:12 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/24 12:28:36 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:19:35 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ class Cat : public Animal {
 	public:
 				Cat(void);
 				Cat(const Cat &cat);
+				Cat(const std::string &type);
 				~Cat(void);
 
 		Cat &	operator=(const Cat &cat);
@@ -26,6 +27,6 @@ class Cat : public Animal {
 		void	makeSound(void) const;
 
 	private:
-}
+};
 
 #endif
