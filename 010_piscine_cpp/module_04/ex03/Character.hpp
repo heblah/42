@@ -6,14 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:30:48 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/28 17:01:28 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/28 19:45:52 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP 
 
-#include "ICharacter.hpp"
+//#include "ICharacter.hpp"
 
 class Character : public ICharacter
 {

@@ -6,14 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:20:37 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/28 19:02:51 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/28 20:22:21 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AMATERIA_HPP
-#define AMATERIA_HPP
+# define AMATERIA_HPP
 
-#include "ICharacter.hpp"
+//#include "ICharacter.hpp"
 
 class AMateria
 {
@@ -27,7 +27,7 @@ class AMateria
 
 		std::string const &	getType(void) const; //Returns the materia type
 		virtual AMateria*	clone() const = 0;
-		virtual void		use(ICharacter& target);
+//		virtual void		use(ICharacter& target);
 
 	protected:
 		std::string			_type;

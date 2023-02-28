@@ -6,12 +6,13 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:46 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/28 17:33:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/28 20:21:56 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
+//#include "ICharacter.hpp"
 #include "AMateria.hpp"
 
 /* Constructors ============================================================= */
@@ -50,8 +51,10 @@ std::string const &	AMateria::getType(void) const
 	return (this->_type);
 }
 
+/*
 void	AMateria::use(ICharacter& target __attribute__((unused)))
 {
 	std::cout << "Using Abstract Materia doesn't make any sense !" << std::endl;
 	return;
 }
+*/
