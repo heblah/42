@@ -6,13 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:46 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/28 14:44:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:55:20 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-#include "Cure.hpp"
+#include "ICharacter.hpp"
+//#include "Cure.hpp"
 
 /* Constructors ============================================================= */
 Cure::Cure(void)

@@ -6,16 +6,20 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:30:48 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/28 16:00:23 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:30:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 #define ICHARACTER_HPP 
 
+#include "AMateria.hpp"
+#include "Cure.hpp"
+#include "Ice.hpp"
+
 class ICharacter {
 	public:
-		virtual				~Character(void);
+		virtual				~ICharacter(void);
 
 		virtual std::string	const &	getName(void) const = 0;
 		

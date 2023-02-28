@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:46 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/28 12:39:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:33:27 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,19 @@ AMateria::~AMateria(void)
 }
 
 /* Operators ================================================================ */
-const AMateria	&AMateria::operator=(const AMateria &materia)
+const AMateria	&AMateria::operator=(const AMateria &materia __attribute__((unused)))
 {
 	//this->_type = materia._type;
 	return (*this);
 }
 
 /* Member functions ========================================================= */
-std::string const &	getType(void) const
+std::string const &	AMateria::getType(void) const
 {
 	return (this->_type);
 }
 
-void	AMateria::use(ICharacter& target)
+void	AMateria::use(ICharacter& target __attribute__((unused)))
 {
 	std::cout << "Using Abstract Materia doesn't make any sense !" << std::endl;
 	return;

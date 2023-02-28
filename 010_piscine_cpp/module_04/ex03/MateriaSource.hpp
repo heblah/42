@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 14:53:43 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/28 17:24:17 by halvarez         ###   ########.fr       */
+/*   Created: 2023/02/28 17:16:02 by halvarez          #+#    #+#             */
+/*   Updated: 2023/02/28 17:16:49 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include "Character.hpp"
-#include "Materia.hpp"
-#include "Cure.hpp"
-#include "Ice.hpp"
+#ifndef MATERIASOURCE_HPP
+#define MATERIASOURCE_HPP 
 
-int	main(void)
+class IMateriaSource
 {
-	Character	player("John");
-	return (0);
-}
+	public:
+				~IMateriaSource() {};
+		void	learnMateria(AMateria*) = 0;
+				AMateria* createMateria(std::string const & type) = 0;
+};
+
+#endif /* MATERIASOURCE_HPP */

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:46 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/28 12:53:12 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:56:51 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Ice::~Ice(void)
 }
 
 /* Operators ================================================================ */
-const Ice	&Ice::AMateria(const Ice &ice)
+const Ice	&Ice::operator=(const Ice &ice)
 {
 	//this->_type = materia._type;
 	return (*this);
@@ -48,6 +48,14 @@ const Ice	&Ice::AMateria(const Ice &ice)
 std::string const &	getType(void) const
 {
 	return (this->_type);
+}
+
+AMateria	*AMateria::clone(void)
+{
+	AMateria	*ptr = NULL;
+
+	ptr = new Ice;
+	return (ptr);
 }
 
 void	Ice::use(ICharacter& target)
