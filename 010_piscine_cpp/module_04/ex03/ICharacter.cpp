@@ -6,10 +6,12 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:33:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/28 16:00:05 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/01 09:35:55 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+#include <string>
 #include "ICharacter.hpp"
 
 /* Constructors ============================================================= */
@@ -21,6 +23,7 @@ ICharacter::ICharacter(void)
 ICharacter::ICharacter(const ICharacter & character)
 {
 	int	idx = 0;
+
 	this->_name = character._name;
 	while(idx < 4)
 	{

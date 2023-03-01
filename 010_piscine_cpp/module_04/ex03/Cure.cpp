@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:46 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/28 18:55:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/01 09:38:18 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ const Cure	&Cure::operator=(const Cure &cure)
 }
 
 /* Member functions ========================================================= */
-std::string const &	getType(void) const
+std::string const &	Cure::getType(void) const
 {
 	return (this->_type);
 }

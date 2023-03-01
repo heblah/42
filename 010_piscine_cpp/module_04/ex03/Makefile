@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/28 20:24:37 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/01 09:52:27 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME		= magic
 
 #Buildings objects
 DIR			=
-FILES		= main.cpp
+FILES		= main.cpp AMateria.cpp Cure.cpp Ice.cpp ICHaracter.cpp Character.cpp
 SRC			+= $(addprefix ${DIR}, ${FILES})
 
 OBJ			= ${SRC:.cpp=.o}
@@ -28,7 +28,7 @@ CC			= c++ -std=c++98
 RM			= rm -rf
 
 #Conditionnal flags depending on building version
-cflags.rls	:= -Wall -Wextra -Werror -MMD -MP -Wshadow
+cflags.rls	:= -Wall -Wextra -Werror -MMD -MP #-Wshadow
 cflags.gdb	:= -g3 #-fstandalone-debug
 cflags.san	:= -g3 -fsanitize=address #-fstandalone-debug 
 CFLAGS		= ${cflags.rls} ${cflags.${build}}

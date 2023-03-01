@@ -6,11 +6,15 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:33:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/28 17:06:55 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/01 09:50:24 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+#include <string>
 #include "Character.hpp"
+#include "Cure.hpp"
+#include "Ice.hpp"
 
 /* Constructors ============================================================= */
 Character::Character(void)
@@ -32,30 +36,30 @@ Character::Character(const Character & character)
 	this->_name = character.getName();
 	while(idx < 4)
 	{
-		if (character._inventory[idx] != NULL && character._inventory[idx].getType().compare("ice") == 0)
+		if (character._inventory[idx] != NULL && character._inventory[idx]->getType().compare("ice") == 0)
 		{
 			if (this->_inventory[idx] != NULL)
 				delete this->_inventory[idx];
-			this->_inventory[idx] = new ice;
+			this->_inventory[idx] = new Ice;
 		}
-		else if (character._inventory[idx] != NULL && character._inventory[idx].getType().compare("cure") == 0)
+		else if (character._inventory[idx] != NULL && character._inventory[idx]->getType().compare("cure") == 0)
 		{
 			if (this->_inventory[idx] != NULL)
 				delete this->_inventory[idx];
-			this->_inventory[idx] = new cure;
+			this->_inventory[idx] = new Cure;
 		}
 		else if (character._inventory[idx] == NULL)
 		{
 			if (this->_inventory[idx] != NULL)
 				delete this->_inventory[idx];
-			character._inventory[idx] = NULL;
+			this->_inventory[idx] = NULL;
 		}
 		idx++;
 	}
 	return;
 }
 
-Character::Character(const Character &name) : _name(name)
+Character::Character(const std::string &name) : _name(name)
 {
 	int	idx = 0;
 
@@ -92,23 +96,23 @@ Character &	Character::operator=(const Character & character)
 	this->_name = character.getName();
 	while(idx < 4)
 	{
-		if (character._inventory[idx] != NULL && character._inventory[idx].getType().compare("ice") == 0)
+		if (character._inventory[idx] != NULL && character._inventory[idx]->getType().compare("ice") == 0)
 		{
 			if (this->_inventory[idx] != NULL)
 				delete this->_inventory[idx];
-			this->_inventory[idx] = new ice;
+			this->_inventory[idx] = new Ice;
 		}
-		else if (character._inventory[idx] != NULL && character._inventory[idx].getType().compare("cure") == 0)
+		else if (character._inventory[idx] != NULL && character._inventory[idx]->getType().compare("cure") == 0)
 		{
 			if (this->_inventory[idx] != NULL)
 				delete this->_inventory[idx];
-			this->_inventory[idx] = new cure;
+			this->_inventory[idx] = new Cure;
 		}
 		else if (character._inventory[idx] == NULL)
 		{
 			if (this->_inventory[idx] != NULL)
 				delete this->_inventory[idx];
-			character._inventory[idx] = NULL;
+			this->_inventory[idx] = NULL;
 		}
 		idx++;
 	}
@@ -143,16 +147,18 @@ void	Character::equip(AMateria *m)
 	return;
 }
 
-void	Character::unequip(int *idx)
+void	Character::unequip(int idx)
 {
 	if (idx >= 0 && idx < 4)
 		this->_inventory[idx] = NULL;
 	return;
 }
 
+/*
 void	Character::use(int idx, ICharacter& target)
 {
 	if (idx >= 0 && idx < 4)
-		this->_inventory[idx].AMateria::use(target);
+		this->_inventory[idx]->AMateria::use(target);
 	return;
 }
+*/

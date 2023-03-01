@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:46 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/28 17:56:51 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/01 09:39:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,14 @@ const Ice	&Ice::operator=(const Ice &ice)
 }
 
 /* Member functions ========================================================= */
-std::string const &	getType(void) const
+std::string const &	Ice::getType(void) const
 {
 	return (this->_type);
 }
 
-AMateria	*AMateria::clone(void)
+AMateria	*Ice::clone(void)
 {
-	AMateria	*ptr = NULL;
-
-	ptr = new Ice;
-	return (ptr);
+	return (new Ice);
 }
 
 void	Ice::use(ICharacter& target)
