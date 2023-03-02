@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:20:37 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/28 20:10:01 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 09:49:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
+
+class ICharacter;
 
 class Cure : public AMateria
 {

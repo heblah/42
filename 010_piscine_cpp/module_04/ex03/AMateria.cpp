@@ -6,14 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:46 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/01 09:56:48 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 11:45:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-#include "ICharacter.hpp"
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 /* Constructors ============================================================= */
 AMateria::AMateria(void)
