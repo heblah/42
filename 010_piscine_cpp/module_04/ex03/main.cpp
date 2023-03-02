@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:53:43 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 19:12:26 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 19:41:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ int	main(void)
 	Character	pnj("Looser");
 	Ice			*ice = new Ice;
 	Cure		*cure = new Cure;
-//	AMateria	*materia;
-
+	AMateria	*materia = new Ice;
 	std::cout << "The character is called " << player.getName() << std::endl;
 	std::cout << std::endl << "===== testing spells  ====" << std::endl;
 	ice->use(pnj);
@@ -39,7 +38,9 @@ int	main(void)
 
 	player.use(0, pnj);
 	player.use(1, pnj);
+	materia->use(pnj);
 
+	delete materia;
 	/*
 	std::cout << "===== testing pnj ====" << std::endl;
 	pnj.equip(ice);

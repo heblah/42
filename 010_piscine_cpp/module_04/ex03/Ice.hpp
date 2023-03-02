@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:20:37 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 18:51:29 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 19:53:15 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Ice : public AMateria
 
 		std::string const &	getType(void) const; //Returns the materia type
 		AMateria *			clone(void) const;
-		void				use(ICharacter & target) const;
+		void				use(ICharacter & target);
 
 	protected:
 		std::string			_type;

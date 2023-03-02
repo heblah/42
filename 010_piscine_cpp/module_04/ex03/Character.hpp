@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:30:48 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 18:59:30 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 19:44:08 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Character : public ICharacter
 		void				setName(const std::string &name);
 		void				equip(AMateria *m);
 		void				unequip(int idx);
-		void				use(int idx, ICharacter& target);
+		virtual void				use(int idx, ICharacter& target);
 
 	private:
 		std::string			_name;
