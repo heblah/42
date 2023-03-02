@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:02:12 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/24 19:18:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 18:03:05 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CAT_HPP
 
 #include "Animal.hpp"
+//class AAnimal;
 
 class Cat : public AAnimal {
 	public:

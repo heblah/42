@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:31:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/28 16:42:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 17:03:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,7 @@ int	main(void)
 	tests_cat();
 	std::cout << std::endl;
 	
+	/*
 	tests_dog();
 	std::cout << std::endl;
 
@@ -188,5 +189,6 @@ int	main(void)
 
 	tests_brain_idea();
 	std::cout << std::endl;
+	*/
 	return (0);
 }

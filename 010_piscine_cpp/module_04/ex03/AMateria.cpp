@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:46 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 15:41:51 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 18:16:03 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
-#include "Character.hpp"
 
 /* Constructors ============================================================= */
 AMateria::AMateria(void)

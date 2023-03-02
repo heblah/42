@@ -6,12 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:11:13 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/24 19:19:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 18:02:31 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
+
+#include "Animal.hpp"
 #include "Cat.hpp"
 
 /* Constructors ============================================================= */

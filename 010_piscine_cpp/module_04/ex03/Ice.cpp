@@ -6,15 +6,13 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:46 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 16:36:46 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 18:46:29 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
 #include "Character.hpp"
 #include "Ice.hpp"
 
@@ -43,9 +41,9 @@ Ice::~Ice(void)
 }
 
 /* Operators ================================================================ */
-const Ice	&Ice::operator=(const Ice &ice __attribute__((unused)))
+const Ice	&Ice::operator=(const Ice &ice)
 {
-	//this->_type = materia._type;
+	this->_type = ice._type;
 	return (*this);
 }
 

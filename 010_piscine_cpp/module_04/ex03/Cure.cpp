@@ -6,18 +6,15 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:46 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 16:46:02 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 18:45:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 
-#include "AMateria.hpp"
-#include "Cure.hpp"
-
-#include "ICharacter.hpp"
 #include "Character.hpp"
+#include "Cure.hpp"
 
 /* Constructors ============================================================= */
 Cure::Cure(void) : AMateria()

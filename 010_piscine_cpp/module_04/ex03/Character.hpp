@@ -6,14 +6,17 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:30:48 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 15:38:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 18:19:01 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP 
 
-class ICharacter;
+#include "ICharacter.hpp"
+//#include "Cure.hpp"
+//#include "Ice.hpp"
+
 class AMateria;
 
 class Character : public ICharacter
