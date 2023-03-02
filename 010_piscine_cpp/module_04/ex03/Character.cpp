@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:33:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 15:42:23 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:29:30 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "Ice.hpp"
 
 /* Constructors ============================================================= */
-Character::Character(void)
+Character::Character(void) : ICharacter()
 {
 	int	idx = 0;
 
@@ -32,7 +32,7 @@ Character::Character(void)
 	return;
 }
 
-Character::Character(const Character & character)
+Character::Character(const Character & character) : ICharacter(character)
 {
 	int	idx = 0;
 
@@ -62,7 +62,7 @@ Character::Character(const Character & character)
 	return;
 }
 
-Character::Character(const std::string &name) : _name(name)
+Character::Character(const std::string &name) : ICharacter(),  _name(name)
 {
 	int	idx = 0;
 
@@ -159,7 +159,7 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter& target)
 {
-	if (idx >= 0 && idx < 4)
-		this->_inventory[idx]->AMateria::use(target);
+	if (idx >= 0 && idx < 4 && this->_inventory[idx] != NULL)
+		this->_inventory[idx]->use(target);
 	return;
 }

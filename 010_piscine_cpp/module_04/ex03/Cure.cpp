@@ -6,20 +6,23 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:46 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 15:29:51 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:46:02 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
+
 #include "AMateria.hpp"
-#include "ICharacter.hpp"
-#include "Character.hpp"
 #include "Cure.hpp"
 
+#include "ICharacter.hpp"
+#include "Character.hpp"
+
 /* Constructors ============================================================= */
-Cure::Cure(void)
+Cure::Cure(void) : AMateria()
 {
+	this->_type = "cure";
 	return;
 }
 
@@ -29,7 +32,7 @@ Cure::Cure(const Cure &cure) : AMateria(cure)
 	return;
 }
 
-Cure::Cure(const std::string & type) : _type(type)
+Cure::Cure(const std::string & type) : AMateria(type)
 {
 	return;
 }

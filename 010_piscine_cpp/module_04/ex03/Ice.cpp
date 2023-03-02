@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:46 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 15:29:16 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:36:46 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 #include "Ice.hpp"
 
 /* Constructors ============================================================= */
-Ice::Ice(void)
+Ice::Ice(void) : AMateria()
 {
+	this->_type = "ice";
 	return;
 }
 
@@ -30,7 +31,7 @@ Ice::Ice(const Ice &ice) : AMateria(ice)
 	return;
 }
 
-Ice::Ice(const std::string & type) : _type(type)
+Ice::Ice(const std::string & type) : AMateria(type)
 {
 	return;
 }
@@ -61,6 +62,6 @@ AMateria	*Ice::clone(void) const
 
 void	Ice::use(ICharacter& target) const
 {
-	std::cout << "* shoots an ice bolt at " << target.getName() << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 	return;
 }
