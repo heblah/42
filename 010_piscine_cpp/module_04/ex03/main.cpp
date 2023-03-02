@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:53:43 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 18:47:13 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 19:12:26 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include <string>
 
 //#include "AMateria.hpp"
-#include "Cure.hpp"
 #include "Ice.hpp"
+#include "Character.hpp"
+#include "Cure.hpp"
 
 //#include "ICharacter.hpp"
-#include "Character.hpp"
 
 int	main(void)
 {
@@ -29,15 +29,23 @@ int	main(void)
 //	AMateria	*materia;
 
 	std::cout << "The character is called " << player.getName() << std::endl;
-	player.use(0, pnj);
+	std::cout << std::endl << "===== testing spells  ====" << std::endl;
+	ice->use(pnj);
+	cure->use(pnj);
+
+	std::cout << std::endl << "===== testing player ====" << std::endl;
 	player.equip(ice);
 	player.equip(cure);
 
 	player.use(0, pnj);
 	player.use(1, pnj);
-	//ice->use(pnj);
-	//cure->use(pnj);
-	//materia = cure;
-	//materia->use(pnj);
+
+	/*
+	std::cout << "===== testing pnj ====" << std::endl;
+	pnj.equip(ice);
+	pnj.equip(cure);
+
+	//player.use(1, pnj);
+	*/
 	return (0);
 }

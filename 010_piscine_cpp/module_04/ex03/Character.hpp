@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:30:48 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 18:19:01 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 18:59:30 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #define CHARACTER_HPP 
 
 #include "ICharacter.hpp"
-//#include "Cure.hpp"
-//#include "Ice.hpp"
 
 class AMateria;
 

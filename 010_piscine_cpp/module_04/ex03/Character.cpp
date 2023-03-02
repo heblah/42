@@ -6,15 +6,13 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:33:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 18:17:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 18:53:39 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 
-//#include "AMateria.hpp"
-//#include "ICharacter.hpp"
 #include "Character.hpp"
 #include "Cure.hpp"
 #include "Ice.hpp"
