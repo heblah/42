@@ -6,17 +6,17 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:20:37 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/28 19:36:16 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:39:56 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICE_HPP
 # define ICE_HPP
 
-#include "ICharacter.hpp"
-#include "AMateria.hpp"
+class ICharacter;
 
-class Ice : public AMateria {
+class Ice : public AMateria
+{
 	public:
 							Ice(void);
 							Ice(const Ice & ice);
@@ -30,7 +30,7 @@ class Ice : public AMateria {
 		void				use(ICharacter & target) const;
 
 	protected:
-		std::string	_type;
+		std::string			_type;
 
 };
 

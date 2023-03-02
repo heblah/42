@@ -6,14 +6,12 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:20:37 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 11:42:02 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:37:52 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AMATERIA_HPP
 #define AMATERIA_HPP
-
-//#include "ICharacter.hpp"
 
 class ICharacter;
 

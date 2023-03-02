@@ -6,13 +6,15 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:33:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 11:28:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:42:23 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-//#include "ICharacter.hpp"
+
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
 #include "Character.hpp"
 #include "Cure.hpp"
 #include "Ice.hpp"
@@ -155,11 +157,9 @@ void	Character::unequip(int idx)
 	return;
 }
 
-/*
 void	Character::use(int idx, ICharacter& target)
 {
 	if (idx >= 0 && idx < 4)
 		this->_inventory[idx]->AMateria::use(target);
 	return;
 }
-*/
