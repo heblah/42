@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:33:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/03 09:37:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:58:40 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,11 @@ Character::Character(const Character & character) : ICharacter(character)
 	this->_name = character.getName();
 	while(idx < 4)
 	{
-		if (character._inventory[idx] != NULL && character._inventory[idx]->getType().compare("ice") == 0)
+		if (character._inventory[idx] != NULL)
 		{
 			if (this->_inventory[idx] != NULL)
 				delete this->_inventory[idx];
-			this->_inventory[idx] = new Ice;
-		}
-		else if (character._inventory[idx] != NULL && character._inventory[idx]->getType().compare("cure") == 0)
-		{
-			if (this->_inventory[idx] != NULL)
-				delete this->_inventory[idx];
-			this->_inventory[idx] = new Cure;
+			this->_inventory[idx] = character._inventory[idx]->clone();
 		}
 		else if (character._inventory[idx] == NULL)
 		{
@@ -97,17 +91,11 @@ Character &	Character::operator=(const Character & character)
 	this->_name = character.getName();
 	while(idx < 4)
 	{
-		if (character._inventory[idx] != NULL && character._inventory[idx]->getType().compare("ice") == 0)
+		if (character._inventory[idx] != NULL)
 		{
 			if (this->_inventory[idx] != NULL)
 				delete this->_inventory[idx];
-			this->_inventory[idx] = new Ice;
-		}
-		else if (character._inventory[idx] != NULL && character._inventory[idx]->getType().compare("cure") == 0)
-		{
-			if (this->_inventory[idx] != NULL)
-				delete this->_inventory[idx];
-			this->_inventory[idx] = new Cure;
+			this->_inventory[idx] = character._inventory[idx]->clone();
 		}
 		else if (character._inventory[idx] == NULL)
 		{
@@ -140,7 +128,7 @@ void	Character::equip(AMateria *m)
 	{
 		if (this->_inventory[idx] == NULL)
 		{
-			this->_inventory[idx] = m->clone();
+			this->_inventory[idx] = m;
 			return;
 		}
 		idx++;
@@ -160,4 +148,24 @@ void	Character::use(int idx, ICharacter& target)
 	if (idx >= 0 && idx < 4 && this->_inventory[idx] != NULL)
 		this->_inventory[idx]->use(target);
 	return;
+}
+
+AMateria	*Character::getItem(int idx) const
+{
+	if (idx >= 0 && idx < 4)
+		return (this->_inventory[idx]);
+	else
+		std::cout << "Item index out of range" << std::endl;
+	return (NULL);
+}
+
+void	Character::putSpells(void) const
+{
+	int	idx = 0;
+
+	while (idx < 4)
+	{
+		std::cout << "*_inventory[" << idx << "] = " << this->_inventory[idx] << std::endl;
+		idx++;
+	}
 }

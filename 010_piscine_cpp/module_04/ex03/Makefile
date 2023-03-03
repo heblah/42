@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/03/03 11:24:09 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/03 15:39:03 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME		= magic
 
 #Buildings objects
 DIR			=
-FILES		= main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp 
+FILES		= main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 SRC			+= $(addprefix ${DIR}, ${FILES})
 
 OBJ			= ${SRC:.cpp=.o}
