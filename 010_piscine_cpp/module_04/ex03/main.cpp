@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:53:43 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/03 09:50:08 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/03 11:12:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(void)
 	Ice			*ice = new Ice;
 	Cure		*cure = new Cure;
 	AMateria	*clone;
+	//AMateria	*memory;
 
 	std::cout << std::endl << "===== testing spell classes  ====" << std::endl;
 	std::cout << "Using Ice*, type : " << ice->getType() << " :";
@@ -51,6 +52,8 @@ int	main(void)
 	player.use(1, pnj);
 	player.use(2, pnj);
 	player.use(3, pnj);
+	player.use(0, pnj);
+	//code a getItem function to be able to delete it at the end
 
 	delete ice;
 	delete cure;

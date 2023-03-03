@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/03/03 08:53:44 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/03 11:24:09 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,11 @@ SRC			+= $(addprefix ${DIR}, ${FILES})
 OBJ			= ${SRC:.cpp=.o}
 DEP			= ${OBJ:.o=.d}
 
-CC			= clang++ -std=c++98
+CC			= c++ -Wshadow -std=c++98
 RM			= rm -rf
 
 #Conditionnal flags depending on building version
-cflags.rls	:= -Wall -Wextra -Werror -MMD -MP -Wshadow
+cflags.rls	:= -Wall -Wextra -Werror -Wpedantic -pedantic-errors -MMD -MP
 cflags.gdb	:= -g3 #-fstandalone-debug
 cflags.san	:= -g3 -fsanitize=address #-fstandalone-debug 
 CFLAGS		= ${cflags.rls} ${cflags.${build}}
