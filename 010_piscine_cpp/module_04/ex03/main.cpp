@@ -6,19 +6,16 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:53:43 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 19:41:57 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/03 09:50:08 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 
-//#include "AMateria.hpp"
-#include "Ice.hpp"
 #include "Character.hpp"
+#include "Ice.hpp"
 #include "Cure.hpp"
-
-//#include "ICharacter.hpp"
 
 int	main(void)
 {
@@ -26,27 +23,36 @@ int	main(void)
 	Character	pnj("Looser");
 	Ice			*ice = new Ice;
 	Cure		*cure = new Cure;
-	AMateria	*materia = new Ice;
-	std::cout << "The character is called " << player.getName() << std::endl;
-	std::cout << std::endl << "===== testing spells  ====" << std::endl;
-	ice->use(pnj);
-	cure->use(pnj);
+	AMateria	*clone;
 
-	std::cout << std::endl << "===== testing player ====" << std::endl;
+	std::cout << std::endl << "===== testing spell classes  ====" << std::endl;
+	std::cout << "Using Ice*, type : " << ice->getType() << " :";
+	ice->use(pnj);
+	clone = ice->clone();
+	std::cout << "Using ice AMateria* clone, type : " << clone->getType() << " :";
+	clone->use(pnj);
+	delete clone;
+	std::cout << "Using Cure*, type : " << cure->getType() << " :";
+	cure->use(pnj);
+	clone = cure->clone();
+	std::cout << "Using cure AMateria* clone, type : " << clone->getType() << " :";
+	clone->use(pnj);
+	delete clone;
+
+	std::cout << std::endl << "===== testing Character class ====" << std::endl;
+	std::cout << "The character is called " << player.getName() << std::endl;
 	player.equip(ice);
+	player.equip(ice);
+	player.equip(cure);
+	player.equip(cure);
 	player.equip(cure);
 
 	player.use(0, pnj);
 	player.use(1, pnj);
-	materia->use(pnj);
+	player.use(2, pnj);
+	player.use(3, pnj);
 
-	delete materia;
-	/*
-	std::cout << "===== testing pnj ====" << std::endl;
-	pnj.equip(ice);
-	pnj.equip(cure);
-
-	//player.use(1, pnj);
-	*/
+	delete ice;
+	delete cure;
 	return (0);
 }

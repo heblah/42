@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:46 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 18:45:28 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/03 09:20:30 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,9 @@ Cure::~Cure(void)
 }
 
 /* Operators ================================================================ */
-const Cure	&Cure::operator=(const Cure &cure)
+const Cure	&Cure::operator=(const Cure &cure __attribute__((unused)))
 {
-	this->_type = cure._type;
-	return (*this);
+	return (*(new Cure));
 }
 
 /* Member functions ========================================================= */

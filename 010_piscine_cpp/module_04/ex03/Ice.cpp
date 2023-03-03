@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:46 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/03 09:02:14 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/03 09:20:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,9 @@ Ice::~Ice(void)
 }
 
 /* Operators ================================================================ */
-const Ice	&Ice::operator=(const Ice &ice)
+const Ice	&Ice::operator=(const Ice &ice __attribute__((unused)))
 {
-	this->_type = ice._type;
-	return (*this);
+	return (*(new Ice));
 }
 
 /* Member functions ========================================================= */

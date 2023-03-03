@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:33:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/02 18:53:39 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/03 09:37:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void	Character::equip(AMateria *m)
 	{
 		if (this->_inventory[idx] == NULL)
 		{
-			this->_inventory[idx] = m;
+			this->_inventory[idx] = m->clone();
 			return;
 		}
 		idx++;
