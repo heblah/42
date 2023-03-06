@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/03/03 16:56:18 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/06 08:46:23 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@
 build		:= san
 
 #Compilation of the mandatory part
-NAME		= magic
+NAME		= bureaucrat
 
 #Buildings objects
 DIR			=
-FILES		= main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
+FILES		= main.cpp Bureaucrat.cpp
 SRC			+= $(addprefix ${DIR}, ${FILES})
 
 OBJ			= ${SRC:.cpp=.o}
