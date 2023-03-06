@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/03/06 18:13:15 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/06 17:23:47 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,18 +14,17 @@
 build		:= san
 
 #Compilation of the mandatory part
-NAME		= animals
+NAME		= bureaucrat
 
 #Buildings objects
 DIR			=
-FILES		= Animal.cpp Cat.cpp Dog.cpp main.cpp WrongAnimal.cpp WrongCat.cpp
-FILES		+= Brain.cpp
+FILES		= main.cpp Bureaucrat.cpp Form.cpp
 SRC			+= $(addprefix ${DIR}, ${FILES})
 
 OBJ			= ${SRC:.cpp=.o}
 DEP			= ${OBJ:.o=.d}
 
-CC			= clang++ -std=c++98 -Wshadow
+CC			= c++ -Wshadow -std=c++98
 RM			= rm -rf
 
 #Conditionnal flags depending on building version
@@ -61,4 +60,4 @@ re:     fclean
 #Dependencies list
 -include ${DEP}
 
-.PHONY: all clean fclean re bonus run
+.PHONY: all clean fclean re bonus

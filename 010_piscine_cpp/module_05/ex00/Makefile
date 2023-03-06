@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/03/06 08:46:23 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/06 18:12:41 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,4 +60,4 @@ re:     fclean
 #Dependencies list
 -include ${DEP}
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus run
