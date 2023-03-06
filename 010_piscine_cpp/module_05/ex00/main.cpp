@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:54:44 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/06 12:08:13 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:15:03 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,25 @@ void try_tests(void)
 
 int	main(void)
 {
-	Bureaucrat	b __attribute__((unused));
+	Bureaucrat	a("Bob", 160);
+	Bureaucrat	b("Alfred", 147);
+	Bureaucrat	c("Snoop Dog", 0);
 
+	std::cout << a;
 	std::cout << b;
-	b--;
+	std::cout << c;
+
+	a++;
+	a++;
+	std::cout << a;
+
+	b++;
+	b++;
 	std::cout << b;
+
+	while (c.getGrade() != 1)
+		c++;
+	std::cout << c;
+	
 	return (0);
 }
