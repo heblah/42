@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:54:44 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/06 09:57:12 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/06 12:08:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	main(void)
 {
 	Bureaucrat	b __attribute__((unused));
 
-	std::cout << "test";
+	std::cout << b;
+	b--;
+	std::cout << b;
 	return (0);
 }

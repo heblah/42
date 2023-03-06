@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:46:34 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/06 09:58:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:34:36 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,16 @@ class Bureaucrat
 		void				setName(std::string name);
 		void				setGrade(unsigned int grade);
 
-		void				GradeTooHighException(void) const;
-		void				GradeTooLowExection(void) const;
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				const char *	what(void) const throw();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char *	what(void) const throw();
+		};
 
 	private:
 		std::string			_name;
