@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:46:21 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/06 17:45:41 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:01:38 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,29 @@ void	Form::beSigned(const Bureaucrat & b)
 	return;
 }
 
+void	Form::execute(const Bureaucrat & executor)
+{
+	try
+	{
+		if (this->_signed != 1)
+		{
+			this->beSigned(executor);
+			if (this->_signed != 1)
+				throw FormNotSigned();
+		}
+		else if (b.getExecLevel() <= this->_Exec)
+			std::cout << b.getName() << " executed " << this->_name << std::endl;
+		else
+			throw GradeTooLowException();
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	return;
+}
+
+/* Exceptions =============================================================== */
 const char *	Form::GradeTooHighException::what(void) const throw()
 {
 	return ("Sorry, the grade is too high but it's not logical.");
@@ -105,4 +128,9 @@ const char *	Form::GradeTooHighException::what(void) const throw()
 const char *	Form::GradeTooLowException::what(void) const throw()
 {
 	return ("Sorry, your grade is to low to sign this form.");
+}
+
+const char *	Form::FormNotSigned::what(void) const throw()
+{
+	return ("Sorry, the form isn't signed.");
 }
