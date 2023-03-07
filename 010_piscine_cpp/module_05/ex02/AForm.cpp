@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:46:21 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/07 10:20:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/07 10:24:52 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,13 @@ void	AForm::beSigned(const Bureaucrat & b)
 	return;
 }
 
-void	AForm::execute(const Bureaucrat & executor)
+void	AForm::execute(const Bureaucrat & executor) const
 {
 	try
 	{
 		if (this->_signed != 1)
 		{
-			this->beSigned(executor);
-			if (this->_signed != 1)
-				throw FormNotSigned();
+			throw FormNotSigned();
 		}
 		else if (executor.getGrade() <= this->_exec)
 			std::cout << executor.getName() << " executed " << this->_name << std::endl;

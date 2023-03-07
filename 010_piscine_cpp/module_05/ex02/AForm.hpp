@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:20:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/07 10:17:13 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/07 10:24:08 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class AForm
 		virtual unsigned int		getExecLevel(void) const;
 
 		virtual void				beSigned(const Bureaucrat & b);
-		virtual void				execute(Bureaucrat const & executor);
+		virtual void				execute(Bureaucrat const & executor) const;
 
 		class GradeTooHighException : public std::exception
 		{
