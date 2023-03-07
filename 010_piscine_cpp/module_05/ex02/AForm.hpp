@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:20:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/06 18:55:39 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/07 10:17:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ class Bureaucrat;
 class AForm
 {
 	public:
-		virtual						AForm(void) = 0;
-		virtual						AForm(const AForm & form) = 0;
-		virtual						AForm(std::string name, unsigned int sign, unsigned int exec) = 0;
-		virtual						~AForm(void) = 0;
+									AForm(void);
+									AForm(const AForm & form);
+									AForm(std::string name, unsigned int sign, unsigned int exec);
+		virtual						~AForm(void);
 
 		virtual const AForm &		operator=(const AForm & form);
 

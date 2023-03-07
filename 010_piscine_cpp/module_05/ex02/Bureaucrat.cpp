@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:53:55 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/06 17:25:44 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/07 10:14:51 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <string>
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 /* Constructors ============================================================= */
 Bureaucrat::Bureaucrat(void)
@@ -144,7 +144,7 @@ void	Bureaucrat::setGrade(unsigned int grade)
 	return;
 }
 
-void	Bureaucrat::signForm(Form & form) const
+void	Bureaucrat::signForm(AForm & form) const
 {
 	form.beSigned(*this);
 	return;

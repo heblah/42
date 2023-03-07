@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:46:21 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/07 10:16:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/07 10:20:06 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ void	AForm::execute(const Bureaucrat & executor)
 			if (this->_signed != 1)
 				throw FormNotSigned();
 		}
-		else if (b.getExecLevel() <= this->_Exec)
-			std::cout << b.getName() << " executed " << this->_name << std::endl;
+		else if (executor.getGrade() <= this->_exec)
+			std::cout << executor.getName() << " executed " << this->_name << std::endl;
 		else
 			throw GradeTooLowException();
 	}

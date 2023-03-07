@@ -6,14 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:46:34 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/06 17:25:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/07 10:14:15 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP 
 
-class Form;
+class AForm;
 
 class Bureaucrat 
 {
@@ -32,7 +32,7 @@ class Bureaucrat
 
 		void				setName(std::string name);
 		void				setGrade(unsigned int grade);
-		void				signForm(Form & form) const;
+		void				signForm(AForm & form) const;
 
 		class GradeTooHighException : public std::exception
 		{
