@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:46:21 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/07 12:19:33 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:11:43 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,26 +103,6 @@ void	AForm::beSigned(const Bureaucrat & b)
 	return;
 }
 
-/*
-void	AForm::execute(const Bureaucrat & executor) const
-{
-	try
-	{
-		if (this->getSignature() != 1)
-			throw FormNotSigned();
-		else if (executor.getGrade() <= this->getExecLevel())
-			std::cout << executor.getName() << " executed " << this->getName() << std::endl;
-		else
-			throw GradeTooLowException();
-	}
-	catch (std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	return;
-}
-*/
-
 /* Exceptions =============================================================== */
 const char *	AForm::GradeTooHighException::what(void) const throw()
 {
@@ -131,7 +111,7 @@ const char *	AForm::GradeTooHighException::what(void) const throw()
 
 const char *	AForm::GradeTooLowException::what(void) const throw()
 {
-	return ("Sorry, your grade is to low to sign this form.");
+	return ("Sorry, your grade is to low to sign or execute this form.");
 }
 
 const char *	AForm::FormNotSigned::what(void) const throw()

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:20:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/07 12:29:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:40:30 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ class Bureaucrat;
 class ShrubberyCreationForm : public AForm
 {
 	public:
-									ShrubberyCreationForm(void);
-									ShrubberyCreationForm(const ShrubberyCreationForm & form);
-									ShrubberyCreationForm(std::string target);
-									~ShrubberyCreationForm(void);
+							ShrubberyCreationForm(void);
+							ShrubberyCreationForm(const ShrubberyCreationForm & form);
+							ShrubberyCreationForm(std::string target);
+							~ShrubberyCreationForm(void);
 
 		const ShrubberyCreationForm &		operator=(const ShrubberyCreationForm & form);
 
 		void				execute(Bureaucrat const & executor) const;
+		int					makeShrubbery(void) const;
 
 		class ProblemOnTree : public std::exception
 		{

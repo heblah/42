@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:54:44 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/07 12:24:56 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:06:17 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(void)
 	Bureaucrat	b("Alfred", 1);
 	Bureaucrat	c("Snoop Dog", 5);
 	//AForm		f("28B", 2, 15);
-	ShrubberyCreationForm f("Macron");
+	ShrubberyCreationForm f("Sapin");
 	std::cout << std::endl;
 
 	std::cout << a;
@@ -32,6 +32,12 @@ int	main(void)
 	std::cout << std::endl;
 
 	std::cout << f;
+	std::cout << std::endl;
+
+	std::cout << "Trying to execute form : " << std::endl;
+	f.execute(a);
+	f.execute(b);
+	f.execute(c);
 	std::cout << std::endl;
 
 	std::cout << "Signing form with " << a.getName() << " :" << std::endl;
@@ -44,10 +50,13 @@ int	main(void)
 	f.beSigned(c);
 	std::cout << std::endl;
 	
+	std::cout << "Trying to execute form : " << std::endl;
+	f.execute(a);
+	f.execute(b);
+	f.execute(c);
+	std::cout << std::endl;
+
 	std::cout << f;
 	std::cout << std::endl;
-	std::cout << "uyt" << std::endl;
-
-	std::cout << "AForm :" << f.AForm::getName() << std::endl;
 	return (0);
 }
