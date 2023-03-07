@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/03/07 10:16:49 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/07 11:51:15 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME		= bureaucrat
 
 #Buildings objects
 DIR			=
-FILES		= main.cpp Bureaucrat.cpp AForm.cpp
+FILES		= main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
 SRC			+= $(addprefix ${DIR}, ${FILES})
 
 OBJ			= ${SRC:.cpp=.o}

@@ -6,36 +6,39 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/20 20:40:10 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/07 11:21:27 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-#include "class_tests.hpp"
 #include <ctime>
 
-ft_classe::ft_classe(void)
-{
-	/*
-	std::cout << "Enter a string :" << std::endl;
-	std::getline(std::cin, this->buf);
-	this->foo();
-	*/
-	return;
-}
+class Base {
+	public:
+		Base(void);
+		Base(const Base & b);
+		Base(std::string name);
+		~Base(void);
 
-ft_classe::~ft_classe(void)
-{
-	std::cout << "destructor called" << std::endl;
-	return;
-}
+	std::string	getName();
+	void		setName(std::string name);
 
-void	ft_classe::foo(void) const
-{
-	std::cout << "foo function called" << std::endl;
-	return;
-}
+	private:
+		std::string	_name;
+};
+
+class Derived {
+	public:
+		Derived(void);
+		Derived(const Derived &d);
+		Derived(std::string target);
+		~Derived(void);
+
+	private:
+		std::string	_target;
+};
+
 
 int	main(void)
 {

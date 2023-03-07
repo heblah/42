@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:54:44 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/07 10:20:30 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:24:56 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 #include <string>
 
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+//#include "AForm.hpp"
 
 int	main(void)
 {
 	Bureaucrat	a("Bob", 160);
 	Bureaucrat	b("Alfred", 1);
 	Bureaucrat	c("Snoop Dog", 5);
-	AForm		f("28B", 2, 1);
+	//AForm		f("28B", 2, 15);
+	ShrubberyCreationForm f("Macron");
 	std::cout << std::endl;
 
 	std::cout << a;
@@ -44,5 +46,8 @@ int	main(void)
 	
 	std::cout << f;
 	std::cout << std::endl;
+	std::cout << "uyt" << std::endl;
+
+	std::cout << "AForm :" << f.AForm::getName() << std::endl;
 	return (0);
 }

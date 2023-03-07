@@ -1,45 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.cpp                                          :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:46:21 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/07 12:19:33 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:36:21 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 
-#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 
 /* Constructors ============================================================= */
-AForm::AForm(void) : _name(""), _signed(0), _sign(1), _exec(1)
+ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("Shrubbery Creation Form", 145, 137), _target("Default")
 {
 	return;
 }
 
-AForm::AForm(const AForm & form) : _name(form._name), _signed(form._signed), _sign(form._sign), _exec(form._exec)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm & form) : AForm(form), _target(form._target)
 {
 	return;
 }
 
-AForm::AForm(std::string name, unsigned int sign, unsigned int exec) : _name(name), _signed(0), _sign(sign), _exec(exec)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubbery Creation Form", 145, 137), _target(target)
 {
 	return;
 }
 
 /* Desctructor ============================================================== */
-AForm::~AForm(void)
+ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
 	return;
 }
 
 /* Operators ================================================================ */
-std::ostream &	operator<<(std::ostream &os, AForm const & form)
+std::ostream &	operator<<(std::ostream &os, ShrubberyCreationForm const & form)
 {
 	os << "Form : " << form.getName() << std::endl;
 	os << "The Form is signed : " << (form.getSignature() ? "yes" : "No") << std::endl;
@@ -48,43 +48,35 @@ std::ostream &	operator<<(std::ostream &os, AForm const & form)
 	return (os);
 }
 
-const AForm &	AForm::operator=(const AForm & form)
+const ShrubberyCreationForm &	ShrubberyCreationForm::operator=(const ShrubberyCreationForm & form)
 {
-	(std::string &)this->_name = form._name;
-	this->_signed = form._signed;
-	(unsigned int &)this->_sign = form._sign;
-	(unsigned int &)this->_exec = form._exec;
+	this->setSignature(form.getSignature());
 	return (*this);
 }
 
-/* Operators ================================================================ */
-std::string	AForm::getName(void) const
+/* Member functions ========================================================= */
+/*
+std::string	ShrubberyCreationForm::getName(void) const
 {
 	return (this->_name);
 }
 
-bool	AForm::getSignature(void) const
+bool	ShrubberyCreationForm::getSignature(void) const
 {
 	return (this->_signed);
 }
 
-unsigned int	AForm::getSignLevel(void) const
+unsigned int	ShrubberyCreationForm::getSignLevel(void) const
 {
 	return (this->_sign);
 }
 
-unsigned int	AForm::getExecLevel(void) const
+unsigned int	ShrubberyCreationForm::getExecLevel(void) const
 {
 	return (this->_exec);
 }
 
-void	AForm::setSignature(bool state)
-{
-	this->_signed = state;
-	return;
-}
-
-void	AForm::beSigned(const Bureaucrat & b)
+void	ShrubberyCreationForm::beSigned(const Bureaucrat & b)
 {
 	try
 	{
@@ -102,18 +94,18 @@ void	AForm::beSigned(const Bureaucrat & b)
 	}
 	return;
 }
+*/
 
-/*
-void	AForm::execute(const Bureaucrat & executor) const
+void	ShrubberyCreationForm::execute(const Bureaucrat & executor) const
 {
 	try
 	{
 		if (this->getSignature() != 1)
 			throw FormNotSigned();
-		else if (executor.getGrade() <= this->getExecLevel())
-			std::cout << executor.getName() << " executed " << this->getName() << std::endl;
-		else
+		else if (executor.getGrade() > this->getExecLevel())
 			throw GradeTooLowException();
+		else
+			std::cout << executor.getName() << " executed " << this->getName() << std::endl;
 	}
 	catch (std::exception & e)
 	{
@@ -121,20 +113,9 @@ void	AForm::execute(const Bureaucrat & executor) const
 	}
 	return;
 }
-*/
 
 /* Exceptions =============================================================== */
-const char *	AForm::GradeTooHighException::what(void) const throw()
+const char *	ShrubberyCreationForm::ProblemOnTree::what(void) const throw()
 {
 	return ("Sorry, the grade is too high but it's not logical.");
-}
-
-const char *	AForm::GradeTooLowException::what(void) const throw()
-{
-	return ("Sorry, your grade is to low to sign this form.");
-}
-
-const char *	AForm::FormNotSigned::what(void) const throw()
-{
-	return ("Sorry, the form isn't signed.");
 }
