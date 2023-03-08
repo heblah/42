@@ -6,12 +6,13 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:49:02 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/08 14:34:04 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:18:44 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
+#include <climits>
 
 #include "ScalarConverter.hpp"
 
@@ -44,9 +45,22 @@ std::ostream &  operator<<(std::ostream &os, const ScalarConverter & sc)
     int     i = sc;
     float   f = sc;
 
-    os << "char : "     << c << std::endl;
-    os << "int : "      << i << std::endl;
-    os << "float : "    << f << std::endl;
+    if (f < CHAR_MIN || f > CHAR_MAX || sc.getDouble() != sc.getDouble())
+        os << "char : impossible" << std::endl;
+    else
+    {
+        if (c >= 32 && c <= 126)
+            os << "char : '" << c << "'" << std::endl;
+        else
+            os << "char : " << "non displayable" << std::endl;
+    }
+
+    if (f < INT_MIN || f > INT_MAX || sc.getDouble() != sc.getDouble())
+        os << "int : impossible" << std::endl;
+    else
+        os << "int : "      << i << std::endl;
+
+    os << "float : "    << f << "f" << std::endl;
     os << "double : "   << sc.getDouble() << std::endl;
     return (os);
 }
