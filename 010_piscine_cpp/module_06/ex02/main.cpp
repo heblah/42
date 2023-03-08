@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:18:42 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/08 20:35:47 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/08 20:43:43 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,20 @@ void    identify(Base* p)
 
 void    identify(Base & p)
 {
-    try
-    {
-        A& a __attribute__((unused)) = dynamic_cast<A &>(p);
+    try {
+        A a __attribute__((unused)) = dynamic_cast<A &>(p);
         std::cout << "The class referenced is A" << std::endl;
     }
     catch(std::exception & e)
     {
-        try
-        {
-            B& b __attribute__((unused)) = dynamic_cast<B &>(p);
+        try {
+            B b __attribute__((unused)) = dynamic_cast<B &>(p);
             std::cout << "The class referenced is B" << std::endl;
         }
         catch(std::exception &e)
         {
-            try
-            {
-                C& c __attribute__((unused)) = dynamic_cast<C &>(p);
+            try {
+                C c __attribute__((unused)) = dynamic_cast<C &>(p);
                 std::cout << "The class referenced is C" << std::endl;
             }
             catch (std::exception & e)
@@ -75,10 +72,10 @@ void    identify(Base & p)
 int main(void)
 {
     Base    *ptr __attribute__((unused)) = NULL;
-    Base    &ref __attribute__((unused)) = *ptr;
     int     n = 5;
 
     std::cout << "========== void identify(Base* p) ==========" << std::endl;
+    n = 5;
     while (n-- > 0)
     {
         ptr = generate();
@@ -86,13 +83,13 @@ int main(void)
         delete ptr;
     }
 
+    std::cout << std::endl;
     std::cout << "========== void identify(Base& p) ==========" << std::endl;
     n = 5;
     while (n-- > 0)
     {
         ptr = generate();
-        ref = *ptr;
-        identify(ref);
+        identify(*ptr);
         delete ptr;
     }
     return (0);
