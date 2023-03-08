@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:54:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/23 15:57:22 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/08 19:01:01 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ DiamondTrap::DiamondTrap(const DiamondTrap &diamond) : ClapTrap(diamond), ScavTr
 
 	std::cout << "DiamondTrap copy constructor called." << std::endl;
 	this->setClapTrap(NULL, &hit, &energy, &attack);
-	this->DiamondTrap::_name = name;
+	this->DiamondTrap::_name = diamond._name;
 	this->ClapTrap::_name = diamond._name;
 	this->ClapTrap::_name += "_clap_name";
 	return;

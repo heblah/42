@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   class_tests.hpp                                    :+:      :+:    :+:   */
+/*   Classes.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/08 18:45:20 by halvarez         ###   ########.fr       */
+/*   Created: 2023/03/08 18:12:43 by halvarez          #+#    #+#             */
+/*   Updated: 2023/03/08 18:18:36 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLASS_HPP
- #define CLASS_HPP
+#ifndef BASE_HPP
+#define BASE_HPP 
 
-class Base {
-
-public:
-    Base(void) { this->_p = 147;}
-    ~Base(void) {}
-
-private:
-    int _p;
-
-};
-
-class Derived : public {
+class Base
+{
     public:
-        Derived(void) : Base() {this->_p = 256;}
-
-    private:
-        int _p;
+        virtual ~Base(void){}
 };
 
-#endif
+class A : public Base {};
+class B : public Base {};
+class C : public Base {};
+
+#endif /* BASE_HPP */

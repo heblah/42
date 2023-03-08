@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:53:41 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/23 15:29:50 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/08 19:04:47 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ class DiamondTrap : virtual public ScavTrap, virtual public FragTrap
 
 	private:
 		std::string		_name;
-		std::string		ClapTrap::name;
 
 };
 
