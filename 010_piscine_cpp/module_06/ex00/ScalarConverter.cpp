@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:49:02 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/08 15:18:44 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:25:58 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ std::ostream &  operator<<(std::ostream &os, const ScalarConverter & sc)
     int     i = sc;
     float   f = sc;
 
-    if (f < CHAR_MIN || f > CHAR_MAX || sc.getDouble() != sc.getDouble())
+    if (f < static_cast<float>(CHAR_MIN) || f > static_cast<float>(CHAR_MAX) || sc.getDouble() != sc.getDouble())
         os << "char : impossible" << std::endl;
     else
     {
@@ -55,7 +55,7 @@ std::ostream &  operator<<(std::ostream &os, const ScalarConverter & sc)
             os << "char : " << "non displayable" << std::endl;
     }
 
-    if (f < INT_MIN || f > INT_MAX || sc.getDouble() != sc.getDouble())
+    if (f < static_cast<float>(INT_MIN) || f > static_cast<float>(INT_MAX) || sc.getDouble() != sc.getDouble())
         os << "int : impossible" << std::endl;
     else
         os << "int : "      << i << std::endl;
