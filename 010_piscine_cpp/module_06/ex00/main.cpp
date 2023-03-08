@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   const_tests.c                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/07 18:37:57 by halvarez         ###   ########.fr       */
+/*   Created: 2023/03/08 13:56:01 by halvarez          #+#    #+#             */
+/*   Updated: 2023/03/08 14:30:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include <iostream>
+#include <string>
+#include <cstdlib>
 
-int	main(void)
+#include "ScalarConverter.hpp"
+
+int main(int argc, char **argv)
 {
-	int			a	= 42;
-	const int * const p	= &a;
+    if (argc == 2)
+    {
+        ScalarConverter sc(atof(argv[1]));
 
-	printf("a = %d\n", a);
-	*p += 1;
-	printf("a = %d\n", a);
-	return (0);
+        std::cout << sc;
+    }
+    else
+    {
+        std::cerr << "Error: enter one argument." << std::endl;
+        return (1);
+    }
+    return (0);
 }
