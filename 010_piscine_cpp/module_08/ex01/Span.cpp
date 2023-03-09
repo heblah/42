@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:17:44 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/09 20:32:35 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:49:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ Span::~Span(void)
 }
 
 /* Operators ================================================================ */
-/*
 const Span &	Span::operator=(const Span & span)
 {
 	this->_maxsize = span.getMaxSize();
@@ -49,7 +48,6 @@ const Span &	Span::operator=(const Span & span)
 	this->_set.insert( span._set.begin(), span._set.end() );
 	return (*this);
 }
-*/
 
 /* Member functions ========================================================= */
 unsigned int	Span::getMaxSize(void) const
@@ -62,10 +60,32 @@ const std::set<int> &	Span::getSet(void) const
 	return (this->_set);
 }
 
+void	Span::addNumber(const int n)
+{
+	this->_set.insert(n);
+	return;
+}
+
+unsigned int	Span::shortestSpan(void)
+{
+	if (this->_set.size() < 2)
+		throw InsufficientSize();
+
+	std::set<int>::iterator	it = this->_set.begin();
+	std::advance(it, 1);
+	return ( *it - *this->_set.begin() );
+}
+
+unsigned int	Span::longestSpan(void)
+{
+	if (this->_set.size() < 2)
+		throw InsufficientSize();
+
+	return ( *this->_set.end() - *this->_set.begin() );
+}
+
 /* Exceptions =============================================================== */
-/*
 const char *	Span::InsufficientSize::what(void) const throw()
 {
 	return ("Error: insufficient members to evaluate a distance");
 }
-*/
