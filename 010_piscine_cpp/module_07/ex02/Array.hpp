@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 12:03:35 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/09 16:44:01 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/09 18:08:25 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Array
 	public:
 							Array(void);
 							Array(const Array & array);
-							Array(unsigned int n);
+							Array(const unsigned int n);
 							~Array(void);
 
 		const Array<T> &	operator=(const Array<T> & array);
