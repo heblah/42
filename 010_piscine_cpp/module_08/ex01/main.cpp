@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/09 19:32:13 by halvarez         ###   ########.fr       */
+/*   Created: 2023/03/09 20:18:25 by halvarez          #+#    #+#             */
+/*   Updated: 2023/03/09 20:19:07 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-#include "Zombie.hpp"
 
-Zombie::Zombie(std::string name) : _name(name)
-{
-	return;
-}
+#include "Span.hpp"
 
-Zombie::~Zombie(void)
+int	main(void)
 {
-	std::cout << "Zombie destructor called." << std:::endl;
-	return;
-}
-
-void	Zombie::announce(void) const
-{
-	std::cout << this->_name;
-	std::cout << ": BraiiiiiiinnnzzzZ..." << std::endl;
-	return;
+	Span	span __attribute__((unused));
+	return (0);
 }
