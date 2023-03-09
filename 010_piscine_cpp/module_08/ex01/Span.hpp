@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:08:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/09 20:48:25 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:52:45 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ class Span
 		const std::set<int> &	getSet(void) const;
 
 		void					addNumber(const int n);
-		unsigned int			shortestSpan(void);
-		unsigned int			longestSpan(void);
+		unsigned int			shortestSpan(void) const;
+		unsigned int			longestSpan(void) const;
+		void					fillSpan(void);
 
 		class InsufficientSize : public std::exception {
 			const char *	what(void) const throw();

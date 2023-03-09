@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:17:44 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/09 20:49:04 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/09 21:13:18 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <string>
 #include <cstdlib>
 #include <set>
+#include <algorithm>
+#include <ctime>
 
 #include "Span.hpp"
 
@@ -66,7 +68,7 @@ void	Span::addNumber(const int n)
 	return;
 }
 
-unsigned int	Span::shortestSpan(void)
+unsigned int	Span::shortestSpan(void) const
 {
 	if (this->_set.size() < 2)
 		throw InsufficientSize();
@@ -76,12 +78,22 @@ unsigned int	Span::shortestSpan(void)
 	return ( *it - *this->_set.begin() );
 }
 
-unsigned int	Span::longestSpan(void)
+unsigned int	Span::longestSpan(void) const
 {
 	if (this->_set.size() < 2)
 		throw InsufficientSize();
 
 	return ( *this->_set.end() - *this->_set.begin() );
+}
+
+void	Span::fillSpan(void)
+{
+	srand(time(NULL));
+
+	while (this->_set.size() < this->_maxsize)
+		std::generate_n( std::inserter(this->_set, this->_set.begin()),
+			this->_maxsize, rand);
+	return;
 }
 
 /* Exceptions =============================================================== */
