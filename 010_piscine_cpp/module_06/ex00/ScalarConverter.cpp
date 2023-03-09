@@ -6,13 +6,15 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:49:02 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/08 17:25:58 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/09 10:10:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include <climits>
+#include <iomanip>
+#include <cmath>
 
 #include "ScalarConverter.hpp"
 
@@ -44,6 +46,9 @@ std::ostream &  operator<<(std::ostream &os, const ScalarConverter & sc)
     char    c = sc;
     int     i = sc;
     float   f = sc;
+	double	intf;
+	double	fract = std::modf(f, &intf);
+
 
     if (f < static_cast<float>(CHAR_MIN) || f > static_cast<float>(CHAR_MAX) || sc.getDouble() != sc.getDouble())
         os << "char : impossible" << std::endl;
@@ -57,9 +62,14 @@ std::ostream &  operator<<(std::ostream &os, const ScalarConverter & sc)
 
     if (f < static_cast<float>(INT_MIN) || f > static_cast<float>(INT_MAX) || sc.getDouble() != sc.getDouble())
         os << "int : impossible" << std::endl;
-    else
-        os << "int : "      << i << std::endl;
+    else {
+        os << "int : "      << i << std::endl; }
 
+	if (fract == 0)
+	{
+		std::cout.precision( 1 );
+		os << setiosflags( std::ios::fixed );
+	}
     os << "float : "    << f << "f" << std::endl;
     os << "double : "   << sc.getDouble() << std::endl;
     return (os);
