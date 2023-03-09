@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:08:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/09 20:52:45 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/09 21:23:29 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ class Span
 		void					fillSpan(void);
 
 		class InsufficientSize : public std::exception {
+			const char *	what(void) const throw();
+		};
+		class SpanIsFull : public std::exception {
 			const char *	what(void) const throw();
 		};
 
