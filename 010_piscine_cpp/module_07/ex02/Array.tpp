@@ -55,13 +55,13 @@ const Array<T> &	Array<T>::operator=(const Array<T> & array)
 
 	this->setSize( array.getSize() );
 
-	if (this->array != NULL)
+	if (this->_array != NULL)
 		delete[] this->_array;
 	this->_array = new T[ array.getSize() ]();
 
 	while (i < this->_size)
 	{
-		*(this->_array + i) = array[i];
+		*(this->_array + i) = array._array[i];
 		i++;
 	}
 	return ( *this );
@@ -70,15 +70,8 @@ const Array<T> &	Array<T>::operator=(const Array<T> & array)
 template<typename T>
 T & 	Array<T>::operator[](const unsigned int i)
 {
-	try
-	{
-		if (i >= this->_size)
-			throw InvalidIndex();
-	}
-	catch(std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	if (i >= this->_size)
+		throw InvalidIndex();
 	return ( *(this->_array + i) );
 }
 
