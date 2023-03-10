@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 22:08:07 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/10 15:18:54 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/10 17:12:31 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,16 @@ class MutantStack
 		const MutantStack<T> &	operator=(const MutantStack & ms);
 
 		ConstStackRef			getStack(void) const;
-		/*
 		void					push(const T & elem);
 		void					pop(void);
+		T &						top(void);
 
 		class Iterator
 		{
 								Iterator(void);
 								Iterator(const Iterator & it);
 								~Iterator(void);
+		/*
 
 			const Iterator &	operator=(void);
 
@@ -47,9 +48,9 @@ class MutantStack
 
 			const Iterator &	begin(void) const;
 			const Iterator &	end(void) const;
+		*/
 
 		};
-		*/
 
 	private:
 		std::stack<T>			_stack;

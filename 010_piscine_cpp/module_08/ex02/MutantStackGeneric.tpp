@@ -38,7 +38,7 @@ const MutantStack<T> &	MutantStack<T>::operator=(const MutantStack & ms __attrib
 	T	tmp;
 
 	while (this->_stack.size() != 0)
-		tmp = this->_stack.pop();
+		this->_stack.pop();
 	return (*this);
 }
 
@@ -49,12 +49,46 @@ typename std::stack<T>::const_reference 	MutantStack<T>::getStack(void) const
 	return (this->_container);
 }
 
-/*
 template <typename T>
 void	MutantStack<T>::push(const T & elem)
 {
-	this->_container.insert( elem, 0 );
+	this->_stack.push( elem );
 	return;
 }
-*/
+
+template <typename T>
+void	MutantStack<T>::pop(void)
+{
+	this->_stack.pop();
+	return;
+}
+
+template <typename T>
+T &	MutantStack<T>::top(void)
+{
+	return ( this->_stack.top() );
+}
+
+// Iterator nested class ==================================================== //
+MutantStack::Iterator::Iterator(void)
+{
+	if (PRINT)
+		std::cout << "Default MutantStack::Iterator constructor" << std::endl;
+	return;
+}
+
+MutantStack::Iterator::Iterator(const Iterator * it)
+{
+	if (PRINT)
+		std::cout << "Copy constructor  MutantStack::Iterator constructor" << std::endl;
+	return;
+}
+
+MutantStack::Iterator::~Iterator(void)
+{
+	if (PRINT)
+		std::cout << "Default MutantStack::Iterator constructor" << std::endl;
+	return;
+}
+
 #endif
