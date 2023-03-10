@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 22:08:07 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/10 10:54:29 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:48:42 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,18 @@ template <typename Base>
 class MutantStack : public Base
 {
 	public:
-							MutantStack(void);
-							MutantStack(const MutantStack & mp);
-							~MutantStack(void);
+		typedef typename Base::const_reference ConstBaseRef;
 
-		const MutantStack &	operator=(const MutantStack & ms);
+									MutantStack(void);
+									MutantStack(const MutantStack & mp);
+									~MutantStack(void);
 
-		//typename Base<T>::const_reference		getContainer(void) const;
+		const MutantStack<Base> &	operator=(const MutantStack & ms);
+
+		ConstBaseRef				getContainer(void) const;
 
 	private:
-		Base				_container;
+		Base			_container;
 
 };
 

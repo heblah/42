@@ -5,6 +5,8 @@
 #ifndef MUTANTSTACKGENERIC_TPP
 #define MUTANTSTACKGENERIC_TPP
 
+#include "MutantStack.hpp"
+
 // Constructors ============================================================= //
 template <typename Base>
 MutantStack<Base>::MutantStack(void)
@@ -32,4 +34,26 @@ MutantStack<Base>::~MutantStack(void)
 }
 
 // Operators ================================================================ //
+template <typename Base>
+const MutantStack<Base> &	MutantStack<Base>::operator=(const MutantStack & ms)
+{
+	ConstBaseRef			source	= ms.getContainer();
+	typename Base::iterator	it		= source.begin();
+
+	this->_container.clear();
+	while (it != source.end())
+	{
+		this->_container.insert( *it );
+		it++;
+	}
+	return (*this);
+}
+
+// Member funtions ========================================================== //
+template <typename Base>
+typename Base::const_reference	MutantStack<Base>::getContainer(void) const
+{
+	return (this->_container);
+}
+
 #endif
