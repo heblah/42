@@ -1,23 +1,24 @@
 /* ========================================================================== */
 /* Template : generic ======================================================= */
+/*    for vector, deque, set and map ======================================== */
 /* ========================================================================== */
 
 #ifndef MUTANTSTACKGENERIC_TPP
 #define MUTANTSTACKGENERIC_TPP
 
-#include "MutantStack.hpp"
+//#include "MutantStack.hpp"
 
 // Constructors ============================================================= //
-template <typename Base>
-MutantStack<Base>::MutantStack(void)
+template <typename Base, typename T>
+MutantStack<Base, T>::MutantStack(void)
 {
 	if (PRINT)
 		std::cout << "Default constructor from generic template" << std::endl;
 	return;
 }
 
-template <typename Base>
-MutantStack<Base>::MutantStack(const MutantStack & ms) : _container(ms._container)
+template <typename Base, typename T>
+MutantStack<Base, T>::MutantStack(const MutantStack & ms) : _container(ms._container)
 {
 	if (PRINT)
 		std::cout << "Copy constructor from generic template" << std::endl;
@@ -25,8 +26,8 @@ MutantStack<Base>::MutantStack(const MutantStack & ms) : _container(ms._containe
 }
 
 // Destructor =============================================================== //
-template <typename Base>
-MutantStack<Base>::~MutantStack(void)
+template <typename Base, typename T>
+MutantStack<Base, T>::~MutantStack(void)
 {
 	if (PRINT)
 		std::cout << "Destructor from generic template" << std::endl;
@@ -34,26 +35,34 @@ MutantStack<Base>::~MutantStack(void)
 }
 
 // Operators ================================================================ //
-template <typename Base>
-const MutantStack<Base> &	MutantStack<Base>::operator=(const MutantStack & ms)
+template <typename Base, typename T>
+const MutantStack<Base, T> &	MutantStack<Base, T>::operator=(const MutantStack & ms)
 {
 	ConstBaseRef			source	= ms.getContainer();
 	typename Base::iterator	it		= source.begin();
+	int						pos		= 0;
 
 	this->_container.clear();
 	while (it != source.end())
 	{
-		this->_container.insert( *it );
+		this->_container.insert( *it, pos);
 		it++;
+		pos++;
 	}
 	return (*this);
 }
 
 // Member funtions ========================================================== //
-template <typename Base>
-typename Base::const_reference	MutantStack<Base>::getContainer(void) const
+template <typename Base, typename T>
+typename Base::const_reference	MutantStack<Base, T>::getContainer(void) const
 {
 	return (this->_container);
 }
 
+template <typename Base, typename T>
+void	MutantStack<Base, T>::addElement(const T & elem)
+{
+	this->_container.insert( elem, 0 );
+	return;
+}
 #endif

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 22:08:07 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/10 11:48:42 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:23:24 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #define PRINT 1
 
 // Template : generic ======================================================= //
-template <typename Base>
+template <typename Base, typename T>
 class MutantStack : public Base
 {
 	public:
@@ -26,9 +26,10 @@ class MutantStack : public Base
 									MutantStack(const MutantStack & mp);
 									~MutantStack(void);
 
-		const MutantStack<Base> &	operator=(const MutantStack & ms);
+		const MutantStack<Base, T> &	operator=(const MutantStack & ms);
 
 		ConstBaseRef				getContainer(void) const;
+		void						addElement(const T & elem);
 
 	private:
 		Base			_container;
