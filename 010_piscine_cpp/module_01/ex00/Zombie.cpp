@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:31:20 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/09 19:32:13 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:25:02 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Zombie::Zombie(std::string name) : _name(name)
 
 Zombie::~Zombie(void)
 {
-	std::cout << "Zombie destructor called." << std:::endl;
+	std::cout << this->_name << ": Zombie destructor called." << std::endl;
 	return;
 }
 

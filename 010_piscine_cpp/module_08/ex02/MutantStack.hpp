@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 22:08:07 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/10 12:23:24 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:18:54 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,43 @@
 #define PRINT 1
 
 // Template : generic ======================================================= //
-template <typename Base, typename T>
-class MutantStack : public Base
+template <typename T>
+class MutantStack
 {
 	public:
-		typedef typename Base::const_reference ConstBaseRef;
+		typedef typename std::stack<T>::const_reference ConstStackRef;
+								MutantStack(void);
+								MutantStack(const MutantStack & mp);
+								~MutantStack(void);
 
-									MutantStack(void);
-									MutantStack(const MutantStack & mp);
-									~MutantStack(void);
+		const MutantStack<T> &	operator=(const MutantStack & ms);
 
-		const MutantStack<Base, T> &	operator=(const MutantStack & ms);
+		ConstStackRef			getStack(void) const;
+		/*
+		void					push(const T & elem);
+		void					pop(void);
 
-		ConstBaseRef				getContainer(void) const;
-		void						addElement(const T & elem);
+		class Iterator
+		{
+								Iterator(void);
+								Iterator(const Iterator & it);
+								~Iterator(void);
+
+			const Iterator &	operator=(void);
+
+			const Iterator &	operator++(void);
+			const Iterator &	operator++(int);
+			const Iterator &	operator--(void);
+			const Iterator &	operator--(int);
+
+			const Iterator &	begin(void) const;
+			const Iterator &	end(void) const;
+
+		};
+		*/
 
 	private:
-		Base			_container;
+		std::stack<T>			_stack;
 
 };
 

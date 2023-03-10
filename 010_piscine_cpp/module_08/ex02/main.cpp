@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 22:04:50 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/10 12:20:58 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/10 14:13:07 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 int	main(void)
 {
-	MutantStack< std::stack<int>, int >	dmut __attribute__((unused));
+	MutantStack< int >	deftack __attribute__((unused));
 
 	return (0);
 }
