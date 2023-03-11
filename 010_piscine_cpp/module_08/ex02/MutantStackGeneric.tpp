@@ -71,6 +71,6 @@ T &	MutantStack<T>::top(void)
 template <typename T>
 typename MutantStack<T>::iterator	MutantStack<T>::begin(void) const
 {
-	return ( this->_start.c.begin() );
+	return ( this->_stack.c.begin() );
 }
 #endif
