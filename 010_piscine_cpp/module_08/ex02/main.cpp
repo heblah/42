@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 22:04:50 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/11 16:22:37 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:00:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,13 @@ int	main(void)
 	std::cout << cpytack.top() << std::endl;
 
 	std::cout << std::endl;
-	std::cout << "========== Testing equalstack =============" << std::endl;
+	std::cout << "========== Testing equal stack ============" << std::endl;
 	std::cout << equtack.top() << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "========== Testing begin iterator =========" << std::endl;
+	MutantStack<int>::iterator	it;
+//	std::cout << *(it.begin()) <<std::endl;
+
 	return (0);
 }

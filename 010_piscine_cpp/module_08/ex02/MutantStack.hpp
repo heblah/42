@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 22:08:07 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/10 17:12:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/11 17:58:14 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 
 // Template : generic ======================================================= //
 template <typename T>
-class MutantStack
+class MutantStack : public std::stack<T>
 {
 	public:
 		typedef typename std::stack<T>::const_reference ConstStackRef;
+		typedef typename std::stack<T>::container_type::iterator iterator;
+
 								MutantStack(void);
 								MutantStack(const MutantStack & mp);
 								~MutantStack(void);
@@ -32,25 +34,7 @@ class MutantStack
 		void					pop(void);
 		T &						top(void);
 
-		class Iterator
-		{
-								Iterator(void);
-								Iterator(const Iterator & it);
-								~Iterator(void);
-		/*
-
-			const Iterator &	operator=(void);
-
-			const Iterator &	operator++(void);
-			const Iterator &	operator++(int);
-			const Iterator &	operator--(void);
-			const Iterator &	operator--(int);
-
-			const Iterator &	begin(void) const;
-			const Iterator &	end(void) const;
-		*/
-
-		};
+		iterator				begin(void) const;
 
 	private:
 		std::stack<T>			_stack;
