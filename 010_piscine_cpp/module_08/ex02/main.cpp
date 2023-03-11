@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 22:04:50 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/10 17:09:22 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/11 16:22:37 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,24 @@
 int	main(void)
 {
 	MutantStack< int >	deftack __attribute__((unused));
+	MutantStack< int >	equtack __attribute__((unused));
+
+	deftack.push( 1 );
+	deftack.push( 2 );
+	deftack.push( 3 );
 	MutantStack< int >	cpytack __attribute__((unused)) (deftack);
-	std::stack<int>	stack;
+	equtack = deftack;
 
-	deftack.top();
+	std::cout << std::endl;
+	std::cout << "========== Testing default stack ==========" << std::endl;
+	std::cout << deftack.top() << std::endl;
 
-	//deftack.getStack().swap( cpytack.getStack() );
-	//std::cout << deftack.pop() <<std::endl;
-	//std::cout << deftack.pop() <<std::endl;
+	std::cout << std::endl;
+	std::cout << "========== Testing copy stack =============" << std::endl;
+	std::cout << cpytack.top() << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "========== Testing equalstack =============" << std::endl;
+	std::cout << equtack.top() << std::endl;
 	return (0);
 }

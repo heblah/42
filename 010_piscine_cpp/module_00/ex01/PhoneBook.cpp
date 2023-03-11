@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:05:59 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/12 14:43:28 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/11 12:21:20 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	PhoneBook::_resume(void) const
 	std::string	hsep = "|----------|----------|----------|----------|";
 
 	std::cout << hsep << std::endl;
-	std::cout << "|     index| fist name| last name|  nickname|" << std::endl;
+	std::cout << "|     index|first name| last name|  nickname|" << std::endl;
 	std::cout << hsep << std::endl;
 
 	index = (this->_index > 7) ? 7 : (this->_index % 8);

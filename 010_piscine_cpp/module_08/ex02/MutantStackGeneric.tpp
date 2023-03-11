@@ -33,12 +33,11 @@ MutantStack<T>::~MutantStack(void)
 
 // Operators ================================================================ //
 template <typename T>
-const MutantStack<T> &	MutantStack<T>::operator=(const MutantStack & ms __attribute__((unused)))
+const MutantStack<T> &	MutantStack<T>::operator=(const MutantStack & ms)
 {
-	T	tmp;
-
-	while (this->_stack.size() != 0)
+	while ( this->_stack.size() != 0 )
 		this->_stack.pop();
+	this->_stack = ms._stack;
 	return (*this);
 }
 
@@ -70,25 +69,27 @@ T &	MutantStack<T>::top(void)
 }
 
 // Iterator nested class ==================================================== //
-MutantStack::Iterator::Iterator(void)
+template <typename T>
+MutantStack<T>::Iterator::Iterator(void)
 {
 	if (PRINT)
 		std::cout << "Default MutantStack::Iterator constructor" << std::endl;
 	return;
 }
 
-MutantStack::Iterator::Iterator(const Iterator * it)
+template <typename T>
+MutantStack<T>::Iterator::Iterator(const Iterator & it __attribute__((unused)))
 {
 	if (PRINT)
-		std::cout << "Copy constructor  MutantStack::Iterator constructor" << std::endl;
+		std::cout << "Copy MutantStack::Iterator constructor" << std::endl;
 	return;
 }
 
-MutantStack::Iterator::~Iterator(void)
+template <typename T>
+MutantStack<T>::Iterator::~Iterator(void)
 {
 	if (PRINT)
-		std::cout << "Default MutantStack::Iterator constructor" << std::endl;
-	return;
+		std::cout << "MutantStack::Iterator tructor" << std::endl;
 }
 
 #endif
