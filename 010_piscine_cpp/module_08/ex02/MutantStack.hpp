@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 22:08:07 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/11 17:58:14 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/12 14:28:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ template <typename T>
 class MutantStack : public std::stack<T>
 {
 	public:
-		typedef typename std::stack<T>::const_reference ConstStackRef;
-		typedef typename std::stack<T>::container_type::iterator iterator;
+		typedef typename std::stack<T>::container_type::iterator			iterator;
+		typedef typename std::stack<T>::container_type::reverse_iterator	r_iterator;
 
 								MutantStack(void);
 								MutantStack(const MutantStack & mp);
@@ -29,52 +29,13 @@ class MutantStack : public std::stack<T>
 
 		const MutantStack<T> &	operator=(const MutantStack & ms);
 
-		ConstStackRef			getStack(void) const;
-		void					push(const T & elem);
-		void					pop(void);
-		T &						top(void);
-
-		iterator				begin(void) const;
-
-	private:
-		std::stack<T>			_stack;
+		iterator				begin(void);
+		iterator				end(void);
+		r_iterator				rbegin(void);
+		r_iterator				rend(void);
 
 };
 
 #include "MutantStackGeneric.tpp"
-
-/*
-// Template : std::stack ==================================================== //
-template <typename T>
-class MutantStack <std::stack, T > : public std::stack<T>
-{
-	public:
-							MutantStack(void);
-							MutantStack(const MutantStack & mp);
-							~MutantStack(void);
-
-		const MutantStack &	operator=(const MutantStack & ms);
-
-		class Iterator
-		{
-								Iterator(void);
-								Iterator(const Iterator & it);
-								~Iterator(void);
-
-			const Iterator &	operator=(void);
-
-			const Iterator &	operator++(void);
-			const Iterator &	operator++(int);
-			const Iterator &	operator--(void);
-			const Iterator &	operator--(int);
-		};
-
-	private:
-		std::stack<T>			_container;
-
-};
-
-#include "MutantStackceStdStack.tpp"
-*/
 
 #endif /* MUTANTSTACK_HPP */

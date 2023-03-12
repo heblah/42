@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 22:04:50 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/11 18:06:42 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/12 14:30:16 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,32 @@
 #include <assert.h>
 
 #include "MutantStack.hpp"
+
+int	tests42(void)
+{
+	std::cout << "========== Testing from subject ===========" << std::endl;
+	MutantStack<int> mstack;
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << mstack.top() << std::endl;
+	mstack.pop();
+	std::cout << mstack.size() << std::endl;
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	mstack.push(0);
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+	++it;
+	--it;
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+	std::stack<int> s(mstack);
+	return 0;
+}
 
 int	main(void)
 {
@@ -47,9 +73,47 @@ int	main(void)
 
 	std::cout << std::endl;
 	std::cout << "========== Testing begin iterator =========" << std::endl;
-	MutantStack<int>::iterator	it__attribute__((unused));
-	it = deftack.begin();
-//	std::cout << *(it.begin()) <<std::endl;
+	MutantStack<int>::iterator 	it __attribute__((unused)) = deftack.begin();
+	std::cout << *it <<std::endl;
+	it++;
+	std::cout << *it <<std::endl;
+	it++;
+	std::cout << *it <<std::endl;
+	it++;
+	std::cout << *it <<std::endl;
 
+	std::cout << std::endl;
+	std::cout << "========== Testing end iterator ===========" << std::endl;
+	it = deftack.end();
+	std::cout << *(--it) <<std::endl;
+	it--;
+	std::cout << *it <<std::endl;
+	it--;
+	std::cout << *it <<std::endl;
+
+	std::cout << std::endl;
+	std::cout << "========== Testing rbegin r_iterator ======" << std::endl;
+	it = deftack.rbegin();
+	std::cout << *it <<std::endl;
+	it++;
+	std::cout << *it <<std::endl;
+	it++;
+	std::cout << *it <<std::endl;
+	it++;
+	std::cout << *it <<std::endl;
+
+	std::cout << std::endl;
+	std::cout << "========== Testing rend r_iterator ========" << std::endl;
+	it = deftack.rend();
+	std::cout << *(--it) <<std::endl;
+	it--;
+	std::cout << *it <<std::endl;
+	it--;
+	std::cout << *it <<std::endl;
+
+	std::cout << std::endl;
+	tests42();
+
+	std::cout << std::endl;
 	return (0);
 }

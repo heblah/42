@@ -7,7 +7,7 @@
 
 // Constructors ============================================================= //
 template <typename T>
-MutantStack<T>::MutantStack(void)
+MutantStack<T>::MutantStack(void) : std::stack<T>()
 {
 	if (PRINT)
 		std::cout << "Default constructor from generic template" << std::endl;
@@ -15,7 +15,7 @@ MutantStack<T>::MutantStack(void)
 }
 
 template <typename T>
-MutantStack<T>::MutantStack(const MutantStack & ms) : _stack(ms._stack)
+MutantStack<T>::MutantStack(const MutantStack & ms) : std::stack<T>( ms )
 {
 	if (PRINT)
 		std::cout << "Copy constructor from generic template" << std::endl;
@@ -33,15 +33,40 @@ MutantStack<T>::~MutantStack(void)
 
 // Operators ================================================================ //
 template <typename T>
-const MutantStack<T> &	MutantStack<T>::operator=(const MutantStack & ms)
+const MutantStack<T> &	MutantStack<T>::operator=( const MutantStack & ms )
 {
-	while ( this->_stack.size() != 0 )
-		this->_stack.pop();
-	this->_stack = ms._stack;
+	while ( this->size() != 0 )
+		this->pop();
+	this->c = ms.c;
 	return (*this);
 }
 
 // Member funtions ========================================================== //
+template <typename T>
+typename MutantStack<T>::iterator	MutantStack<T>::begin(void)
+{
+	return ( this->c.begin() );
+}
+
+template <typename T>
+typename MutantStack<T>::iterator	MutantStack<T>::end(void)
+{
+	return ( this->c.end() );
+}
+
+template <typename T>
+typename MutantStack<T>::r_iterator	MutantStack<T>::rbegin(void)
+{
+	return ( this->c.rbegin() );
+}
+
+template <typename T>
+typename MutantStack<T>::r_iterator	MutantStack<T>::rend(void)
+{
+	return ( this->c.rend() );
+}
+
+/*
 template <typename T>
 typename MutantStack<T>::ConstStackRef 	MutantStack<T>::getStack(void) const
 {
@@ -68,9 +93,5 @@ T &	MutantStack<T>::top(void)
 	return ( this->_stack.top() );
 }
 
-template <typename T>
-typename MutantStack<T>::iterator	MutantStack<T>::begin(void) const
-{
-	return ( this->_stack.c.begin() );
-}
+*/
 #endif
