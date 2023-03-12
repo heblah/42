@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:46:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/24 19:06:20 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/12 16:33:36 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,36 @@
 #include <string>
 #include "Animal.hpp"
 
+#define PRINT 0
+
 /* Constructors ============================================================= */
 Animal::Animal(void)
 {
-	std::cout << "Default animal constructor called" << std::endl;
-	this->_brain = new Brain();
+	if (PRINT)
+		std::cout << "Default animal constructor called" << std::endl;
 	return;
 }
 
 Animal::Animal(const Animal &animal)
 {
-	std::cout << "Copy animal constructor called" << std::endl;
+	if (PRINT)
+		std::cout << "Copy animal constructor called" << std::endl;
 	this->_type = animal._type;
-	this->_brain = new Brain();
 	return;
 }
 
 Animal::Animal(const std::string &type) : _type(type)
 {
-	std::cout << "Animal constructor by name called" << std::endl;
-	this->_brain = new Brain();
+	if (PRINT)
+		std::cout << "Animal constructor by name called" << std::endl;
 	return;
 }
 
 /* Destructors ============================================================== */
 Animal::~Animal(void)
 {
-	std::cout << "Animal constructor called" << std::endl;
-	delete this->_brain;
+	if (PRINT)
+		std::cout << "Animal constructor called" << std::endl;
 	return;
 }
 
@@ -67,29 +69,5 @@ std::string	Animal::getType(void) const
 void	Animal::setType(const std::string &type)
 {
 	this->_type = type;
-	return;
-}
-
-std::string	Animal::getIdea(size_t pos) const
-{
-	if (pos > 0 && pos <= this->_brain->getQi())
-		return (this->_brain->getIdea(pos));
-	else
-	{
-		std::cout << "Sorry, your friend isn't smart enough to get " << pos;
-		std::cout << " ideas" << std::endl;
-		return ("");
-	}
-}
-
-void	Animal::setIdea(const std::string idea, size_t pos)
-{
-	if (pos > 0 && pos <= this->_brain->getQi())
-		this->_brain->setIdea(idea, pos);
-	else
-	{
-		std::cout << "Sorry, your friend isn't smart enough to get " << pos;
-		std::cout << " ideas" << std::endl;
-	}
 	return;
 }

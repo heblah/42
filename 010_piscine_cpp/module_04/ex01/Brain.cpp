@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:40:11 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/24 19:06:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/12 16:34:54 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 #include <string>
 #include "Brain.hpp"
 
+#define PRINT 0
+
 const unsigned int Brain::_qi = 100;
 
 /* Constructors ============================================================= */
 Brain::Brain(void)
 {
-	std::cout << "Default brain constructor called" << std::endl;
+	if (PRINT)
+		std::cout << "Default brain constructor called" << std::endl;
 	return;
 }
 
@@ -27,7 +30,8 @@ Brain::Brain(const Brain &brain)
 {
 	unsigned int	n = 0;
 
-	std::cout << "Copy brain constructor called" << std::endl;
+	if (PRINT)
+		std::cout << "Copy brain constructor called" << std::endl;
 	while (n < this->_qi)
 	{
 		*(this->_brain + n) = *(brain._brain + n);
@@ -40,7 +44,8 @@ Brain::Brain(const std::string brain[])
 {
 	unsigned int	n = 0;
 
-	std::cout << "Brain constructor by string array called" << std::endl;
+	if (PRINT)
+		std::cout << "Brain constructor by string array called" << std::endl;
 	while (n < this->_qi)
 	{
 		*(this->_brain + n) = *(brain + n);
@@ -52,7 +57,8 @@ Brain::Brain(const std::string brain[])
 /* Destructors ============================================================== */
 Brain::~Brain(void)
 {
-	std::cout << "Brain destructor called" << std::endl;
+	if (PRINT)
+		std::cout << "Brain destructor called" << std::endl;
 	return;
 }
 

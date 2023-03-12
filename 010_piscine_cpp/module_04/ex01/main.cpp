@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:31:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/24 19:09:45 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/12 16:33:25 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	tests_cat(void)
 
 	std::cout << std::endl << "pcat = (Cat *)pAcat;\ndelete pcat;" << std::endl;
 	pcat = (Cat *)pAcat;
-	delete pcat;
+	delete pAcat;
 	return;
 }
 
