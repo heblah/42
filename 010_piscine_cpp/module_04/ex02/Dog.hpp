@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:02:12 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/24 19:18:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/12 17:06:21 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,24 @@
 
 #include "Animal.hpp"
 
+class Brain;
+
 class Dog : public AAnimal {
 	public:
-				Dog(void);
-				Dog(const Dog &dog);
-				Dog(const std::string &type);
-				~Dog(void);
+						Dog(void);
+						Dog(const Dog &dog);
+						Dog(const std::string &type);
+		virtual			~Dog(void);
 
-		Dog &	operator=(const Dog &dog);
+		Dog &			operator=(const Dog &dog);
 
-		void	makeSound(void) const;
+		void			makeSound(void) const;
+
+		std::string		getIdea(size_t pos) const;
+		void			setIdea(const std::string idea, size_t pos);
 
 	private:
+		Brain			*_brain;
 };
 
 #endif
