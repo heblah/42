@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 22:04:50 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/12 14:30:16 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/12 15:14:47 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,23 +93,22 @@ int	main(void)
 
 	std::cout << std::endl;
 	std::cout << "========== Testing rbegin r_iterator ======" << std::endl;
-	it = deftack.rbegin();
-	std::cout << *it <<std::endl;
-	it++;
-	std::cout << *it <<std::endl;
-	it++;
-	std::cout << *it <<std::endl;
-	it++;
-	std::cout << *it <<std::endl;
+	MutantStack<int>::r_iterator 	rit __attribute__((unused)) = deftack.rbegin();
+	rit = deftack.rbegin();
+	std::cout << *rit <<std::endl;
+	rit++;
+	std::cout << *rit <<std::endl;
+	rit++;
+	std::cout << *rit <<std::endl;
 
 	std::cout << std::endl;
 	std::cout << "========== Testing rend r_iterator ========" << std::endl;
-	it = deftack.rend();
-	std::cout << *(--it) <<std::endl;
-	it--;
-	std::cout << *it <<std::endl;
-	it--;
-	std::cout << *it <<std::endl;
+	rit = deftack.rend();
+	std::cout << *(--rit) <<std::endl;
+	rit--;
+	std::cout << *rit <<std::endl;
+	rit--;
+	std::cout << *rit <<std::endl;
 
 	std::cout << std::endl;
 	tests42();
