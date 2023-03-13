@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:40:40 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/21 17:12:34 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/13 16:20:48 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 /*
  * Public functions
  */
+/*
 void	Harl::complain(std::string level) const
 {
 	std::map <std::string, MFP>	fmap;
@@ -32,7 +33,29 @@ void	Harl::complain(std::string level) const
 		std::cout << "Error: Harl can't complain this way." << std::endl;
 	return;
 }
+*/
 
+void	Harl::complain(std::string level) const
+{
+	std::string				msg[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	MFP						fnc[4] = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
+	int						i      = 0;
+	std::string::iterator	it     = level.begin();
+
+	while ( it != level.end() )
+	{
+		*it = toupper( *it  );
+		it++;
+	}
+	while (i < 4)
+	{
+		if (level.compare( msg[i] ) == 0)
+			return ( ( this->*fnc[i] )() );
+		i++;
+	}
+	std::cout << "Error: Harl can't complain this way." << std::endl;
+	return;
+}
 
 /*
  * Private functions
