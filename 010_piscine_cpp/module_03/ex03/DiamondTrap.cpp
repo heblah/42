@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:54:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/08 19:01:01 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/13 12:43:10 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "DiamondTrap.hpp"
 
 /* Constructors ============================================================= */
-DiamondTrap::DiamondTrap(void) : ClapTrap()
+DiamondTrap::DiamondTrap(void) : ClapTrap(), ScavTrap(), FragTrap()
 {
 	unsigned int	hit = this->FragTrap::getHit();
 	unsigned int	energy = this->ScavTrap::getEnergy();
@@ -39,7 +39,7 @@ DiamondTrap::DiamondTrap(const DiamondTrap &diamond) : ClapTrap(diamond), ScavTr
 	return;
 }
 
-DiamondTrap::DiamondTrap(const std::string &name) : ClapTrap(name)
+DiamondTrap::DiamondTrap(const std::string &name) : ClapTrap(name), ScavTrap(), FragTrap()
 {
 	unsigned int	hit = this->FragTrap::getHit();
 	unsigned int	energy = this->ScavTrap::getEnergy();
@@ -69,6 +69,7 @@ DiamondTrap &	DiamondTrap::operator=(const DiamondTrap &diamond)
 	unsigned int	attack = diamond.getAttack();
 
 	this->setClapTrap(&name, &hit, &energy, &attack);
+	this->_name = diamond.getAttack();
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:52:13 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/23 16:01:28 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/13 12:39:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,10 @@ int	main(void)
 	std::cout << std::endl;
 	DiamondTrap	un_named;
 	un_named.putStats();
-	std::cout << "The DiamondTrap with no name = Diam's :" << std::endl;
+	std::cout << "The DiamondTrap with no name, un_named = Diam's gives :" << std::endl;
 	un_named = diam;
 	un_named.putStats();
+	un_named.whoAmI();
 
 	std::cout << std::endl;
 	return (0);
