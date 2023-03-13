@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/13 12:31:59 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:45:39 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Base {
 
 };
 
-class Derived1 : public Base {
+class Derived1 : virtual public Base {
     public:
         Derived1(void) : Base() {this->_p = 147;}
         ~Derived1(void){}
@@ -38,7 +38,7 @@ class Derived1 : public Base {
         int _p;
 };
 
-class Derived2 : public Base {
+class Derived2 : virtual public Base {
     public:
         Derived2(void) : Base() {this->_p = 42;}
         ~Derived2(void){}
@@ -67,7 +67,7 @@ int main(void)
     Derived1	d1;
     Derived2	d2;
     DeDerived	dd1;
-	Base		*ptr __attribute__((unused)) = &d1;
+	Base		*ptr __attribute__((unused)) = &dd1;
 
     std::cout << "Derived1 _p  = " << d1.get() << std::endl;
     std::cout << "Derived2 _p  = " << d2.get() << std::endl;
