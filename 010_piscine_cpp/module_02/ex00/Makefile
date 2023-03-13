@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/20 08:43:45 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/13 11:34:38 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ CC			= c++ -std=c++98
 RM			= rm -rf
 
 #Conditionnal flags depending on the building version
-cflags.rls		:= -Wall -Wextra -Werror -MMD -MP
+cflags.rls		:= -Wall -Wextra -Werror -Wpedantic -pedantic-errors -MMD -MP
 cflags.gdb		:= -g3 #-fstandalone-debug
 cflags.san		:= -g3 -fsanitize=address #-fstandalone-debug 
 CFLAGS			= ${cflags.rls} ${cflags.${build}}
@@ -54,7 +54,10 @@ fclean: clean
 re:     fclean
 		${MAKE} all
 
+run:	all
+		./${NAME}
+
 #Dependencies list
 -include ${DEP}
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus run

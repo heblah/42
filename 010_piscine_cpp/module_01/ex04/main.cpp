@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:32:23 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/21 17:12:58 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/13 11:29:48 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,11 @@ int	main(int argc, char **argv)
 	std::ofstream	ofs;
 	std::string		buffer;
 
-	ifs.open(argv[1]);
-	ofs.open("new_file");
+	if (argc == 4)
+	{
+		ifs.open(argv[1]);
+		ofs.open("new_file");
+	}
 	if (argc == 4 && ifs.good() == true)
 	{
 		buffer = file2string(ifs);
