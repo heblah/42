@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:32:23 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/13 11:29:48 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/14 13:21:02 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ std::string	replace(std::string str, std::string oldsub, std::string newsub)
 	{
 		newstr += str.substr(pos, str.find(oldsub, pos) - pos);
 		newstr += newsub;
-		pos = str.find(oldsub, pos) + oldlen;
+		pos		= str.find(oldsub, pos) + oldlen;
 	}
 	newstr += str.substr(pos, str.size());
 	return (newstr);
@@ -50,11 +50,14 @@ int	main(int argc, char **argv)
 	std::ifstream	ifs;
 	std::ofstream	ofs;
 	std::string		buffer;
+	std::string		new_file;
 
 	if (argc == 4)
 	{
+		new_file = argv[1];
+		new_file += ".replace";
 		ifs.open(argv[1]);
-		ofs.open("new_file");
+		ofs.open( new_file.c_str() );
 	}
 	if (argc == 4 && ifs.good() == true)
 	{
