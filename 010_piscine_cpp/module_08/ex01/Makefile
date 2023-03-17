@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/03/09 20:19:22 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/15 15:26:15 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ RM		= rm -rf
 #Conditionnal flags depending on building version
 cflags.rls	:= -Wall -Wextra -Werror -Wpedantic -pedantic-errors -MMD -MP
 cflags.gdb	:= -g3 #-fstandalone-debug
-cflags.san	:= -g3 -fsanitize=address #-fstandalone-debug 
+cflags.san	:= -g3 -fsanitize=address -fsanitize=leak #-fstandalone-debug 
 CFLAGS		= ${cflags.rls} ${cflags.${build}}
 export		CFLAGS
 

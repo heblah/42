@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/03/12 14:18:14 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/15 15:18:38 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@
 build	:= san
 
 #Compilation of the mandatory part
-NAME	= mutant
+NAME	= btc
 
 #Buildings objects
 DIR		=
-FILES	= main.cpp
+FILES	= main.cpp BitcoinExchange.cpp
 SRC		+= $(addprefix ${DIR}, ${FILES})
 
 OBJ		= ${SRC:.cpp=.o}
