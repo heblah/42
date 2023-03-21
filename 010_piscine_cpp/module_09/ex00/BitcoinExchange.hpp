@@ -6,31 +6,34 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:05:36 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/20 09:57:43 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:42:40 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
 
-#include <vector>
+#include <map>
 
 class BitcoinExchange
 {
 	public:
-									BitcoinExchange(void);
-									BitcoinExchange(const BitcoinExchange &bc);
-									BitcoinExchange(std::ifstream & is);
-									~BitcoinExchange(void);
+		typedef std::map<std::string, float> bcMap;
 
-		const BitcoinExchange &		operator=(const BitcoinExchange &be);
+								BitcoinExchange(void);
+								BitcoinExchange(const BitcoinExchange & bc);
+								~BitcoinExchange(void);
 
-		void						putDataBase(void) const;
-		std::vector<std::string> &	getDataBase(void) const;
-		void						setDataBase(std::ifstream & is);
+		const BitcoinExchange &	operator=(const BitcoinExchange & bc);
+
+		const bcMap &			getDataBase(void) const;
+		void					addData(const std::string & str);
 
 	private:
-		std::vector<std::string>	_db;
+		bcMap					_db;
+
 };
+
+std::ostream &	operator<<(std::ostream & ofs, const BitcoinExchange & bc);
 
 #endif /* BITCOINEXCHANGE_HPP */
