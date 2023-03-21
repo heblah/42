@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:26:43 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/21 17:02:26 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:58:09 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	main(int argc, char **argv)
 	BitcoinExchange	btc;
 	std::ifstream	input;
 	std::string		buffer;
-	float			value;
 
 	if (argc == 2)
 	{
