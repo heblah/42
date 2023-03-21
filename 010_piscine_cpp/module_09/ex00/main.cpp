@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:26:43 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/21 14:31:35 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:02:26 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,27 @@ int	main(int argc, char **argv)
 {
 	BitcoinExchange	btc;
 	std::ifstream	input;
-	std::string		itxt = "test";
+	std::string		buffer;
+	float			value;
 
 	if (argc == 2)
 	{
-		try {
-			btc.find( itxt );
-		} catch (std::exception & e) {
-			std::cerr << e.what() << itxt << std::endl;
+		input.open( argv[1] );
+		while ( input.is_open() == true
+			&& input.good() == true
+			&& input.eof() == false
+			&& input.fail() == false )
+		{
+			getline(input, buffer);
+			if ( buffer.size() && buffer.substr(0, 4).compare("date") != 0 )
+			{
+				try {
+					btc.find( buffer );
+				} catch (std::exception & e) {
+					std::cerr << e.what() << buffer << std::endl;
+				}
+			}
+			buffer.clear();
 		}
 	}
 	else

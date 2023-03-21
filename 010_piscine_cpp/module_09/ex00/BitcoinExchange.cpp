@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:12:41 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/21 15:04:10 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:06:33 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,14 +104,15 @@ const float &	BitcoinExchange::find(const std::string & input) const
 	double											dval;
 	std::map<std::string, float>::const_iterator	it = this->_db.find( key );
 
-	if ( it == this->_db.end() )
+	if ( it == this->_db.end() || input.find('|', 0) == std::string::npos )
 		throw badInput();
-
-	val = it->second;
-	if ( val > INT_MAX )
+	val = input.substr( input.find('|', 0) + 2, input.size() - (input.find('|', 0) + 2) );
+	dval = atof( val.c_str() );
+	if ( dval > INT_MAX )
 		throw IntegerOverflow();
-	if ( val < 0 )
+	if ( dval < 0 )
 		throw NegativNumber();
+	std::cout << key << " => " << dval << " = " << it->second * dval << std::endl;
 	return ( it->second );
 }
 
