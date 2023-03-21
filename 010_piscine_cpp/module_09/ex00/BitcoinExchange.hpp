@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:05:36 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/21 10:42:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:41:56 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,26 @@ class BitcoinExchange
 		const BitcoinExchange &	operator=(const BitcoinExchange & bc);
 
 		const bcMap &			getDataBase(void) const;
+		const float &			find(const std::string & key) const;
 		void					addData(const std::string & str);
+
+		class badInput : public std::exception {
+			const char *	what(void) const throw() {
+				return ("Error: bad input => ");
+			}
+		};
+
+		class IntegerOverflow : public std::exception {
+			const char *	what(void) const throw() {
+				return ("Error: too large number.");
+			}
+		};
+
+		class NegativNumber : public std::exception {
+			const char *	what(void) const throw() {
+				return ("Error: not a positiv number.");
+			}
+		};
 
 	private:
 		bcMap					_db;

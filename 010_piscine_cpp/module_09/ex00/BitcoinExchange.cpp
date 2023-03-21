@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:12:41 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/21 11:18:57 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/21 15:04:10 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <fstream>
 #include <string>
 #include <math.h>
+#include <climits>
 
 #include "BitcoinExchange.hpp"
 
@@ -94,6 +95,24 @@ std::ostream &	operator<<(std::ostream & ofs, const BitcoinExchange & bc)
 const std::map<std::string, float> &	BitcoinExchange::getDataBase(void) const
 {
 	return (this->_db);
+}
+
+const float &	BitcoinExchange::find(const std::string & input) const
+{
+	std::string										key = input.substr(0, 10);
+	std::string										val;
+	double											dval;
+	std::map<std::string, float>::const_iterator	it = this->_db.find( key );
+
+	if ( it == this->_db.end() )
+		throw badInput();
+
+	val = it->second;
+	if ( val > INT_MAX )
+		throw IntegerOverflow();
+	if ( val < 0 )
+		throw NegativNumber();
+	return ( it->second );
 }
 
 void	BitcoinExchange::addData(const std::string & str)
