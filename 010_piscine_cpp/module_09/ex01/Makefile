@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/03/22 09:24:26 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/22 12:03:55 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ CXXFLAGS		= ${cxxflags.rls} ${cxxflags.${build}}
 export			CXXFLAGS
 
 %.o : %.cpp
-		${CXX} ${CFLAGS} -c $< -o $@
+		${CXX} ${CXXFLAGS} -c $< -o $@
 
 #Mandatory rules
 all:    ${NAME}
