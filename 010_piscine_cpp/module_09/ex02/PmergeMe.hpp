@@ -6,14 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:18:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/23 16:08:17 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:13:59 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 
-template <template <typename> class CT, typename T>
+template <typename CT, typename T>
 class PmergeMe
 {
 	public:
@@ -23,7 +23,7 @@ class PmergeMe
 		//const PmergeMe &	operator=(const PmergeMe & 
 
 	private:
-		CT<T>	_ct;
+		typename CT<T>	_ct;
 
 };
 

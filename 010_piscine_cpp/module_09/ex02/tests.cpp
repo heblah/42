@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 09:10:43 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/23 16:00:11 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:24:17 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,27 @@
 #include <vector>
 #include <deque>
 
-template <template <typename> class CT, typename T>
+template <class CT, typename T>
 class PmergeMe
 {
 	public:
 							PmergeMe(void);
 							~PmergeMe(void);
 		
-		//const PmergeMe &	operator=(const PmergeMe & 
-
 	private:
-		CT<T>	_ct;
+		class <CT> <int>	_ct;
+		<T>					_n;
 
 };
 
-template <template <typename> class CT, typename T>
+template <class CT, typename T>
 PmergeMe<CT, T>::PmergeMe(void)
 {
 	return;
 }
 
 
-template <template <typename> class CT, typename T>
+template <class CT, typename T>
 PmergeMe<CT, T>::~PmergeMe(void)
 {
 	return;

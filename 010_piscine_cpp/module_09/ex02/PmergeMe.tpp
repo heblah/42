@@ -14,14 +14,16 @@
 #define PMERGEME_TPP
 
 // Constructors ============================================================= //
-template <template <typename> class CT, typename T>
+//template <template <typename> class CT, typename T>
+template <typename CT, typename T>
 PmergeMe<CT, T>::PmergeMe(void)
 {
 	return;
 }
 
 // Destructor =============================================================== //
-template <template <typename> class CT, typename T>
+//template <template <typename> class CT, typename T>
+template <typename CT, typename T>
 PmergeMe<CT, T>::~PmergeMe(void)
 {
 	return;
