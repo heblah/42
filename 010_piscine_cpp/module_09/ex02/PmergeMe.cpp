@@ -6,13 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 08:56:41 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/24 17:58:46 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/24 20:52:07 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <ctime>
 
 #include "PmergeMe.hpp"
 
@@ -149,9 +150,12 @@ const t_flags &	PmergeMe::getFlag(void) const
 	return ( this->_flag );
 }
 
-void	PmergeMe::Sort(const char **argv)
+void	PmergeMe::sort(char **argv)
 {
-	const char *c = NULL;
+	const char	*c = NULL;
+	//time_t		time[2];
+	time_t		start;
+	time_t		end;
 
 	while (argv && *argv)
 	{
@@ -171,6 +175,16 @@ void	PmergeMe::Sort(const char **argv)
 			this->_deque->push_back( atoi(*argv) );
 		argv++;
 	}
+
+	start = std::time( nullptr );
+	if ( this->_flag == VECTOR )
+		this->_mergeSort( 0, this->_vector->size() - 1 );
+	else if ( this->_flag == DEQUE )
+		this->_mergeSort( 0, this->_deque->size() - 1 );
+	end = std::time( nullptr );
+
+//	std::cout << "difftime = " << std::difftime( time[2], time[1] ) << std::endl;
+	std::cout << "difftime = " << std::difftime( end, start ) << std::endl;
 	return;
 }
 
