@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 09:10:43 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/23 17:24:17 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/24 10:06:56 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,16 @@
 #include <vector>
 #include <deque>
 
-template <class CT, typename T>
-class PmergeMe
-{
-	public:
-							PmergeMe(void);
-							~PmergeMe(void);
-		
-	private:
-		class <CT> <int>	_ct;
-		<T>					_n;
-
-};
-
-template <class CT, typename T>
-PmergeMe<CT, T>::PmergeMe(void)
-{
-	return;
-}
-
-
-template <class CT, typename T>
-PmergeMe<CT, T>::~PmergeMe(void)
-{
-	return;
-}
-
 int	main(void)
 {
-	PmergeMe<std::vector, int>	test __attribute__((unused));
+	void				*ct __attribute__((unused));
+	std::vector<int>	*p __attribute__((unused));
+	int					flag = 1;
+
+	if ( flag == 1)
+		ct = new std::vector<int>;
+	else
+		ct = new std::deque<int>;
+	p = static_cast< std::vector<int>* >(ct);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/03/23 17:05:59 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/24 10:15:12 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME	= PmergeMe
 
 #Buildings objects
 DIR		=
-FILES	= main.cpp #PmergeMe.cpp
+FILES	= main.cpp PmergeMe.cpp
 SRC		+= $(addprefix ${DIR}, ${FILES})
 
 OBJ		= ${SRC:.cpp=.o}
