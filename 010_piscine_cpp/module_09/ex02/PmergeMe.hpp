@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:18:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/24 10:54:41 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/24 17:15:01 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,17 @@ class PmergeMe
 		
 		const PmergeMe &	operator=(const PmergeMe & pmerge);
 
-
+		const t_flags &		getFlag(void) const;
+		void				Sort(const char **nbrs);
 
 	private:
 		std::vector<int>	*_vector;
 		std::deque<int>		*_deque;
 		t_flags				_flag;
+
+		void				_mergeVector(int l, int m, int r);
+		void				_mergeDeque(int l, int m, int r);
+		void				_mergeSort(int l, int r);
 
 };
 

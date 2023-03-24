@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 09:10:43 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/24 10:06:56 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:51:12 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@
 
 int	main(void)
 {
-	void				*ct __attribute__((unused));
-	std::vector<int>	*p __attribute__((unused));
-	int					flag = 1;
-
-	if ( flag == 1)
-		ct = new std::vector<int>;
+	int n = 1;
+	if ( n == 1 )
+		int	l = n;
 	else
-		ct = new std::deque<int>;
-	p = static_cast< std::vector<int>* >(ct);
+		int l = -1;
+
+	std::cout << " l = " << l << std::endl;
 	return (0);
 }
