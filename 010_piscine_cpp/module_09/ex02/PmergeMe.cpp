@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 08:56:41 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/24 20:52:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/25 09:19:54 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <unistd.h>
 
 #include "PmergeMe.hpp"
 
@@ -181,9 +182,10 @@ void	PmergeMe::sort(char **argv)
 		this->_mergeSort( 0, this->_vector->size() - 1 );
 	else if ( this->_flag == DEQUE )
 		this->_mergeSort( 0, this->_deque->size() - 1 );
+	sleep(3.5);
 	end = std::time( nullptr );
 
-//	std::cout << "difftime = " << std::difftime( time[2], time[1] ) << std::endl;
+	//std::cout << "difftime = " << std::difftime( time[2], time[1] ) << std::endl;
 	std::cout << "difftime = " << std::difftime( end, start ) << std::endl;
 	return;
 }
