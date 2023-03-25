@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 08:56:41 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/25 09:35:39 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/25 16:59:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ const PmergeMe &	PmergeMe::operator=(const PmergeMe & pmerge)
 void	PmergeMe::sort(char **argv)
 {
 	const char	*c = NULL;
-	//time_t		time[2];
 	time_t		start;
 	time_t		end;
+	long		time[2] __attribute__((unused));
+	size_t		i = 0;
 
 	while (argv && *argv)
 	{
@@ -69,16 +70,36 @@ void	PmergeMe::sort(char **argv)
 			}
 			c++;
 		}
-			this->_vector.push_back( atoi(*argv) );
-			this->_deque.push_back( atoi(*argv) );
+		this->_vector.push_back( atoi(*argv) );
+		this->_deque.push_back( atoi(*argv) );
 		argv++;
 	}
 
+	std::cout << "Before : ";
+	i = 0;
+	while ( i < 6 && i < this->_vector.size() )
+	{
+		std::cout << this->_vector[i++] << " ";
+	}
+	std::cout << "..." << std::endl;
+
 	start = std::time( nullptr );
 	this->_sortVector( 0, this->_vector.size() - 1 );
-	this->_sortDeque( 0, this->_deque.size() - 1 );
-	//sleep(3.5);
 	end = std::time( nullptr );
+	time[1] = std::difftime( end, start );
+
+	start = std::time( nullptr );
+	this->_sortDeque( 0, this->_deque.size() - 1 );
+	end = std::time( nullptr );
+	time[2] = std::difftime( end, start );
+
+	std::cout << "After : ";
+	i = 0;
+	while ( i < 6 && i < this->_vector.size() )
+	{
+		std::cout << this->_vector[i++] << " ";
+	}
+	std::cout << ( ( this->_vector.size() > i ) ? "..." : "" )  << std::endl;
 
 	//std::cout << "difftime = " << std::difftime( time[2], time[1] ) << std::endl;
 	std::cout << "difftime = " << std::difftime( end, start ) << std::endl;
