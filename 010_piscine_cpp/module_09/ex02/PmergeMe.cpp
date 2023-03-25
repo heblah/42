@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 08:56:41 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/25 16:59:57 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/25 18:13:09 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-#include <unistd.h>
 
 #include "PmergeMe.hpp"
 
@@ -52,11 +51,9 @@ const PmergeMe &	PmergeMe::operator=(const PmergeMe & pmerge)
 // Member functions ========================================================= //
 void	PmergeMe::sort(char **argv)
 {
-	const char	*c = NULL;
-	time_t		start;
-	time_t		end;
-	long		time[2] __attribute__((unused));
-	size_t		i = 0;
+	const char		*c = NULL;
+	clock_t			time[2];
+	size_t			i = 0;
 
 	while (argv && *argv)
 	{
@@ -81,19 +78,17 @@ void	PmergeMe::sort(char **argv)
 	{
 		std::cout << this->_vector[i++] << " ";
 	}
-	std::cout << "..." << std::endl;
+	std::cout << ( ( this->_vector.size() > i ) ? "..." : "" )  << std::endl;
 
-	start = std::time( nullptr );
+	time[0] = std::clock();
 	this->_sortVector( 0, this->_vector.size() - 1 );
-	end = std::time( nullptr );
-	time[1] = std::difftime( end, start );
+	time[0] = std::clock() - time[0];
 
-	start = std::time( nullptr );
+	time[1] = std::clock();
 	this->_sortDeque( 0, this->_deque.size() - 1 );
-	end = std::time( nullptr );
-	time[2] = std::difftime( end, start );
+	time[1] = std::clock() - time[1];
 
-	std::cout << "After : ";
+	std::cout << "After  : ";
 	i = 0;
 	while ( i < 6 && i < this->_vector.size() )
 	{
@@ -101,8 +96,12 @@ void	PmergeMe::sort(char **argv)
 	}
 	std::cout << ( ( this->_vector.size() > i ) ? "..." : "" )  << std::endl;
 
-	//std::cout << "difftime = " << std::difftime( time[2], time[1] ) << std::endl;
-	std::cout << "difftime = " << std::difftime( end, start ) << std::endl;
+	std::cout << "Time to sort " << this->_vector.size() << " elements with vector : ";
+	std::cout << static_cast<float>( time[0] ) / CLOCKS_PER_SEC << "us" << std::endl;
+
+	std::cout << "Time to sort " << this->_vector.size() << " elements with deque  : ";
+	std::cout << static_cast<float>( time[1] ) / CLOCKS_PER_SEC << "us" << std::endl;
+
 	return;
 }
 
