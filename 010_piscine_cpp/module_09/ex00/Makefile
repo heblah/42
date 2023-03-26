@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/03/21 18:02:47 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/26 18:40:31 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ RM		= rm -rf
 
 #Conditionnal flags depending on building version
 cxxflags.rls	:= -Wall -Wextra -Werror -Wpedantic -pedantic-errors -MMD -MP
-cxxflags.gdb	:= -g3 #-fstandalone-debug
-cxxflags.san	:= -g3 -fsanitize=address #-fstandalone-debug 
+cxxflags.gdb	:= -g3 -fstandalone-debug
+cxxflags.san	:= -g3 -fsanitize=address -fstandalone-debug 
 CXXFLAGS		= ${cxxflags.rls} ${cxxflags.${build}}
 export			CXXFLAGS
 

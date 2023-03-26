@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:05:36 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/21 16:01:29 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/26 18:28:14 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class BitcoinExchange
 {
 	public:
-		typedef std::map<std::string, float> bcMap;
+		typedef std::map<int, float> bcMap;
 
 								BitcoinExchange(void);
 								BitcoinExchange(const BitcoinExchange & bc);
@@ -50,6 +50,8 @@ class BitcoinExchange
 
 	private:
 		bcMap					_db;
+		bool					_error;
+		int						_str2int(std::string str) const;
 
 };
 
