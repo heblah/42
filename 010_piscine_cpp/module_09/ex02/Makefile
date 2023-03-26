@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 14:14:06 by halvarez          #+#    #+#              #
-#    Updated: 2023/03/21 18:02:47 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/25 18:22:32 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@
 build	:= san
 
 #Compilation of the mandatory part
-NAME	= btc
+NAME	= PmergeMe
 
 #Buildings objects
 DIR		=
-FILES	= main.cpp BitcoinExchange.cpp
+FILES	= main.cpp PmergeMe.cpp
 SRC		+= $(addprefix ${DIR}, ${FILES})
 
 OBJ		= ${SRC:.cpp=.o}

@@ -6,12 +6,12 @@
 #    By: awallet <awallet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/01/03 10:02:56 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/17 09:27:13 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Default build version called with make rule = release
-build		:=
+build		:= sanitize
 
 #Compilation of the mandatory part
 NAME		= minishell

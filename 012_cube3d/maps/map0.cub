@@ -1,0 +1,17 @@
+NO ./textures/acacia_planks.xpm
+SO ./textures/andesite.xpm
+WE ./textures/basalt_top.xpm
+EA ./textures/acacia_planks.xpm
+
+F 220,100,0
+C 225,30,0
+1111111111
+1E00001001
+1000000001
+1000010001
+1000000001
+1000010001
+1000000001
+1000001001
+1000000101
+1111111111
