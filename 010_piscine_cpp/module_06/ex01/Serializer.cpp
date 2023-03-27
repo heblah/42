@@ -43,7 +43,7 @@ Serializer::~Serializer(void)
 }
 
 /* Operators ================================================================ */
-const Serializer &  Serializer::operator=(const Serializer & s)
+Serializer &  Serializer::operator=(const Serializer & s)
 {
     this->_p = s._p;
     return (*this);

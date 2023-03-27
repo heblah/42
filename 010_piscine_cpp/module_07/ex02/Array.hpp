@@ -17,16 +17,16 @@ template<typename T>
 class Array
 {
 	public:
-							Array(void);
-							Array(const Array & array);
-							Array(const unsigned int n);
-							~Array(void);
+						Array(void);
+						Array(const Array & array);
+						Array(const unsigned int n);
+						~Array(void);
 
-		const Array<T> &	operator=(const Array<T> & array);
-		T			   &	operator[](const unsigned int i);
+		Array<T>	&	operator=(const Array<T> & array);
+		T			&	operator[](const unsigned int i);
 
-		unsigned int		getSize(void) const;
-		void				setSize(const unsigned int i);
+		unsigned int	getSize(void) const;
+		void			setSize(const unsigned int i);
 
 		class InvalidIndex : public std::exception
 		{

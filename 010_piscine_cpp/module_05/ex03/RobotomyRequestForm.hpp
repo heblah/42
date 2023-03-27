@@ -20,15 +20,15 @@ class Bureaucrat;
 class RobotomyRequestForm : public AForm
 {
 	public:
-							RobotomyRequestForm(void);
-							RobotomyRequestForm(const RobotomyRequestForm & form);
-							RobotomyRequestForm(std::string target);
-							~RobotomyRequestForm(void);
+								RobotomyRequestForm(void);
+								RobotomyRequestForm(const RobotomyRequestForm & form);
+								RobotomyRequestForm(std::string target);
+								~RobotomyRequestForm(void);
 
-		const RobotomyRequestForm &		operator=(const RobotomyRequestForm & form);
+		RobotomyRequestForm &	operator=(const RobotomyRequestForm & form);
 
-		void				execute(Bureaucrat const & executor) const;
-		int					makeRobotomy(void) const;
+		void					execute(Bureaucrat const & executor) const;
+		int						makeRobotomy(void) const;
 
 		class RobotomyFailed : public std::exception
 		{

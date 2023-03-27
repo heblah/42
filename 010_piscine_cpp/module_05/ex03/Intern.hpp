@@ -18,13 +18,13 @@ class AForm;
 class Intern
 {
 	public:
-				Intern(void);
-				Intern(const Intern & intern);
-				~Intern(void);
+					Intern(void);
+					Intern(const Intern & intern);
+					~Intern(void);
 	
-		const Intern &	operator=(const Intern & intern);
+		Intern &	operator=(const Intern & intern);
 
-		AForm *	makeForm(std::string name_form, std::string target);
+		AForm *		makeForm(std::string name_form, std::string target);
 
 		class UnkownForm : public std::exception
 		{

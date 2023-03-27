@@ -49,7 +49,7 @@ std::ostream &	operator<<(std::ostream &os, ShrubberyCreationForm const & form)
 	return (os);
 }
 
-const ShrubberyCreationForm &	ShrubberyCreationForm::operator=(const ShrubberyCreationForm & form)
+ShrubberyCreationForm &	ShrubberyCreationForm::operator=(const ShrubberyCreationForm & form)
 {
 	this->setSignature(form.getSignature());
 	return (*this);

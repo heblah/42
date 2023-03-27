@@ -23,16 +23,16 @@ class MutantStack : public std::stack<T>
 		typedef typename std::stack<T>::container_type::iterator			iterator;
 		typedef typename std::stack<T>::container_type::reverse_iterator	r_iterator;
 
-								MutantStack(void);
-								MutantStack(const MutantStack & mp);
-								~MutantStack(void);
+							MutantStack(void);
+							MutantStack(const MutantStack & mp);
+							~MutantStack(void);
 
-		const MutantStack<T> &	operator=(const MutantStack & ms);
+		MutantStack<T> &	operator=(const MutantStack & ms);
 
-		iterator				begin(void);
-		iterator				end(void);
-		r_iterator				rbegin(void);
-		r_iterator				rend(void);
+		iterator			begin(void);
+		iterator			end(void);
+		r_iterator			rbegin(void);
+		r_iterator			rend(void);
 
 };
 

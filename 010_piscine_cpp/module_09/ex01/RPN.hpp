@@ -22,7 +22,7 @@ class RPN
 								RPN(const RPN & rpn);
 								~RPN(void);
 
-		const RPN &				operator=(const RPN &rpn);
+		RPN &					operator=(const RPN &rpn);
 
 		int						op(const char * str);
 		const std::stack<int> &	getStack(void) const;

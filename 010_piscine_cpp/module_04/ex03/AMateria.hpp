@@ -23,7 +23,7 @@ class AMateria
 							AMateria(const std::string & type);
 		virtual				~AMateria(void);
 
-		const AMateria &	operator=(const AMateria & materia);
+		AMateria &			operator=(const AMateria & materia);
 
 		std::string const &	getType(void) const; //Returns the materia type
 		virtual AMateria*	clone() const = 0;

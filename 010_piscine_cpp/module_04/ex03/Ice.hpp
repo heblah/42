@@ -25,7 +25,7 @@ class Ice : public AMateria
 							Ice(std::string const & type);
 							~Ice(void);
 
-		const Ice &			operator=(const Ice & ice);
+		Ice &				operator=(const Ice & ice);
 
 		std::string const &	getType(void) const; //Returns the materia type
 		AMateria *			clone(void) const;

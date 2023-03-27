@@ -57,7 +57,7 @@ Bureaucrat::~Bureaucrat(void)
 }
 
 /* Operators ================================================================ */
-const Bureaucrat &	Bureaucrat::operator=(const Bureaucrat & b)
+Bureaucrat &	Bureaucrat::operator=(const Bureaucrat & b)
 {
 	this->_name = b._name;
 	this->_grade = b._grade;

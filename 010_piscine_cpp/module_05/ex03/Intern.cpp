@@ -38,7 +38,7 @@ Intern::~Intern(void)
 }
 
 /* Operators ================================================================ */
-const Intern &	Intern::operator=(const Intern & intern __attribute__((unused)))
+Intern &	Intern::operator=(const Intern & intern __attribute__((unused)))
 {
 	return (*this);
 }

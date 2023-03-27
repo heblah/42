@@ -75,7 +75,7 @@ std::ostream &  operator<<(std::ostream &os, const ScalarConverter & sc)
     return (os);
 }
 
-const ScalarConverter & ScalarConverter::operator=(const ScalarConverter & sc)
+ScalarConverter & ScalarConverter::operator=(const ScalarConverter & sc)
 {
     this->_d = sc.getDouble();
     return (*this);

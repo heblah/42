@@ -20,15 +20,15 @@ class BitcoinExchange
 	public:
 		typedef std::map<int, float> bcMap;
 
-								BitcoinExchange(void);
-								BitcoinExchange(const BitcoinExchange & bc);
-								~BitcoinExchange(void);
+							BitcoinExchange(void);
+							BitcoinExchange(const BitcoinExchange & bc);
+							~BitcoinExchange(void);
 
-		const BitcoinExchange &	operator=(const BitcoinExchange & bc);
+		BitcoinExchange &	operator=(const BitcoinExchange & bc);
 
-		const bcMap &			getDataBase(void) const;
-		const float &			find(const std::string & key) const;
-		void					addData(const std::string & str);
+		const bcMap &		getDataBase(void) const;
+		const float &		find(const std::string & key) const;
+		void				addData(const std::string & str);
 
 		class badInput : public std::exception {
 			const char *	what(void) const throw() {

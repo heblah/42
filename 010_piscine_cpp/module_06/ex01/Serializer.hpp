@@ -27,18 +27,18 @@ typedef struct s_data
 class Serializer
 {
     public:
-                            Serializer(void);
-                            Serializer(const Serializer &s);
-                            Serializer(void *ptr);
-                            ~Serializer(void);
+                        Serializer(void);
+                        Serializer(const Serializer &s);
+                        Serializer(void *ptr);
+                        ~Serializer(void);
 
-        const Serializer &  operator=(const Serializer & s);
+        Serializer &    operator=(const Serializer & s);
 
-        uintptr_t           serialize(Data* ptr);
-        Data *              deserialize(uintptr_t raw);
+        uintptr_t       serialize(Data* ptr);
+        Data *          deserialize(uintptr_t raw);
 
     private:
-        void *              _p;
+        void *          _p;
 
 };
 

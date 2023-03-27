@@ -25,7 +25,7 @@ class Cure : public AMateria
 							Cure(std::string const & type);
 							~Cure(void);
 
-		const Cure &		operator=(const Cure & cure);
+		Cure &				operator=(const Cure & cure);
 
 		std::string const & getType(void) const; //Returns the materia type
 		AMateria *			clone(void) const;

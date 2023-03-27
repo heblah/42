@@ -18,21 +18,21 @@ class AForm;
 class Bureaucrat 
 {
 	public:
-							Bureaucrat(void);
-							Bureaucrat(const Bureaucrat & b);
-							Bureaucrat(std::string name, unsigned int grade);
-							~Bureaucrat(void);
+						Bureaucrat(void);
+						Bureaucrat(const Bureaucrat & b);
+						Bureaucrat(std::string name, unsigned int grade);
+						~Bureaucrat(void);
 
-		const Bureaucrat&	operator=(const Bureaucrat & b);
-		void				operator++(int);
-		void				operator--(int);
+		Bureaucrat&		operator=(const Bureaucrat & b);
+		void			operator++(int);
+		void			operator--(int);
 
-		std::string			getName(void) const;
-		unsigned int		getGrade(void) const;
+		std::string		getName(void) const;
+		unsigned int	getGrade(void) const;
 
-		void				setName(std::string name);
-		void				setGrade(unsigned int grade);
-		void				signForm(AForm & form) const;
+		void			setName(std::string name);
+		void			setGrade(unsigned int grade);
+		void			signForm(AForm & form) const;
 
 		class GradeTooHighException : public std::exception
 		{

@@ -37,7 +37,7 @@ PmergeMe::~PmergeMe(void)
 }
 
 // Operators ================================================================ //
-const PmergeMe &	PmergeMe::operator=(const PmergeMe & pmerge)
+PmergeMe &	PmergeMe::operator=(const PmergeMe & pmerge)
 {
 	if ( this->_vector.size() > 0 )
 		this->_vector.clear();

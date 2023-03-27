@@ -41,7 +41,7 @@ Cure::~Cure(void)
 }
 
 /* Operators ================================================================ */
-const Cure	&Cure::operator=(const Cure &cure __attribute__((unused)))
+Cure	&Cure::operator=(const Cure &cure __attribute__((unused)))
 {
 	return (*(new Cure));
 }

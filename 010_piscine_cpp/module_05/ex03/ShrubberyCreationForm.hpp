@@ -20,15 +20,15 @@ class Bureaucrat;
 class ShrubberyCreationForm : public AForm
 {
 	public:
-							ShrubberyCreationForm(void);
-							ShrubberyCreationForm(const ShrubberyCreationForm & form);
-							ShrubberyCreationForm(std::string target);
-							~ShrubberyCreationForm(void);
+									ShrubberyCreationForm(void);
+									ShrubberyCreationForm(const ShrubberyCreationForm & form);
+									ShrubberyCreationForm(std::string target);
+									~ShrubberyCreationForm(void);
 
-		const ShrubberyCreationForm &		operator=(const ShrubberyCreationForm & form);
+		ShrubberyCreationForm &		operator=(const ShrubberyCreationForm & form);
 
-		void				execute(Bureaucrat const & executor) const;
-		int					makeShrubbery(void) const;
+		void						execute(Bureaucrat const & executor) const;
+		int							makeShrubbery(void) const;
 
 		class ProblemOnTree : public std::exception
 		{

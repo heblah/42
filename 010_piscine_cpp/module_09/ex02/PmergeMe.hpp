@@ -23,7 +23,7 @@ class PmergeMe
 							PmergeMe(const PmergeMe & pmerge);
 							~PmergeMe(void);
 		
-		const PmergeMe &	operator=(const PmergeMe & pmerge);
+		PmergeMe &			operator=(const PmergeMe & pmerge);
 
 		void				sort(char **argv);
 

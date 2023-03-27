@@ -46,7 +46,7 @@ Span::~Span(void)
 }
 
 /* Operators ================================================================ */
-const Span &	Span::operator=(const Span & span)
+Span &	Span::operator=(const Span & span)
 {
 	this->_maxsize = span.getMaxSize();
 	this->_set.clear();

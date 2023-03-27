@@ -20,15 +20,15 @@ class Bureaucrat;
 class PresidentialPardonForm : public AForm
 {
 	public:
-							PresidentialPardonForm(void);
-							PresidentialPardonForm(const PresidentialPardonForm & form);
-							PresidentialPardonForm(std::string target);
-							~PresidentialPardonForm(void);
+									PresidentialPardonForm(void);
+									PresidentialPardonForm(const PresidentialPardonForm & form);
+									PresidentialPardonForm(std::string target);
+									~PresidentialPardonForm(void);
 
-		const PresidentialPardonForm &		operator=(const PresidentialPardonForm & form);
+		PresidentialPardonForm &	operator=(const PresidentialPardonForm & form);
 
-		void				execute(Bureaucrat const & executor) const;
-		int					makePardon(void) const;
+		void						execute(Bureaucrat const & executor) const;
+		int							makePardon(void) const;
 
 		class NoPardon : public std::exception
 		{

@@ -40,7 +40,7 @@ AMateria::~AMateria(void)
 }
 
 /* Operators ================================================================ */
-const AMateria	&AMateria::operator=(const AMateria &materia __attribute__((unused)))
+AMateria &	AMateria::operator=(const AMateria &materia __attribute__((unused)))
 {
 	//this->_type = materia._type;
 	return (*this);

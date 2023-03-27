@@ -37,7 +37,7 @@ RPN::~RPN(void)
 }
 
 /* Operators ================================================================ */
-const RPN &	RPN::operator=(const RPN &rpn)
+RPN &	RPN::operator=(const RPN &rpn)
 {
 	while ( this->_stack.size() > 0 )
 		this->_stack.pop();

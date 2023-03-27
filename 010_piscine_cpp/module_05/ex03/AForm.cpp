@@ -48,7 +48,7 @@ std::ostream &	operator<<(std::ostream &os, AForm const & form)
 	return (os);
 }
 
-const AForm &	AForm::operator=(const AForm & form)
+AForm &	AForm::operator=(const AForm & form)
 {
 	(std::string &)this->_name = form._name;
 	this->_signed = form._signed;

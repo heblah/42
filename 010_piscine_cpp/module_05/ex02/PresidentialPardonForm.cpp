@@ -49,7 +49,7 @@ std::ostream &	operator<<(std::ostream &os, PresidentialPardonForm const & form)
 	return (os);
 }
 
-const PresidentialPardonForm &	PresidentialPardonForm::operator=(const PresidentialPardonForm & form)
+PresidentialPardonForm &	PresidentialPardonForm::operator=(const PresidentialPardonForm & form)
 {
 	this->setSignature(form.getSignature());
 	return (*this);

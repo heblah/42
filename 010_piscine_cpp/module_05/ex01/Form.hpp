@@ -23,9 +23,9 @@ class Form
 							Form(std::string name, unsigned int sign, unsigned int exec);
 							~Form(void);
 
-		const Form &		operator=(const Form & form);
+		Form &				operator=(const Form & form);
 
-		std::string	getName(void) const;
+		std::string			getName(void) const;
 		bool				getSignature(void) const;
 		unsigned int		getSignLevel(void) const;
 		unsigned int		getExecLevel(void) const;

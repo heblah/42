@@ -50,7 +50,7 @@ std::ostream &	operator<<(std::ostream &os, RobotomyRequestForm const & form)
 	return (os);
 }
 
-const RobotomyRequestForm &	RobotomyRequestForm::operator=(const RobotomyRequestForm & form)
+RobotomyRequestForm &	RobotomyRequestForm::operator=(const RobotomyRequestForm & form)
 {
 	this->setSignature(form.getSignature());
 	return (*this);

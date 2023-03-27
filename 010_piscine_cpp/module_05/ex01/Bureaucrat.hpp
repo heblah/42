@@ -23,7 +23,7 @@ class Bureaucrat
 							Bureaucrat(std::string name, unsigned int grade);
 							~Bureaucrat(void);
 
-		const Bureaucrat&	operator=(const Bureaucrat & b);
+		Bureaucrat&	operator=(const Bureaucrat & b);
 		void				operator++(int);
 		void				operator--(int);
 

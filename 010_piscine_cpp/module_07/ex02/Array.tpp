@@ -49,7 +49,7 @@ Array<T>::~Array(void)
 
 /* Operators ================================================================ */
 template<typename T>
-const Array<T> &	Array<T>::operator=(const Array<T> & array)
+Array<T> &	Array<T>::operator=(const Array<T> & array)
 {
 	unsigned int	i = 0;
 

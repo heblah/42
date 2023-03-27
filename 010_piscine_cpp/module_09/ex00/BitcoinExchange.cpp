@@ -75,7 +75,7 @@ BitcoinExchange::~BitcoinExchange(void)
 }
 
 /* Operators ================================================================ */
-const BitcoinExchange &	BitcoinExchange::operator=(const BitcoinExchange &bc)
+BitcoinExchange &	BitcoinExchange::operator=(const BitcoinExchange &bc)
 {
 	if (this->_db.size() > 0)
 		this->_db.clear();

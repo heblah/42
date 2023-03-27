@@ -16,23 +16,23 @@
 class ScalarConverter 
 {
     public:
-                                ScalarConverter(void);
-                                ScalarConverter(const ScalarConverter & sc);
-                                ScalarConverter(const double d);
-                                ~ScalarConverter(void);
+                            ScalarConverter(void);
+                            ScalarConverter(const ScalarConverter & sc);
+                            ScalarConverter(const double d);
+                            ~ScalarConverter(void);
 
-        const ScalarConverter & operator=(const ScalarConverter & sc);
+        ScalarConverter &   operator=(const ScalarConverter & sc);
 
-                                operator char   (void) const;
-                                operator int    (void) const;
-                                operator float  (void) const;
-                                operator double (void) const;
+                            operator char   (void) const;
+                            operator int    (void) const;
+                            operator float  (void) const;
+                            operator double (void) const;
 
-       void                     setDouble(double d);
-       double                   getDouble(void) const;
+       void                 setDouble(double d);
+       double               getDouble(void) const;
 
     private:
-        double                  _d;
+        double              _d;
 };
 
 std::ostream &  operator<<(std::ostream &os, const ScalarConverter & sc);

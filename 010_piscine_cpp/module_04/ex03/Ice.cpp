@@ -41,7 +41,7 @@ Ice::~Ice(void)
 }
 
 /* Operators ================================================================ */
-const Ice	&Ice::operator=(const Ice &ice __attribute__((unused)))
+Ice	&Ice::operator=(const Ice &ice __attribute__((unused)))
 {
 	return (*(new Ice));
 }

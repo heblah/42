@@ -33,7 +33,7 @@ MutantStack<T>::~MutantStack(void)
 
 // Operators ================================================================ //
 template <typename T>
-const MutantStack<T> &	MutantStack<T>::operator=( const MutantStack & ms )
+MutantStack<T> &	MutantStack<T>::operator=( const MutantStack & ms )
 {
 	while ( this->size() != 0 )
 		this->pop();

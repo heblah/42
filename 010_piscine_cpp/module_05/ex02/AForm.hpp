@@ -23,7 +23,7 @@ class AForm
 									AForm(std::string name, unsigned int sign, unsigned int exec);
 		virtual						~AForm(void);
 
-		virtual const AForm &		operator=(const AForm & form);
+		virtual AForm &				operator=(const AForm & form);
 
 		virtual std::string			getName(void) const;
 		virtual bool				getSignature(void) const;

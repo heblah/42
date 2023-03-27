@@ -18,21 +18,21 @@ class Bureaucrat;
 class AForm
 {
 	public:
-									AForm(void);
-									AForm(const AForm & form);
-									AForm(std::string name, unsigned int sign, unsigned int exec);
-		virtual						~AForm(void);
+								AForm(void);
+								AForm(const AForm & form);
+								AForm(std::string name, unsigned int sign, unsigned int exec);
+		virtual					~AForm(void);
 
-		virtual const AForm &		operator=(const AForm & form);
+		virtual AForm &			operator=(const AForm & form);
 
-		virtual std::string			getName(void) const;
-		virtual bool				getSignature(void) const;
-		virtual unsigned int		getSignLevel(void) const;
-		virtual unsigned int		getExecLevel(void) const;
+		virtual std::string		getName(void) const;
+		virtual bool			getSignature(void) const;
+		virtual unsigned int	getSignLevel(void) const;
+		virtual unsigned int	getExecLevel(void) const;
 
-		virtual void				setSignature(bool state);
-		virtual void				beSigned(const Bureaucrat & b);
-		virtual void				execute(Bureaucrat const & executor) const = 0;
+		virtual void			setSignature(bool state);
+		virtual void			beSigned(const Bureaucrat & b);
+		virtual void			execute(Bureaucrat const & executor) const = 0;
 
 		class GradeTooHighException : public std::exception
 		{

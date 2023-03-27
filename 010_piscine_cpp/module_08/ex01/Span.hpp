@@ -23,7 +23,7 @@ class Span
 								Span(const unsigned int maxsize);
 								~Span(void);
 
-		const Span &			operator=(const Span & span);
+		Span &					operator=(const Span & span);
 
 		unsigned int			getMaxSize(void) const;
 		const std::set<int> &	getSet(void) const;
