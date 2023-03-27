@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:26:43 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/26 18:09:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/27 10:58:47 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 			&& input.fail() == false )
 		{
 			getline(input, buffer);
-			if ( buffer.size() && buffer.substr(0, 4).compare("date") != 0 )
+			if ( buffer.size() && buffer.substr(0, 4).compare("data") != 0 )
 			{
 				try {
 					btc.find( buffer );

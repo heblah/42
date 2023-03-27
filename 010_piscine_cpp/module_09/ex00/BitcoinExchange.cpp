@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:12:41 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/26 18:44:18 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/27 10:58:12 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,8 @@ const float &	BitcoinExchange::find(const std::string & input) const
 	int										key	= this->_str2int( input.substr(0, 10) );
 	std::string								val;
 	double									dval;
-	std::map<int, float>::const_iterator	it	= this->_db.find( key );
+	std::map<int, float>::const_iterator	itf	= this->_db.find( key );
+	std::map<int, float>::const_iterator	it	= this->_db.begin( );
 
 	if ( input.find('|', 0) == std::string::npos )
 		throw badInput();
@@ -120,7 +121,15 @@ const float &	BitcoinExchange::find(const std::string & input) const
 		throw IntegerOverflow();
 	if ( dval < 0 )
 		throw NegativNumber();
-	std::cout << key << " => " << dval << " = " << it->second * dval << std::endl;
+	if ( key != -1 && this->_db.find( key ) != this->_db.end() )
+		std::cout << key << " => " << dval << " = " << itf->second * dval << std::endl;
+	else if ( key != -1 && this->_db.find( key ) == this->_db.end() )
+	{
+		while ( it != this->_db.end() && it->first < key )
+			it++;
+		std::cout << key << " => " << dval << " = " << ( --it )->second * dval << std::endl;
+		
+	}
 	return ( it->second );
 }
 
@@ -169,7 +178,7 @@ int	BitcoinExchange::_str2int(std::string str) const
 
 			tmp = atoi( (str.substr( 0, 4 )).c_str() );
 			if ( tmp < 2009 )
-				throw badInput();
+				throw NoBitcoin();
 			date += tmp * 10000;
 
 			tmp = atoi( (str.substr( 5, 7 )).c_str() );

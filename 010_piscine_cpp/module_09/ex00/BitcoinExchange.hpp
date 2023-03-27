@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:05:36 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/26 18:28:14 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/27 10:30:16 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ class BitcoinExchange
 		class NegativNumber : public std::exception {
 			const char *	what(void) const throw() {
 				return ("Error: not a positiv number. ");
+			}
+		};
+
+		class NoBitcoin : public std::exception {
+			const char *	what(void) const throw() {
+				return ("Error: Sorry but Bitcoin didn't exist before 2009. ");
 			}
 		};
 
