@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:45:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/27 12:32:34 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/27 16:39:56 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ bool	Fixed::operator==(Fixed const &cmp) const
 
 bool	Fixed::operator!=(Fixed const &cmp) const
 {
-	return (this->_n == cmp.getRawBits());
+	return (this->_n != cmp.getRawBits());
 }
 
 Fixed	Fixed::operator+(Fixed const &a) const
