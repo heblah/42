@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:17:32 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/27 16:55:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/27 16:56:07 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	main( void )
 	std::cout << "c raw value      = " << c       << std::endl;
 	std::cout << "a + 1            = " << a + 1   << std::endl;
 	std::cout << "a - 1            = " << a - 1   << std::endl;
-	std::cout << "b / 0            = " << (b / 0)   << std::endl;
 	std::cout << "b / 2            = " << b / 2   << std::endl;
 	std::cout << "b * 2            = " << b * 2   << std::endl;
 	
