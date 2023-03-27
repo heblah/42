@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:44:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/21 16:28:46 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:27:35 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,21 @@ class Fixed {
 		static Fixed		&max(Fixed &a, Fixed &b);
 		static const Fixed	&max(Fixed const &a, Fixed const &b);
 
-		void	operator=(Fixed const &fixed);
-		bool	operator<(Fixed const &cmp) const;
-		bool	operator>(Fixed const &cmp) const;
-		bool	operator<=(Fixed const &cmp) const;
-		bool	operator>=(Fixed const &cmp) const;
-		bool	operator==(Fixed const &cmp) const;
-		bool	operator!=(Fixed const &cmp) const;
-		Fixed	operator+(Fixed const &a) const;
-		Fixed	operator-(Fixed const &a) const;
-		Fixed	operator*(Fixed const &a) const;
-		Fixed	operator/(Fixed const &a) const;
-		Fixed	operator++(int); //post increment
-		Fixed	operator++(void); //pre increment
-		Fixed	operator--(int); //post decrement
-		Fixed	operator--(void); //pre decrement
+		Fixed &			operator=(Fixed const &fixed);
+		bool			operator<(Fixed const &cmp) const;
+		bool			operator>(Fixed const &cmp) const;
+		bool			operator<=(Fixed const &cmp) const;
+		bool			operator>=(Fixed const &cmp) const;
+		bool			operator==(Fixed const &cmp) const;
+		bool			operator!=(Fixed const &cmp) const;
+		Fixed			operator+(Fixed const &a) const;
+		Fixed			operator-(Fixed const &a) const;
+		Fixed			operator*(Fixed const &a) const;
+		Fixed			operator/(Fixed const &a) const;
+		Fixed			operator++(int); //post increment
+		Fixed &			operator++(void); //pre increment
+		Fixed			operator--(int); //post decrement
+		Fixed &			operator--(void); //pre decrement
 	private:
 		int					_n;
 		static const int	_bits;

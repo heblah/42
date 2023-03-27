@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:45:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/21 16:37:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:32:34 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,10 @@ std::ostream	&operator<<(std::ostream &os, Fixed const &nb)
 	return (os);
 }
 
-void	Fixed::operator=(Fixed const &fixed)
+Fixed &		Fixed::operator=(Fixed const &fixed)
 {
 	this->_n = fixed.getRawBits();
-	return;
+	return ( *this );
 }
 
 bool	Fixed::operator<(Fixed const &cmp) const
@@ -194,7 +194,7 @@ Fixed	Fixed::operator++(int)
 	return (old);
 }
 
-Fixed	Fixed::operator++(void)
+Fixed &	Fixed::operator++(void)
 {
 	this->_n++;
 	return (*this);
@@ -208,7 +208,7 @@ Fixed	Fixed::operator--(int)
 	return (old);
 }
 
-Fixed	Fixed::operator--(void)
+Fixed &	Fixed::operator--(void)
 {
 	this->_n--;
 	return (*this);

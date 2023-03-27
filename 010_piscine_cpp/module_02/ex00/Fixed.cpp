@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:45:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/20 15:38:34 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:27:46 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ void	Fixed::setRawBits(int const raw)
 	std::cout << "setRawBits member function called" << std::endl;
 	this->_n = raw;
 	return;
+}
+
+Fixed &	Fixed::operator=(const Fixed & fixed)
+{
+	this->setRawBits( fixed.getRawBits() );
+	return (*this);
 }
 
 /*

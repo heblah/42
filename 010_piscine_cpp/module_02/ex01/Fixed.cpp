@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:45:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/21 09:49:01 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:28:27 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,16 @@ std::ostream	&operator<<(std::ostream &os, Fixed const &nb)
 	return (os);
 }
 
+Fixed &	Fixed::operator=(const Fixed & fixed)
+{
+	this->setRawBits( fixed.getRawBits() );
+	return (*this);
+}
+
+/*
 Fixed	*Fixed::operator=(Fixed const &val)
 {
 	this->_n = val.getRawBits();
 	return (this);
 }
+*/
