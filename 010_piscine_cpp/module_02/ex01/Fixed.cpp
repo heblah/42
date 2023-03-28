@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:45:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/27 12:28:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:34:42 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ const int Fixed::_bits = 8;
 	// Constructors
 Fixed::Fixed(void)
 {
-	std::cout << "Int constructor called" <<std::endl;
+	std::cout << "Default constructor called" <<std::endl;
 	this->_n = 0;
 	return;
 }
