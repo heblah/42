@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:17:32 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/21 18:43:34 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:25:34 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main( void )
 	std::cout << (bsp(a, b, c, m) == true ? "inside" : "outside");
 	std::cout << " of the triangle." << std::endl << std::endl;
 
-	c.setPoint(-2, -2);
+	c.setPoint(2, 2);
 	std::cout << "For a(0, 2), b(2, 0) and c(2, 2)" << std::endl;
 	std::cout << "The point m(0, 0) is ";
 	std::cout << (bsp(a, b, c, m) == true ? "inside" : "outside");
