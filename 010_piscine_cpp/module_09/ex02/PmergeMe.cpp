@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 08:56:41 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/25 18:13:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:52:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,13 @@ PmergeMe &	PmergeMe::operator=(const PmergeMe & pmerge)
 }
 
 // Member functions ========================================================= //
-void	PmergeMe::sort(char **argv)
+void	PmergeMe::sortVector(char **argv)
 {
 	const char		*c = NULL;
-	clock_t			time[2];
+	clock_t			time;
 	size_t			i = 0;
 
+	time = std::clock();
 	while (argv && *argv)
 	{
 		c = *argv;
@@ -68,11 +69,10 @@ void	PmergeMe::sort(char **argv)
 			c++;
 		}
 		this->_vector.push_back( atoi(*argv) );
-		this->_deque.push_back( atoi(*argv) );
 		argv++;
 	}
 
-	std::cout << "Before : ";
+	std::cout << "Before [vector] : ";
 	i = 0;
 	while ( i < 6 && i < this->_vector.size() )
 	{
@@ -80,15 +80,10 @@ void	PmergeMe::sort(char **argv)
 	}
 	std::cout << ( ( this->_vector.size() > i ) ? "..." : "" )  << std::endl;
 
-	time[0] = std::clock();
 	this->_sortVector( 0, this->_vector.size() - 1 );
-	time[0] = std::clock() - time[0];
+	time = std::clock() - time;
 
-	time[1] = std::clock();
-	this->_sortDeque( 0, this->_deque.size() - 1 );
-	time[1] = std::clock() - time[1];
-
-	std::cout << "After  : ";
+	std::cout << "After  [vector] : ";
 	i = 0;
 	while ( i < 6 && i < this->_vector.size() )
 	{
@@ -97,10 +92,55 @@ void	PmergeMe::sort(char **argv)
 	std::cout << ( ( this->_vector.size() > i ) ? "..." : "" )  << std::endl;
 
 	std::cout << "Time to sort " << this->_vector.size() << " elements with vector : ";
-	std::cout << static_cast<float>( time[0] ) / CLOCKS_PER_SEC << "us" << std::endl;
+	std::cout << static_cast<float>( time ) / CLOCKS_PER_SEC << "us" << std::endl;
 
-	std::cout << "Time to sort " << this->_vector.size() << " elements with deque  : ";
-	std::cout << static_cast<float>( time[1] ) / CLOCKS_PER_SEC << "us" << std::endl;
+	return;
+}
+
+void	PmergeMe::sortDeque(char **argv)
+{
+	const char		*c = NULL;
+	clock_t			time;
+	size_t			i = 0;
+
+	time = std::clock();
+	while (argv && *argv)
+	{
+		c = *argv;
+		while (*c)
+		{
+			if ( (*c < '0' || *c > '9') && *c != '+')
+			{
+				std::cerr << "Error." << std::endl;
+				return;
+			}
+			c++;
+		}
+		this->_deque.push_back( atoi(*argv) );
+		argv++;
+	}
+
+	std::cout << "Before [deque] : ";
+	i = 0;
+	while ( i < 6 && i < this->_deque.size() )
+	{
+		std::cout << this->_deque[i++] << " ";
+	}
+	std::cout << ( ( this->_deque.size() > i ) ? "..." : "" )  << std::endl;
+
+	this->_sortDeque( 0, this->_deque.size() - 1 );
+	time = std::clock() - time;
+
+	std::cout << "After  [deque] : ";
+	i = 0;
+	while ( i < 6 && i < this->_deque.size() )
+	{
+		std::cout << this->_deque[i++] << " ";
+	}
+	std::cout << ( ( this->_deque.size() > i ) ? "..." : "" )  << std::endl;
+
+	std::cout << "Time to sort " << this->_deque.size() << " elements with deque  : ";
+	std::cout << static_cast<float>( time ) / CLOCKS_PER_SEC << "us" << std::endl;
 
 	return;
 }

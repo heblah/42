@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:18:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/25 09:32:23 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:44:29 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ class PmergeMe
 		
 		PmergeMe &			operator=(const PmergeMe & pmerge);
 
-		void				sort(char **argv);
+		void				sortVector(char **argv);
+		void				sortDeque(char **argv);
 
 	private:
 		std::vector<int>	_vector;
