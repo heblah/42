@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:20:35 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/23 11:06:51 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/29 19:04:51 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 
 class FragTrap : public ClapTrap {
 	public:
-					FragTrap(void);
-					FragTrap(const FragTrap &frag);
-					FragTrap(const std::string &name);
-					~FragTrap(void);
+						FragTrap(void);
+						FragTrap(const FragTrap &frag);
+						FragTrap(const std::string &name);
+						~FragTrap(void);
 
-		FragTrap &	operator=(const FragTrap &frag);
+		FragTrap &		operator=(const FragTrap &frag);
 
-		void		highFivesGuys(void) const;
+		void			highFivesGuys(void) const;
 
 };
 

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:52:13 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/23 14:28:45 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/29 18:57:07 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	main(void)
 
 	std::cout << std::endl;
 	frag.beRepaired(100);
+	frag.attack("Terminator");
 	frag.highFivesGuys();
 	frag.putStats();
 

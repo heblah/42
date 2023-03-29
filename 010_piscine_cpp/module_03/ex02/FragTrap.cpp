@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:20:54 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/23 11:06:48 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/29 19:04:51 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,27 @@
 #include "FragTrap.hpp"
 
 /* Constructors ============================================================= */
-FragTrap::FragTrap(void)
+FragTrap::FragTrap(void) : ClapTrap()
 {
 	std::cout << "FragTrap default constructor called." << std::endl;
+	this->ClapTrap::_energy_points = 100;
+	this->ClapTrap::_attack_damage = 30;
 	return;
 }
 
 FragTrap::FragTrap(const FragTrap &frag) : ClapTrap(frag)
 {
 	std::cout << "FragTrap copy constructor called." << std::endl;
+	this->ClapTrap::_energy_points = 100;
+	this->ClapTrap::_attack_damage = 30;
 	return;
 }
 
 FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
 {
 	std::cout << "FragTrap constructor by name called." << std::endl;
+	this->ClapTrap::_energy_points = 100;
+	this->ClapTrap::_attack_damage = 30;
 	return;
 }
 
@@ -58,4 +64,3 @@ void	FragTrap::highFivesGuys(void) const
 	std::cout << std::endl;
 	return;
 }
-
