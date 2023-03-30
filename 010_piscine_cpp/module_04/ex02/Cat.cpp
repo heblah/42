@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:11:13 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/30 16:31:03 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/30 17:17:39 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Cat::Cat(const Cat &cat) : AAnimal(cat)
 {
 	if (PRINT)
 		std::cout << "Copy Cat constructor called" << std::endl;
-	this->_brain = new Brain();
+	this->_brain = new Brain( *cat._brain );
 	return;
 }
 

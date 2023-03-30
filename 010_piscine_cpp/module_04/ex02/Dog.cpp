@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:11:13 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/30 16:31:29 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/30 17:18:33 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Dog::Dog(const Dog &dog) : AAnimal(dog)
 {
 	if (PRINT)
 		std::cout << "Copy Dog constructor called" << std::endl;
-	this->_brain = new Brain();
+	this->_brain = new Brain( *dog._brain );
 	return;
 }
 
