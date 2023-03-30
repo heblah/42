@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:11:13 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/24 15:22:01 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:29:33 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "Cat.hpp"
 
 /* Constructors ============================================================= */
-Cat::Cat(void)
+Cat::Cat(void) : Animal( "Cat" )
 {
 	std::cout << "Default Cat constructor called" << std::endl;
 	return;

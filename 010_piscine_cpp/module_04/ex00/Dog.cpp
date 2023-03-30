@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:11:13 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/24 15:21:39 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:29:58 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "Dog.hpp"
 
 /* Constructors ============================================================= */
-Dog::Dog(void)
+Dog::Dog(void) : Animal( "Dog" )
 {
 	std::cout << "Default Dog constructor called" << std::endl;
 	return;

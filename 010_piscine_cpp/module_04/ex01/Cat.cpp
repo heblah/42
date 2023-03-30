@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:11:13 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/12 16:33:44 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:30:16 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #define PRINT 0
 
 /* Constructors ============================================================= */
-Cat::Cat(void)
+Cat::Cat(void) : Animal( "Cat" )
 {
 	if (PRINT)
 		std::cout << "Default Cat constructor called" << std::endl;
