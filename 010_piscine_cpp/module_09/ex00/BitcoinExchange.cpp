@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:12:41 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/27 10:58:12 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/31 13:38:03 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,8 @@ std::ostream &	operator<<(std::ostream & ofs, const BitcoinExchange & bc)
 	ofs << "date       | exchange_rate" << std::endl;
 	while ( it != bcMap.end() )
 	{
-		ofs << it->first << " | " << it->second << std::endl;
+		ofs << it->first / 1000 << "-" << (it->first / 100) % 100 << "-" << it->first % 100;
+		ofs << " | " << it->second << std::endl;
 		it++;
 	}
 	return (ofs);
@@ -122,12 +123,16 @@ const float &	BitcoinExchange::find(const std::string & input) const
 	if ( dval < 0 )
 		throw NegativNumber();
 	if ( key != -1 && this->_db.find( key ) != this->_db.end() )
-		std::cout << key << " => " << dval << " = " << itf->second * dval << std::endl;
+	{
+		std::cout << key / 1000 << "-" << (key / 100) % 100 << "-" << key % 100;
+		std::cout << " => " << dval << " = " << itf->second * dval << std::endl;
+	}
 	else if ( key != -1 && this->_db.find( key ) == this->_db.end() )
 	{
 		while ( it != this->_db.end() && it->first < key )
 			it++;
-		std::cout << key << " => " << dval << " = " << ( --it )->second * dval << std::endl;
+		std::cout << key / 1000 << "-" << (key / 100) % 100 << "-" << key % 100;
+		std::cout << " => " << dval << " = " << ( --it )->second * dval << std::endl;
 		
 	}
 	return ( it->second );
