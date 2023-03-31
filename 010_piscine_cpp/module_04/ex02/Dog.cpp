@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:11:13 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/30 17:18:33 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/31 11:57:23 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #define PRINT 0
 
 /* Constructors ============================================================= */
-Dog::Dog(void) : Animal( "Dog" )
+Dog::Dog(void) : AAnimal( "Dog" )
 {
 	if (PRINT)
 		std::cout << "Default Dog constructor called" << std::endl;

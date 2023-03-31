@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:46 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/03 09:20:30 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/31 12:06:17 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ std::string const &	Cure::getType(void) const
 
 AMateria	*Cure::clone(void) const
 {
-	return (new Cure);
+	return (new Cure( this->_type ));
 }
 
 void	Cure::use(ICharacter& target)
