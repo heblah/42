@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 09:26:11 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/22 12:34:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/31 12:22:20 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,14 @@ int	RPN::op(const char * str)
 			&& *str != '*'
 			&& *str != '/'
 			&& *str != ' ' )
-			throw WrongCharacter();
+			throw WrongSyntax();
 		switch ( *str )
 		{
 			case '+':
 				tmp += this->_stack.top();
 				this->_stack.pop();
+				if ( this->_stack.size() == 0 )
+					throw WrongSyntax();
 				res = this->_stack.top() + tmp;
 				this->_stack.pop();
 				this->_stack.push( res );
@@ -74,6 +76,8 @@ int	RPN::op(const char * str)
 			case '-':
 				tmp += this->_stack.top();
 				this->_stack.pop();
+				if ( this->_stack.size() == 0 )
+					throw WrongSyntax();
 				res = this->_stack.top() - tmp;
 				this->_stack.pop();
 				this->_stack.push( res );
@@ -81,6 +85,8 @@ int	RPN::op(const char * str)
 			case '*':
 				tmp += this->_stack.top();
 				this->_stack.pop();
+				if ( this->_stack.size() == 0 )
+					throw WrongSyntax();
 				res = this->_stack.top() * tmp;
 				this->_stack.pop();
 				this->_stack.push( res );
@@ -90,6 +96,8 @@ int	RPN::op(const char * str)
 				if (tmp == 0)
 					throw ZeroDivision();
 				this->_stack.pop();
+				if ( this->_stack.size() == 0 )
+					throw WrongSyntax();
 				res = this->_stack.top() / tmp;
 				this->_stack.pop();
 				this->_stack.push( res );
@@ -100,6 +108,13 @@ int	RPN::op(const char * str)
 		}
 		str++;
 	}
+	str--;
+	if (*str != '+'
+		&& *str != '-'
+		&& *str != '*'
+		&& *str != '/'
+		&& *str != ' ' )
+		throw WrongSyntax();
 	res = this->_stack.top();
 	this->_stack.pop();
 	return ( res );

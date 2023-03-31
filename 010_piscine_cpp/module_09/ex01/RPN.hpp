@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 09:25:19 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/22 12:33:34 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/31 12:21:45 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ class RPN
 		void					push(const char & c);
 		void					pop(void);
 
-		class WrongCharacter : public std::exception {
+		class WrongSyntax : public std::exception {
 			public:
 				const char *	what(void) const throw() {
-					return ("Error: wrong character.");
+					return ("Error: wrong syntax.");
 				}
 		};
 
