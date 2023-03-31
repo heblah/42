@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:46:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/12 17:03:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/31 09:43:01 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ AAnimal::AAnimal(const std::string &type) : _type(type)
 AAnimal::~AAnimal(void)
 {
 	if (PRINT)
-		std::cout << "AAnimal constructor called" << std::endl;
+		std::cout << "AAnimal destructor called" << std::endl;
 	return;
 }
 
