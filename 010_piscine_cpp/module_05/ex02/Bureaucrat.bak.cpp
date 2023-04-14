@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:53:55 by halvarez          #+#    #+#             */
-/*   Updated: 2023/04/14 18:01:17 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/07 10:14:51 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 #include <string>
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 /* Constructors ============================================================= */
-Bureaucrat::Bureaucrat(void) : _name( "factory_bureaucrat" ), _grade( 150 )
+Bureaucrat::Bureaucrat(void)
 {
+	this->_name = "factory_bureaucrat";
+	this->_grade = 150;
 	return;
 }
 
@@ -57,7 +60,7 @@ Bureaucrat::~Bureaucrat(void)
 /* Operators ================================================================ */
 Bureaucrat &	Bureaucrat::operator=(const Bureaucrat & b)
 {
-	//this->_name = b._name;
+	this->_name = b._name;
 	this->_grade = b._grade;
 	return (*this);
 }
@@ -101,19 +104,19 @@ void	Bureaucrat::operator--(int)
 }
 
 /* Member functions ========================================================= */
-const std::string & Bureaucrat::getName(void) const
+std::string Bureaucrat::getName(void) const
 {
 	return (this->_name);
 }
 
-const unsigned int & Bureaucrat::getGrade(void) const
+unsigned int Bureaucrat::getGrade(void) const
 {
 	return (this->_grade);
 }
 
 void	Bureaucrat::setName(std::string name)
 {
-	static_cast<std::string>(this->_name) = name;
+	this->_name = name;
 	return;
 }
 
@@ -138,6 +141,12 @@ void	Bureaucrat::setGrade(unsigned int grade)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	return;
+}
+
+void	Bureaucrat::signForm(AForm & form) const
+{
+	form.beSigned(*this);
 	return;
 }
 

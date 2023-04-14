@@ -6,33 +6,33 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:46:34 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/07 10:14:15 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/04/14 18:13:15 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP 
 
-class AForm;
+#include "AForm.hpp"
 
 class Bureaucrat 
 {
 	public:
-							Bureaucrat(void);
-							Bureaucrat(const Bureaucrat & b);
-							Bureaucrat(std::string name, unsigned int grade);
-							~Bureaucrat(void);
+								Bureaucrat(void);
+								Bureaucrat(const Bureaucrat & b);
+								Bureaucrat(std::string name, unsigned int grade);
+								~Bureaucrat(void);
 
-		Bureaucrat&			operator=(const Bureaucrat & b);
-		void				operator++(int);
-		void				operator--(int);
+		Bureaucrat 		   &	operator=(const Bureaucrat & b);
+		void					operator++(int);
+		void					operator--(int);
 
-		std::string			getName(void) const;
-		unsigned int		getGrade(void) const;
+		const std::string  &	getName(void) const;
+		const unsigned int &	getGrade(void) const;
 
-		void				setName(std::string name);
-		void				setGrade(unsigned int grade);
-		void				signForm(AForm & form) const;
+		void					setName(std::string name);
+		void					setGrade(unsigned int grade);
+		void					signForm(AForm & form) const;
 
 		class GradeTooHighException : public std::exception
 		{
@@ -46,7 +46,7 @@ class Bureaucrat
 		};
 
 	private:
-		std::string			_name;
+		const std::string	_name;
 		unsigned int		_grade;
 };
 
