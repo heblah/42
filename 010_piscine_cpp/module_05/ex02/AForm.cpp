@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:46:21 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/07 13:11:43 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/04/14 21:52:58 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ AForm::AForm(std::string name, unsigned int sign, unsigned int exec) : _name(nam
 /* Desctructor ============================================================== */
 AForm::~AForm(void)
 {
-	return;const
+	return;
 }
 
 /* Operators ================================================================ */
