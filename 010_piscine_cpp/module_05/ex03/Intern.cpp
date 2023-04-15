@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:45:24 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/07 16:53:12 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/04/15 14:31:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,15 @@
 /* Constructors ============================================================= */
 Intern::Intern(void)
 {
+	this->_makeForm[0] = &Intern::_Shrubbery;
+	this->_makeForm[1] = &Intern::_Robotomy;
+	this->_makeForm[2] = &Intern::_Presidential;
 	return;
 }
 
 Intern::Intern(const Intern & intern __attribute__((unused)))
 {
-		return;
+	return;
 }
 
 /* Destructor =============================================================== */
@@ -46,15 +49,16 @@ Intern &	Intern::operator=(const Intern & intern __attribute__((unused)))
 /* Member functions ========================================================= */
 AForm * Intern::makeForm(std::string name_form, std::string target)
 {
+	std::string	request[] = {"ShrubberyCreationForm",
+							"RobotomyRequestForm",
+							"PresidentialPardonForm"};
 	try
 	{
-		if (name_form.compare("ShrubberyCreationForm") == 0)
-			return (new ShrubberyCreationForm(target));
-		else if (name_form.compare("RobotomyRequestForm") == 0)
-			return (new RobotomyRequestForm(target));
-		else if (name_form.compare("PresidentialPardonForm") == 0)
-			return (new PresidentialPardonForm(target));
-		else
+		for (int i = 0; i < 3; i++)
+		{
+			if ( name_form == request[i] )
+				return ( (this->*_makeForm[i])(target) );
+		}
 			throw UnkownForm();
 	}
 	catch (std::exception & e)
@@ -62,6 +66,21 @@ AForm * Intern::makeForm(std::string name_form, std::string target)
 		std::cerr << e.what() << std::endl;
 	}
 	return (NULL);
+}
+
+AForm *	Intern::_Shrubbery(std::string target)
+{
+	return (new ShrubberyCreationForm(target));
+}
+
+AForm *	Intern::_Robotomy(std::string target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+AForm *	Intern::_Presidential(std::string target)
+{
+	return (new PresidentialPardonForm(target));
 }
 
 /* Exceptions =============================================================== */
