@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:49:02 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/09 10:10:28 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:49:31 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,15 @@ ScalarConverter::ScalarConverter(void)
     return;
 }
 
-ScalarConverter::ScalarConverter(const ScalarConverter & sc) : _d(sc._d)
+ScalarConverter::ScalarConverter(const ScalarConverter & sc)// : _d(sc._d)
 {
+	this->_d = sc.getDouble();
     return;
 }
 
-ScalarConverter::ScalarConverter(const double d) : _d(d)
+ScalarConverter::ScalarConverter(const double d)// : _d(d)
 {
+	this->_d = d;
     return;
 }
 
@@ -101,14 +103,17 @@ ScalarConverter::operator double (void) const
     return (this->_d);
 }
 
+/* Static functions ========================================================= */
+double ScalarConverter::_d = 0;
+
 /* Member functions ========================================================= */
 void    ScalarConverter::setDouble(double d)
 {
-    this->_d = d;
+    _d = d;
     return;
 }
 
-double  ScalarConverter::getDouble(void) const
+double  ScalarConverter::getDouble(void)
 {
-    return (this->_d);
+    return (_d);
 }

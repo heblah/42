@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:48:31 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/08 17:16:08 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:24:30 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_data
 class Serializer
 {
     public:
-                        Serializer(void);
                         Serializer(const Serializer &s);
                         Serializer(void *ptr);
                         ~Serializer(void);
@@ -40,6 +39,7 @@ class Serializer
     private:
         void *          _p;
 
+                        Serializer(void);
 };
 
 #endif /* SERIALIZER_HPP */

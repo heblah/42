@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:18:42 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/08 20:43:43 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/04/17 13:38:52 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,9 @@ void    identify(Base & p)
 
 int main(void)
 {
-    Base    *ptr __attribute__((unused)) = NULL;
-    int     n = 5;
+    Base    *ptr	= NULL;
+    int     n 		= 5;
+	srand( time(NULL) );
 
     std::cout << "========== void identify(Base* p) ==========" << std::endl;
     n = 5;
