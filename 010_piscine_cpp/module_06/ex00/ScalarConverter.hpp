@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:36:31 by halvarez          #+#    #+#             */
-/*   Updated: 2023/04/17 15:45:45 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/04/21 16:49:55 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 class ScalarConverter 
 {
     public:
-                            ScalarConverter(void);
-                            ScalarConverter(const ScalarConverter & sc);
                             ScalarConverter(const double d);
                             ~ScalarConverter(void);
 
@@ -28,11 +26,13 @@ class ScalarConverter
                             operator float  (void) const;
                             operator double (void) const;
 
-       static void                 setDouble(double d);
-       static double               getDouble(void);
+       static void			setDouble(double d);
+       static double		getDouble(void);
 
     private:
         static double		_d;
+                            ScalarConverter(void);
+                            ScalarConverter(const ScalarConverter & sc);
 };
 
 std::ostream &  operator<<(std::ostream &os, const ScalarConverter & sc);
