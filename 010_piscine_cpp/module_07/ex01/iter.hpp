@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 11:17:32 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/09 18:09:23 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/04/23 16:13:45 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define ITER_HPP 
 
 template <typename T>
-void	iter(T * array, const size_t size, void (*f)(T & elem))
+void	iter(const T * array, const size_t size, void (*f)(const T & elem))
 {
 	size_t	i = 0;
 

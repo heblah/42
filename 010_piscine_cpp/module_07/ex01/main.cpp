@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 11:32:25 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/09 11:41:55 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/04/23 16:17:01 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 #include "iter.hpp"
 
-void	increment(int & elem)
+void	increment(const int & elem)
 {
-	elem++;
+	const_cast<int&>(elem)++;
 	return;
 }
 
@@ -46,3 +46,30 @@ int	main(void)
 	puttab(tab, 6);
 	return (0);
 }
+
+/*
+class Awesome{
+
+public:
+    Awesome(void) : _n(42) { return; }
+
+    int get_n() const {return this->_n;}
+
+private:
+    int _n;
+};
+
+std::ostream &operator << (std::ostream &o, const Awesome & rhs){o << rhs.get_n(); return o;}
+template<typename T>
+void print( T const & x ) { std::cout << x << std::endl; return; }
+
+int main(void)
+{
+	int		tab[] = {0, 1, 2, 3, 4};
+	Awesome	tab2[5];
+
+	iter(tab, 5, &print);
+	iter(tab2, 5, &print);
+    return 0;
+}
+*/
