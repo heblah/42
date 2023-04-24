@@ -6,20 +6,18 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:04:33 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/09 18:44:25 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:21:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-#include <map>
 #include <vector>
 
 #include "easyfind.hpp"
 
 int	main(void)
 {
-	//std::map<int, int> ft_map;
 	std::vector<int> vect(5);
 	int					ret = -1;
 

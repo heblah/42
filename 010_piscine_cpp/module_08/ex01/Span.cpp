@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:17:44 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/09 21:44:26 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:37:39 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ Span::Span(const Span & span) : _maxsize( span.getMaxSize() ), _set( span.getSet
 
 Span::Span(const unsigned int maxsize) : _maxsize(maxsize)
 {
+	if ( this->_maxsize > 10000000 )
+		this->_maxsize = 1000000;
 	return;
 }
 
@@ -96,16 +98,19 @@ void	Span::fillSpan(void)
 {
 	srand(time(NULL));
 
-	while (this->_set.size() < this->_maxsize)
-		std::generate_n( std::inserter(this->_set, this->_set.begin()),
-			this->_maxsize, rand);
-	if (this->_set.size() == this->_maxsize)
-		std::cout << "Span is well filled" <<std::endl;
-	
-	std::cout << "smallest element : " << *this->_set.begin() << std::endl;
-	std::cout << "biggest element  : " << *(--this->_set.end()) << std::endl;
-	for (std::set<int>::iterator it = this->_set.begin(); it != this->_set.end(); it++)
-		std::cout << *it << std::endl;
+	if ( this->_maxsize > 0 )
+	{
+		while (this->_set.size() < this->_maxsize)
+			std::generate_n( std::inserter(this->_set, this->_set.begin()),
+				this->_maxsize, rand);
+		if (this->_set.size() == this->_maxsize)
+			std::cout << "Span is well filled" <<std::endl;
+		
+		std::cout << "smallest element : " << *this->_set.begin() << std::endl;
+		std::cout << "biggest element  : " << *(--this->_set.end()) << std::endl;
+		for (std::set<int>::iterator it = this->_set.begin(); it != this->_set.end(); it++)
+			std::cout << *it << std::endl;
+	}
 	return;
 }
 

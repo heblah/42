@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 22:04:50 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/12 15:14:47 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:42:00 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	main(void)
 	std::cout << std::endl;
 	std::cout << "========== Testing begin iterator =========" << std::endl;
 	MutantStack<int>::iterator 	it __attribute__((unused)) = deftack.begin();
+	std::cout << *it <<std::endl;
+	it++;
 	std::cout << *it <<std::endl;
 	it++;
 	std::cout << *it <<std::endl;

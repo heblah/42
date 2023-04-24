@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:12:41 by halvarez          #+#    #+#             */
-/*   Updated: 2023/04/01 13:11:30 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:50:48 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,16 +124,17 @@ const float &	BitcoinExchange::find(const std::string & input) const
 		throw NegativNumber();
 	if ( key != -1 && this->_db.find( key ) != this->_db.end() )
 	{
-		std::cout << key / 1000 << "-" << (key / 100) % 100 << "-" << key % 100;
+		std::cout << (key / 10000) << "-" << ((((key / 100) % 100) < 10) ? "0" : "");
+		std::cout << (key / 100) % 100 << "-" << key % 100;
 		std::cout << " => " << dval << " = " << itf->second * dval << std::endl;
 	}
 	else if ( key != -1 && this->_db.find( key ) == this->_db.end() )
 	{
 		while ( it != this->_db.end() && it->first < key )
 			it++;
-		std::cout << key / 1000 << "-" << (key / 100) % 100 << "-" << key % 100;
+		std::cout << (key / 10000) << "-" << ((((key / 100) % 100) < 10) ? "0" : "");
+		std::cout << (key / 100) % 100 << "-" << key % 100;
 		std::cout << " => " << dval << " = " << ( --it )->second * dval << std::endl;
-		
 	}
 	return ( it->second );
 }
@@ -171,6 +172,7 @@ int	BitcoinExchange::_str2int(std::string str) const
 {
 	int	date	= 0;
 	int tmp		= 0;
+	int	month	= 0;
 
 	try {
 		if (str.compare("date"))
@@ -189,10 +191,19 @@ int	BitcoinExchange::_str2int(std::string str) const
 			tmp = atoi( (str.substr( 5, 7 )).c_str() );
 			if ( tmp < 1 || tmp > 12 )
 				throw badInput();
+			month = tmp;
 			date += tmp * 100;
 
 			tmp = atoi( (str.substr( 8, 10 )).c_str() );
 			if ( tmp < 1 || tmp > 31 )
+				throw badInput();
+			else if ( month < 8 && month % 2 == 0 && tmp > 30)
+				throw badInput();
+			else if ( month > 7 && month % 2 == 1 && tmp > 30)
+				throw badInput();
+			else if ( month == 2 && (date / 10000) % 4 == 0 && tmp > 29 )
+				throw badInput();
+			else if ( month == 2 && (date / 10000) % 4 == 1 && tmp > 28 )
 				throw badInput();
 			date += tmp ;
 		}
