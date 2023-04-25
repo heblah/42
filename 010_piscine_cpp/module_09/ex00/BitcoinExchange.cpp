@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:12:41 by halvarez          #+#    #+#             */
-/*   Updated: 2023/04/24 15:50:48 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:03:21 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,7 +203,7 @@ int	BitcoinExchange::_str2int(std::string str) const
 				throw badInput();
 			else if ( month == 2 && (date / 10000) % 4 == 0 && tmp > 29 )
 				throw badInput();
-			else if ( month == 2 && (date / 10000) % 4 == 1 && tmp > 28 )
+			else if ( month == 2 && (date / 10000) % 4 != 0 && tmp > 28 )
 				throw badInput();
 			date += tmp ;
 		}
