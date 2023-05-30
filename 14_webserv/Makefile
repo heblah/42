@@ -67,6 +67,7 @@ DEP = $(addprefix $(OBJ_DIR), $(SRC:.o=.d))
 #==============================================================================#
 
 all : $(NAME)
+	mkdir -p avocat_now/download
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.cpp
 	mkdir -p $(@D)
