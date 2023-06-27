@@ -1,0 +1,16 @@
+# this is only for the mysqld standalone daemon
+[mysqld]
+
+#
+# * Basic Settings
+#
+user                    = mysql						#ok
+pid-file                = /run/mysqld/mysqld.pid	#ok
+socket                  = /run/mysqld/mysqld.sock	#ok
+port					= 3306						#ok
+basedir                 = /usr						#ok
+datadir                 = /var/lib/mysql			#ok
+tmpdir                  = /tmp						#ok
+lc-messages-dir         = /usr/share/mysql			#ok
+bind-address            = *
+skip-networking			= false						#ok
