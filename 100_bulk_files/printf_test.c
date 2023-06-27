@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 10:25:58 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/17 09:19:00 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:20:02 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ int	main(int argc __attribute__((unused)), char **argv)
 {
 	while (*argv)
 		printf("%s\n", *argv++);
+	printf("sizeof(long long) = %zd\n", sizeof(long long));
 	return (0);
 }
