@@ -6,20 +6,25 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/12 15:07:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/07/04 18:17:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <arpa/inet.h>
 
 int	main(void)
 {
 	//int	tab[10];
 	//char	str[] = "lol";
 	char	*str_all;
+	int		i = 0x1234;
+	struct sockaddr_in addr __attribute__((unused));
 
+	printf("i = %d\n", i);
+	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 	str_all = malloc(5 * sizeof(char));
 	/*
 	printf("sizeof(tab) = %ld\n", sizeof(tab));

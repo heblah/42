@@ -3,44 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   read_tests.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 14:00:46 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/22 13:02:50 by halvarez         ###   ########.fr       */
+/*   Created: 2022/09/05 16:49:56 by halvarez          #+#    #+#             */
+/*   Updated: 2023/07/05 10:14:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <fcntl.h>
-
-char	*fill_buf(int fd, char *buf)
-{
-	int	rd;
-
-	rd = read(fd, buf, 5);
-	printf("rd=%d\n", rd);
-	return (buf);
-}
+#include <sys/socket.h>
 
 int	main(void)
 {
-	char	buf[100];
-	int		fd;
-	int		i;
+	int	fd = open( "test", O_RDONLY );
+	int rc;
+	char buf[100];
 
-	i = 0;
-	fd = open("txt", O_RDONLY);
-	if (fd == -1)
-		return (-1);
-	printf("fd = %d\n", fd);
-	while (i < 6)
-	{
-		if (read(fd, buf + i, 1) == -1)
-			return (-1);
-		i++;
-	}
-	printf("buf = %s\n", buf);
+	rc = recv( fd, buf, 100, 0 );
+//	rc = read( fd, buf, 100 );
+	printf( "%s\n, len = %i\n", buf, rc );
+	recv( fd, buf, 100, MSG_PEEK );
+	printf( "%s\n", buf );
 	return (0);
 }
