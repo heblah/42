@@ -11,7 +11,7 @@
 typedef struct s_data
 {
 	char	buf[4096];
-	char	msg[4096];
+	char	msg[8192];
 	int		srvsd;
 	struct s_client
 	{
