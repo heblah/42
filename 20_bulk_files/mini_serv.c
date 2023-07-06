@@ -192,6 +192,7 @@ int	main( int argc, char **argv )
 				send( newsd, "you're in chat\n", strlen( "you're in chat\n" ), 0 );
 				sprintf( data.msg, "server: client %d just arrived\n", get_id( &data, newsd ) );
 				send_msg( &data, data.msg, newsd );
+				break;
 			}
 			else if ( FD_ISSET( i, &read_set ) )
 			{
@@ -207,7 +208,7 @@ int	main( int argc, char **argv )
 					rc = recv( i, data.buf, sizeof( data.buf ), 0 );
 					if ( rc == -1 )
 						fatal_err( &data );
-					sprintf( data.msg, "client %d: \n%s", get_id( &data, i ), data.buf );
+					//sprintf( data.msg, "client %d: %s", get_id( &data, i ), data.buf );
 					send_msg( &data, data.msg, i );
 				}
 			}
