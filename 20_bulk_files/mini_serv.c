@@ -119,13 +119,13 @@ int	get_id( t_data *data, int sd )
 	return -1;
 }
 
-void	send_msg( t_data *data, char* msg, int sd, fd_set *read )
+void	send_msg( t_data *data, char* msg, int sd )
 {
 	struct s_client *tmp = data->client;
 
 	while( tmp )
 	{
-		if ( tmp->sd != sd && FD_ISSET( tmp->sd, read ))
+		if ( tmp->sd != sd )
 		{
 			if ( send( tmp->sd, msg, strlen( msg ), 0 ) == -1 )
 				fatal_err( data );
@@ -189,15 +189,17 @@ int	main( int argc, char **argv )
 				add_client( &data, newsd );
 				FD_SET( newsd, &master_set );
 				FD_CLR(data.srvsd, &read_set);
+				send( newsd, "you're in chat\n", strlen( "you're in chat\n" ), 0 );
 				sprintf( data.msg, "server: client %d just arrived\n", get_id( &data, newsd ) );
-				send_msg( &data, data.msg, newsd, &read_set );
+				send_msg( &data, data.msg, newsd );
+				break;
 			}
 			else if ( FD_ISSET( i, &read_set ) )
 			{
 				if ( recv( i, data.buf, 1, MSG_PEEK ) == 0 )
 				{
 					sprintf( data.msg, "server: client %d just left\n", get_id( &data, i ) );
-					send_msg( &data, data.msg, i, &read_set );
+					send_msg( &data, data.msg, i );
 					FD_CLR( i, &master_set );
 					rm_client( &data, i );
 				}
@@ -206,8 +208,8 @@ int	main( int argc, char **argv )
 					rc = recv( i, data.buf, sizeof( data.buf ), 0 );
 					if ( rc == -1 )
 						fatal_err( &data );
-					sprintf( data.msg, "client %d: \n%s", get_id( &data, i ), data.buf );
-					send_msg( &data, data.msg, i, &read_set );
+					sprintf( data.msg, "client %d: %s", get_id( &data, i ), data.buf );
+					send_msg( &data, data.msg, i );
 				}
 			}
 		}
