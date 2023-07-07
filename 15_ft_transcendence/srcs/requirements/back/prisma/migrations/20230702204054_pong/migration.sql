@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "block" ADD COLUMN     "blocked" INTEGER NOT NULL DEFAULT -1,
+ADD COLUMN     "blocker" INTEGER NOT NULL DEFAULT -1;

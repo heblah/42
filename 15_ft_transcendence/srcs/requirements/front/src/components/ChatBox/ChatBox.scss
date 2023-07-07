@@ -1,0 +1,242 @@
+
+.chat-box {
+	height: 100%;
+	border-width: 0px;
+}
+
+.in-row {
+	flex-direction: row;
+}
+
+.search-container {
+	height: 20%;
+}
+
+.search{
+	height: 50%;
+	font-size: 24px;
+}
+
+.sidebar {
+	width: 40%;
+	margin-left: 5px;
+	/* Autres styles de la sidebar */
+}
+
+.sidebar-container {
+}
+
+.sidebar-toggle-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.hidden {
+	display: none;
+}
+
+.channel-list {
+	height: 30vh;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	overflow: auto;
+}
+
+.close {
+	height: 0px !important;
+}
+
+  .channel-item {
+		padding: 10px;
+		cursor: pointer;
+  }
+  
+  .channel-item:hover {
+		background-color: rgb(152, 8, 8);
+  }
+
+.invite {
+	font-size: 0.7em !important;
+}
+  
+.channel-name {
+		justify-content: start;
+		height: 30%;
+		font-size: 22px;;
+}
+
+.channel-item.header {
+	height: 50px;
+	background-color: #6a5a5a;
+	font-weight: bold;
+}
+
+.button-yes {
+	background-color: green;
+	margin-right: 10px;
+	margin-top: 5px; 
+}
+
+.button-no {
+	background: rgb(255, 0, 0);
+	margin-left: 10px;
+	margin-top: 5px; 
+}
+
+.user-frame {
+	height: 45%;
+
+	.label-frame {
+		height: 20%;
+	}
+	.text-label {
+	}
+	.input-frame {
+		height: 15%;
+		border-width: 1px;
+	}
+	.text-input {
+		font-family: 'Arcade';
+	}
+	.button-frame {
+		height: 100px;
+		align-items: center;
+	}
+	.text-button {
+		font-size: 20px;
+	}
+}
+
+.error-message {
+	height: 10%;
+	border-width: 1px;
+	margin-top: 2px;
+	color: red; /* Couleur du texte */
+	font-size: 14px; /* Taille de police */
+	font-weight: bold; /* Gras */
+	background-color: transparent; /* Couleur de fond */
+	padding: 5px; /* Espacement interne pour créer une bordure autour du message */
+	border: 1px solid red; /* Bordure autour du message */
+	/* Autres propriétés CSS selon vos préférences */
+}
+
+
+.create-chan-frame {
+	height: 40%;
+	margin-top: 20px;
+
+	.label-frame {
+		height: 20%;
+	}
+	.text-label {
+	}
+	.input-frame {
+		height: 15%;
+		border-width: 1px;
+	}
+	.text-input {
+		font-family: 'Arcade';
+	}
+	.button-frame {
+		height: 100px;
+		align-items: center;
+	}
+	.text-button {
+		font-size: 20px;
+	}
+}
+
+.messages-container {
+	padding: 3px;
+	flex-grow: 1;
+	border-width: 1px;
+	justify-content: start;
+	overflow-wrap: break-word;
+}
+
+.text-container {
+	text-align: start;
+}
+
+.write-frame {
+
+	.label-frame {
+		height: 50px;
+	}
+	.text-label {
+	}
+
+	.input-frame {
+		justify-content: start;
+		border-width: 1px;
+	}
+	.text-chatmsg-input {
+		padding: 5px;
+		resize: none;
+		text-align: start;
+		align-items: start;
+		justify-content: start;
+	}
+	.button-frame {
+		align-items: center;
+		height: 50px;
+	}
+	.text-button {
+		font-size: 20px;
+	}
+}
+
+.text-button:hover {
+	color: rgb(209, 28, 28); /* Change the background color on hover */
+}
+
+.button-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 40px; /* Adjust the value to increase/decrease the spacing between buttons */
+  }
+  
+  .button-frame-choice {
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 20px;
+  }
+  
+  .text-button-choice {
+	font-size: 24px;
+	border: 1px solid rgb(255, 255, 255);
+	padding: 5px 10px;
+  }
+  .text-button-choice:hover {
+	background-color: rgb(205, 45, 45); /* Change the background color on hover */
+  }
+
+  .modal {
+	position: fixed; /* Fixed/Sticky position */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	display: flex;
+	justify-content: center; 
+	align-items: center; 
+  }
+  
+  .modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%; 
+	max-width: 500px; 
+  }
+  

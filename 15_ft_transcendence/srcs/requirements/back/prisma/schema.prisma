@@ -1,0 +1,113 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
+}
+
+model User {
+  id          Int      @id @default(autoincrement())
+  email       String
+  login       String
+  lastName    String
+  firstName   String
+  imageLink   String
+  username    String   @unique
+  doubleAuth  String
+  friends     String[]
+  currentStatus String @default("offline")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  wins        GameSessionOutcome[] @relation("userWins")
+  losses      GameSessionOutcome[] @relation("userLosses")
+  games1      GameSessionOutcome[] @relation("userGames1")
+  games2      GameSessionOutcome[] @relation("userGames2")
+  channelUsers  ChannelUser[]      @relation("user")
+  invitations   invitation[]       @relation("invitedRelation")
+}
+
+model block {
+  id                Int          @id @default(autoincrement())
+  blocker           Int          @default(-1)
+  blocked           Int          @default(-1)
+}
+
+model Token2FA {
+  id          Int     @unique
+  value       String
+}
+
+model invitation {
+  id                     Int      @id @default(autoincrement())
+  type                   String
+  whereID                 Int
+  whoInviteUserName      String
+  invitedID              Int             @default(-1)
+  invited                User  @relation("invitedRelation", fields: [invitedID], references: [id])
+}
+
+model textChannel {
+  id        Int      @id @default(autoincrement())
+  name      String
+  text      String
+  channelUserId     Int          @default(-1)
+  channelUser       ChannelUser  @relation("userText", fields: [channelUserId], references: [id])
+  channelId         Int          @default(-1)
+  channel           Channel      @relation("channel", fields: [channelId], references: [id])
+}
+
+
+model punishment {
+  id              Int      @id @default(autoincrement())
+
+  punishedId      Int     @default(-1)
+
+  type            String  @default("none")
+  punishmentExpiration DateTime?
+
+  channelId       Int     @default(-1)
+  channel         Channel @relation(fields: [channelId], references: [id])
+}
+
+model ChannelUser {
+  id              Int      @id @default(autoincrement())
+
+  isConnect       Boolean  @default(false)
+
+  userName        String   @default("unknown")
+  status          String   @default("user")
+
+  userID      Int     @default(-1)
+  user        User    @relation("user", fields: [userID], references: [id])
+  texts       textChannel[] @relation("userText")
+
+  channelId      Int        @default(-1)
+  channel        Channel    @relation(fields: [channelId], references: [id])
+
+}
+
+model Channel {
+  id               Int      @id  @default(autoincrement())
+  status           String        @default("public")
+  ChannelName      String        @unique
+  password         String        @default("")
+  users            ChannelUser[]
+  punishments      punishment[]
+  textChannels     textChannel[] @relation("channel")
+}
+
+
+model GameSessionOutcome {
+  id       Int    @id @default(autoincrement())
+  userID1  User   @relation("userGames1", fields: [user1Id], references: [id])
+  user1Id  Int
+  userID2  User   @relation("userGames2", fields: [user2Id], references: [id])
+  user2Id  Int
+  winner   User   @relation("userWins", fields: [winnerId], references: [id])
+  winnerId Int
+  loser    User   @relation("userLosses", fields: [loserId], references: [id])
+  loserId  Int
+}

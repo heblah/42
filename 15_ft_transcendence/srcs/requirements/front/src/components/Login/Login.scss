@@ -1,0 +1,66 @@
+
+.connect-frame {
+	margin-top: 25px;
+	min-width: 450px;
+
+	.connect-button {
+		border-color: blue;
+		border-width: 0px;
+		justify-content: start;
+		align-items:center;
+	}
+	.text-connect {
+		font-size: 32px;
+	}
+}
+
+.two-fa-frame {
+	align-items: center;
+	min-width: 450px;
+
+	.input-frame {
+		width: 80%;
+		height: 10%;
+		border-width: 1px;
+	}
+	.text-input {
+		font-family: 'Arcade';
+	}
+	.button-frame {
+		height: 100px;
+		align-items: center;
+	}
+	.text-button {
+		font-size: 20px;
+	}
+}
+
+.user-logged-frame {
+	align-items: center;
+	min-width: 450px;
+	
+	.text-label {}
+	.checked-frame {
+		width: 50px;
+		height: 50px;
+	}
+	.label-frame {
+		height: 20%;
+	}
+	.input-frame {
+		width: 80%; //here
+		height: 15%;
+		border-width: 1px;
+	}
+	.text-input {
+		font-family: 'Arcade';
+	}
+	.button-frame {
+		height: 100px;
+		width: 50%;
+		align-items: center;
+	}
+	.text-button {
+		font-size: 20px;
+	}
+}

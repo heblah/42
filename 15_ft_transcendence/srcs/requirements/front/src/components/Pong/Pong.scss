@@ -1,0 +1,32 @@
+$arena-height: 75%;
+
+.pong-frame {
+	height: 100%;
+}
+
+.arena-frame {
+	height: $arena-height;
+	
+	border-width: 0px;
+}
+
+.PongGame {
+	border-color: red; 
+	overflow: hidden;
+}
+
+.score-frame {
+	height: calc(100% - #{$arena-height});
+	border-width: 1px;
+	border-color: black;
+}
+
+.parentDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	overflow: hidden;
+    // height: 100vh; /* Adjust as needed */
+	width: 100%;
+	height: 100%;
+}

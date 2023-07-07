@@ -1,0 +1,64 @@
+$breakpoint: (
+  "screen-xs-max": 425px,
+  "screen-sm-min": 426px,
+  "screen-sm-max": 767px,
+  "screen-md-min": 768px,
+  "screen-md-max": 1240px,
+  "screen-lg-min": 0px,
+  "screen-lg-max": 0px,
+  "screen-xl-min": 1241px,
+  "screen-xl-max": 5000px,
+); // media aliases and breakpoints
+
+//"screen-md-max": 1024px,
+//"screen-lg-min": 1025px,
+//"screen-lg-max": 1440px,
+//"screen-xl-min": 1441px,
+
+@mixin xs {
+  @media only screen and (max-device-width: map-get($breakpoint, screen-xs-max)) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media only screen and (min-device-width: map-get($breakpoint, screen-sm-min)) and (max-device-width: map-get($breakpoint, screen-sm-max)) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media only screen and (min-device-width: map-get($breakpoint, screen-md-min)) and (max-device-width: map-get($breakpoint, screen-md-max)) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media only screen and (min-device-width: map-get($breakpoint, screen-lg-min)) and (max-device-width: map-get($breakpoint, screen-lg-max)) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media only screen and (min-device-width: map-get($breakpoint, screen-xl-min)) and (max-device-width: map-get($breakpoint, screen-xl-max)) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media only screen and (min-device-width: 1921px) {
+    @content;
+  }
+}
+
+@mixin mobile-landscape {
+  @media only screen and (max-device-width: 767px) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin high-density {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    @content;
+  }
+}

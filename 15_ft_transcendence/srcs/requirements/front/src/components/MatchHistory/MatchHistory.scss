@@ -1,0 +1,35 @@
+.display-match-history  {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 90%;
+  overflow: auto;
+  align-items: center;
+  color: white;
+  margin-top: 2vh;
+  .match-history-cell {
+    width: 80%;
+    height: 15%;
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+    justify-content: center;
+    transition: all 0.4s ease-out;
+    &:hover {
+      border: 1px solid white;
+      transform: scale(1.07);
+    }
+    p {
+      margin-top: 1vh;
+      text-align: center;
+    }
+  }
+  .display-match-no-history   {
+    width: 80%;
+    height: 15%;
+    text-align: center;
+    margin-top: 3vh;
+  }
+  &:hover {
+    transform: scale(1.07);
+  }
+}

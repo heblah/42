@@ -1,0 +1,52 @@
+$back: black;
+$front: white;
+
+.solid-frame {
+	background-color: $back;
+
+	border-style: solid;
+	border-color: $front;
+	border-radius: 0px;
+	border-width: 0px;
+
+	box-sizing: border-box;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+// Define text style
+.text-content {
+	font-family: 'Arcade';
+	font-size: 16px;
+	text-align: center;
+	color: $front;
+
+	
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	
+
+	.color1 {
+		color: $front;
+	}
+	.color2 {
+		color: $front;
+	}
+	// white-space: nowrap;
+
+	// Adjust font size based on screen size
+	/*
+	@media (min-width: 600px) { // for screens wider than 600px
+		font-size: 32px;
+	}
+	*/
+}

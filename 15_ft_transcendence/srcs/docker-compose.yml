@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+
+  frontend:
+    hostname: front
+    depends_on:
+      - backend
+    container_name: front
+    env_file:
+      - .env
+    build: requirements/front
+    ports:
+      - "3000:3000"
+    networks:
+      - ft_transcendence
+
+  backend:
+    hostname: back
+    container_name: back
+    env_file:
+      - .env
+    build: requirements/back
+    depends_on:
+      - database
+    ports:
+      - "9090:9090"
+      - "8080:8080"
+    networks:
+      - ft_transcendence
+
+  database:
+    hostname: database
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    networks:
+      - ft_transcendence
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+volumes:
+  dbdata:
+
+
+networks:
+  ft_transcendence:
+    driver: bridge

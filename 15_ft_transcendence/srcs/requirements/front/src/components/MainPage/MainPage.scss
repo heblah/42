@@ -1,0 +1,47 @@
+//local variables
+$margin: 10px;
+
+.window-frame {
+	width: 100vw;
+	height: 100vh;
+	margin: 0px;
+	flex-direction: row;
+	justify-content: left;
+}
+
+// Side bar
+.side-frame{
+	height: calc(100% - 2 * #{$margin});
+	min-height: 600px;
+	min-width: 300px;
+	margin: #{$margin};
+}
+
+// Right bos with all the menu
+.main-frame {
+	height: calc(100% - 2 * #{$margin});
+	min-height: 600px;
+ 		min-width: 640px;
+	margin: #{$margin};
+	flex-grow: 1;
+
+	.content-frame {
+		flex-grow: 1;
+	}
+}
+
+.main-title-frame {
+	border: 0px solid white;
+	padding: 2px;
+	height: 75px;
+}
+
+.text-main-title {
+	font-size: 32px;
+	/*
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
+	*/
+}
